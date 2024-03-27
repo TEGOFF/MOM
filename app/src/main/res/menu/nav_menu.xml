@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item
+        android:id="@+id/nav_home"
+        android:title="Home"
+        android:icon="@drawable/home"
+        android:iconTint="@color/white"
+        />
+    <item
+        android:id="@+id/nav_done_list"
+        android:title="Completed list"
+        android:icon="@drawable/done_tasks"
+        android:iconTint="@color/white"
+        />
+    <item android:title="Categories">
+
+        <menu>
+
+            <item
+                android:title="Diary"
+                 />
+
+        </menu>
+    </item>
+
+
+    <item
+        android:id="@+id/nav_settings"
+        android:title="Settings"
+        android:icon="@drawable/settings"
+        android:iconTint="@color/white"
+        />
+    <item
+        android:id="@+id/nav_sign_out"
+        android:title="Sign Out"
+        android:icon="@drawable/sign_out"
+        android:iconTint="@color/white"
+        />
+
+</menu>
