@@ -33,11 +33,6 @@
         android:icon="@drawable/settings"
         android:iconTint="@color/white"
         />
-    <item
-        android:id="@+id/nav_sign_out"
-        android:title="Sign Out"
-        android:icon="@drawable/sign_out"
-        android:iconTint="@color/white"
-        />
+
 
 </menu>

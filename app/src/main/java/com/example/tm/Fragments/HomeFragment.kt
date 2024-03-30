@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.addCallback
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.findViewTreeViewModelStoreOwner
 import androidx.navigation.NavController
@@ -31,7 +33,7 @@ import com.example.tm.Fragments.TaskDescriptionFragment.Companion as TaskDescrip
 
 
 class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
-    DairyTaskAdapter.DairyTaskAdapterClickInterface {
+    DairyTaskAdapter.DairyTaskAdapterClickInterface, View.OnClickListener {
 
     private lateinit var auth:FirebaseAuth
     private lateinit var navControl:NavController
@@ -41,6 +43,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
     private  var taskPopUpFragment:TaskDescriptionFragment?=null
     private lateinit var adapter:DairyTaskAdapter
     private lateinit var mlist:MutableList<DairyTaskData>
+    private  lateinit var actionBarToggle:ActionBarDrawerToggle
 
 
 
@@ -48,9 +51,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
         super.onCreate(savedInstanceState)
 
 
-        var drawerlayout: DrawerLayout? = view?.findViewById(R.id.)
-            {
-        }
+
 
     }
 
@@ -58,7 +59,6 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -68,6 +68,38 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
 
         init(view)
         registerEvents()
+
+        requireActivity().onBackPressedDispatcher.addCallback(this) {
+            requireActivity().finish()
+        }
+
+        binding.apply {
+            actionBarToggle = ActionBarDrawerToggle(requireActivity(), drawerlayout, 0, 0)
+            drawerlayout.addDrawerListener(actionBarToggle)
+            actionBarToggle.syncState()
+
+            callmenubtn.setOnClickListener(this@HomeFragment)
+
+            navView.setNavigationItemSelectedListener { menuItem ->
+                when (menuItem.itemId) {
+                    R.id.nav_home -> {
+                        drawerlayout.closeDrawer(view)
+                        true
+                    }
+
+                    R.id.nav_settings -> {
+                        navControl.navigate(R.id.action_homeFragment_to_settingsFragment)
+                        true
+                    }
+
+
+                    else -> {
+                        false
+                    }
+                }
+            }
+
+        }
 
 
     }
@@ -118,6 +150,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                 TODO("Not yet implemented")
             }
 
+
             override fun onCancelled(error: DatabaseError) {
                 Log.e("error", error.toString())
             }
@@ -127,11 +160,6 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
     private fun registerEvents(){
         if(addPopUpFragment!= null){
             childFragmentManager.beginTransaction().remove(addPopUpFragment!!).commit()
-        }
-
-        binding.ButtonSignOut.setOnClickListener(){
-            auth.signOut()
-            navControl.navigate(R.id.action_homeFragment_to_signInFragment)
         }
         binding.AddTaskButton.setOnClickListener{
             addPopUpFragment=AddTaskPopUpFragment()
@@ -259,9 +287,23 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
             taskPopUpFragment!!.dismiss()
         }
     }
+    override fun onClick( view: View?) {
+        when (view?.id) {
+            R.id.callmenubtn -> {
+                binding.drawerlayout.openDrawer(binding.navView)
+            }
 
-
+        }
+    }
 }
+
+
+
+
+
+
+
+
 
 
 

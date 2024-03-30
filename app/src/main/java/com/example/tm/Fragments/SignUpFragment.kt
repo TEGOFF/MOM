@@ -13,11 +13,16 @@ import androidx.navigation.Navigation
 import com.example.tm.R
 import com.example.tm.databinding.FragmentSignInBinding
 import com.example.tm.databinding.FragmentSignUpBinding
+import com.example.tm.utilities.User
+import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 
 class SignUpFragment() : Fragment() {
     private lateinit var auth:FirebaseAuth
+    private lateinit var dbref:DatabaseReference
     private lateinit var navControl: NavController
     private lateinit var binding: FragmentSignUpBinding
 
@@ -40,7 +45,12 @@ class SignUpFragment() : Fragment() {
         registerEvents()
     }
 
+    private fun init(view:View){
+        navControl= Navigation.findNavController(view)
+        auth= FirebaseAuth.getInstance()
+        dbref=FirebaseDatabase.getInstance().reference.child("Users")
 
+    }
 
     private fun registerEvents() {
         binding.ButtonBackToLogIn.setOnClickListener{
@@ -49,12 +59,15 @@ class SignUpFragment() : Fragment() {
 
         binding.ButtonSignUp.setOnClickListener {
             val email = binding.EntryEmailSignUp.text.toString()
+            val name = binding.EntryNameSignUp.text.toString()
             val pass = binding.EntryPasswordSignUp.text.toString()
             val passconf = binding.EntryPassConfSignUp.text.toString()
             if (email.isNotEmpty() && pass.isNotEmpty()&& passconf.isNotEmpty()) {
                 auth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
                     if(it.isSuccessful){
                         Toast.makeText(context, "User registered successfully", Toast.LENGTH_SHORT).show()
+                        val user = User(name, email, pass, auth.uid.toString())
+                        dbref.child(user.UserId).setValue(user)
                         navControl.navigate(R.id.action_signUpFragment_to_signInFragment)
                     }
                     else{
@@ -70,10 +83,6 @@ class SignUpFragment() : Fragment() {
         }
     }
 
-    private fun init(view:View){
-        navControl= Navigation.findNavController(view)
-        auth= FirebaseAuth.getInstance()
 
-    }
 
 }
