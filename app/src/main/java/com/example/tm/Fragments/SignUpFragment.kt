@@ -67,7 +67,7 @@ class SignUpFragment() : Fragment() {
                     if(it.isSuccessful){
                         Toast.makeText(context, "User registered successfully", Toast.LENGTH_SHORT).show()
                         val user = User(name, email, pass, auth.uid.toString())
-                        dbref.child(user.UserId).setValue(user)
+                        dbref.child(user.userId).setValue(user)
                         navControl.navigate(R.id.action_signUpFragment_to_signInFragment)
                     }
                     else{

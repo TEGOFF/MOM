@@ -9,8 +9,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.lifecycle.findViewTreeViewModelStoreOwner
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,6 +16,7 @@ import com.example.tm.R
 import com.example.tm.databinding.FragmentHomeBinding
 import com.example.tm.utilities.DairyTaskAdapter
 import com.example.tm.utilities.DairyTaskData
+import com.example.tm.utilities.FireHelper
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.ChildEventListener
@@ -28,8 +27,6 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.messaging.FirebaseMessaging
 import com.example.tm.Fragments.AddTaskPopUpFragment.Companion as AddTaskPopUpFragment1
-import com.example.tm.Fragments.TaskDescriptionFragment.Companion as TaskDescriptionFragment1
-
 
 
 class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
@@ -69,6 +66,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
         init(view)
         registerEvents()
 
+
         requireActivity().onBackPressedDispatcher.addCallback(this) {
             requireActivity().finish()
         }
@@ -105,9 +103,9 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
     }
     private fun init(view:View){
         navControl=Navigation.findNavController(view)
-        auth=FirebaseAuth.getInstance()
-        dbref=FirebaseDatabase.getInstance().reference
-            .child(auth.currentUser?.uid.toString()).child("DairyTasks")
+        auth=FireHelper.firebaseAuth
+        dbref=FireHelper.dbref.child(auth.currentUser?.uid.toString()).child("DairyTasks")
+
         binding.mainRecyclerView.setHasFixedSize(true)
         getDataFromFirebase()
         binding.mainRecyclerView.layoutManager = LinearLayoutManager(context)

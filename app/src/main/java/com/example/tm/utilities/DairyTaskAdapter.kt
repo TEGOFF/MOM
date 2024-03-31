@@ -1,11 +1,10 @@
 package com.example.tm.utilities
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
-import com.example.tm.Fragments.TaskDescriptionFragment
+import com.example.tm.Fragments.HomeFragment
 import com.example.tm.databinding.EachTaskItemBinding
 
 class DairyTaskAdapter(private val list:MutableList<DairyTaskData>) : Adapter<DairyTaskAdapter.TaskViewHolder>()
@@ -13,7 +12,7 @@ class DairyTaskAdapter(private val list:MutableList<DairyTaskData>) : Adapter<Da
     private var listener:DairyTaskAdapterClickInterface?=null
 
 
-    fun setListener(listener:DairyTaskAdapterClickInterface){
+    fun setListener(listener: HomeFragment){
         this.listener=listener
     }
 

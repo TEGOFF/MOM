@@ -13,21 +13,23 @@
         android:layout_width="match_parent"
         >
 
+
         <ImageView
-            android:layout_width="74dp"
-            android:layout_height="69dp"
             android:id="@+id/callmenubtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
             android:src="@drawable/d_menu_btn"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
         <ImageView
             android:id="@+id/AddTaskButton"
-            android:layout_width="68dp"
-            android:layout_height="67dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="4dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
             android:src="@android:drawable/ic_menu_add"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
