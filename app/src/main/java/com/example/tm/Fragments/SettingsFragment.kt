@@ -27,7 +27,6 @@ class SettingsFragment : Fragment() {
     private lateinit var mFirebase: FirebaseAuth
     private lateinit var binding: FragmentSettingsBinding
     private lateinit var firebaseStorageRef:FirebaseStorage
-    private var uri: Uri?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -89,6 +88,7 @@ class SettingsFragment : Fragment() {
         }
          binding.takePhotoBtn.setOnClickListener(){
             getPermissions()
+            navControl.navigate(R.id.action_settingsFragment_to_cameraFragment)
 
          }
     }
