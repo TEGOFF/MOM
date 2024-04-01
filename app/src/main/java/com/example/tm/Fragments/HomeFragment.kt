@@ -86,6 +86,10 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                         true
                     }
 
+                    R.id.Categories -> {
+
+                        true
+                    }
 
                     else -> {
                         false

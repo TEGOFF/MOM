@@ -15,7 +15,9 @@
         android:icon="@drawable/done_tasks"
         android:iconTint="@color/white"
         />
-    <item android:title="Categories">
+    <item
+        android:title="Categories"
+        android:id="@+id/Categories">
 
         <menu>
 
