@@ -1,5 +1,6 @@
 package com.example.tm.Fragments
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Context.*
 import android.content.Intent
@@ -29,9 +30,7 @@ import com.example.tm.R
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-private fun CameraManager.openCamera(cameraId: String?, stateCallback: CameraDevice.StateCallback) {
 
-}
 
 
 class CameraFragment : Fragment() {
@@ -87,6 +86,7 @@ class CameraFragment : Fragment() {
             }
         }
     }
+    @SuppressLint("MissingPermission")
     fun openCam(){
 
         val cameraId=camManager.cameraIdList[0]
@@ -108,7 +108,7 @@ class CameraFragment : Fragment() {
                     override fun onConfigureFailed(session: CameraCaptureSession) {
                         TODO("Not yet implemented")
                     }
-                })
+                }, handler)
 
             }
 
@@ -120,7 +120,7 @@ class CameraFragment : Fragment() {
                 TODO("Not yet implemented")
             }
 
-            })
+            }, handler)
         }
 
 
@@ -128,12 +128,7 @@ class CameraFragment : Fragment() {
 
 
 
-private fun CameraDevice.createCaptureSession(
-    listOf: List<Surface>,
-    stateCallback: CameraCaptureSession.StateCallback
-) {
 
-}
 
 
 
