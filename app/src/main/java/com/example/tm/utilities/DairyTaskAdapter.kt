@@ -35,6 +35,7 @@ class DairyTaskAdapter(private val list:MutableList<DairyTaskData>) : Adapter<Da
         with(holder){
             with(list[position]){
                 binding.DairyTaskName.text=this.dairyTaskName
+                binding.tvCategory.text = this.category
 
                 binding.editTask.setOnClickListener(){
                     listener?.onEditTaskButtonClicked(this)

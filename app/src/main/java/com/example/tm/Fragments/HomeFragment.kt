@@ -109,7 +109,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
     private fun init(view:View){
         navControl=Navigation.findNavController(view)
         auth=FireHelper.firebaseAuth
-        dbref=FireHelper.dbref.child(auth.currentUser?.uid.toString()).child("DairyTasks")
+        dbref=FireHelper.dbref.child("Users").child(auth.currentUser?.uid.toString()).child("DairyTasks")
 
         binding.mainRecyclerView.setHasFixedSize(true)
         getDataFromFirebase()
@@ -191,8 +191,6 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                     }
                 }
 
-
-
                 }
             override fun onCancelled(error: DatabaseError) {
                 Toast.makeText(context, error.message, Toast.LENGTH_SHORT).show()
@@ -200,9 +198,6 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
 
         })
     }
-
-
-
 
 
     override fun onDeleteDairyTaskData(dairyTaskData: DairyTaskData) {
@@ -250,9 +245,9 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
 
 
 
-    override fun onSaveDairyTask(taskName:String, taskDescription:String , time:String, date:String, taskDescriptionEntryText: TextInputEditText,   taskNameEntryText: TextInputEditText) {
+    override fun onSaveDairyTask(taskName:String, taskDescription:String , time:String, date:String, taskDescriptionEntryText: TextInputEditText,   taskNameEntryText: TextInputEditText, taskCategory: String) {
         val k=dbref.push()
-        k.setValue(DairyTaskData(taskName, taskDescription, k.key.toString(), time, date )).addOnCompleteListener{
+        k.setValue(DairyTaskData(taskName, taskDescription, k.key.toString(), time, date, category = taskCategory)).addOnCompleteListener{
             if(it.isSuccessful){
                 Toast.makeText(context, "Task added succesfully", Toast.LENGTH_SHORT).show()
             }
