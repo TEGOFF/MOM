@@ -23,11 +23,6 @@ class FireHelper {
         val Users = FirebaseDatabase.getInstance().getReference("Users")
 
 
-
-
-
-
-
         fun storeImage(uri: Uri?,  context: Context) {
             if(uri != null){
                 val storage = stref.child("${firebaseAuth.currentUser?.uid}.profileImage.${getType(context, uri!!)}")
