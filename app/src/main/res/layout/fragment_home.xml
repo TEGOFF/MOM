@@ -42,6 +42,25 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/AddTaskButton" />
+
+        <Button
+            android:id="@+id/btCat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Choose category"
+            app:layout_constraintBottom_toTopOf="@+id/mainRecyclerView"
+            app:layout_constraintEnd_toStartOf="@+id/AddTaskButton"
+            app:layout_constraintStart_toEndOf="@+id/callmenubtn"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RadioGroup
+            android:id="@+id/rgCats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@+id/btCat"
+            app:layout_constraintStart_toStartOf="@+id/btCat"
+            app:layout_constraintTop_toBottomOf="@+id/btCat" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.navigation.NavigationView
