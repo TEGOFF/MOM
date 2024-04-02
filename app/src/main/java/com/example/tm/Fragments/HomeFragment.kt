@@ -12,6 +12,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.tm.CategoriesFragment
 import com.example.tm.R
 import com.example.tm.databinding.FragmentHomeBinding
 import com.example.tm.utilities.DairyTaskAdapter
@@ -87,7 +88,11 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                     }
 
                     R.id.Categories -> {
+                        val fragment = CategoriesFragment()
 
+                        fragment.show(
+                            childFragmentManager, "Categories"
+                        )
                         true
                     }
 
@@ -191,8 +196,6 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                 }
             override fun onCancelled(error: DatabaseError) {
                 Toast.makeText(context, error.message, Toast.LENGTH_SHORT).show()
-
-
             }
 
         })

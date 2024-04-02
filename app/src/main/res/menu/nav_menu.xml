@@ -15,18 +15,14 @@
         android:icon="@drawable/done_tasks"
         android:iconTint="@color/white"
         />
-    <item
-        android:title="Categories"
-        android:id="@+id/Categories">
-
         <menu>
-
+            <item android:title="Categories"
+                android:id="@+id/Categories"/>
             <item
                 android:title="Diary"
                  />
 
         </menu>
-    </item>
 
 
     <item
