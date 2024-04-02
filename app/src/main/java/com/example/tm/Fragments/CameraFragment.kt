@@ -5,13 +5,16 @@ import android.content.Context
 import android.content.Context.*
 import android.content.Intent
 import android.content.Intent.ACTION_GET_CONTENT
+import android.graphics.ImageFormat
 import android.graphics.SurfaceTexture
 import android.hardware.camera2.CameraCaptureSession
 import android.hardware.camera2.CameraDevice
 import android.hardware.camera2.CameraManager
 import android.hardware.camera2.CameraMetadata
 import android.hardware.camera2.CaptureRequest
+import android.media.ImageReader
 import android.os.Bundle
+import android.os.Environment
 import android.os.Handler
 import android.os.HandlerThread
 import android.speech.tts.TextToSpeech
@@ -22,8 +25,13 @@ import android.view.Surface
 import android.view.TextureView
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.content.ContextCompat.getExternalFilesDirs
 import androidx.core.content.ContextCompat.getSystemService
 import com.example.tm.R
+import com.example.tm.databinding.FragmentCameraBinding
+import com.example.tm.databinding.FragmentDoneTasksBinding
+import java.io.Reader
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -44,6 +52,8 @@ class CameraFragment : Fragment() {
     lateinit var captureRequest: CaptureRequest
     lateinit var handlerThread : HandlerThread
     lateinit var handler :Handler
+    lateinit var binding:FragmentCameraBinding
+    lateinit var imageReader: ImageReader
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -54,8 +64,9 @@ class CameraFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_camera, container, false)
+        binding = FragmentCameraBinding.inflate(inflater, container, false)
+        return binding.root
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -85,6 +96,29 @@ class CameraFragment : Fragment() {
 
             }
         }
+
+        imageReader = ImageReader.newInstance(1080, 1920, ImageFormat.JPEG, 1)
+        imageReader.setOnImageAvailableListener(object: ImageReader.OnImageAvailableListener {
+            override fun onImageAvailable(reader: ImageReader?) {
+                var image= reader?.acquireLatestImage()
+                var buffer = image!!.planes[0].buffer
+                var bytes= ByteArray(buffer.remaining())
+                buffer.get(bytes)
+
+
+            }
+
+        }, handler)
+        binding.takePhotoBtn.apply(){
+            setOnClickListener{
+                captureRequestBuilder=camDevice.createCaptureRequest(CameraDevice.TEMPLATE_STILL_CAPTURE)
+                captureRequestBuilder.addTarget(imageReader.surface)
+                camCaptureSession.capture(captureRequestBuilder.build(), null, null)
+            }
+
+        }
+
+
     }
     @SuppressLint("MissingPermission")
     fun openCam(){

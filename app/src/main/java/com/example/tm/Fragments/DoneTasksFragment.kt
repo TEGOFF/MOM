@@ -28,7 +28,6 @@ class DoneTasksFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentDoneTasksBinding.inflate(inflater, container, false)
         return binding.root
-        return inflater.inflate(R.layout.fragment_done_tasks, container, false)
 
     }
 
