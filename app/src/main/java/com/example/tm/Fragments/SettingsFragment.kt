@@ -138,7 +138,7 @@ class SettingsFragment : Fragment() , NameChangeFragment.DialogNameChangeListene
 
     }
 
-    fun saveProfImage(){
+    private fun saveProfImage(){
         val intent = Intent(Intent.ACTION_GET_CONTENT)
         intent.type = "image/*"
         startActivityForResult(intent, 1)

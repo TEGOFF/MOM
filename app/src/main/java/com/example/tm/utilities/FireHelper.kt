@@ -5,6 +5,7 @@ import android.content.Context
 import android.net.Uri
 import android.util.Log
 import android.webkit.MimeTypeMap
+import android.widget.Toast
 import androidx.core.content.ContentProviderCompat.requireContext
 import com.example.tm.Fragments.SettingsFragment
 import com.google.firebase.auth.FirebaseAuth
@@ -32,7 +33,7 @@ class FireHelper {
             if(uri != null){
                 val storage = stref.child("${firebaseAuth.currentUser?.uid}.profileImage.${getType(context, uri!!)}")
 
-                val uploadTask = storage.putFile(uri!!).continueWithTask { task ->
+                val uploadTask = storage.putFile(uri).continueWithTask { task ->
                     if(!task.isSuccessful){
                         task.exception.let { throw it!! }
                     }
@@ -47,6 +48,10 @@ class FireHelper {
                         if(it.isSuccessful){
                             SettingsFragment()
                         }
+                    }.addOnSuccessListener {
+                        Toast.makeText(context, "Image is uploaded", Toast.LENGTH_SHORT).show()
+                    }.addOnFailureListener{
+                        Toast.makeText(context, "something went wrong:(", Toast.LENGTH_SHORT).show()
                     }
                 }
 
