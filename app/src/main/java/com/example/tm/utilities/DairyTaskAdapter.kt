@@ -43,7 +43,6 @@ class DairyTaskAdapter(private val list:MutableList<DairyTaskData>) : Adapter<Da
                 binding.EachItemDairyTask.setOnClickListener(){
                     listener?.onTaskClicked(this)
                 }
-
             }
         }
 

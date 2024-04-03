@@ -360,7 +360,6 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
             R.id.callmenubtn -> {
                 binding.drawerlayout.openDrawer(binding.navView)
             }
-
         }
     }
 }

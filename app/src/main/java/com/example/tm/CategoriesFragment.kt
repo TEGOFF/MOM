@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -63,13 +64,16 @@ class CategoriesFragment : DialogFragment() {
     fun initListeners(){
         addButton.setOnClickListener {
             val name = etCatsName.text.toString().trim()
-            if(name != " "){
+            if(name.isNotEmpty()){
                 val cat = Category(FireHelper.dbref.push().key.toString(), name)
                 FireHelper.Users.child(FireHelper.firebaseAuth.currentUser!!.uid).child("Categories").child(cat.id).setValue(cat)
                 cats.add(cat)
 
                 adapter.notifyItemInserted(cats.size-1)
                 etCatsName.setText("")
+            }
+            else{
+                Toast.makeText(requireContext(), "Category's name can't be empty", Toast.LENGTH_SHORT).show()
             }
         }
     }
