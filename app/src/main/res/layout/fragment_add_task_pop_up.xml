@@ -91,5 +91,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView1" />
 
+    <RadioGroup
+        android:id="@+id/rgCats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="@+id/btChooseCat"
+        app:layout_constraintStart_toStartOf="@+id/btChooseCat"
+        app:layout_constraintTop_toBottomOf="@+id/btChooseCat"/>
+
+    <Button
+        android:id="@+id/btChooseCat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Category"
+        app:cornerRadius="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/BtnTaskAdd"
+        app:layout_constraintEnd_toStartOf="@+id/BtnTaskAdd"
+        app:layout_constraintStart_toEndOf="@+id/TimerSetter"
+        app:layout_constraintTop_toTopOf="@+id/BtnTaskAdd" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

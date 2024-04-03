@@ -6,14 +6,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.tm.CategoriesFragment
 import com.example.tm.R
 import com.example.tm.databinding.FragmentHomeBinding
+import com.example.tm.utilities.Category
 import com.example.tm.utilities.DairyTaskAdapter
 import com.example.tm.utilities.DairyTaskData
 import com.example.tm.utilities.FireHelper
@@ -41,6 +46,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
     private lateinit var adapter:DairyTaskAdapter
     private lateinit var mlist:MutableList<DairyTaskData>
     private  lateinit var actionBarToggle:ActionBarDrawerToggle
+    private var category: String = "All"
 
 
 
@@ -86,6 +92,14 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                         true
                     }
 
+                    R.id.Categories -> {
+                        val fragment = CategoriesFragment()
+
+                        fragment.show(
+                            childFragmentManager, "Categories"
+                        )
+                        true
+                    }
 
                     else -> {
                         false
@@ -100,7 +114,9 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
     private fun init(view:View){
         navControl=Navigation.findNavController(view)
         auth=FireHelper.firebaseAuth
-        dbref=FireHelper.dbref.child(auth.currentUser?.uid.toString()).child("DairyTasks")
+        dbref=FireHelper.dbref.child("Users").child(auth.currentUser?.uid.toString()).child("DairyTasks")
+
+
 
         binding.mainRecyclerView.setHasFixedSize(true)
         getDataFromFirebase()
@@ -169,33 +185,91 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                 childFragmentManager, TaskDescriptionFragment.TAG
             )
         }
+
+        getCats()
+
+        binding.rgCats.setOnCheckedChangeListener { group, checkedId ->
+            val button = requireView().findViewById<RadioButton>(checkedId)
+            binding.btCat.text = button.text.toString()
+            category = button.text.toString()
+            binding.rgCats.visibility = View.GONE
+
+            sortTasks()
+        }
+
+        binding.btCat.setOnClickListener {
+            binding.rgCats.visibility = View.VISIBLE
+        }
+    }
+
+    private fun sortTasks(){
+        Log.e("Cat", "Sorting tasks")
+        if(category == "All"){
+            getDataFromFirebase()
+        }
+
+        mlist.clear()
+
+        FireHelper.Users.child(FireHelper.firebaseAuth.currentUser!!.uid).child("DairyTasks").get().addOnCompleteListener {
+            if(it.isSuccessful){
+                for(i in it.result.children){
+                    val task = i.getValue(DairyTaskData::class.java)
+
+                    Log.i("CAT", "${task!!.category == "# "+category && task != null}")
+                    if(task != null && task.category == "# "+category){
+                        mlist.add(task)
+                    }
+                }
+                Log.i("CAT", mlist.size.toString())
+                adapter.notifyDataSetChanged()
+            }
+        }
+    }
+    private fun getCats(){
+        val radio = RadioButton(context)
+        radio.setText("All")
+        radio.id = View.generateViewId()
+
+        binding.rgCats.addView(radio)
+        FireHelper.Users.child(FireHelper.firebaseAuth.currentUser!!.uid).child("Categories").get().addOnCompleteListener {
+            if(it.isSuccessful){
+                for(i in it.result.children){
+                    val cat = i.getValue(Category::class.java)
+
+                    if(cat != null){
+                        val radio = RadioButton(context)
+                        Log.i("Cat", cat.name)
+                        radio.setText(cat.name)
+                        radio.id = View.generateViewId()
+
+                        binding.rgCats.addView(radio)
+                    }
+                }
+            }
+        }
     }
     private fun getDataFromFirebase(){
         dbref.addValueEventListener(object:ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
 
                 mlist.clear()
+                adapter.notifyDataSetChanged()
+
                 for (taskSnapshot in snapshot.children) {
                     val task = taskSnapshot.getValue(DairyTaskData::class.java)
                     if ( task!= null) {
                         mlist.add(task)
+                        adapter.notifyItemInserted(mlist.size-1)
                     }
                 }
-
-
 
                 }
             override fun onCancelled(error: DatabaseError) {
                 Toast.makeText(context, error.message, Toast.LENGTH_SHORT).show()
-
-
             }
 
         })
     }
-
-
-
 
 
     override fun onDeleteDairyTaskData(dairyTaskData: DairyTaskData) {
@@ -243,9 +317,9 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
 
 
 
-    override fun onSaveDairyTask(taskName:String, taskDescription:String , time:String, date:String, taskDescriptionEntryText: TextInputEditText,   taskNameEntryText: TextInputEditText) {
+    override fun onSaveDairyTask(taskName:String, taskDescription:String , time:String, date:String, taskDescriptionEntryText: TextInputEditText,   taskNameEntryText: TextInputEditText, taskCategory: String) {
         val k=dbref.push()
-        k.setValue(DairyTaskData(taskName, taskDescription, k.key.toString(), time, date )).addOnCompleteListener{
+        k.setValue(DairyTaskData(taskName, taskDescription, k.key.toString(), time, date, category = taskCategory)).addOnCompleteListener{
             if(it.isSuccessful){
                 Toast.makeText(context, "Task added succesfully", Toast.LENGTH_SHORT).show()
             }

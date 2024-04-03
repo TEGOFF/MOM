@@ -9,22 +9,6 @@
         android:icon="@drawable/home"
         android:iconTint="@color/white"
         />
-    <item
-        android:id="@+id/nav_done_list"
-        android:title="Completed list"
-        android:icon="@drawable/done_tasks"
-        android:iconTint="@color/white"
-        />
-    <item android:title="Categories">
-
-        <menu>
-
-            <item
-                android:title="Diary"
-                 />
-
-        </menu>
-    </item>
 
 
     <item
@@ -33,6 +17,24 @@
         android:icon="@drawable/settings"
         android:iconTint="@color/white"
         />
+    <item
+        android:id="@+id/nav_done_list"
+        android:title="Completed list"
+        android:icon="@drawable/done_tasks"
+        android:iconTint="@color/white"
+        />
 
+<!--Не рабочая хуйня, надо подумать над тем, чтобы вообще нахуй это убрать-->
+    <item android:title="Tasks">
+        <menu>
+            <item
+                android:title="Diary"
+                 />
+
+        </menu>
+    </item>
+
+    <item android:title="Categories"
+    android:id="@+id/Categories"/>
 
 </menu>

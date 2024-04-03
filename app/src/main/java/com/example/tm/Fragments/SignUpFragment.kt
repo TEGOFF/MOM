@@ -2,7 +2,6 @@ package com.example.tm.Fragments
 
 import android.os.Bundle
 import android.os.Parcel
-import android.os.Parcelable
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,10 +10,9 @@ import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.tm.R
-import com.example.tm.databinding.FragmentSignInBinding
 import com.example.tm.databinding.FragmentSignUpBinding
+import com.example.tm.utilities.Category
 import com.example.tm.utilities.User
-import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -67,7 +65,11 @@ class SignUpFragment() : Fragment() {
                     if(it.isSuccessful){
                         Toast.makeText(context, "User registered successfully", Toast.LENGTH_SHORT).show()
                         val user = User(name, email, pass, auth.uid.toString())
-                        dbref.child(user.userId).setValue(user)
+                        dbref.child(user.userId).setValue(user).addOnCompleteListener {
+                            if(it.isSuccessful){
+                                addStandartCats()
+                            }
+                        }
                         navControl.navigate(R.id.action_signUpFragment_to_signInFragment)
                     }
                     else{
@@ -81,6 +83,32 @@ class SignUpFragment() : Fragment() {
                 Toast.makeText(context, "Empty fields are not allowed", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    private fun addStandartCats(){
+        val cats = arrayListOf(
+            Category(
+                id = dbref.push().key.toString(),
+                name = "Home"
+            ),
+            Category(
+                id = dbref.push().key.toString(),
+                name = "Work"
+            ),
+            Category(
+                id = dbref.push().key.toString(),
+                name = "Purchases"
+            ),
+            Category(
+                id = dbref.push().key.toString(),
+                name = "Study"
+            ),
+        )
+
+        dbref.child(auth.currentUser!!.uid).child("Categories").child(cats[0].id).setValue(cats[0])
+        dbref.child(auth.currentUser!!.uid).child("Categories").child(cats[1].id).setValue(cats[1])
+        dbref.child(auth.currentUser!!.uid).child("Categories").child(cats[2].id).setValue(cats[2])
+        dbref.child(auth.currentUser!!.uid).child("Categories").child(cats[3].id).setValue(cats[3])
     }
 
 
