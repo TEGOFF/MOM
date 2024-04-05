@@ -5,13 +5,16 @@ import android.content.Context
 import android.content.Context.*
 import android.content.Intent
 import android.content.Intent.ACTION_GET_CONTENT
+import android.graphics.ImageFormat
 import android.graphics.SurfaceTexture
 import android.hardware.camera2.CameraCaptureSession
 import android.hardware.camera2.CameraDevice
 import android.hardware.camera2.CameraManager
 import android.hardware.camera2.CameraMetadata
 import android.hardware.camera2.CaptureRequest
+import android.media.ImageReader
 import android.os.Bundle
+import android.os.Environment
 import android.os.Handler
 import android.os.HandlerThread
 import android.speech.tts.TextToSpeech
@@ -22,8 +25,19 @@ import android.view.Surface
 import android.view.TextureView
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.content.ContextCompat.getExternalFilesDirs
 import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.net.toUri
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import com.example.tm.R
+import com.example.tm.databinding.FragmentCameraBinding
+import com.example.tm.databinding.FragmentDoneTasksBinding
+import com.example.tm.utilities.FireHelper
+import java.io.File
+import java.io.FileOutputStream
+import java.io.Reader
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -35,15 +49,19 @@ private const val ARG_PARAM2 = "param2"
 
 class CameraFragment : Fragment() {
 
-
+    lateinit var navControl: NavController
     lateinit var camManager:CameraManager
     lateinit var textureView:TextureView
     lateinit var camCaptureSession: CameraCaptureSession
     lateinit var camDevice: CameraDevice
     lateinit var captureRequestBuilder: CaptureRequest.Builder
-    lateinit var captureRequest: CaptureRequest
     lateinit var handlerThread : HandlerThread
     lateinit var handler :Handler
+    lateinit var binding:FragmentCameraBinding
+    lateinit var imageReader: ImageReader
+    var tempFile: File? = null
+    var fos: FileOutputStream? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -54,18 +72,24 @@ class CameraFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_camera, container, false)
+        binding = FragmentCameraBinding.inflate(inflater, container, false)
+        return binding.root
+
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        navControl= Navigation.findNavController(view)
+
         textureView = requireView().findViewById(R.id.cameraTextureView)
         camManager= requireContext().getSystemService(CAMERA_SERVICE) as CameraManager
         handlerThread= HandlerThread("videoThread")
         handlerThread.start()
         handler=Handler((handlerThread).looper)
-
+        imageReader = ImageReader.newInstance(1080, 1920, ImageFormat.JPEG, 2)
+        var imreadersurf=imageReader.surface
         textureView.surfaceTextureListener=object:TextureView.SurfaceTextureListener{
             override fun onSurfaceTextureAvailable(surface: SurfaceTexture, width: Int, height: Int) {
                 openCam()
@@ -78,14 +102,42 @@ class CameraFragment : Fragment() {
 
             override fun onSurfaceTextureDestroyed(surface: SurfaceTexture): Boolean {
 
-                return TODO("Provide the return value")
+                return true
             }
 
             override fun onSurfaceTextureUpdated(surface: SurfaceTexture) {
 
             }
         }
+        imageReader.setOnImageAvailableListener({ reader ->
+            val tempDir = context?.cacheDir
+            tempFile = File.createTempFile("temp_image", ".jpg", tempDir)
+            var image =reader?.acquireLatestImage()
+            var buffer=image!!.planes[0].buffer
+            var bytes=ByteArray(buffer.remaining())
+            buffer.get(bytes)
+            fos= FileOutputStream(tempFile)
+            fos!!.write(bytes)
+            FireHelper.storeImage(tempFile?.toUri(), requireContext())
+            image.close()
+            fos!!.flush()
+            fos!!.close()
+
+
+        }, handler)
+        binding.takePhotoBtn.
+        setOnClickListener{
+            captureRequestBuilder=camDevice.createCaptureRequest(CameraDevice.TEMPLATE_STILL_CAPTURE)
+            captureRequestBuilder.addTarget(imreadersurf)
+            camCaptureSession.capture(captureRequestBuilder.build(), null, null)
+            navControl.navigate(R.id.action_cameraFragment_to_settingsFragment)
+        }
+
+
+
     }
+
+
     @SuppressLint("MissingPermission")
     fun openCam(){
 
@@ -97,8 +149,9 @@ class CameraFragment : Fragment() {
 
                 captureRequestBuilder= camDevice.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW)
                 var surface =Surface(textureView.surfaceTexture)
+                var listofsurf=listOf(surface, imageReader.surface)
                 captureRequestBuilder.addTarget(surface)
-                camDevice.createCaptureSession(listOf(surface), object:
+                camDevice.createCaptureSession(listofsurf, object:
                     CameraCaptureSession.StateCallback() {
                     override fun onConfigured(session: CameraCaptureSession) {
                         camCaptureSession = session
@@ -113,7 +166,7 @@ class CameraFragment : Fragment() {
             }
 
             override fun onDisconnected(camera: CameraDevice) {
-                TODO("Not yet implemented")
+                camera.close()
             }
 
             override fun onError(camera: CameraDevice, error: Int) {

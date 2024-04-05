@@ -21,12 +21,14 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.storage.FirebaseStorage
 
 
-class SettingsFragment : Fragment() {
+class SettingsFragment : Fragment() , NameChangeFragment.DialogNameChangeListener{
 
+    private lateinit var listener: NameChangeFragment.DialogNameChangeListener
     private lateinit var navControl: NavController
     private lateinit var mFirebase: FirebaseAuth
     private lateinit var binding: FragmentSettingsBinding
     private lateinit var firebaseStorageRef:FirebaseStorage
+    private lateinit var nameChangeFragment:NameChangeFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -91,7 +93,15 @@ class SettingsFragment : Fragment() {
             navControl.navigate(R.id.action_settingsFragment_to_cameraFragment)
 
          }
+         binding.nameChangeBtn.setOnClickListener(){
+             nameChangeFragment = NameChangeFragment()
+             nameChangeFragment!!.setListener(this    )
+             nameChangeFragment!!.show(
+                 childFragmentManager, NameChangeFragment.TAG)
+
+         }
     }
+    //permissions
     fun getPermissions(){
         val permissionsList= mutableListOf<String>()
         context?.let {
@@ -128,7 +138,7 @@ class SettingsFragment : Fragment() {
 
     }
 
-    fun saveProfImage(){
+    private fun saveProfImage(){
         val intent = Intent(Intent.ACTION_GET_CONTENT)
         intent.type = "image/*"
         startActivityForResult(intent, 1)
@@ -140,6 +150,14 @@ class SettingsFragment : Fragment() {
         FireHelper.storeImage(data?.data, requireContext())
 
     }
+
+
+    //name change
+    override fun nameChange(newName: String) {
+        FireHelper.Users.child(FireHelper.firebaseAuth.currentUser?.uid.toString()).child("userName").setValue(newName)
+        nameChangeFragment.dismiss()
+    }
+
 
 
 
