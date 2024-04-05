@@ -6,9 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.RadioButton
-import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -28,7 +26,6 @@ import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.messaging.FirebaseMessaging
 import com.example.tm.Fragments.AddTaskPopUpFragment.Companion as AddTaskPopUpFragment1
@@ -258,6 +255,9 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                 for (taskSnapshot in snapshot.children) {
                     val task = taskSnapshot.getValue(DairyTaskData::class.java)
                     if ( task!= null) {
+                        if(taskSnapshot.hasChild("SubTasks")){
+                            task.containsSub = true
+                        }
                         mlist.add(task)
                         adapter.notifyItemInserted(mlist.size-1)
                     }
@@ -273,17 +273,11 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
 
 
     override fun onDeleteDairyTaskData(dairyTaskData: DairyTaskData) {
-        if(taskPopUpFragment !=null){
-            childFragmentManager.beginTransaction().remove(taskPopUpFragment!!).commit()
-        }
-
         dbref.child(dairyTaskData.dairyTaskId).removeValue().addOnCompleteListener(){
             if(it.isSuccessful.not()){
                 Toast.makeText(context, it.exception?.message, Toast.LENGTH_SHORT    ).show()
             }
-
         }
-        taskPopUpFragment!!.dismiss()
     }
 
 
@@ -306,7 +300,11 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
         if (taskPopUpFragment != null)
             childFragmentManager.beginTransaction().remove(taskPopUpFragment!!).commit()
 
-        taskPopUpFragment = TaskDescriptionFragment.newInstance(dairyTaskData.dairyTaskName, dairyTaskData.dairyTaskDescription, dairyTaskData.dairyTaskId)
+        taskPopUpFragment = TaskDescriptionFragment.newInstance(
+            dairyTaskData.dairyTaskName,
+            dairyTaskData.dairyTaskDescription,
+            dairyTaskData.dairyTaskId
+        )
         taskPopUpFragment!!.setListener(this)
         taskPopUpFragment!!.show(
             childFragmentManager,

@@ -108,6 +108,7 @@
         app:cornerRadius="5dp"
         app:layout_constraintBottom_toBottomOf="@+id/BtnTaskAdd"
         app:layout_constraintEnd_toStartOf="@+id/BtnTaskAdd"
+        app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toEndOf="@+id/TimerSetter"
         app:layout_constraintTop_toTopOf="@+id/BtnTaskAdd" />
 
