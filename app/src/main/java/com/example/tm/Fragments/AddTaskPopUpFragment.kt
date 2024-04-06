@@ -46,6 +46,8 @@ class AddTaskPopUpFragment : DialogFragment() {
 
     }
 
+    var time = ""
+
     @SuppressLint("SuspiciousIndentation")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -104,7 +106,6 @@ class AddTaskPopUpFragment : DialogFragment() {
         }
     }
 
-
     private fun getCats(){
         FireHelper.Users.child(FireHelper.firebaseAuth.currentUser!!.uid).child("Categories").get().addOnCompleteListener {
             if(it.isSuccessful){
@@ -125,7 +126,6 @@ class AddTaskPopUpFragment : DialogFragment() {
     }
 
     private fun openTimePicker():String {
-        var time=""
         val isSystem24hour=is24HourFormat(requireContext())
         val clockFormat =if(isSystem24hour) TimeFormat.CLOCK_24H else TimeFormat.CLOCK_12H
 
@@ -140,26 +140,22 @@ class AddTaskPopUpFragment : DialogFragment() {
         picker.addOnDismissListener(){
 
         }
-        picker.addOnNegativeButtonClickListener(){
-
-        }
-        picker.addOnPositiveButtonClickListener(){
+        picker.addOnNegativeButtonClickListener(){}
+        picker.addOnPositiveButtonClickListener() {
             val h=picker.hour
                 .toString()
+
             val m=picker.minute
                 .toString()
-            time= "$h:$m"
 
+            time= "$h:$m"
         }
         return time
     }
-
 
     interface DialogBtnClickListeners{
         fun onSaveDairyTask(taskName:String , taskDescription:String, time:String, date:String, taskEntryTextDescription: TextInputEditText, taskEntryTextName:TextInputEditText, taskCategory: String)
         fun onUpdateDairyTask(taskName:String , taskDescription:String, time:String, date:String, taskId:String ,taskEntryTextDescription: TextInputEditText, taskEntryTextName:TextInputEditText)
         fun onDeleteDairyTaskData(dairyTaskData: DairyTaskData)
     }
-
-
 }
