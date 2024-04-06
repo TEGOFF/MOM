@@ -55,8 +55,6 @@ class AddTaskPopUpFragment : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
         binding.rgCats.visibility = View.GONE
 
         if(arguments !=null){
@@ -164,7 +162,7 @@ class AddTaskPopUpFragment : DialogFragment() {
             .build()
 
         datePicker.addOnPositiveButtonClickListener {
-            date = SimpleDateFormat("MM-dd-yyyy", Locale.getDefault()).format(Date(it))
+            date = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(Date(it))
         }
 
         datePicker.show(childFragmentManager, "TAG")

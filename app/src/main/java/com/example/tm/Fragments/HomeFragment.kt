@@ -19,6 +19,7 @@ import DataClasses.Category
 import ModulesAndAdapters.DairyTaskAdapter
 import DataClasses.DairyTaskData
 import ModulesAndAdapters.FireHelper
+import androidx.core.view.GravityCompat
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.ChildEventListener
@@ -27,6 +28,10 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.messaging.FirebaseMessaging
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Date
+import java.util.Locale
 import com.example.tm.Fragments.AddTaskPopUpFragment.Companion as AddTaskPopUpFragment1
 
 
@@ -77,7 +82,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
             navView.setNavigationItemSelectedListener { menuItem ->
                 when (menuItem.itemId) {
                     R.id.nav_home -> {
-                        drawerlayout.closeDrawer(view)
+                        drawerlayout.closeDrawer(GravityCompat.START)
                         true
                     }
 
@@ -99,6 +104,30 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                         true
                     }
 
+                    R.id.Today -> {
+                        sortByDate("Today")
+                        drawerlayout.closeDrawer(GravityCompat.START)
+                        true
+                    }
+
+                    R.id.Tomorow -> {
+                        sortByDate("Tomorow")
+                        drawerlayout.closeDrawer(GravityCompat.START)
+                        true
+                    }
+
+                    R.id.ThisWeek -> {
+                        sortByDate("ThisWeek")
+                        drawerlayout.closeDrawer(GravityCompat.START)
+                        true
+                    }
+
+                    R.id.Scheduled -> {
+                        sortByDate("Scheduled")
+                        drawerlayout.closeDrawer(GravityCompat.START)
+                        true
+                    }
+
                     else -> {
                         false
                     }
@@ -112,6 +141,64 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
 
 
     //Functions
+    private fun sortByDate(d: String){
+        mlist.clear()
+
+        FireHelper.Users.child(FireHelper.firebaseAuth.currentUser!!.uid).child("DairyTasks").get().addOnCompleteListener {
+            for(i in it.result.children){
+                val task = i.getValue(DairyTaskData::class.java)
+
+                if(task != null && task.date != "Not set"){
+                    when(d){
+                        "Today" ->{
+                            val dateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+                            val currentDate = dateFormat.format(Date())
+                            if(task.date == currentDate){
+                                mlist.add(task)
+                            }
+                        }
+                        "Tomorow" -> {
+                            val dateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+                            val date = Calendar.getInstance()
+                            date.add(Calendar.DAY_OF_YEAR, 1)
+                            val tomorowDate = dateFormat.format(date.time)
+                            if(task.date == tomorowDate){
+                                mlist.add(task)
+                            }
+                        }
+                        "ThisWeek" -> {
+                            if(isEventThisWeek(task.date)){
+                                mlist.add(task)
+                            }
+                        }
+                        else -> {
+                            mlist.add(task)
+                        }
+                    }
+                }
+            }
+            adapter.notifyDataSetChanged()
+        }
+    }
+
+    fun isEventThisWeek(eventDate: String): Boolean {
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val currentDate = Date()
+
+        val calendar = Calendar.getInstance()
+        calendar.time = currentDate
+        val currentWeekStart = calendar.firstDayOfWeek
+        calendar.set(Calendar.DAY_OF_WEEK, currentWeekStart)
+        val startOfWeek = calendar.time
+
+        calendar.add(Calendar.DAY_OF_WEEK, 6)
+        val endOfWeek = calendar.time
+
+        val eventDateTime = dateFormat.parse(eventDate)
+
+        return eventDateTime in startOfWeek..endOfWeek
+    }
+
     override fun onResume() {
         super.onResume()
         mlist.clear()

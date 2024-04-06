@@ -9,10 +9,10 @@
     app:cardUseCompatPadding="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
         android:id="@+id/EachItemDairyTask"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingVertical="20dp">
+        android:paddingVertical="10dp">
 
         <TextView
             android:id="@+id/DairyTaskName"
@@ -22,52 +22,59 @@
             android:paddingStart="16dp"
 
             android:textSize="17sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/editTask"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/editTask" />
 
         <ImageView
             android:id="@+id/editTask"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="10dp"
             android:src="@drawable/edit_task_image"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/deleteTask"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintBottom_toBottomOf="@+id/DairyTaskName"
+            app:layout_constraintEnd_toStartOf="@+id/deleteTask"
+            app:layout_constraintTop_toTopOf="@+id/DairyTaskName" />
 
         <ImageView
             android:id="@+id/deleteTask"
             android:layout_width="27dp"
             android:layout_height="22dp"
-            android:layout_marginEnd="4dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="12dp"
             android:src="@drawable/delete_task_image"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/DairyTaskName"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toTopOf="@+id/DairyTaskName" />
 
         <TextView
             android:id="@+id/tvCategory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="21dp"
             android:layout_marginEnd="20dp"
-            app:layout_constraintBottom_toBottomOf="@+id/editTask"
+            app:layout_constraintBottom_toBottomOf="@+id/DairyTaskName"
             app:layout_constraintEnd_toStartOf="@+id/editTask"
-            app:layout_constraintTop_toTopOf="@+id/editTask" />
+            app:layout_constraintTop_toTopOf="@+id/DairyTaskName" />
 
         <ImageView
             android:id="@+id/ivSubIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="10dp"
             android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@+id/editTask"
+            app:layout_constraintBottom_toBottomOf="@+id/tvCategory"
             app:layout_constraintEnd_toStartOf="@+id/tvCategory"
-            app:layout_constraintTop_toTopOf="@+id/editTask"
-            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintTop_toTopOf="@+id/tvCategory"
             app:srcCompat="@drawable/sub_task_sign" />
+
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="@+id/DairyTaskName"
+            app:layout_constraintTop_toBottomOf="@+id/DairyTaskName" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
