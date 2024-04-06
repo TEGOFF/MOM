@@ -23,18 +23,24 @@
         android:icon="@drawable/done_tasks"
         android:iconTint="@color/white"
         />
+    <item android:title="Categories"
+        android:id="@+id/Categories"/>
 
 <!--Не рабочая хуйня, надо подумать над тем, чтобы вообще нахуй это убрать-->
     <item android:title="Tasks">
         <menu>
-            <item
-                android:title="Diary"
-                 />
+            <item android:title="Today"
+                android:id="@+id/Today"/>
 
+            <item android:title="Tomorow"
+                android:id="@+id/Tomorow"/>
+
+            <item android:title="This week"
+                android:id="@+id/ThisWeek"/>
+
+            <item android:title="Scheduled"
+                android:id="@+id/Scheduled"/>
         </menu>
     </item>
-
-    <item android:title="Categories"
-    android:id="@+id/Categories"/>
 
 </menu>

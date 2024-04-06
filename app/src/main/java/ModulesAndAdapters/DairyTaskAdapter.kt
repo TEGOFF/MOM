@@ -43,16 +43,19 @@ class DairyTaskAdapter(private val list:MutableList<DairyTaskData>) : Adapter<Da
                 binding.DairyTaskName.text=this.dairyTaskName
                 binding.tvCategory.text = this.category
 
+                if(this.notificationTime != "Not set"){
+                    binding.tvTime.setText(this.notificationTime)
+                }
+
                 if(list[position].containsSub){
                     binding.ivSubIcon.visibility = View.VISIBLE
                 }
+                if(this.isDone)
+                    binding.isDoneCheckBox.isChecked=true
 
                 binding.editTask.setOnClickListener(){
                     listener?.onEditTaskButtonClicked(this)
                 }
-                if(list[position].isDone)
-                    binding.isDoneCheckBox.isChecked =true
-
                 binding.EachItemDairyTask.setOnClickListener(){
                     listener?.onTaskClicked(this)
                 }
