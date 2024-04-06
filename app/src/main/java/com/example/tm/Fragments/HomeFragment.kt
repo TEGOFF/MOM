@@ -108,6 +108,15 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
 
 
     }
+
+
+    //Functions
+    override fun onResume() {
+        super.onResume()
+        mlist.clear()
+        getDataFromFirebase()
+    }
+
     private fun init(view:View){
         navControl=Navigation.findNavController(view)
         auth=FireHelper.firebaseAuth
@@ -164,6 +173,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
 
         })
     }
+
     private fun registerEvents(){
         if(addPopUpFragment!= null){
             childFragmentManager.beginTransaction().remove(addPopUpFragment!!).commit()
@@ -222,6 +232,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
             }
         }
     }
+
     private fun getCats(){
         val radio = RadioButton(context)
         radio.setText("All")
@@ -245,6 +256,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
             }
         }
     }
+
     private fun getDataFromFirebase(){
         dbref.addValueEventListener(object:ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -271,7 +283,6 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
         })
     }
 
-
     override fun onDeleteDairyTaskData(dairyTaskData: DairyTaskData) {
         dbref.child(dairyTaskData.dairyTaskId).removeValue().addOnCompleteListener(){
             if(it.isSuccessful.not()){
@@ -279,8 +290,6 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
             }
         }
     }
-
-
 
     override fun onTaskClicked(dairyTaskData: DairyTaskData) {
         if(taskPopUpFragment!=null)
@@ -312,8 +321,6 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
         )
 
     }
-
-
 
     override fun onSaveDairyTask(taskName:String, taskDescription:String , time:String, date:String, taskDescriptionEntryText: TextInputEditText,   taskNameEntryText: TextInputEditText, taskCategory: String) {
         val k=dbref.push()
