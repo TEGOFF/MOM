@@ -75,6 +75,18 @@
         app:layout_constraintTop_toBottomOf="@+id/nameChangeBtn"
         app:layout_constraintVertical_bias="0.049" />
 
+    <Button
+        android:layout_width="140dp"
+        android:layout_height="55dp"
+        android:id="@+id/apply_changes"
+        android:text="Apply changes"
+        app:layout_constraintBottom_toTopOf="@+id/logoutBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/takePhotoBtn"
+        app:layout_constraintVertical_bias="0.312" />
+
     <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -100,8 +112,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/profilePhotoCard"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_width="255dp"
+        android:layout_height="255dp"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="250dp"
         app:layout_constraintEnd_toEndOf="parent"

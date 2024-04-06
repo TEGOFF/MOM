@@ -7,14 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.tm.databinding.FragmentTaskDescriptionBinding
-import com.example.tm.utilities.DairyTaskData
+import DataClasses.DairyTaskData
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 
 
 class TaskDescriptionFragment : DialogFragment() {
 
-    private var dairyTaskData:DairyTaskData?=null
+    private var dairyTaskData: DairyTaskData?=null
     private var listener :AddTaskPopUpFragment.DialogBtnClickListeners?=null
     private lateinit var binding: FragmentTaskDescriptionBinding
 
@@ -72,11 +72,13 @@ class TaskDescriptionFragment : DialogFragment() {
             }
         }
         binding.deleteTask.setOnClickListener(){
-            listener?.onDeleteDairyTaskData(DairyTaskData(
+            listener?.onDeleteDairyTaskData(
+                DairyTaskData(
                 arguments?.getString("dairyTaskName").toString(),
                 arguments?.getString("dairyTaskDescription").toString(),
                 arguments?.getString("dairyTaskId").toString()
-            ))
+            )
+            )
         }
         binding.TimeSetter.setOnClickListener(){
             time=openTimePicker()

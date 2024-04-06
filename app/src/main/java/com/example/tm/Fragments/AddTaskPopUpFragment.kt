@@ -1,22 +1,19 @@
 package com.example.tm.Fragments
 
 import android.annotation.SuppressLint
-import android.app.ActivityManager.TaskDescription
 import android.os.Bundle
 import android.text.format.DateFormat.is24HourFormat
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
-import com.example.tm.R
 import com.example.tm.databinding.FragmentAddTaskPopUpBinding
-import com.example.tm.utilities.Category
-import com.example.tm.utilities.DairyTaskData
-import com.example.tm.utilities.FireHelper
+import DataClasses.Category
+import DataClasses.DairyTaskData
+import ModulesAndAdapters.FireHelper
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
@@ -26,7 +23,7 @@ import com.google.android.material.timepicker.TimeFormat
 class AddTaskPopUpFragment : DialogFragment() {
     private lateinit var binding:FragmentAddTaskPopUpBinding
     private var listener:DialogBtnClickListeners?=null
-    private var dairyTaskData:DairyTaskData? = null
+    private var dairyTaskData: DairyTaskData? = null
 
     fun setListener(listener: DialogBtnClickListeners) {
         this.listener = listener

@@ -11,8 +11,8 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.tm.R
 import com.example.tm.databinding.FragmentSignUpBinding
-import com.example.tm.utilities.Category
-import com.example.tm.utilities.User
+import DataClasses.Category
+import DataClasses.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase

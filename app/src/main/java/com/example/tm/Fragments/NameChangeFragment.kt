@@ -5,9 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import com.example.tm.R
 import com.example.tm.databinding.FragmentNameChangeBinding
-import com.example.tm.utilities.FireHelper
 
 
 class NameChangeFragment : DialogFragment() {

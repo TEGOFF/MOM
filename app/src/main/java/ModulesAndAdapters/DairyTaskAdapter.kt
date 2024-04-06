@@ -1,18 +1,23 @@
-package com.example.tm.utilities
+package ModulesAndAdapters
 
+import DataClasses.DairyTaskData
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
+import com.example.tm.Fragments.DoneTasksFragment
 import com.example.tm.Fragments.HomeFragment
 import com.example.tm.databinding.EachTaskItemBinding
 
 class DairyTaskAdapter(private val list:MutableList<DairyTaskData>) : Adapter<DairyTaskAdapter.TaskViewHolder>()
 {
-    private var listener:DairyTaskAdapterClickInterface?=null
+    private var listener: DairyTaskAdapterClickInterface?=null
 
 
     fun setListener(listener: HomeFragment){
+        this.listener=listener
+    }
+    fun setListener(listener: DoneTasksFragment){
         this.listener=listener
     }
 

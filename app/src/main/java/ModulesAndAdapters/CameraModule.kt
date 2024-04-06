@@ -1,4 +1,4 @@
-package com.example.tm.utilities
+package ModulesAndAdapters
 
 class CameraModule {
 

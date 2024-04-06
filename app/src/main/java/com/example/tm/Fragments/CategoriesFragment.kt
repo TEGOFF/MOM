@@ -1,8 +1,7 @@
-package com.example.tm
+package com.example.tm.Fragments
 
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,10 +10,11 @@ import android.widget.EditText
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.tm.utilities.CategoriesPopUpAdapter
-import com.example.tm.utilities.Category
-import com.example.tm.utilities.FireHelper
-import com.example.tm.utilities.User
+import ModulesAndAdapters.CategoriesPopUpAdapter
+import DataClasses.Category
+import ModulesAndAdapters.FireHelper
+import DataClasses.User
+import com.example.tm.R
 
 class CategoriesFragment : DialogFragment() {
 
