@@ -50,6 +50,8 @@ class DairyTaskAdapter(private val list:MutableList<DairyTaskData>) : Adapter<Da
                 if(list[position].containsSub){
                     binding.ivSubIcon.visibility = View.VISIBLE
                 }
+                if(this.isDone)
+                    binding.isDoneCheckBox.isChecked=true
 
                 binding.editTask.setOnClickListener(){
                     listener?.onEditTaskButtonClicked(this)

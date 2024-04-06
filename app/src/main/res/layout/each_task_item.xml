@@ -14,17 +14,29 @@
         android:layout_height="wrap_content"
         android:paddingVertical="10dp">
 
+        <CheckBox
+            android:id="@+id/isDoneCheckBox"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="12dp"
+            android:checked="false"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/DairyTaskName" />
+
         <TextView
             android:id="@+id/DairyTaskName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:layout_marginStart="52dp"
             android:paddingStart="16dp"
 
             android:textSize="17sp"
             app:layout_constraintBottom_toBottomOf="@+id/editTask"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/editTask" />
+            app:layout_constraintTop_toTopOf="@+id/editTask"
+            app:layout_constraintVertical_bias="1.0" />
 
         <ImageView
             android:id="@+id/editTask"
@@ -35,6 +47,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/DairyTaskName"
             app:layout_constraintEnd_toStartOf="@+id/deleteTask"
             app:layout_constraintTop_toTopOf="@+id/DairyTaskName" />
+
+
 
         <ImageView
             android:id="@+id/deleteTask"

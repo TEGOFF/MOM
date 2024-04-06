@@ -16,13 +16,13 @@ import com.example.tm.R
 import com.example.tm.databinding.FragmentSettingsBinding
 import ModulesAndAdapters.FireHelper
 import DataClasses.User
+import android.app.AlertDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.storage.FirebaseStorage
 
 
 class SettingsFragment : Fragment() , NameChangeFragment.DialogNameChangeListener{
 
-    private lateinit var listener: NameChangeFragment.DialogNameChangeListener
     private lateinit var navControl: NavController
     private lateinit var mFirebase: FirebaseAuth
     private lateinit var binding: FragmentSettingsBinding
@@ -104,9 +104,21 @@ class SettingsFragment : Fragment() , NameChangeFragment.DialogNameChangeListene
          binding.applyChanges.setOnClickListener(){
              setPage()
          }
+         binding.accDeleteBtn.setOnClickListener(){
+             val builder= AlertDialog.Builder(context)
+             builder.setTitle("Confirmation")
+                 .setMessage("Are you sure you want to delete an account? All the data will also be deleted ")
+                 .setPositiveButton("I`m sure"){ _, _ ->
+                     FireHelper.Users.child(FireHelper.firebaseAuth.currentUser?.uid.toString()).removeValue()
+                     FireHelper.firebaseAuth.currentUser?.delete()
+                 }
+                 .setNegativeButton("No, take me back"){ dialog, _ ->
+                 }.show()
+
+         }
     }
     //permissions
-    fun getPermissions(){
+    private fun getPermissions(){
         val permissionsList= mutableListOf<String>()
         context?.let {
             if (ContextCompat.checkSelfPermission(it, android.Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){

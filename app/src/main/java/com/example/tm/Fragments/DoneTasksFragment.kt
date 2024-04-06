@@ -99,9 +99,15 @@ class DoneTasksFragment : Fragment(), DairyTaskAdapter.DairyTaskAdapterClickInte
         binding.BackBtn.setOnClickListener(){
             navControl.navigate(R.id.action_doneTasksFragment_to_homeFragment)
         }
+        binding.recyclerView
 
 
     }
+    override fun onResume() {
+        super.onResume()
+        getDataFromFirebase()
+    }
+
     private fun getDataFromFirebase(){
         dbref.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
