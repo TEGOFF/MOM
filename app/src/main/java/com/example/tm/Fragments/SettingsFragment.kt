@@ -2,7 +2,6 @@ package com.example.tm.Fragments
 
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -15,8 +14,8 @@ import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
 import com.example.tm.R
 import com.example.tm.databinding.FragmentSettingsBinding
-import com.example.tm.utilities.FireHelper
-import com.example.tm.utilities.User
+import ModulesAndAdapters.FireHelper
+import DataClasses.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.storage.FirebaseStorage
 
@@ -29,6 +28,7 @@ class SettingsFragment : Fragment() , NameChangeFragment.DialogNameChangeListene
     private lateinit var binding: FragmentSettingsBinding
     private lateinit var firebaseStorageRef:FirebaseStorage
     private lateinit var nameChangeFragment:NameChangeFragment
+    private lateinit var me: User
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +38,7 @@ class SettingsFragment : Fragment() , NameChangeFragment.DialogNameChangeListene
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding=FragmentSettingsBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -55,13 +55,13 @@ class SettingsFragment : Fragment() , NameChangeFragment.DialogNameChangeListene
     }
 
     private fun setPage() {
-        val dbref=FireHelper.Users.child(FireHelper.firebaseAuth.currentUser?.uid.toString())
+        val dbref= FireHelper.Users.child(FireHelper.firebaseAuth.currentUser?.uid.toString())
         dbref.get().addOnCompleteListener { //Getting the user
             if(it.isSuccessful){
                 val user = it.result.getValue(User::class.java) //Converting to class User
 
                 if(user != null && user.userId == FireHelper.firebaseAuth.currentUser?.uid){ //Checking if this user is what we expect to load to the page
-                    val me = user //Setting current user as "me"
+                    me = user //Setting current user as "me"
 
                     binding.UserName.setText(me.userName) //Setting my name to the text view
 
@@ -72,6 +72,7 @@ class SettingsFragment : Fragment() , NameChangeFragment.DialogNameChangeListene
                 }
             }
         }
+
     }
 
     fun init(view: View){
@@ -95,10 +96,13 @@ class SettingsFragment : Fragment() , NameChangeFragment.DialogNameChangeListene
          }
          binding.nameChangeBtn.setOnClickListener(){
              nameChangeFragment = NameChangeFragment()
-             nameChangeFragment!!.setListener(this    )
-             nameChangeFragment!!.show(
+             nameChangeFragment.setListener(this    )
+             nameChangeFragment.show(
                  childFragmentManager, NameChangeFragment.TAG)
 
+         }
+         binding.applyChanges.setOnClickListener(){
+             setPage()
          }
     }
     //permissions
@@ -142,27 +146,24 @@ class SettingsFragment : Fragment() , NameChangeFragment.DialogNameChangeListene
         val intent = Intent(Intent.ACTION_GET_CONTENT)
         intent.type = "image/*"
         startActivityForResult(intent, 1)
+
     }
 
     @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         FireHelper.storeImage(data?.data, requireContext())
+        setPage()
+
 
     }
 
 
     //name change
     override fun nameChange(newName: String) {
-        FireHelper.Users.child(FireHelper.firebaseAuth.currentUser?.uid.toString()).child("userName").setValue(newName)
+        FireHelper.Users.child(FireHelper.firebaseAuth.currentUser?.uid.toString()).child("userName").setValue(newName).addOnSuccessListener {
+            setPage()
+        }
         nameChangeFragment.dismiss()
     }
-
-
-
-
-
-
-
-
 }

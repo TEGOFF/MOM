@@ -1,4 +1,4 @@
-package com.example.tm.utilities
+package DataClasses
 
 data class Category(
     val id: String = "",

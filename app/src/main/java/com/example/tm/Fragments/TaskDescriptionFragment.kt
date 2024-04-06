@@ -1,5 +1,6 @@
 package com.example.tm.Fragments
 
+import ModulesAndAdapters.FireHelper
 import android.os.Bundle
 import android.text.format.DateFormat
 import android.util.Log
@@ -11,10 +12,14 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tm.databinding.FragmentTaskDescriptionBinding
-import com.example.tm.utilities.DairyTaskData
-import com.example.tm.utilities.FireHelper
+
+import DataClasses.DairyTaskData
+
+
+
 import com.example.tm.utilities.OnClickInterface
 import com.example.tm.utilities.SubTasksAdapter
+
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import kotlin.Nothing as Nothing1
@@ -22,7 +27,7 @@ import kotlin.Nothing as Nothing1
 
 class TaskDescriptionFragment : DialogFragment(), OnClickInterface {
 
-    private var dairyTaskData:DairyTaskData?=null
+    private var dairyTaskData: DairyTaskData?=null
     private var listener :AddTaskPopUpFragment.DialogBtnClickListeners?=null
     private lateinit var binding: FragmentTaskDescriptionBinding
 
@@ -104,11 +109,13 @@ class TaskDescriptionFragment : DialogFragment(), OnClickInterface {
             }
         }
         binding.deleteTask.setOnClickListener(){
-            listener?.onDeleteDairyTaskData(DairyTaskData(
+            listener?.onDeleteDairyTaskData(
+                DairyTaskData(
                 arguments?.getString("dairyTaskName").toString(),
                 arguments?.getString("dairyTaskDescription").toString(),
                 arguments?.getString("dairyTaskId").toString()
-            ))
+            )
+            )
         }
         binding.TimeSetter.setOnClickListener(){
             time=openTimePicker()

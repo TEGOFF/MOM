@@ -1,4 +1,4 @@
-package com.example.tm.utilities
+package ModulesAndAdapters
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -8,13 +8,9 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import androidx.recyclerview.widget.RecyclerView.inflate
-import com.example.tm.CategoriesFragment
 import com.example.tm.CategoryActivity
 import com.example.tm.R
-import java.util.zip.Inflater
-import kotlin.coroutines.coroutineContext
+import DataClasses.Category
 
 class CategoriesPopUpAdapter(view: View, cats: MutableList<Category>): RecyclerView.Adapter<CategoriesPopUpAdapter.ViewHolder>() {
 

@@ -1,4 +1,4 @@
-package com.example.tm.utilities
+package DataClasses
 
 data class User(val userName: String="", val userEmail: String="",
                 val userPass: String="", val userId: String="",

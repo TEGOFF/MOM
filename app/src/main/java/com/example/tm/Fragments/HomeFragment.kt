@@ -13,13 +13,12 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.tm.CategoriesFragment
 import com.example.tm.R
 import com.example.tm.databinding.FragmentHomeBinding
-import com.example.tm.utilities.Category
-import com.example.tm.utilities.DairyTaskAdapter
-import com.example.tm.utilities.DairyTaskData
-import com.example.tm.utilities.FireHelper
+import DataClasses.Category
+import ModulesAndAdapters.DairyTaskAdapter
+import DataClasses.DairyTaskData
+import ModulesAndAdapters.FireHelper
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.ChildEventListener
@@ -40,7 +39,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
     private lateinit var dbref:DatabaseReference
     private  var addPopUpFragment: AddTaskPopUpFragment?=null
     private  var taskPopUpFragment:TaskDescriptionFragment?=null
-    private lateinit var adapter:DairyTaskAdapter
+    private lateinit var adapter: DairyTaskAdapter
     private lateinit var mlist:MutableList<DairyTaskData>
     private  lateinit var actionBarToggle:ActionBarDrawerToggle
     private var category: String = "All"
@@ -61,10 +60,8 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         init(view)
         registerEvents()
-
 
         requireActivity().onBackPressedDispatcher.addCallback(this) {
             requireActivity().finish()
@@ -97,6 +94,10 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                         )
                         true
                     }
+                    R.id.nav_done_list ->{
+                        navControl.navigate(R.id.action_homeFragment_to_doneTasksFragment)
+                        true
+                    }
 
                     else -> {
                         false
@@ -119,8 +120,8 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
 
     private fun init(view:View){
         navControl=Navigation.findNavController(view)
-        auth=FireHelper.firebaseAuth
-        dbref=FireHelper.dbref.child("Users").child(auth.currentUser?.uid.toString()).child("DairyTasks")
+        auth= FireHelper.firebaseAuth
+        dbref= FireHelper.dbref.child("Users").child(auth.currentUser?.uid.toString()).child("DairyTasks")
 
 
 
@@ -134,8 +135,10 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
         dbref.addChildEventListener(object :ChildEventListener{
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
                 if(snapshot.getValue().toString()!=""){
-                    mlist.add(DairyTaskData(
-                        snapshot.child("dairyTaskName").value.toString() ,snapshot.child("dairyTaskDescription").value.toString(), snapshot.key.toString()))
+                    mlist.add(
+                        DairyTaskData(
+                        snapshot.child("dairyTaskName").value.toString() ,snapshot.child("dairyTaskDescription").value.toString(), snapshot.key.toString())
+                    )
 
                     adapter.notifyItemInserted(mlist.size - 1)
                 }
@@ -151,12 +154,16 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
 
             override fun onChildRemoved(snapshot: DataSnapshot) {
                 if(snapshot.getValue().toString()!=""){
-                    val index=mlist.indexOf(DairyTaskData(
+                    val index=mlist.indexOf(
+                        DairyTaskData(
                         snapshot.child(
-                            "dairyTaskName").getValue().toString(), snapshot.child("dairyTaskDescription").getValue().toString(), snapshot.key.toString()))
-                    mlist.remove(DairyTaskData(
+                            "dairyTaskName").getValue().toString(), snapshot.child("dairyTaskDescription").getValue().toString(), snapshot.key.toString())
+                    )
+                    mlist.remove(
+                        DairyTaskData(
                         snapshot.child(
-                            "dairyTaskName").getValue().toString(), snapshot.child("dairyTaskDescription").getValue().toString() , snapshot.key.toString()))
+                            "dairyTaskName").getValue().toString(), snapshot.child("dairyTaskDescription").getValue().toString() , snapshot.key.toString())
+                    )
                     adapter.notifyItemRemoved(index)
 
                 }
@@ -235,7 +242,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
 
     private fun getCats(){
         val radio = RadioButton(context)
-        radio.setText("All")
+        radio.text = "All"
         radio.id = View.generateViewId()
 
         binding.rgCats.addView(radio)
@@ -319,7 +326,6 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
             childFragmentManager,
             TaskDescriptionFragment.TAG
         )
-
     }
 
     override fun onSaveDairyTask(taskName:String, taskDescription:String , time:String, date:String, taskDescriptionEntryText: TextInputEditText,   taskNameEntryText: TextInputEditText, taskCategory: String) {

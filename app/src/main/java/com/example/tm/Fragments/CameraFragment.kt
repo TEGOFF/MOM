@@ -1,43 +1,31 @@
 package com.example.tm.Fragments
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Context.*
-import android.content.Intent
-import android.content.Intent.ACTION_GET_CONTENT
 import android.graphics.ImageFormat
 import android.graphics.SurfaceTexture
 import android.hardware.camera2.CameraCaptureSession
 import android.hardware.camera2.CameraDevice
 import android.hardware.camera2.CameraManager
-import android.hardware.camera2.CameraMetadata
 import android.hardware.camera2.CaptureRequest
 import android.media.ImageReader
 import android.os.Bundle
-import android.os.Environment
 import android.os.Handler
 import android.os.HandlerThread
-import android.speech.tts.TextToSpeech
-import android.view.InputDevice
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.Surface
 import android.view.TextureView
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.core.content.ContextCompat.getExternalFilesDirs
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.net.toUri
+import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.tm.R
 import com.example.tm.databinding.FragmentCameraBinding
-import com.example.tm.databinding.FragmentDoneTasksBinding
-import com.example.tm.utilities.FireHelper
+import ModulesAndAdapters.FireHelper
 import java.io.File
 import java.io.FileOutputStream
-import java.io.Reader
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -71,7 +59,7 @@ class CameraFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentCameraBinding.inflate(inflater, container, false)
         return binding.root
 
@@ -81,22 +69,30 @@ class CameraFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        navControl= Navigation.findNavController(view)
+        navControl = Navigation.findNavController(view)
 
         textureView = requireView().findViewById(R.id.cameraTextureView)
-        camManager= requireContext().getSystemService(CAMERA_SERVICE) as CameraManager
-        handlerThread= HandlerThread("videoThread")
+        camManager = requireContext().getSystemService(CAMERA_SERVICE) as CameraManager
+        handlerThread = HandlerThread("videoThread")
         handlerThread.start()
-        handler=Handler((handlerThread).looper)
+        handler = Handler((handlerThread).looper)
         imageReader = ImageReader.newInstance(1080, 1920, ImageFormat.JPEG, 2)
-        var imreadersurf=imageReader.surface
-        textureView.surfaceTextureListener=object:TextureView.SurfaceTextureListener{
-            override fun onSurfaceTextureAvailable(surface: SurfaceTexture, width: Int, height: Int) {
+        var imreadersurf = imageReader.surface
+        textureView.surfaceTextureListener = object : TextureView.SurfaceTextureListener {
+            override fun onSurfaceTextureAvailable(
+                surface: SurfaceTexture,
+                width: Int,
+                height: Int
+            ) {
                 openCam()
 
             }
 
-            override fun onSurfaceTextureSizeChanged(surface: SurfaceTexture, width: Int, height: Int) {
+            override fun onSurfaceTextureSizeChanged(
+                surface: SurfaceTexture,
+                width: Int,
+                height: Int
+            ) {
 
             }
 
@@ -109,75 +105,82 @@ class CameraFragment : Fragment() {
 
             }
         }
-        imageReader.setOnImageAvailableListener({ reader ->
-            val tempDir = context?.cacheDir
-            tempFile = File.createTempFile("temp_image", ".jpg", tempDir)
-            var image =reader?.acquireLatestImage()
-            var buffer=image!!.planes[0].buffer
-            var bytes=ByteArray(buffer.remaining())
-            buffer.get(bytes)
-            fos= FileOutputStream(tempFile)
-            fos!!.write(bytes)
-            FireHelper.storeImage(tempFile?.toUri(), requireContext())
-            image.close()
-            fos!!.flush()
-            fos!!.close()
+
+            binding.takePhotoBtn.setOnClickListener {
+                captureRequestBuilder = camDevice.createCaptureRequest(CameraDevice.TEMPLATE_STILL_CAPTURE)
+                captureRequestBuilder.addTarget(imreadersurf)
+                camCaptureSession.capture(captureRequestBuilder.build(), null, null)
+                navControl.navigate(R.id.action_cameraFragment_to_settingsFragment)
+            }
 
 
-        }, handler)
-        binding.takePhotoBtn.
-        setOnClickListener{
-            captureRequestBuilder=camDevice.createCaptureRequest(CameraDevice.TEMPLATE_STILL_CAPTURE)
-            captureRequestBuilder.addTarget(imreadersurf)
-            camCaptureSession.capture(captureRequestBuilder.build(), null, null)
-            navControl.navigate(R.id.action_cameraFragment_to_settingsFragment)
-        }
+            imageReader.setOnImageAvailableListener({ reader ->
+                val tempDir = context?.cacheDir
+                tempFile = File.createTempFile("temp_image", ".jpg", tempDir)
+                val image = reader?.acquireLatestImage()
+                val buffer = image!!.planes[0].buffer
+                val bytes = ByteArray(buffer.remaining())
+                buffer.get(bytes)
+                fos = FileOutputStream(tempFile)
+                fos!!.write(bytes)
+                FireHelper.storeImage(tempFile?.toUri(), requireContext())
+                image.close()
+                fos!!.flush()
+                fos!!.close()
+
+
+            }, handler)
 
 
 
     }
 
 
-    @SuppressLint("MissingPermission")
-    fun openCam(){
+        @SuppressLint("MissingPermission")
+        fun openCam() {
 
-        val cameraId=camManager.cameraIdList[0]
-        camManager.openCamera(cameraId, object: CameraDevice.StateCallback(){
+            val cameraId = camManager.cameraIdList[0]
+            camManager.openCamera(cameraId, object : CameraDevice.StateCallback() {
 
-            override fun onOpened(camera: CameraDevice) {
-                camDevice=camera
+                override fun onOpened(camera: CameraDevice) {
+                    camDevice = camera
 
-                captureRequestBuilder= camDevice.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW)
-                var surface =Surface(textureView.surfaceTexture)
-                var listofsurf=listOf(surface, imageReader.surface)
-                captureRequestBuilder.addTarget(surface)
-                camDevice.createCaptureSession(listofsurf, object:
-                    CameraCaptureSession.StateCallback() {
-                    override fun onConfigured(session: CameraCaptureSession) {
-                        camCaptureSession = session
-                        camCaptureSession.setRepeatingRequest(captureRequestBuilder.build(), null, null)
-                    }
+                    captureRequestBuilder =
+                        camDevice.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW)
+                    val surface = Surface(textureView.surfaceTexture)
+                    val listofsurf = listOf(surface, imageReader.surface)
+                    captureRequestBuilder.addTarget(surface)
+                    camDevice.createCaptureSession(listofsurf, object :
+                        CameraCaptureSession.StateCallback() {
+                        override fun onConfigured(session: CameraCaptureSession) {
+                            camCaptureSession = session
+                            camCaptureSession.setRepeatingRequest(
+                                captureRequestBuilder.build(),
+                                null,
+                                null
+                            )
+                        }
 
-                    override fun onConfigureFailed(session: CameraCaptureSession) {
-                        TODO("Not yet implemented")
-                    }
-                }, handler)
+                        override fun onConfigureFailed(session: CameraCaptureSession) {
+                            TODO("Not yet implemented")
+                        }
+                    }, handler)
 
-            }
+                }
 
-            override fun onDisconnected(camera: CameraDevice) {
-                camera.close()
-            }
+                override fun onDisconnected(camera: CameraDevice) {
+                    camera.close()
+                }
 
-            override fun onError(camera: CameraDevice, error: Int) {
-                TODO("Not yet implemented")
-            }
+                override fun onError(camera: CameraDevice, error: Int) {
+                    TODO("Not yet implemented")
+                }
 
             }, handler)
         }
 
-
     }
+
 
 
 

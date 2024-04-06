@@ -1,4 +1,4 @@
-package com.example.tm
+package com.example.tm.utilities
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -10,6 +10,8 @@ import android.os.Build
 import android.widget.RemoteViews
 import androidx.core.app.NotificationCompat
 import androidx.test.core.app.ApplicationProvider
+import com.example.tm.MainActivity
+import com.example.tm.R
 import com.google.firebase.messaging.RemoteMessage
    
 const val channelId="notification_channel"
@@ -23,7 +25,7 @@ class MyFirebaseMessagingService :FirebaseMessagingService() {
     }
 
     fun generateNotification(title:String, description: String){
-        val intent =Intent(this,MainActivity::class.java)
+        val intent =Intent(this, MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
 
 
@@ -56,7 +58,8 @@ class MyFirebaseMessagingService :FirebaseMessagingService() {
 
     private fun getRemoteView(title: String, description: String): RemoteViews {
         val remoteView = RemoteViews(ApplicationProvider.getApplicationContext<Context>().packageName,
-            R.layout.notification)
+            R.layout.notification
+        )
 
         remoteView.setTextViewText(R.id.title,title )
         remoteView.setTextViewText(R.id.description,description)
