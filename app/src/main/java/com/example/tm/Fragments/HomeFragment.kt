@@ -109,6 +109,15 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
 
 
     }
+
+
+    //Functions
+    override fun onResume() {
+        super.onResume()
+        mlist.clear()
+        getDataFromFirebase()
+    }
+
     private fun init(view:View){
         navControl=Navigation.findNavController(view)
         auth= FireHelper.firebaseAuth
@@ -171,6 +180,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
 
         })
     }
+
     private fun registerEvents(){
         if(addPopUpFragment!= null){
             childFragmentManager.beginTransaction().remove(addPopUpFragment!!).commit()
@@ -229,6 +239,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
             }
         }
     }
+
     private fun getCats(){
         val radio = RadioButton(context)
         radio.text = "All"
@@ -252,6 +263,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
             }
         }
     }
+
     private fun getDataFromFirebase(){
         dbref.addValueEventListener(object:ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -262,6 +274,9 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                 for (taskSnapshot in snapshot.children) {
                     val task = taskSnapshot.getValue(DairyTaskData::class.java)
                     if ( task!= null) {
+                        if(taskSnapshot.hasChild("SubTasks")){
+                            task.containsSub = true
+                        }
                         mlist.add(task)
                         adapter.notifyItemInserted(mlist.size-1)
                     }
@@ -275,22 +290,13 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
         })
     }
 
-
     override fun onDeleteDairyTaskData(dairyTaskData: DairyTaskData) {
-        if(taskPopUpFragment !=null){
-            childFragmentManager.beginTransaction().remove(taskPopUpFragment!!).commit()
-        }
-
         dbref.child(dairyTaskData.dairyTaskId).removeValue().addOnCompleteListener(){
             if(it.isSuccessful.not()){
                 Toast.makeText(context, it.exception?.message, Toast.LENGTH_SHORT    ).show()
             }
-
         }
-        taskPopUpFragment!!.dismiss()
     }
-
-
 
     override fun onTaskClicked(dairyTaskData: DairyTaskData) {
         if(taskPopUpFragment!=null)
@@ -306,20 +312,21 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
         FirebaseMessaging.getInstance().getToken()
     }
 
-    override fun onEditTaskButtonClicked(taskData: DairyTaskData) {
+    override fun onEditTaskButtonClicked(dairyTaskData: DairyTaskData) {
         if (taskPopUpFragment != null)
             childFragmentManager.beginTransaction().remove(taskPopUpFragment!!).commit()
 
-        taskPopUpFragment = TaskDescriptionFragment.newInstance(taskData.dairyTaskName, taskData.dairyTaskDescription, taskData.dairyTaskId)
+        taskPopUpFragment = TaskDescriptionFragment.newInstance(
+            dairyTaskData.dairyTaskName,
+            dairyTaskData.dairyTaskDescription,
+            dairyTaskData.dairyTaskId
+        )
         taskPopUpFragment!!.setListener(this)
         taskPopUpFragment!!.show(
             childFragmentManager,
             TaskDescriptionFragment.TAG
         )
-
     }
-
-
 
     override fun onSaveDairyTask(taskName:String, taskDescription:String , time:String, date:String, taskDescriptionEntryText: TextInputEditText,   taskNameEntryText: TextInputEditText, taskCategory: String) {
         val k=dbref.push()
@@ -364,7 +371,6 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
             R.id.callmenubtn -> {
                 binding.drawerlayout.openDrawer(binding.navView)
             }
-
         }
     }
 }

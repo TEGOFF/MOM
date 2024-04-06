@@ -2,6 +2,7 @@ package ModulesAndAdapters
 
 import DataClasses.DairyTaskData
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
@@ -42,13 +43,16 @@ class DairyTaskAdapter(private val list:MutableList<DairyTaskData>) : Adapter<Da
                 binding.DairyTaskName.text=this.dairyTaskName
                 binding.tvCategory.text = this.category
 
+                if(list[position].containsSub){
+                    binding.ivSubIcon.visibility = View.VISIBLE
+                }
+
                 binding.editTask.setOnClickListener(){
                     listener?.onEditTaskButtonClicked(this)
                 }
                 binding.EachItemDairyTask.setOnClickListener(){
                     listener?.onTaskClicked(this)
                 }
-
             }
         }
 

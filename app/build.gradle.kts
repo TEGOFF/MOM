@@ -58,7 +58,7 @@ dependencies {
     implementation("com.google.firebase:firebase-messaging:23.4.1")
     implementation("androidx.test:core-ktx:1.5.0")
     implementation("com.github.bumptech.glide:glide:4.16.0")
-    implementation("androidx.activity:activity:1.8.0")
+    implementation("androidx.activity:activity:1.8.2")
     annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
     implementation("de.hdodenhof:circleimageview:3.1.0")
     implementation("androidx.preference:preference-ktx:1.2.1")
