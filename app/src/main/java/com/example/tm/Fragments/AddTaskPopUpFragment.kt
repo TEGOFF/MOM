@@ -14,10 +14,13 @@ import com.example.tm.databinding.FragmentAddTaskPopUpBinding
 import DataClasses.Category
 import DataClasses.DairyTaskData
 import ModulesAndAdapters.FireHelper
+import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
-
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 
 class AddTaskPopUpFragment : DialogFragment() {
@@ -43,14 +46,16 @@ class AddTaskPopUpFragment : DialogFragment() {
 
     }
 
+
+
     var time = ""
+    var date:String=""
 
     @SuppressLint("SuspiciousIndentation")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var time:String=""
-        var date:String=""
+
 
         binding.rgCats.visibility = View.GONE
 
@@ -86,7 +91,9 @@ class AddTaskPopUpFragment : DialogFragment() {
         }
         binding.TimerSetter.setOnClickListener(){
             time=openTimePicker()
-
+        }
+        binding.ibCalendar.setOnClickListener {
+            openDatePicker()
         }
 
         getCats()
@@ -150,8 +157,21 @@ class AddTaskPopUpFragment : DialogFragment() {
         return time
     }
 
+    private fun openDatePicker(){
+        val datePicker: MaterialDatePicker<Long> = MaterialDatePicker.Builder.datePicker()
+            .setTitleText("Choose date")
+            .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
+            .build()
+
+        datePicker.addOnPositiveButtonClickListener {
+            date = SimpleDateFormat("MM-dd-yyyy", Locale.getDefault()).format(Date(it))
+        }
+
+        datePicker.show(childFragmentManager, "TAG")
+    }
+
     interface DialogBtnClickListeners{
-        fun onSaveDairyTask(taskName:String , taskDescription:String, time:String, date:String, taskEntryTextDescription: TextInputEditText, taskEntryTextName:TextInputEditText, taskCategory: String)
+        fun onSaveDairyTask(taskName:String , taskDescription:String, time:String = "Not set", date:String = "Not set", taskEntryTextDescription: TextInputEditText, taskEntryTextName:TextInputEditText, taskCategory: String = "Not set")
         fun onUpdateDairyTask(taskName:String , taskDescription:String, time:String, date:String, taskId:String ,taskEntryTextDescription: TextInputEditText, taskEntryTextName:TextInputEditText)
         fun onDeleteDairyTaskData(dairyTaskData: DairyTaskData)
     }

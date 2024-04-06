@@ -1,5 +1,6 @@
 package com.example.tm.utilities
 
+import DataClasses.DairyTaskData
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

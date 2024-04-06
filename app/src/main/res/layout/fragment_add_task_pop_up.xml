@@ -112,5 +112,18 @@
         app:layout_constraintStart_toEndOf="@+id/TimerSetter"
         app:layout_constraintTop_toTopOf="@+id/BtnTaskAdd" />
 
+    <ImageButton
+        android:id="@+id/ibCalendar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:backgroundTint="@android:color/transparent"
+        android:contentDescription="date picker button"
+        android:src="@drawable/calendar_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/TimerSetter"
+        app:layout_constraintHeight_min="48dp"
+        app:layout_constraintStart_toEndOf="@+id/TimerSetter"
+        app:layout_constraintTop_toTopOf="@+id/TimerSetter" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
