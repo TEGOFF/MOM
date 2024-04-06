@@ -6,7 +6,7 @@ data class DairyTaskData(
     val dairyTaskId:String ="",
     val notificationTime:String="",
     val date:String="",
-    val isDone:Boolean=true,
+    var isDone:Boolean=true,
     val category: String= "",
     var containsSub: Boolean = false)
 

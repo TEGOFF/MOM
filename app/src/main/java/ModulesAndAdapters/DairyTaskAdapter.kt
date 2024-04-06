@@ -50,6 +50,9 @@ class DairyTaskAdapter(private val list:MutableList<DairyTaskData>) : Adapter<Da
                 binding.editTask.setOnClickListener(){
                     listener?.onEditTaskButtonClicked(this)
                 }
+                if(list[position].isDone)
+                    binding.isDoneCheckBox.isChecked =true
+
                 binding.EachItemDairyTask.setOnClickListener(){
                     listener?.onTaskClicked(this)
                 }

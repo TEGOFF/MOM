@@ -114,7 +114,6 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
     //Functions
     override fun onResume() {
         super.onResume()
-        mlist.clear()
         getDataFromFirebase()
     }
 
@@ -134,7 +133,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
         binding.mainRecyclerView.adapter=adapter
         dbref.addChildEventListener(object :ChildEventListener{
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
-                if(snapshot.getValue().toString()!=""){
+                if(snapshot.value.toString()!=""){
                     mlist.add(
                         DairyTaskData(
                         snapshot.child("dairyTaskName").value.toString() ,snapshot.child("dairyTaskDescription").value.toString(), snapshot.key.toString())
@@ -146,23 +145,23 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
             }
 
             override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
-                if(snapshot.getValue().toString()!=""){
+                if(snapshot.value.toString()!=""){
 
                     adapter.notifyDataSetChanged()
                 }
             }
 
             override fun onChildRemoved(snapshot: DataSnapshot) {
-                if(snapshot.getValue().toString()!=""){
+                if(snapshot.value.toString()!=""){
                     val index=mlist.indexOf(
                         DairyTaskData(
                         snapshot.child(
-                            "dairyTaskName").getValue().toString(), snapshot.child("dairyTaskDescription").getValue().toString(), snapshot.key.toString())
+                            "dairyTaskName").value.toString(), snapshot.child("dairyTaskDescription").value.toString(), snapshot.key.toString())
                     )
                     mlist.remove(
                         DairyTaskData(
                         snapshot.child(
-                            "dairyTaskName").getValue().toString(), snapshot.child("dairyTaskDescription").getValue().toString() , snapshot.key.toString())
+                            "dairyTaskName").value.toString(), snapshot.child("dairyTaskDescription").value.toString() , snapshot.key.toString())
                     )
                     adapter.notifyItemRemoved(index)
 
@@ -230,7 +229,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                     val task = i.getValue(DairyTaskData::class.java)
 
                     Log.i("CAT", "${task!!.category == "# "+category && task != null}")
-                    if(task != null && task.category == "# "+category){
+                    if(task.category == "# "+category){
                         mlist.add(task)
                     }
                 }
@@ -254,7 +253,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                     if(cat != null){
                         val radio = RadioButton(context)
                         Log.i("Cat", cat.name)
-                        radio.setText(cat.name)
+                        radio.text = cat.name
                         radio.id = View.generateViewId()
 
                         binding.rgCats.addView(radio)
@@ -273,7 +272,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
 
                 for (taskSnapshot in snapshot.children) {
                     val task = taskSnapshot.getValue(DairyTaskData::class.java)
-                    if ( task!= null) {
+                    if ( task!= null&& !task.isDone) {
                         if(taskSnapshot.hasChild("SubTasks")){
                             task.containsSub = true
                         }
