@@ -111,6 +111,7 @@ class SettingsFragment : Fragment() , NameChangeFragment.DialogNameChangeListene
                  .setPositiveButton("I`m sure"){ _, _ ->
                      FireHelper.Users.child(FireHelper.firebaseAuth.currentUser?.uid.toString()).removeValue()
                      FireHelper.firebaseAuth.currentUser?.delete()
+                     FireHelper.firebaseAuth.signOut()
                      navControl.navigate(R.id.action_settingsFragment_to_signInFragment)
                  }
                  .setNegativeButton("No, take me back"){ _, _ ->

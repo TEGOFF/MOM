@@ -10,7 +10,7 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardView1"
-        android:layout_width="400dp"
+        android:layout_width="350dp"
         android:layout_height="250dp"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="60dp"
@@ -24,16 +24,16 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="342dp"
+            android:layout_height="220dp"
+            android:layout_gravity="center"
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayoutName"
-                android:layout_width="400dp"
+                android:layout_width="wrap_content"
                 android:layout_height="70dp"
-                app:boxStrokeWidth="0dp"
-                app:boxStrokeWidthFocused="0dp">
+                >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/TaskEntryTextName"
@@ -57,7 +57,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/TaskEntryTextDescription"
-                    android:layout_width="match_parent"
+                    android:layout_width="313dp"
                     android:layout_height="match_parent"
                     android:gravity="top"
                     android:hint="Description"

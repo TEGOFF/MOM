@@ -3,6 +3,7 @@ package com.example.tm.Fragments
 import DataClasses.DairyTaskData
 import ModulesAndAdapters.DairyTaskAdapter
 import ModulesAndAdapters.FireHelper
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -26,7 +27,7 @@ class DoneTasksFragment : Fragment(), DairyTaskAdapter.DairyTaskAdapterClickInte
     private lateinit var navControl: NavController
     private lateinit var binding: FragmentDoneTasksBinding
     private lateinit var adapter : DairyTaskAdapter
-    private lateinit var mList:MutableList<DairyTaskData>
+    private lateinit var mlist:MutableList<DairyTaskData>
     private lateinit var dbref:DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,41 +48,41 @@ class DoneTasksFragment : Fragment(), DairyTaskAdapter.DairyTaskAdapterClickInte
         init(view)
         registerEvents(view)
     }
-    fun init(view:View){
+    private fun init(view:View){
         dbref= FireHelper.dbref.child("Users").child(FireHelper.firebaseAuth.currentUser?.uid.toString()).child("DairyTasks")
         binding.recyclerView.setHasFixedSize(true)
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
         navControl= Navigation.findNavController(view)
         getDataFromFirebase()
-        mList= mutableListOf()
-        adapter= DairyTaskAdapter(mList)
+        mlist= mutableListOf()
+        adapter= DairyTaskAdapter(mlist)
         adapter.setListener(this)
 
         binding.recyclerView.adapter=adapter
         dbref.addChildEventListener(object:ChildEventListener{
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
                 if(snapshot.getValue().toString()!=""){
-                    mList.add(
+                    mlist.add(
                         DairyTaskData(
                             snapshot.child("dairyTaskName").value.toString() ,snapshot.child("dairyTaskDescription").value.toString(), snapshot.key.toString())
                     )
 
-                    adapter.notifyItemInserted(mList.size - 1)
+                    adapter.notifyItemInserted(mlist.size - 1)
                 }
             }
 
             override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
-                TODO("Not yet implemented")
+                adapter.notifyDataSetChanged()
             }
 
             override fun onChildRemoved(snapshot: DataSnapshot) {
                 if(snapshot.value.toString()!=""){
-                    mList.add(
+                    mlist.add(
                         DairyTaskData(
                             snapshot.child("dairyTaskName").value.toString() ,snapshot.child("dairyTaskDescription").value.toString(), snapshot.key.toString())
                     )
 
-                    adapter.notifyItemInserted(mList.size - 1)
+                    adapter.notifyItemInserted(mlist.size - 1)
                 }
             }
 
@@ -112,15 +113,15 @@ class DoneTasksFragment : Fragment(), DairyTaskAdapter.DairyTaskAdapterClickInte
         dbref.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
 
-                mList.clear()
+                mlist.clear()
                 adapter.notifyDataSetChanged()
 
                 for (taskSnapshot in snapshot.children) {
                     val task = taskSnapshot.getValue(DairyTaskData::class.java)
                     if (task!= null && task.isDone)
                      {
-                        mList.add(task)
-                        adapter.notifyItemInserted(mList.size-1)
+                        mlist.add(task)
+                        adapter.notifyItemInserted(mlist.size-1)
                     }
                 }
 
@@ -138,6 +139,28 @@ class DoneTasksFragment : Fragment(), DairyTaskAdapter.DairyTaskAdapterClickInte
 
     override fun onEditTaskButtonClicked(taskData: DairyTaskData) {
         TODO("Not yet implemented")
+    }
+
+    override fun onCheckBoxClicked(taskData: DairyTaskData, position: Int) {
+        val builder= AlertDialog.Builder(context)
+        builder.setTitle("Confirmation")
+            .setMessage("Are you sure you want to recreate this task?")
+            .setPositiveButton("I`m sure"){ _, _ ->
+                taskData.isDone=false
+                FireHelper.Users.child(FireHelper.firebaseAuth.currentUser?.uid.toString()).child("DairyTasks")
+                    .child(taskData.dairyTaskId).child("done").setValue(false)
+
+                mlist.add(position, mlist.removeAt(position) )
+
+                view?.post(){
+                    binding.recyclerView.adapter?.notifyDataSetChanged()
+                }
+            }
+            .setNegativeButton("No"){ _, _ ->
+            }.show()
+
+
+
     }
 
 

@@ -24,14 +24,10 @@ class SignUpFragment() : Fragment() {
     private lateinit var navControl: NavController
     private lateinit var binding: FragmentSignUpBinding
 
-    constructor(parcel: Parcel) : this() {
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentSignUpBinding.inflate(inflater, container, false)
         return binding.root
 

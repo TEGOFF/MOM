@@ -414,6 +414,19 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
         )
     }
 
+    override fun onCheckBoxClicked(taskData: DairyTaskData, position: Int) {
+        taskData.isDone=true
+        FireHelper.Users.child(FireHelper.firebaseAuth.currentUser?.uid.toString()).child("DairyTasks")
+            .child(taskData.dairyTaskId).child("done").setValue(true)
+
+        mlist.add(position, mlist.removeAt(position) )
+
+        view?.post(){
+            binding.mainRecyclerView.adapter?.notifyDataSetChanged()
+        }
+
+    }
+
     override fun onSaveDairyTask(taskName:String, taskDescription:String , time:String, date:String, taskDescriptionEntryText: TextInputEditText,   taskNameEntryText: TextInputEditText, taskCategory: String) {
         val k=dbref.push()
         k.setValue(DairyTaskData(taskName, taskDescription, k.key.toString(), time, date, category = taskCategory)).addOnCompleteListener{
