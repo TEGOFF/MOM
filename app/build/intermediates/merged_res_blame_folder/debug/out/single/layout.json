@@ -1,0 +1,70 @@
+[
+    {
+        "merged": "com.example.tm.app-mergeDebugResources-60:/layout/nav_header.xml",
+        "source": "com.example.tm.app-main-63:/layout/nav_header.xml"
+    },
+    {
+        "merged": "com.example.tm.app-mergeDebugResources-60:/layout/fragment_splash.xml",
+        "source": "com.example.tm.app-main-63:/layout/fragment_splash.xml"
+    },
+    {
+        "merged": "com.example.tm.app-mergeDebugResources-60:/layout/activity_category.xml",
+        "source": "com.example.tm.app-main-63:/layout/activity_category.xml"
+    },
+    {
+        "merged": "com.example.tm.app-mergeDebugResources-60:/layout/notification.xml",
+        "source": "com.example.tm.app-main-63:/layout/notification.xml"
+    },
+    {
+        "merged": "com.example.tm.app-mergeDebugResources-60:/layout/fragment_name_change.xml",
+        "source": "com.example.tm.app-main-63:/layout/fragment_name_change.xml"
+    },
+    {
+        "merged": "com.example.tm.app-mergeDebugResources-60:/layout/fragment_sign_in.xml",
+        "source": "com.example.tm.app-main-63:/layout/fragment_sign_in.xml"
+    },
+    {
+        "merged": "com.example.tm.app-mergeDebugResources-60:/layout/fragment_sign_up.xml",
+        "source": "com.example.tm.app-main-63:/layout/fragment_sign_up.xml"
+    },
+    {
+        "merged": "com.example.tm.app-mergeDebugResources-60:/layout/fragment_add_task_pop_up.xml",
+        "source": "com.example.tm.app-main-63:/layout/fragment_add_task_pop_up.xml"
+    },
+    {
+        "merged": "com.example.tm.app-mergeDebugResources-60:/layout/fragment_task_description.xml",
+        "source": "com.example.tm.app-main-63:/layout/fragment_task_description.xml"
+    },
+    {
+        "merged": "com.example.tm.app-mergeDebugResources-60:/layout/fragment_camera.xml",
+        "source": "com.example.tm.app-main-63:/layout/fragment_camera.xml"
+    },
+    {
+        "merged": "com.example.tm.app-mergeDebugResources-60:/layout/fragment_done_tasks.xml",
+        "source": "com.example.tm.app-main-63:/layout/fragment_done_tasks.xml"
+    },
+    {
+        "merged": "com.example.tm.app-mergeDebugResources-60:/layout/fragment_categories.xml",
+        "source": "com.example.tm.app-main-63:/layout/fragment_categories.xml"
+    },
+    {
+        "merged": "com.example.tm.app-mergeDebugResources-60:/layout/each_task_item.xml",
+        "source": "com.example.tm.app-main-63:/layout/each_task_item.xml"
+    },
+    {
+        "merged": "com.example.tm.app-mergeDebugResources-60:/layout/activity_main.xml",
+        "source": "com.example.tm.app-main-63:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.example.tm.app-mergeDebugResources-60:/layout/fragment_settings.xml",
+        "source": "com.example.tm.app-main-63:/layout/fragment_settings.xml"
+    },
+    {
+        "merged": "com.example.tm.app-mergeDebugResources-60:/layout/fragment_home.xml",
+        "source": "com.example.tm.app-main-63:/layout/fragment_home.xml"
+    },
+    {
+        "merged": "com.example.tm.app-mergeDebugResources-60:/layout/category_item.xml",
+        "source": "com.example.tm.app-main-63:/layout/category_item.xml"
+    }
+]

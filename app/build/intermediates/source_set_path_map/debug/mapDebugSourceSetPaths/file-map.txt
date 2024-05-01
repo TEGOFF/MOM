@@ -1,0 +1,61 @@
+com.example.tm.app-fragment-ktx-1.6.2-0 C:\Users\Леха гей\.gradle\caches\transforms-3\016bd44fe9fd582bb3a379a72c9c179c\transformed\fragment-ktx-1.6.2\res
+com.example.tm.app-play-services-basement-18.3.0-1 C:\Users\Леха гей\.gradle\caches\transforms-3\02995e90e7d9412ac851860b84dec68c\transformed\play-services-basement-18.3.0\res
+com.example.tm.app-lifecycle-runtime-ktx-2.6.2-2 C:\Users\Леха гей\.gradle\caches\transforms-3\0c57a089682515f6bc3ad2ac2d989fe0\transformed\lifecycle-runtime-ktx-2.6.2\res
+com.example.tm.app-savedstate-1.2.1-3 C:\Users\Леха гей\.gradle\caches\transforms-3\10a0df6107a9262782ae26eb38676a21\transformed\savedstate-1.2.1\res
+com.example.tm.app-lifecycle-viewmodel-ktx-2.6.2-4 C:\Users\Леха гей\.gradle\caches\transforms-3\1ec68717b2f12956c3f5725fe48066c8\transformed\lifecycle-viewmodel-ktx-2.6.2\res
+com.example.tm.app-savedstate-ktx-1.2.1-5 C:\Users\Леха гей\.gradle\caches\transforms-3\1f3fb5c62063c9d51a54056ce7a6c645\transformed\savedstate-ktx-1.2.1\res
+com.example.tm.app-emoji2-1.2.0-6 C:\Users\Леха гей\.gradle\caches\transforms-3\22f0b3d13b349199bf5b829ac2f3f704\transformed\emoji2-1.2.0\res
+com.example.tm.app-window-1.0.0-7 C:\Users\Леха гей\.gradle\caches\transforms-3\29f9cf7c32b38e9a57146123d6da0318\transformed\window-1.0.0\res
+com.example.tm.app-appcompat-resources-1.6.1-8 C:\Users\Леха гей\.gradle\caches\transforms-3\2e65a6b30859166967434deffd257812\transformed\appcompat-resources-1.6.1\res
+com.example.tm.app-core-1.12.0-9 C:\Users\Леха гей\.gradle\caches\transforms-3\3155ac73827764dbbbe15713de93b1d8\transformed\core-1.12.0\res
+com.example.tm.app-startup-runtime-1.1.1-10 C:\Users\Леха гей\.gradle\caches\transforms-3\3271aa478018749d60fb31596763b15b\transformed\startup-runtime-1.1.1\res
+com.example.tm.app-lifecycle-viewmodel-savedstate-2.6.2-11 C:\Users\Леха гей\.gradle\caches\transforms-3\36e95f516e6412fddf7f47e581d49cf4\transformed\lifecycle-viewmodel-savedstate-2.6.2\res
+com.example.tm.app-lifecycle-livedata-2.6.2-12 C:\Users\Леха гей\.gradle\caches\transforms-3\3ce047a944d27706426e963f48d1ba10\transformed\lifecycle-livedata-2.6.2\res
+com.example.tm.app-appcompat-1.6.1-13 C:\Users\Леха гей\.gradle\caches\transforms-3\4b0e02d3610a8e7c1d8abce166ec66a3\transformed\appcompat-1.6.1\res
+com.example.tm.app-firebase-messaging-23.4.1-14 C:\Users\Леха гей\.gradle\caches\transforms-3\4ce35030e63a6847326d3dd7fa505738\transformed\firebase-messaging-23.4.1\res
+com.example.tm.app-coordinatorlayout-1.1.0-15 C:\Users\Леха гей\.gradle\caches\transforms-3\60baee8b78be848746526cebad6b2bcd\transformed\coordinatorlayout-1.1.0\res
+com.example.tm.app-constraintlayout-2.1.4-16 C:\Users\Леха гей\.gradle\caches\transforms-3\70e2bc22f84fa9d436f975a56a02d729\transformed\constraintlayout-2.1.4\res
+com.example.tm.app-navigation-common-ktx-2.7.7-17 C:\Users\Леха гей\.gradle\caches\transforms-3\7243fa1c685d4d0caf279b9db2c5289a\transformed\navigation-common-ktx-2.7.7\res
+com.example.tm.app-lifecycle-viewmodel-2.6.2-18 C:\Users\Леха гей\.gradle\caches\transforms-3\79c86e7fe23528de901c9bc11705ae82\transformed\lifecycle-viewmodel-2.6.2\res
+com.example.tm.app-profileinstaller-1.3.0-19 C:\Users\Леха гей\.gradle\caches\transforms-3\7d018bce0888be12a056ea8f105f95f1\transformed\profileinstaller-1.3.0\res
+com.example.tm.app-firebase-common-20.4.2-20 C:\Users\Леха гей\.gradle\caches\transforms-3\7ef111e27e1956f1b4c7279e7438cc4a\transformed\firebase-common-20.4.2\res
+com.example.tm.app-core-ktx-1.12.0-21 C:\Users\Леха гей\.gradle\caches\transforms-3\81098cf67de9238dad17a6ee130ff3af\transformed\core-ktx-1.12.0\res
+com.example.tm.app-lifecycle-livedata-core-ktx-2.6.2-22 C:\Users\Леха гей\.gradle\caches\transforms-3\8de45f0b8d53687453c1d867fa8ef8fc\transformed\lifecycle-livedata-core-ktx-2.6.2\res
+com.example.tm.app-slidingpanelayout-1.2.0-23 C:\Users\Леха гей\.gradle\caches\transforms-3\91ab4916a318bcc3a34e6533e0f9eb3b\transformed\slidingpanelayout-1.2.0\res
+com.example.tm.app-preference-1.2.1-24 C:\Users\Леха гей\.gradle\caches\transforms-3\927fe9fa19e8655c5ac0a0e95ad6fd81\transformed\preference-1.2.1\res
+com.example.tm.app-activity-ktx-1.8.2-25 C:\Users\Леха гей\.gradle\caches\transforms-3\9f44ac58b3e3a59211efc212853afd28\transformed\activity-ktx-1.8.2\res
+com.example.tm.app-emoji2-views-helper-1.2.0-26 C:\Users\Леха гей\.gradle\caches\transforms-3\a1354475aa87e4a5a122176bcd04b7a6\transformed\emoji2-views-helper-1.2.0\res
+com.example.tm.app-circleimageview-3.1.0-27 C:\Users\Леха гей\.gradle\caches\transforms-3\a17932b94abc0c1690598549fc614688\transformed\circleimageview-3.1.0\res
+com.example.tm.app-glide-4.16.0-28 C:\Users\Леха гей\.gradle\caches\transforms-3\a2d4ffb64d0980930b4c9f18be20c5f2\transformed\glide-4.16.0\res
+com.example.tm.app-play-services-base-18.1.0-29 C:\Users\Леха гей\.gradle\caches\transforms-3\a37a65e97825afcd50e953150e5e0959\transformed\play-services-base-18.1.0\res
+com.example.tm.app-preference-ktx-1.2.1-30 C:\Users\Леха гей\.gradle\caches\transforms-3\a9e4050da45c1bf100b526094cec640d\transformed\preference-ktx-1.2.1\res
+com.example.tm.app-transition-1.4.1-31 C:\Users\Леха гей\.gradle\caches\transforms-3\b66334cfc0cb81ef52dba746fb6b0f96\transformed\transition-1.4.1\res
+com.example.tm.app-lifecycle-process-2.6.2-32 C:\Users\Леха гей\.gradle\caches\transforms-3\b76409b0f4658d2c15c09d8a39b117da\transformed\lifecycle-process-2.6.2\res
+com.example.tm.app-navigation-runtime-2.7.7-33 C:\Users\Леха гей\.gradle\caches\transforms-3\c313bcaf1151abc97347fbfee30fbbee\transformed\navigation-runtime-2.7.7\res
+com.example.tm.app-navigation-fragment-2.7.7-34 C:\Users\Леха гей\.gradle\caches\transforms-3\c4116f0ec65eaa83c88414acb67004bb\transformed\navigation-fragment-2.7.7\res
+com.example.tm.app-recyclerview-1.1.0-35 C:\Users\Леха гей\.gradle\caches\transforms-3\d50d7aec67a1ef0f7af19fd8e5507185\transformed\recyclerview-1.1.0\res
+com.example.tm.app-annotation-experimental-1.3.0-36 C:\Users\Леха гей\.gradle\caches\transforms-3\d708261b3151a6b784017020efbb3fd5\transformed\annotation-experimental-1.3.0\res
+com.example.tm.app-core-1.5.0-37 C:\Users\Леха гей\.gradle\caches\transforms-3\d947d18437dc8b3bb6650838645d154c\transformed\core-1.5.0\res
+com.example.tm.app-lifecycle-runtime-2.6.2-38 C:\Users\Леха гей\.gradle\caches\transforms-3\d96e367f33736a1a519a4ec9bed67c6d\transformed\lifecycle-runtime-2.6.2\res
+com.example.tm.app-activity-1.8.2-39 C:\Users\Леха гей\.gradle\caches\transforms-3\d9ab68ebd20587d46732010585f6b24e\transformed\activity-1.8.2\res
+com.example.tm.app-viewpager2-1.0.0-40 C:\Users\Леха гей\.gradle\caches\transforms-3\df8c6d143343a50cbfcd250008b2592c\transformed\viewpager2-1.0.0\res
+com.example.tm.app-browser-1.4.0-41 C:\Users\Леха гей\.gradle\caches\transforms-3\e208abcc228249b07c3da9e335c57574\transformed\browser-1.4.0\res
+com.example.tm.app-drawerlayout-1.1.1-42 C:\Users\Леха гей\.gradle\caches\transforms-3\e383dce90f7d3a8f742d396a81690402\transformed\drawerlayout-1.1.1\res
+com.example.tm.app-navigation-runtime-ktx-2.7.7-43 C:\Users\Леха гей\.gradle\caches\transforms-3\e3b98a7bafee6829dfe2db5f0bda1766\transformed\navigation-runtime-ktx-2.7.7\res
+com.example.tm.app-navigation-ui-ktx-2.7.7-44 C:\Users\Леха гей\.gradle\caches\transforms-3\e41be926020fba618c71c3b9c7947867\transformed\navigation-ui-ktx-2.7.7\res
+com.example.tm.app-core-runtime-2.2.0-45 C:\Users\Леха гей\.gradle\caches\transforms-3\e4bc0c65ab5841359b1f2e1190f1511c\transformed\core-runtime-2.2.0\res
+com.example.tm.app-navigation-ui-2.7.7-46 C:\Users\Леха гей\.gradle\caches\transforms-3\e87fe3e2adc584fc2035664c3a849763\transformed\navigation-ui-2.7.7\res
+com.example.tm.app-lifecycle-livedata-core-2.6.2-47 C:\Users\Леха гей\.gradle\caches\transforms-3\e8ce7fd7fd1b01023a2f0d23fe92f432\transformed\lifecycle-livedata-core-2.6.2\res
+com.example.tm.app-material-1.11.0-48 C:\Users\Леха гей\.gradle\caches\transforms-3\f2e0ca50bb355eb6177957114ef95cf8\transformed\material-1.11.0\res
+com.example.tm.app-navigation-common-2.7.7-49 C:\Users\Леха гей\.gradle\caches\transforms-3\f6cfde129c7bb9440aaada0cca7e1907\transformed\navigation-common-2.7.7\res
+com.example.tm.app-fragment-1.6.2-50 C:\Users\Леха гей\.gradle\caches\transforms-3\f8b1ad50372227ca740cf73b4ce3dbc1\transformed\fragment-1.6.2\res
+com.example.tm.app-cardview-1.0.0-51 C:\Users\Леха гей\.gradle\caches\transforms-3\f8df2befba1e293959c40577a0c99999\transformed\cardview-1.0.0\res
+com.example.tm.app-navigation-fragment-ktx-2.7.7-52 C:\Users\Леха гей\.gradle\caches\transforms-3\ff64ca612b48bca6713d21c8f95003cf\transformed\navigation-fragment-ktx-2.7.7\res
+com.example.tm.app-pngs-53 D:\MOM\app\build\generated\res\pngs\debug
+com.example.tm.app-res-54 D:\MOM\app\build\generated\res\processDebugGoogleServices
+com.example.tm.app-resValues-55 D:\MOM\app\build\generated\res\resValues\debug
+com.example.tm.app-packageDebugResources-56 D:\MOM\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
+com.example.tm.app-packageDebugResources-57 D:\MOM\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
+com.example.tm.app-debug-58 D:\MOM\app\build\intermediates\merged_res\debug\mergeDebugResources
+com.example.tm.app-debug-59 D:\MOM\app\src\debug\res
+com.example.tm.app-main-60 D:\MOM\app\src\main\res

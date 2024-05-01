@@ -1,0 +1,961 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\MOM\app\src\main\AndroidManifest.xml:2:1-50:12
+INJECTED from D:\MOM\app\src\main\AndroidManifest.xml:2:1-50:12
+INJECTED from D:\MOM\app\src\main\AndroidManifest.xml:2:1-50:12
+INJECTED from D:\MOM\app\src\main\AndroidManifest.xml:2:1-50:12
+MERGED from [androidx.databinding:databinding-adapters:8.2.2] C:\Users\Леха гей\.gradle\caches\transforms-3\4ff6c70287caef3b6ec2798e5bcf1ef3\transformed\databinding-adapters-8.2.2\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.databinding:databinding-ktx:8.2.2] C:\Users\Леха гей\.gradle\caches\transforms-3\452d68ab30748ed420efa7eb5225f463\transformed\databinding-ktx-8.2.2\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.databinding:databinding-runtime:8.2.2] C:\Users\Леха гей\.gradle\caches\transforms-3\dfd00cb54e15c93964487f3e445522b1\transformed\databinding-runtime-8.2.2\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.databinding:viewbinding:8.2.2] C:\Users\Леха гей\.gradle\caches\transforms-3\45144f8fc5883dcb77cbd07fe0b0a41e\transformed\viewbinding-8.2.2\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.navigation:navigation-common:2.7.7] C:\Users\Леха гей\.gradle\caches\transforms-3\bdd45cf2937d1278add09098bb28769b\transformed\navigation-common-2.7.7\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.navigation:navigation-common-ktx:2.7.7] C:\Users\Леха гей\.gradle\caches\transforms-3\283c804882ca44ec815d56c4e3cdcd75\transformed\navigation-common-ktx-2.7.7\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.navigation:navigation-runtime:2.7.7] C:\Users\Леха гей\.gradle\caches\transforms-3\aadcd73a33a73915a02cb41693ec3ebd\transformed\navigation-runtime-2.7.7\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.navigation:navigation-runtime-ktx:2.7.7] C:\Users\Леха гей\.gradle\caches\transforms-3\8feaa6e557b8b48038614ed531d205c7\transformed\navigation-runtime-ktx-2.7.7\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.navigation:navigation-fragment:2.7.7] C:\Users\Леха гей\.gradle\caches\transforms-3\1bb0d8bb6798a10cae535811ca858363\transformed\navigation-fragment-2.7.7\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.navigation:navigation-fragment-ktx:2.7.7] C:\Users\Леха гей\.gradle\caches\transforms-3\7a820517f9a8fa70c627f8f7445bc269\transformed\navigation-fragment-ktx-2.7.7\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.navigation:navigation-ui-ktx:2.7.7] C:\Users\Леха гей\.gradle\caches\transforms-3\117ed459002327fe460ca8c71cb0df8e\transformed\navigation-ui-ktx-2.7.7\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.navigation:navigation-ui:2.7.7] C:\Users\Леха гей\.gradle\caches\transforms-3\2cea99d4b5fac97996f417ff7f1fe28b\transformed\navigation-ui-2.7.7\AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.material:material:1.11.0] C:\Users\Леха гей\.gradle\caches\transforms-3\65e85a95991b59a3336e77672b4b2542\transformed\material-1.11.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\Леха гей\.gradle\caches\transforms-3\f9d90bfd34dd1d669bbbfe507e5383e4\transformed\constraintlayout-2.1.4\AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.appcompat:appcompat-resources:1.6.1] C:\Users\Леха гей\.gradle\caches\transforms-3\d0f1e8c84a929eba8806863c2a8c4499\transformed\appcompat-resources-1.6.1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.preference:preference-ktx:1.2.1] C:\Users\Леха гей\.gradle\caches\transforms-3\b2627511a4807a4957e913768b142ec2\transformed\preference-ktx-1.2.1\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.preference:preference:1.2.1] C:\Users\Леха гей\.gradle\caches\transforms-3\2a5e14c38c25b152778cb4c195e17c2f\transformed\preference-1.2.1\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.appcompat:appcompat:1.6.1] C:\Users\Леха гей\.gradle\caches\transforms-3\490a5b4e7428945a2f77bb54f252416f\transformed\appcompat-1.6.1\AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\5ec315e9544c3feba3d46bfd2c50fa8f\transformed\firebase-auth-22.3.1\AndroidManifest.xml:17:1-75:12
+MERGED from [com.github.bumptech.glide:glide:4.16.0] C:\Users\Леха гей\.gradle\caches\transforms-3\e812ea81f57e8f83cada2fe259d00415\transformed\glide-4.16.0\AndroidManifest.xml:2:1-9:12
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\f9dc3cb224818108157d7877dc674db7\transformed\viewpager2-1.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.firebase:firebase-firestore:24.11.0] C:\Users\Леха гей\.gradle\caches\transforms-3\c80326beebcd297d4833eda79a78f324\transformed\firebase-firestore-24.11.0\AndroidManifest.xml:2:1-26:12
+MERGED from [com.google.firebase:firebase-database:20.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\8348bd9904ce6b8916304953c5502ce7\transformed\firebase-database-20.3.1\AndroidManifest.xml:15:1-38:12
+MERGED from [com.google.firebase:firebase-messaging-ktx:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\7804668ce64f93f70185d158183b66ea\transformed\firebase-messaging-ktx-23.4.1\AndroidManifest.xml:17:1-32:12
+MERGED from [com.google.firebase:firebase-messaging:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\54556b5a3b8e7832fb80adae1061ec2c\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:17:1-66:12
+MERGED from [com.google.firebase:firebase-storage:20.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\577bf19261cb9b35ce477ddfdd7ec1e1\transformed\firebase-storage-20.3.0\AndroidManifest.xml:15:1-39:12
+MERGED from [com.google.android.gms:play-services-auth-api-phone:17.4.0] C:\Users\Леха гей\.gradle\caches\transforms-3\1967d7bc3a4b73f59c1d752ae231bed3\transformed\play-services-auth-api-phone-17.4.0\AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.firebase:firebase-database-collection:18.0.1] C:\Users\Леха гей\.gradle\caches\transforms-3\72b893ac49f16c172e2dbc933b8d49da\transformed\firebase-database-collection-18.0.1\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.firebase:firebase-appcheck:17.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\4e9e619365e6b70e24e644b3d47057cb\transformed\firebase-appcheck-17.1.0\AndroidManifest.xml:15:1-34:12
+MERGED from [com.google.firebase:firebase-appcheck-interop:17.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\c6d8a5d6021a75197151f60ed6ef34f8\transformed\firebase-appcheck-interop-17.1.0\AndroidManifest.xml:15:1-23:12
+MERGED from [com.google.android.gms:play-services-base:18.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\0e034375a611538ca61f20239ec22301\transformed\play-services-base-18.1.0\AndroidManifest.xml:16:1-24:12
+MERGED from [com.google.android.recaptcha:recaptcha:18.4.0] C:\Users\Леха гей\.gradle\caches\transforms-3\5f397f24cf24f6ac2c0b303ee0ee6977\transformed\recaptcha-18.4.0\AndroidManifest.xml:2:1-11:12
+MERGED from [com.google.android.play:integrity:1.2.0] C:\Users\Леха гей\.gradle\caches\transforms-3\022763320ddb89c1e013f618adbb97b0\transformed\integrity-1.2.0\AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\b7086a519d7faf06663872ca7171d584\transformed\firebase-auth-interop-20.0.0\AndroidManifest.xml:2:1-10:12
+MERGED from [com.google.firebase:firebase-installations:17.2.0] C:\Users\Леха гей\.gradle\caches\transforms-3\1330d99c4f7d3de9c4d94f2f334876f3\transformed\firebase-installations-17.2.0\AndroidManifest.xml:2:1-24:12
+MERGED from [com.google.firebase:firebase-common-ktx:20.4.2] C:\Users\Леха гей\.gradle\caches\transforms-3\2441ab5d0b7422812aa7ef08014bc165\transformed\firebase-common-ktx-20.4.2\AndroidManifest.xml:2:1-18:12
+MERGED from [com.google.firebase:firebase-common:20.4.2] C:\Users\Леха гей\.gradle\caches\transforms-3\516598574d9f61a04c87d7fa96b0af38\transformed\firebase-common-20.4.2\AndroidManifest.xml:15:1-41:12
+MERGED from [com.google.firebase:firebase-iid-interop:17.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\ef3c6b8569848d9c972322216670ccda\transformed\firebase-iid-interop-17.1.0\AndroidManifest.xml:2:1-10:12
+MERGED from [com.google.android.gms:play-services-cloud-messaging:17.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\3cbd40c07ea824c510824bc1a4c37dc7\transformed\play-services-cloud-messaging-17.1.0\AndroidManifest.xml:2:1-13:12
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.2.0] C:\Users\Леха гей\.gradle\caches\transforms-3\6f53f4856fe0af9f329d0bf0130d6b3c\transformed\slidingpanelayout-1.2.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.window:window:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\30585890b140a2634f93b5c3279cf7b3\transformed\window-1.0.0\AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.test:core-ktx:1.5.0] C:\Users\Леха гей\.gradle\caches\transforms-3\45bf46f6f9f00399ef7047c131f708a4\transformed\core-ktx-1.5.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.test:core:1.5.0] C:\Users\Леха гей\.gradle\caches\transforms-3\bc8cacc7558ef96472cfc15949458509\transformed\core-1.5.0\AndroidManifest.xml:17:1-53:12
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] C:\Users\Леха гей\.gradle\caches\transforms-3\3cad3464972606a8e0fa38023c0daa8e\transformed\savedstate-ktx-1.2.1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\a2c02f9e678e0676111940770b6701bc\transformed\dynamicanimation-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.gms:play-services-stats:17.0.2] C:\Users\Леха гей\.gradle\caches\transforms-3\5269a014f36f71fcdc8e922c863178b6\transformed\play-services-stats-17.0.2\AndroidManifest.xml:2:1-9:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\73af8c4fced0888d90d0a518f598a8bc\transformed\legacy-support-core-utils-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\489ec8b21a59ede12c7fbf4bc6f39581\transformed\loader-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.emoji2:emoji2-views-helper:1.2.0] C:\Users\Леха гей\.gradle\caches\transforms-3\d8d6cf58ff903eb07eee7b7b6e589833\transformed\emoji2-views-helper-1.2.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.emoji2:emoji2:1.2.0] C:\Users\Леха гей\.gradle\caches\transforms-3\867fc8e3b2df7542827c93f56fcf8226\transformed\emoji2-1.2.0\AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.6.2] C:\Users\Леха гей\.gradle\caches\transforms-3\062f8e1a5a490247e861e9c2228e4ddc\transformed\lifecycle-viewmodel-2.6.2\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-service:2.6.2] C:\Users\Леха гей\.gradle\caches\transforms-3\f139b81bad92ad6e59196b6385846145\transformed\lifecycle-service-2.6.2\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\Леха гей\.gradle\caches\transforms-3\0e348758e4ee5f03d72ecd7bd4f0bfa9\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.6.2] C:\Users\Леха гей\.gradle\caches\transforms-3\11566ff6f6cea90cb7e37195dd4d4ec7\transformed\lifecycle-livedata-core-ktx-2.6.2\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.6.2] C:\Users\Леха гей\.gradle\caches\transforms-3\441fd9568bd6c9db289dbb14e288942e\transformed\lifecycle-livedata-core-2.6.2\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.6.2] C:\Users\Леха гей\.gradle\caches\transforms-3\b140e214f92b965bdf10ee1350eb2206\transformed\lifecycle-livedata-2.6.2\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.2] C:\Users\Леха гей\.gradle\caches\transforms-3\a83bab6f4581649e9795d8bd362a941f\transformed\lifecycle-viewmodel-savedstate-2.6.2\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.savedstate:savedstate:1.2.1] C:\Users\Леха гей\.gradle\caches\transforms-3\6b7c20be6c6d71dafb21cf0690268f97\transformed\savedstate-1.2.1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.6.2] C:\Users\Леха гей\.gradle\caches\transforms-3\1aeb3bd7aba9b5c1525b21a8edac6bdd\transformed\lifecycle-runtime-2.6.2\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2] C:\Users\Леха гей\.gradle\caches\transforms-3\fb00631c019d458c18eec3b14cbcbaac\transformed\lifecycle-viewmodel-ktx-2.6.2\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.6.2] C:\Users\Леха гей\.gradle\caches\transforms-3\84a6c89323411f9d743deabad74a0a1b\transformed\lifecycle-runtime-ktx-2.6.2\AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.firebase:firebase-installations-interop:17.1.1] C:\Users\Леха гей\.gradle\caches\transforms-3\f8110d4287d2f1cc5a752ab4896ea6ed\transformed\firebase-installations-interop-17.1.1\AndroidManifest.xml:15:1-19:12
+MERGED from [com.google.android.gms:play-services-tasks:18.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\2e9dd17baa921b7a1692f97a1f15febc\transformed\play-services-tasks-18.1.0\AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.firebase:firebase-measurement-connector:19.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\c9aee6c777ceb05284d880957366e90a\transformed\firebase-measurement-connector-19.0.0\AndroidManifest.xml:17:1-25:12
+MERGED from [com.google.android.gms:play-services-basement:18.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\3338884a95ac9ac4e0c0dd2b88fc94b6\transformed\play-services-basement-18.3.0\AndroidManifest.xml:16:1-26:12
+MERGED from [androidx.fragment:fragment:1.6.2] C:\Users\Леха гей\.gradle\caches\transforms-3\4cea50ad66674d50dbf258fb11714d3e\transformed\fragment-1.6.2\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.fragment:fragment-ktx:1.6.2] C:\Users\Леха гей\.gradle\caches\transforms-3\f6fbff0a2d22ea75771ab7eb3ea1aafd\transformed\fragment-ktx-1.6.2\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity-ktx:1.8.2] C:\Users\Леха гей\.gradle\caches\transforms-3\fd5ad452bd47f895fd8e229a6a2d817f\transformed\activity-ktx-1.8.2\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.activity:activity:1.8.2] C:\Users\Леха гей\.gradle\caches\transforms-3\3c4a27848b844b4aa5837f8e4101e8ed\transformed\activity-1.8.2\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] C:\Users\Леха гей\.gradle\caches\transforms-3\da2bb4ceae16306e2d36414c6f354753\transformed\drawerlayout-1.1.1\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\930caf1488a65afcbda4da135eb179bd\transformed\coordinatorlayout-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\7afafc367fb48fc2672ee922a1abfb5a\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\a9b4b6de4d81e6f7ae844465062fa3e3\transformed\vectordrawable-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.browser:browser:1.4.0] C:\Users\Леха гей\.gradle\caches\transforms-3\3ac4a8823a44a9276ad1d7b8d2ecadab\transformed\browser-1.4.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\41d9ed29d71dffa9a5a738777a841cc1\transformed\recyclerview-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\37bd2ebf6a4283d81c34a117b422eb52\transformed\viewpager-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.customview:customview:1.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\ab9696b38b21aa38da2b17071b8fbf58\transformed\customview-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.transition:transition:1.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\576841946a9cb3e6b2cdcc0734984d51\transformed\transition-1.4.1\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.core:core:1.12.0] C:\Users\Леха гей\.gradle\caches\transforms-3\ac096f90094cf9efe180c022c3399272\transformed\core-1.12.0\AndroidManifest.xml:17:1-30:12
+MERGED from [androidx.core:core-ktx:1.12.0] C:\Users\Леха гей\.gradle\caches\transforms-3\37e00bdc8d131e60b7c08a3089886575\transformed\core-ktx-1.12.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.test.services:storage:1.4.2] C:\Users\Леха гей\.gradle\caches\transforms-3\8781ad161c51ddddd100c8828b3308d4\transformed\storage-1.4.2\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.test:monitor:1.6.0] C:\Users\Леха гей\.gradle\caches\transforms-3\6f63f7134016b3f4e9c1280b374eb47f\transformed\monitor-1.6.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.test:annotation:1.0.1] C:\Users\Леха гей\.gradle\caches\transforms-3\02f5a406c5bdd1908df8d1914439dfca\transformed\annotation-1.0.1\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.annotation:annotation-experimental:1.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\11a30985dc0927272722fa9fdb647082\transformed\annotation-experimental-1.3.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\fc8573d1631018da96923f46c17a7b3d\transformed\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\ff1c42eb8d6447253d48d6ec09a6bfe5\transformed\cardview-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\b82b882e0adb0eaa4321e86b22eb7c30\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.firebase:firebase-components:17.1.5] C:\Users\Леха гей\.gradle\caches\transforms-3\f92674420596b01777595c190550e9cf\transformed\firebase-components-17.1.5\AndroidManifest.xml:15:1-20:12
+MERGED from [com.google.firebase:firebase-datatransport:18.1.7] C:\Users\Леха гей\.gradle\caches\transforms-3\77caf861f3298d5af1992a162f2f9b4b\transformed\firebase-datatransport-18.1.7\AndroidManifest.xml:15:1-33:12
+MERGED from [com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\Леха гей\.gradle\caches\transforms-3\eb6ab22accc6f330ef639095956f0d73\transformed\transport-backend-cct-3.1.8\AndroidManifest.xml:15:1-37:12
+MERGED from [com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\Леха гей\.gradle\caches\transforms-3\5d23f8f38019f700acca14a5af338234\transformed\transport-runtime-3.1.8\AndroidManifest.xml:15:1-41:12
+MERGED from [com.google.android.datatransport:transport-api:3.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\200e73389310331a8e49ed1a21d9e287\transformed\transport-api-3.1.0\AndroidManifest.xml:15:1-20:12
+MERGED from [com.google.firebase:firebase-encoders-json:18.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\f16a55b7def9f3e2d3bb14de60b8fd07\transformed\firebase-encoders-json-18.0.0\AndroidManifest.xml:15:1-23:12
+MERGED from [com.github.bumptech.glide:gifdecoder:4.16.0] C:\Users\Леха гей\.gradle\caches\transforms-3\bc290f406274def0857f2c47cbe609ec\transformed\gifdecoder-4.16.0\AndroidManifest.xml:2:1-9:12
+MERGED from [androidx.exifinterface:exifinterface:1.3.6] C:\Users\Леха гей\.gradle\caches\transforms-3\b5774378c9d8054fd36bffb59934f420\transformed\exifinterface-1.3.6\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\96ddbcdad814d02e97153808b6036cbf\transformed\profileinstaller-1.3.0\AndroidManifest.xml:17:1-55:12
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\Леха гей\.gradle\caches\transforms-3\021068f4910c4d197b4068c0cec0dd14\transformed\startup-runtime-1.1.1\AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\fb531e0631fbc74fb2d727a3dfb86f93\transformed\tracing-1.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\2082fd9692044961465ddd7dc928d940\transformed\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\Леха гей\.gradle\caches\transforms-3\5bf52770581ab9b7495e779d7b7ba709\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\0678f1a02ce62ed0a55bd202acae3651\transformed\documentfile-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\7307c1b4a2be977ffc4d218e4fba8660\transformed\print-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\Леха гей\.gradle\caches\transforms-3\96bdbd5f38eebf97921cd3ce7c772f6f\transformed\core-runtime-2.2.0\AndroidManifest.xml:17:1-22:12
+MERGED from [de.hdodenhof:circleimageview:3.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\3023b7fb46606802a98675ad76282410\transformed\circleimageview-3.1.0\AndroidManifest.xml:2:1-11:12
+MERGED from [io.grpc:grpc-android:1.57.2] C:\Users\Леха гей\.gradle\caches\transforms-3\119a18413aee9076cdb7f68fa7b21f56\transformed\grpc-android-1.57.2\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.firebase:protolite-well-known-types:18.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\5aa6428189a6ee74041d9784bcb8dcc3\transformed\protolite-well-known-types-18.0.0\AndroidManifest.xml:2:1-11:12
+	package
+		INJECTED from D:\MOM\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from D:\MOM\app\src\main\AndroidManifest.xml
+	xmlns:tools
+		ADDED from D:\MOM\app\src\main\AndroidManifest.xml:3:5-51
+	android:versionCode
+		INJECTED from D:\MOM\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from D:\MOM\app\src\main\AndroidManifest.xml:2:11-69
+uses-feature#android.hardware.camera
+ADDED from D:\MOM\app\src\main\AndroidManifest.xml:5:5-7:36
+	android:required
+		ADDED from D:\MOM\app\src\main\AndroidManifest.xml:7:9-33
+	android:name
+		ADDED from D:\MOM\app\src\main\AndroidManifest.xml:6:9-47
+uses-permission#android.permission.INTERNET
+ADDED from D:\MOM\app\src\main\AndroidManifest.xml:9:5-67
+MERGED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\5ec315e9544c3feba3d46bfd2c50fa8f\transformed\firebase-auth-22.3.1\AndroidManifest.xml:25:5-67
+MERGED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\5ec315e9544c3feba3d46bfd2c50fa8f\transformed\firebase-auth-22.3.1\AndroidManifest.xml:25:5-67
+MERGED from [com.google.firebase:firebase-firestore:24.11.0] C:\Users\Леха гей\.gradle\caches\transforms-3\c80326beebcd297d4833eda79a78f324\transformed\firebase-firestore-24.11.0\AndroidManifest.xml:11:5-67
+MERGED from [com.google.firebase:firebase-firestore:24.11.0] C:\Users\Леха гей\.gradle\caches\transforms-3\c80326beebcd297d4833eda79a78f324\transformed\firebase-firestore-24.11.0\AndroidManifest.xml:11:5-67
+MERGED from [com.google.firebase:firebase-database:20.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\8348bd9904ce6b8916304953c5502ce7\transformed\firebase-database-20.3.1\AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-database:20.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\8348bd9904ce6b8916304953c5502ce7\transformed\firebase-database-20.3.1\AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-storage:20.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\577bf19261cb9b35ce477ddfdd7ec1e1\transformed\firebase-storage-20.3.0\AndroidManifest.xml:24:5-67
+MERGED from [com.google.firebase:firebase-storage:20.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\577bf19261cb9b35ce477ddfdd7ec1e1\transformed\firebase-storage-20.3.0\AndroidManifest.xml:24:5-67
+MERGED from [com.google.android.recaptcha:recaptcha:18.4.0] C:\Users\Леха гей\.gradle\caches\transforms-3\5f397f24cf24f6ac2c0b303ee0ee6977\transformed\recaptcha-18.4.0\AndroidManifest.xml:7:5-67
+MERGED from [com.google.android.recaptcha:recaptcha:18.4.0] C:\Users\Леха гей\.gradle\caches\transforms-3\5f397f24cf24f6ac2c0b303ee0ee6977\transformed\recaptcha-18.4.0\AndroidManifest.xml:7:5-67
+MERGED from [com.google.firebase:firebase-installations:17.2.0] C:\Users\Леха гей\.gradle\caches\transforms-3\1330d99c4f7d3de9c4d94f2f334876f3\transformed\firebase-installations-17.2.0\AndroidManifest.xml:8:5-67
+MERGED from [com.google.firebase:firebase-installations:17.2.0] C:\Users\Леха гей\.gradle\caches\transforms-3\1330d99c4f7d3de9c4d94f2f334876f3\transformed\firebase-installations-17.2.0\AndroidManifest.xml:8:5-67
+MERGED from [com.google.android.gms:play-services-cloud-messaging:17.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\3cbd40c07ea824c510824bc1a4c37dc7\transformed\play-services-cloud-messaging-17.1.0\AndroidManifest.xml:8:5-67
+MERGED from [com.google.android.gms:play-services-cloud-messaging:17.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\3cbd40c07ea824c510824bc1a4c37dc7\transformed\play-services-cloud-messaging-17.1.0\AndroidManifest.xml:8:5-67
+MERGED from [com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\Леха гей\.gradle\caches\transforms-3\eb6ab22accc6f330ef639095956f0d73\transformed\transport-backend-cct-3.1.8\AndroidManifest.xml:25:5-67
+MERGED from [com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\Леха гей\.gradle\caches\transforms-3\eb6ab22accc6f330ef639095956f0d73\transformed\transport-backend-cct-3.1.8\AndroidManifest.xml:25:5-67
+	android:name
+		ADDED from D:\MOM\app\src\main\AndroidManifest.xml:9:22-64
+uses-permission#android.permission.CAMERA
+ADDED from D:\MOM\app\src\main\AndroidManifest.xml:10:5-65
+	android:name
+		ADDED from D:\MOM\app\src\main\AndroidManifest.xml:10:22-62
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from D:\MOM\app\src\main\AndroidManifest.xml:11:5-81
+	android:name
+		ADDED from D:\MOM\app\src\main\AndroidManifest.xml:11:22-78
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from D:\MOM\app\src\main\AndroidManifest.xml:12:5-80
+	android:name
+		ADDED from D:\MOM\app\src\main\AndroidManifest.xml:12:22-77
+application
+ADDED from D:\MOM\app\src\main\AndroidManifest.xml:14:5-48:19
+INJECTED from D:\MOM\app\src\main\AndroidManifest.xml:14:5-48:19
+MERGED from [com.google.android.material:material:1.11.0] C:\Users\Леха гей\.gradle\caches\transforms-3\65e85a95991b59a3336e77672b4b2542\transformed\material-1.11.0\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.material:material:1.11.0] C:\Users\Леха гей\.gradle\caches\transforms-3\65e85a95991b59a3336e77672b4b2542\transformed\material-1.11.0\AndroidManifest.xml:22:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\Леха гей\.gradle\caches\transforms-3\f9d90bfd34dd1d669bbbfe507e5383e4\transformed\constraintlayout-2.1.4\AndroidManifest.xml:9:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\Леха гей\.gradle\caches\transforms-3\f9d90bfd34dd1d669bbbfe507e5383e4\transformed\constraintlayout-2.1.4\AndroidManifest.xml:9:5-20
+MERGED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\5ec315e9544c3feba3d46bfd2c50fa8f\transformed\firebase-auth-22.3.1\AndroidManifest.xml:28:5-73:19
+MERGED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\5ec315e9544c3feba3d46bfd2c50fa8f\transformed\firebase-auth-22.3.1\AndroidManifest.xml:28:5-73:19
+MERGED from [com.google.firebase:firebase-firestore:24.11.0] C:\Users\Леха гей\.gradle\caches\transforms-3\c80326beebcd297d4833eda79a78f324\transformed\firebase-firestore-24.11.0\AndroidManifest.xml:13:5-24:19
+MERGED from [com.google.firebase:firebase-firestore:24.11.0] C:\Users\Леха гей\.gradle\caches\transforms-3\c80326beebcd297d4833eda79a78f324\transformed\firebase-firestore-24.11.0\AndroidManifest.xml:13:5-24:19
+MERGED from [com.google.firebase:firebase-database:20.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\8348bd9904ce6b8916304953c5502ce7\transformed\firebase-database-20.3.1\AndroidManifest.xml:25:5-36:19
+MERGED from [com.google.firebase:firebase-database:20.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\8348bd9904ce6b8916304953c5502ce7\transformed\firebase-database-20.3.1\AndroidManifest.xml:25:5-36:19
+MERGED from [com.google.firebase:firebase-messaging-ktx:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\7804668ce64f93f70185d158183b66ea\transformed\firebase-messaging-ktx-23.4.1\AndroidManifest.xml:22:5-30:19
+MERGED from [com.google.firebase:firebase-messaging-ktx:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\7804668ce64f93f70185d158183b66ea\transformed\firebase-messaging-ktx-23.4.1\AndroidManifest.xml:22:5-30:19
+MERGED from [com.google.firebase:firebase-messaging:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\54556b5a3b8e7832fb80adae1061ec2c\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:28:5-64:19
+MERGED from [com.google.firebase:firebase-messaging:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\54556b5a3b8e7832fb80adae1061ec2c\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:28:5-64:19
+MERGED from [com.google.firebase:firebase-storage:20.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\577bf19261cb9b35ce477ddfdd7ec1e1\transformed\firebase-storage-20.3.0\AndroidManifest.xml:26:5-37:19
+MERGED from [com.google.firebase:firebase-storage:20.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\577bf19261cb9b35ce477ddfdd7ec1e1\transformed\firebase-storage-20.3.0\AndroidManifest.xml:26:5-37:19
+MERGED from [com.google.firebase:firebase-appcheck:17.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\4e9e619365e6b70e24e644b3d47057cb\transformed\firebase-appcheck-17.1.0\AndroidManifest.xml:21:5-32:19
+MERGED from [com.google.firebase:firebase-appcheck:17.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\4e9e619365e6b70e24e644b3d47057cb\transformed\firebase-appcheck-17.1.0\AndroidManifest.xml:21:5-32:19
+MERGED from [com.google.firebase:firebase-appcheck-interop:17.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\c6d8a5d6021a75197151f60ed6ef34f8\transformed\firebase-appcheck-interop-17.1.0\AndroidManifest.xml:21:5-20
+MERGED from [com.google.firebase:firebase-appcheck-interop:17.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\c6d8a5d6021a75197151f60ed6ef34f8\transformed\firebase-appcheck-interop-17.1.0\AndroidManifest.xml:21:5-20
+MERGED from [com.google.android.gms:play-services-base:18.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\0e034375a611538ca61f20239ec22301\transformed\play-services-base-18.1.0\AndroidManifest.xml:19:5-23:19
+MERGED from [com.google.android.gms:play-services-base:18.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\0e034375a611538ca61f20239ec22301\transformed\play-services-base-18.1.0\AndroidManifest.xml:19:5-23:19
+MERGED from [com.google.android.play:integrity:1.2.0] C:\Users\Леха гей\.gradle\caches\transforms-3\022763320ddb89c1e013f618adbb97b0\transformed\integrity-1.2.0\AndroidManifest.xml:5:5-6:19
+MERGED from [com.google.android.play:integrity:1.2.0] C:\Users\Леха гей\.gradle\caches\transforms-3\022763320ddb89c1e013f618adbb97b0\transformed\integrity-1.2.0\AndroidManifest.xml:5:5-6:19
+MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\b7086a519d7faf06663872ca7171d584\transformed\firebase-auth-interop-20.0.0\AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\b7086a519d7faf06663872ca7171d584\transformed\firebase-auth-interop-20.0.0\AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.firebase:firebase-installations:17.2.0] C:\Users\Леха гей\.gradle\caches\transforms-3\1330d99c4f7d3de9c4d94f2f334876f3\transformed\firebase-installations-17.2.0\AndroidManifest.xml:11:5-22:19
+MERGED from [com.google.firebase:firebase-installations:17.2.0] C:\Users\Леха гей\.gradle\caches\transforms-3\1330d99c4f7d3de9c4d94f2f334876f3\transformed\firebase-installations-17.2.0\AndroidManifest.xml:11:5-22:19
+MERGED from [com.google.firebase:firebase-common-ktx:20.4.2] C:\Users\Леха гей\.gradle\caches\transforms-3\2441ab5d0b7422812aa7ef08014bc165\transformed\firebase-common-ktx-20.4.2\AndroidManifest.xml:8:5-16:19
+MERGED from [com.google.firebase:firebase-common-ktx:20.4.2] C:\Users\Леха гей\.gradle\caches\transforms-3\2441ab5d0b7422812aa7ef08014bc165\transformed\firebase-common-ktx-20.4.2\AndroidManifest.xml:8:5-16:19
+MERGED from [com.google.firebase:firebase-common:20.4.2] C:\Users\Леха гей\.gradle\caches\transforms-3\516598574d9f61a04c87d7fa96b0af38\transformed\firebase-common-20.4.2\AndroidManifest.xml:22:5-39:19
+MERGED from [com.google.firebase:firebase-common:20.4.2] C:\Users\Леха гей\.gradle\caches\transforms-3\516598574d9f61a04c87d7fa96b0af38\transformed\firebase-common-20.4.2\AndroidManifest.xml:22:5-39:19
+MERGED from [com.google.firebase:firebase-iid-interop:17.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\ef3c6b8569848d9c972322216670ccda\transformed\firebase-iid-interop-17.1.0\AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.firebase:firebase-iid-interop:17.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\ef3c6b8569848d9c972322216670ccda\transformed\firebase-iid-interop-17.1.0\AndroidManifest.xml:7:5-8:19
+MERGED from [androidx.window:window:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\30585890b140a2634f93b5c3279cf7b3\transformed\window-1.0.0\AndroidManifest.xml:24:5-31:19
+MERGED from [androidx.window:window:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\30585890b140a2634f93b5c3279cf7b3\transformed\window-1.0.0\AndroidManifest.xml:24:5-31:19
+MERGED from [androidx.test:core:1.5.0] C:\Users\Леха гей\.gradle\caches\transforms-3\bc8cacc7558ef96472cfc15949458509\transformed\core-1.5.0\AndroidManifest.xml:26:5-51:19
+MERGED from [androidx.test:core:1.5.0] C:\Users\Леха гей\.gradle\caches\transforms-3\bc8cacc7558ef96472cfc15949458509\transformed\core-1.5.0\AndroidManifest.xml:26:5-51:19
+MERGED from [com.google.android.gms:play-services-stats:17.0.2] C:\Users\Леха гей\.gradle\caches\transforms-3\5269a014f36f71fcdc8e922c863178b6\transformed\play-services-stats-17.0.2\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-stats:17.0.2] C:\Users\Леха гей\.gradle\caches\transforms-3\5269a014f36f71fcdc8e922c863178b6\transformed\play-services-stats-17.0.2\AndroidManifest.xml:7:5-20
+MERGED from [androidx.emoji2:emoji2:1.2.0] C:\Users\Леха гей\.gradle\caches\transforms-3\867fc8e3b2df7542827c93f56fcf8226\transformed\emoji2-1.2.0\AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.emoji2:emoji2:1.2.0] C:\Users\Леха гей\.gradle\caches\transforms-3\867fc8e3b2df7542827c93f56fcf8226\transformed\emoji2-1.2.0\AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\Леха гей\.gradle\caches\transforms-3\0e348758e4ee5f03d72ecd7bd4f0bfa9\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\Леха гей\.gradle\caches\transforms-3\0e348758e4ee5f03d72ecd7bd4f0bfa9\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:23:5-33:19
+MERGED from [com.google.android.gms:play-services-tasks:18.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\2e9dd17baa921b7a1692f97a1f15febc\transformed\play-services-tasks-18.1.0\AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-tasks:18.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\2e9dd17baa921b7a1692f97a1f15febc\transformed\play-services-tasks-18.1.0\AndroidManifest.xml:5:5-20
+MERGED from [com.google.firebase:firebase-measurement-connector:19.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\c9aee6c777ceb05284d880957366e90a\transformed\firebase-measurement-connector-19.0.0\AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.firebase:firebase-measurement-connector:19.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\c9aee6c777ceb05284d880957366e90a\transformed\firebase-measurement-connector-19.0.0\AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.android.gms:play-services-basement:18.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\3338884a95ac9ac4e0c0dd2b88fc94b6\transformed\play-services-basement-18.3.0\AndroidManifest.xml:20:5-24:19
+MERGED from [com.google.android.gms:play-services-basement:18.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\3338884a95ac9ac4e0c0dd2b88fc94b6\transformed\play-services-basement-18.3.0\AndroidManifest.xml:20:5-24:19
+MERGED from [androidx.core:core:1.12.0] C:\Users\Леха гей\.gradle\caches\transforms-3\ac096f90094cf9efe180c022c3399272\transformed\core-1.12.0\AndroidManifest.xml:28:5-89
+MERGED from [androidx.core:core:1.12.0] C:\Users\Леха гей\.gradle\caches\transforms-3\ac096f90094cf9efe180c022c3399272\transformed\core-1.12.0\AndroidManifest.xml:28:5-89
+MERGED from [com.google.firebase:firebase-datatransport:18.1.7] C:\Users\Леха гей\.gradle\caches\transforms-3\77caf861f3298d5af1992a162f2f9b4b\transformed\firebase-datatransport-18.1.7\AndroidManifest.xml:23:5-31:19
+MERGED from [com.google.firebase:firebase-datatransport:18.1.7] C:\Users\Леха гей\.gradle\caches\transforms-3\77caf861f3298d5af1992a162f2f9b4b\transformed\firebase-datatransport-18.1.7\AndroidManifest.xml:23:5-31:19
+MERGED from [com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\Леха гей\.gradle\caches\transforms-3\eb6ab22accc6f330ef639095956f0d73\transformed\transport-backend-cct-3.1.8\AndroidManifest.xml:27:5-35:19
+MERGED from [com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\Леха гей\.gradle\caches\transforms-3\eb6ab22accc6f330ef639095956f0d73\transformed\transport-backend-cct-3.1.8\AndroidManifest.xml:27:5-35:19
+MERGED from [com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\Леха гей\.gradle\caches\transforms-3\5d23f8f38019f700acca14a5af338234\transformed\transport-runtime-3.1.8\AndroidManifest.xml:25:5-39:19
+MERGED from [com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\Леха гей\.gradle\caches\transforms-3\5d23f8f38019f700acca14a5af338234\transformed\transport-runtime-3.1.8\AndroidManifest.xml:25:5-39:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\96ddbcdad814d02e97153808b6036cbf\transformed\profileinstaller-1.3.0\AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\96ddbcdad814d02e97153808b6036cbf\transformed\profileinstaller-1.3.0\AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\Леха гей\.gradle\caches\transforms-3\021068f4910c4d197b4068c0cec0dd14\transformed\startup-runtime-1.1.1\AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\Леха гей\.gradle\caches\transforms-3\021068f4910c4d197b4068c0cec0dd14\transformed\startup-runtime-1.1.1\AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\Леха гей\.gradle\caches\transforms-3\5bf52770581ab9b7495e779d7b7ba709\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\Леха гей\.gradle\caches\transforms-3\5bf52770581ab9b7495e779d7b7ba709\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
+MERGED from [de.hdodenhof:circleimageview:3.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\3023b7fb46606802a98675ad76282410\transformed\circleimageview-3.1.0\AndroidManifest.xml:9:5-20
+MERGED from [de.hdodenhof:circleimageview:3.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\3023b7fb46606802a98675ad76282410\transformed\circleimageview-3.1.0\AndroidManifest.xml:9:5-20
+	android:extractNativeLibs
+		INJECTED from D:\MOM\app\src\main\AndroidManifest.xml
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.12.0] C:\Users\Леха гей\.gradle\caches\transforms-3\ac096f90094cf9efe180c022c3399272\transformed\core-1.12.0\AndroidManifest.xml:28:18-86
+	android:supportsRtl
+		ADDED from D:\MOM\app\src\main\AndroidManifest.xml:21:9-35
+	android:label
+		ADDED from D:\MOM\app\src\main\AndroidManifest.xml:19:9-41
+	android:fullBackupContent
+		ADDED from D:\MOM\app\src\main\AndroidManifest.xml:17:9-54
+	android:roundIcon
+		ADDED from D:\MOM\app\src\main\AndroidManifest.xml:20:9-54
+	tools:targetApi
+		ADDED from D:\MOM\app\src\main\AndroidManifest.xml:23:9-29
+	android:icon
+		ADDED from D:\MOM\app\src\main\AndroidManifest.xml:18:9-43
+	android:allowBackup
+		ADDED from D:\MOM\app\src\main\AndroidManifest.xml:15:9-35
+	android:theme
+		ADDED from D:\MOM\app\src\main\AndroidManifest.xml:22:9-40
+	android:dataExtractionRules
+		ADDED from D:\MOM\app\src\main\AndroidManifest.xml:16:9-65
+activity#com.example.tm.CategoryActivity
+ADDED from D:\MOM\app\src\main\AndroidManifest.xml:24:9-26:40
+	android:exported
+		ADDED from D:\MOM\app\src\main\AndroidManifest.xml:26:13-37
+	android:name
+		ADDED from D:\MOM\app\src\main\AndroidManifest.xml:25:13-45
+activity#com.example.tm.MainActivity
+ADDED from D:\MOM\app\src\main\AndroidManifest.xml:27:9-35:20
+	android:exported
+		ADDED from D:\MOM\app\src\main\AndroidManifest.xml:29:13-36
+	android:name
+		ADDED from D:\MOM\app\src\main\AndroidManifest.xml:28:13-41
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from D:\MOM\app\src\main\AndroidManifest.xml:30:13-34:29
+action#android.intent.action.MAIN
+ADDED from D:\MOM\app\src\main\AndroidManifest.xml:31:17-69
+	android:name
+		ADDED from D:\MOM\app\src\main\AndroidManifest.xml:31:25-66
+category#android.intent.category.LAUNCHER
+ADDED from D:\MOM\app\src\main\AndroidManifest.xml:33:17-77
+	android:name
+		ADDED from D:\MOM\app\src\main\AndroidManifest.xml:33:27-74
+service#com.example.tm.utilities.MyFirebaseMessagingService
+ADDED from D:\MOM\app\src\main\AndroidManifest.xml:37:9-43:19
+	android:exported
+		ADDED from D:\MOM\app\src\main\AndroidManifest.xml:39:13-37
+	android:name
+		ADDED from D:\MOM\app\src\main\AndroidManifest.xml:38:13-65
+intent-filter#action:name:com.google.firebase.INSTANCE_ID_EVENT
+ADDED from D:\MOM\app\src\main\AndroidManifest.xml:40:13-42:29
+action#com.google.firebase.INSTANCE_ID_EVENT
+ADDED from D:\MOM\app\src\main\AndroidManifest.xml:41:17-80
+	android:name
+		ADDED from D:\MOM\app\src\main\AndroidManifest.xml:41:25-77
+meta-data#preloaded_fonts
+ADDED from D:\MOM\app\src\main\AndroidManifest.xml:45:9-47:57
+	android:resource
+		ADDED from D:\MOM\app\src\main\AndroidManifest.xml:47:13-54
+	android:name
+		ADDED from D:\MOM\app\src\main\AndroidManifest.xml:46:13-43
+uses-sdk
+INJECTED from D:\MOM\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\MOM\app\src\main\AndroidManifest.xml
+INJECTED from D:\MOM\app\src\main\AndroidManifest.xml
+MERGED from [androidx.databinding:databinding-adapters:8.2.2] C:\Users\Леха гей\.gradle\caches\transforms-3\4ff6c70287caef3b6ec2798e5bcf1ef3\transformed\databinding-adapters-8.2.2\AndroidManifest.xml:5:5-44
+MERGED from [androidx.databinding:databinding-adapters:8.2.2] C:\Users\Леха гей\.gradle\caches\transforms-3\4ff6c70287caef3b6ec2798e5bcf1ef3\transformed\databinding-adapters-8.2.2\AndroidManifest.xml:5:5-44
+MERGED from [androidx.databinding:databinding-ktx:8.2.2] C:\Users\Леха гей\.gradle\caches\transforms-3\452d68ab30748ed420efa7eb5225f463\transformed\databinding-ktx-8.2.2\AndroidManifest.xml:5:5-44
+MERGED from [androidx.databinding:databinding-ktx:8.2.2] C:\Users\Леха гей\.gradle\caches\transforms-3\452d68ab30748ed420efa7eb5225f463\transformed\databinding-ktx-8.2.2\AndroidManifest.xml:5:5-44
+MERGED from [androidx.databinding:databinding-runtime:8.2.2] C:\Users\Леха гей\.gradle\caches\transforms-3\dfd00cb54e15c93964487f3e445522b1\transformed\databinding-runtime-8.2.2\AndroidManifest.xml:5:5-44
+MERGED from [androidx.databinding:databinding-runtime:8.2.2] C:\Users\Леха гей\.gradle\caches\transforms-3\dfd00cb54e15c93964487f3e445522b1\transformed\databinding-runtime-8.2.2\AndroidManifest.xml:5:5-44
+MERGED from [androidx.databinding:viewbinding:8.2.2] C:\Users\Леха гей\.gradle\caches\transforms-3\45144f8fc5883dcb77cbd07fe0b0a41e\transformed\viewbinding-8.2.2\AndroidManifest.xml:5:5-44
+MERGED from [androidx.databinding:viewbinding:8.2.2] C:\Users\Леха гей\.gradle\caches\transforms-3\45144f8fc5883dcb77cbd07fe0b0a41e\transformed\viewbinding-8.2.2\AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-common:2.7.7] C:\Users\Леха гей\.gradle\caches\transforms-3\bdd45cf2937d1278add09098bb28769b\transformed\navigation-common-2.7.7\AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-common:2.7.7] C:\Users\Леха гей\.gradle\caches\transforms-3\bdd45cf2937d1278add09098bb28769b\transformed\navigation-common-2.7.7\AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-common-ktx:2.7.7] C:\Users\Леха гей\.gradle\caches\transforms-3\283c804882ca44ec815d56c4e3cdcd75\transformed\navigation-common-ktx-2.7.7\AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-common-ktx:2.7.7] C:\Users\Леха гей\.gradle\caches\transforms-3\283c804882ca44ec815d56c4e3cdcd75\transformed\navigation-common-ktx-2.7.7\AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-runtime:2.7.7] C:\Users\Леха гей\.gradle\caches\transforms-3\aadcd73a33a73915a02cb41693ec3ebd\transformed\navigation-runtime-2.7.7\AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-runtime:2.7.7] C:\Users\Леха гей\.gradle\caches\transforms-3\aadcd73a33a73915a02cb41693ec3ebd\transformed\navigation-runtime-2.7.7\AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-runtime-ktx:2.7.7] C:\Users\Леха гей\.gradle\caches\transforms-3\8feaa6e557b8b48038614ed531d205c7\transformed\navigation-runtime-ktx-2.7.7\AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-runtime-ktx:2.7.7] C:\Users\Леха гей\.gradle\caches\transforms-3\8feaa6e557b8b48038614ed531d205c7\transformed\navigation-runtime-ktx-2.7.7\AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-fragment:2.7.7] C:\Users\Леха гей\.gradle\caches\transforms-3\1bb0d8bb6798a10cae535811ca858363\transformed\navigation-fragment-2.7.7\AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-fragment:2.7.7] C:\Users\Леха гей\.gradle\caches\transforms-3\1bb0d8bb6798a10cae535811ca858363\transformed\navigation-fragment-2.7.7\AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-fragment-ktx:2.7.7] C:\Users\Леха гей\.gradle\caches\transforms-3\7a820517f9a8fa70c627f8f7445bc269\transformed\navigation-fragment-ktx-2.7.7\AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-fragment-ktx:2.7.7] C:\Users\Леха гей\.gradle\caches\transforms-3\7a820517f9a8fa70c627f8f7445bc269\transformed\navigation-fragment-ktx-2.7.7\AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-ui-ktx:2.7.7] C:\Users\Леха гей\.gradle\caches\transforms-3\117ed459002327fe460ca8c71cb0df8e\transformed\navigation-ui-ktx-2.7.7\AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-ui-ktx:2.7.7] C:\Users\Леха гей\.gradle\caches\transforms-3\117ed459002327fe460ca8c71cb0df8e\transformed\navigation-ui-ktx-2.7.7\AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-ui:2.7.7] C:\Users\Леха гей\.gradle\caches\transforms-3\2cea99d4b5fac97996f417ff7f1fe28b\transformed\navigation-ui-2.7.7\AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-ui:2.7.7] C:\Users\Леха гей\.gradle\caches\transforms-3\2cea99d4b5fac97996f417ff7f1fe28b\transformed\navigation-ui-2.7.7\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.11.0] C:\Users\Леха гей\.gradle\caches\transforms-3\65e85a95991b59a3336e77672b4b2542\transformed\material-1.11.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.11.0] C:\Users\Леха гей\.gradle\caches\transforms-3\65e85a95991b59a3336e77672b4b2542\transformed\material-1.11.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\Леха гей\.gradle\caches\transforms-3\f9d90bfd34dd1d669bbbfe507e5383e4\transformed\constraintlayout-2.1.4\AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\Леха гей\.gradle\caches\transforms-3\f9d90bfd34dd1d669bbbfe507e5383e4\transformed\constraintlayout-2.1.4\AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.appcompat:appcompat-resources:1.6.1] C:\Users\Леха гей\.gradle\caches\transforms-3\d0f1e8c84a929eba8806863c2a8c4499\transformed\appcompat-resources-1.6.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat-resources:1.6.1] C:\Users\Леха гей\.gradle\caches\transforms-3\d0f1e8c84a929eba8806863c2a8c4499\transformed\appcompat-resources-1.6.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.preference:preference-ktx:1.2.1] C:\Users\Леха гей\.gradle\caches\transforms-3\b2627511a4807a4957e913768b142ec2\transformed\preference-ktx-1.2.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.preference:preference-ktx:1.2.1] C:\Users\Леха гей\.gradle\caches\transforms-3\b2627511a4807a4957e913768b142ec2\transformed\preference-ktx-1.2.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.preference:preference:1.2.1] C:\Users\Леха гей\.gradle\caches\transforms-3\2a5e14c38c25b152778cb4c195e17c2f\transformed\preference-1.2.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.preference:preference:1.2.1] C:\Users\Леха гей\.gradle\caches\transforms-3\2a5e14c38c25b152778cb4c195e17c2f\transformed\preference-1.2.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat:1.6.1] C:\Users\Леха гей\.gradle\caches\transforms-3\490a5b4e7428945a2f77bb54f252416f\transformed\appcompat-1.6.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat:1.6.1] C:\Users\Леха гей\.gradle\caches\transforms-3\490a5b4e7428945a2f77bb54f252416f\transformed\appcompat-1.6.1\AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\5ec315e9544c3feba3d46bfd2c50fa8f\transformed\firebase-auth-22.3.1\AndroidManifest.xml:21:5-23:64
+MERGED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\5ec315e9544c3feba3d46bfd2c50fa8f\transformed\firebase-auth-22.3.1\AndroidManifest.xml:21:5-23:64
+MERGED from [com.github.bumptech.glide:glide:4.16.0] C:\Users\Леха гей\.gradle\caches\transforms-3\e812ea81f57e8f83cada2fe259d00415\transformed\glide-4.16.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.bumptech.glide:glide:4.16.0] C:\Users\Леха гей\.gradle\caches\transforms-3\e812ea81f57e8f83cada2fe259d00415\transformed\glide-4.16.0\AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\f9dc3cb224818108157d7877dc674db7\transformed\viewpager2-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\f9dc3cb224818108157d7877dc674db7\transformed\viewpager2-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.firebase:firebase-firestore:24.11.0] C:\Users\Леха гей\.gradle\caches\transforms-3\c80326beebcd297d4833eda79a78f324\transformed\firebase-firestore-24.11.0\AndroidManifest.xml:6:5-44
+MERGED from [com.google.firebase:firebase-firestore:24.11.0] C:\Users\Леха гей\.gradle\caches\transforms-3\c80326beebcd297d4833eda79a78f324\transformed\firebase-firestore-24.11.0\AndroidManifest.xml:6:5-44
+MERGED from [com.google.firebase:firebase-database:20.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\8348bd9904ce6b8916304953c5502ce7\transformed\firebase-database-20.3.1\AndroidManifest.xml:18:5-44
+MERGED from [com.google.firebase:firebase-database:20.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\8348bd9904ce6b8916304953c5502ce7\transformed\firebase-database-20.3.1\AndroidManifest.xml:18:5-44
+MERGED from [com.google.firebase:firebase-messaging-ktx:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\7804668ce64f93f70185d158183b66ea\transformed\firebase-messaging-ktx-23.4.1\AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-messaging-ktx:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\7804668ce64f93f70185d158183b66ea\transformed\firebase-messaging-ktx-23.4.1\AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-messaging:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\54556b5a3b8e7832fb80adae1061ec2c\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-messaging:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\54556b5a3b8e7832fb80adae1061ec2c\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-storage:20.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\577bf19261cb9b35ce477ddfdd7ec1e1\transformed\firebase-storage-20.3.0\AndroidManifest.xml:19:5-44
+MERGED from [com.google.firebase:firebase-storage:20.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\577bf19261cb9b35ce477ddfdd7ec1e1\transformed\firebase-storage-20.3.0\AndroidManifest.xml:19:5-44
+MERGED from [com.google.android.gms:play-services-auth-api-phone:17.4.0] C:\Users\Леха гей\.gradle\caches\transforms-3\1967d7bc3a4b73f59c1d752ae231bed3\transformed\play-services-auth-api-phone-17.4.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-api-phone:17.4.0] C:\Users\Леха гей\.gradle\caches\transforms-3\1967d7bc3a4b73f59c1d752ae231bed3\transformed\play-services-auth-api-phone-17.4.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-database-collection:18.0.1] C:\Users\Леха гей\.gradle\caches\transforms-3\72b893ac49f16c172e2dbc933b8d49da\transformed\firebase-database-collection-18.0.1\AndroidManifest.xml:5:5-7:41
+MERGED from [com.google.firebase:firebase-database-collection:18.0.1] C:\Users\Леха гей\.gradle\caches\transforms-3\72b893ac49f16c172e2dbc933b8d49da\transformed\firebase-database-collection-18.0.1\AndroidManifest.xml:5:5-7:41
+MERGED from [com.google.firebase:firebase-appcheck:17.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\4e9e619365e6b70e24e644b3d47057cb\transformed\firebase-appcheck-17.1.0\AndroidManifest.xml:18:5-44
+MERGED from [com.google.firebase:firebase-appcheck:17.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\4e9e619365e6b70e24e644b3d47057cb\transformed\firebase-appcheck-17.1.0\AndroidManifest.xml:18:5-44
+MERGED from [com.google.firebase:firebase-appcheck-interop:17.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\c6d8a5d6021a75197151f60ed6ef34f8\transformed\firebase-appcheck-interop-17.1.0\AndroidManifest.xml:18:5-44
+MERGED from [com.google.firebase:firebase-appcheck-interop:17.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\c6d8a5d6021a75197151f60ed6ef34f8\transformed\firebase-appcheck-interop-17.1.0\AndroidManifest.xml:18:5-44
+MERGED from [com.google.android.gms:play-services-base:18.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\0e034375a611538ca61f20239ec22301\transformed\play-services-base-18.1.0\AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-base:18.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\0e034375a611538ca61f20239ec22301\transformed\play-services-base-18.1.0\AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.recaptcha:recaptcha:18.4.0] C:\Users\Леха гей\.gradle\caches\transforms-3\5f397f24cf24f6ac2c0b303ee0ee6977\transformed\recaptcha-18.4.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.recaptcha:recaptcha:18.4.0] C:\Users\Леха гей\.gradle\caches\transforms-3\5f397f24cf24f6ac2c0b303ee0ee6977\transformed\recaptcha-18.4.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.play:integrity:1.2.0] C:\Users\Леха гей\.gradle\caches\transforms-3\022763320ddb89c1e013f618adbb97b0\transformed\integrity-1.2.0\AndroidManifest.xml:4:5-44
+MERGED from [com.google.android.play:integrity:1.2.0] C:\Users\Леха гей\.gradle\caches\transforms-3\022763320ddb89c1e013f618adbb97b0\transformed\integrity-1.2.0\AndroidManifest.xml:4:5-44
+MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\b7086a519d7faf06663872ca7171d584\transformed\firebase-auth-interop-20.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\b7086a519d7faf06663872ca7171d584\transformed\firebase-auth-interop-20.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-installations:17.2.0] C:\Users\Леха гей\.gradle\caches\transforms-3\1330d99c4f7d3de9c4d94f2f334876f3\transformed\firebase-installations-17.2.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-installations:17.2.0] C:\Users\Леха гей\.gradle\caches\transforms-3\1330d99c4f7d3de9c4d94f2f334876f3\transformed\firebase-installations-17.2.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-common-ktx:20.4.2] C:\Users\Леха гей\.gradle\caches\transforms-3\2441ab5d0b7422812aa7ef08014bc165\transformed\firebase-common-ktx-20.4.2\AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-common-ktx:20.4.2] C:\Users\Леха гей\.gradle\caches\transforms-3\2441ab5d0b7422812aa7ef08014bc165\transformed\firebase-common-ktx-20.4.2\AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-common:20.4.2] C:\Users\Леха гей\.gradle\caches\transforms-3\516598574d9f61a04c87d7fa96b0af38\transformed\firebase-common-20.4.2\AndroidManifest.xml:19:5-44
+MERGED from [com.google.firebase:firebase-common:20.4.2] C:\Users\Леха гей\.gradle\caches\transforms-3\516598574d9f61a04c87d7fa96b0af38\transformed\firebase-common-20.4.2\AndroidManifest.xml:19:5-44
+MERGED from [com.google.firebase:firebase-iid-interop:17.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\ef3c6b8569848d9c972322216670ccda\transformed\firebase-iid-interop-17.1.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-iid-interop:17.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\ef3c6b8569848d9c972322216670ccda\transformed\firebase-iid-interop-17.1.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-cloud-messaging:17.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\3cbd40c07ea824c510824bc1a4c37dc7\transformed\play-services-cloud-messaging-17.1.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-cloud-messaging:17.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\3cbd40c07ea824c510824bc1a4c37dc7\transformed\play-services-cloud-messaging-17.1.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.2.0] C:\Users\Леха гей\.gradle\caches\transforms-3\6f53f4856fe0af9f329d0bf0130d6b3c\transformed\slidingpanelayout-1.2.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.2.0] C:\Users\Леха гей\.gradle\caches\transforms-3\6f53f4856fe0af9f329d0bf0130d6b3c\transformed\slidingpanelayout-1.2.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.window:window:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\30585890b140a2634f93b5c3279cf7b3\transformed\window-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.window:window:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\30585890b140a2634f93b5c3279cf7b3\transformed\window-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.test:core-ktx:1.5.0] C:\Users\Леха гей\.gradle\caches\transforms-3\45bf46f6f9f00399ef7047c131f708a4\transformed\core-ktx-1.5.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.test:core-ktx:1.5.0] C:\Users\Леха гей\.gradle\caches\transforms-3\45bf46f6f9f00399ef7047c131f708a4\transformed\core-ktx-1.5.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.test:core:1.5.0] C:\Users\Леха гей\.gradle\caches\transforms-3\bc8cacc7558ef96472cfc15949458509\transformed\core-1.5.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.test:core:1.5.0] C:\Users\Леха гей\.gradle\caches\transforms-3\bc8cacc7558ef96472cfc15949458509\transformed\core-1.5.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] C:\Users\Леха гей\.gradle\caches\transforms-3\3cad3464972606a8e0fa38023c0daa8e\transformed\savedstate-ktx-1.2.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] C:\Users\Леха гей\.gradle\caches\transforms-3\3cad3464972606a8e0fa38023c0daa8e\transformed\savedstate-ktx-1.2.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\a2c02f9e678e0676111940770b6701bc\transformed\dynamicanimation-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\a2c02f9e678e0676111940770b6701bc\transformed\dynamicanimation-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-stats:17.0.2] C:\Users\Леха гей\.gradle\caches\transforms-3\5269a014f36f71fcdc8e922c863178b6\transformed\play-services-stats-17.0.2\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-stats:17.0.2] C:\Users\Леха гей\.gradle\caches\transforms-3\5269a014f36f71fcdc8e922c863178b6\transformed\play-services-stats-17.0.2\AndroidManifest.xml:5:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\73af8c4fced0888d90d0a518f598a8bc\transformed\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\73af8c4fced0888d90d0a518f598a8bc\transformed\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\489ec8b21a59ede12c7fbf4bc6f39581\transformed\loader-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\489ec8b21a59ede12c7fbf4bc6f39581\transformed\loader-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.emoji2:emoji2-views-helper:1.2.0] C:\Users\Леха гей\.gradle\caches\transforms-3\d8d6cf58ff903eb07eee7b7b6e589833\transformed\emoji2-views-helper-1.2.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.emoji2:emoji2-views-helper:1.2.0] C:\Users\Леха гей\.gradle\caches\transforms-3\d8d6cf58ff903eb07eee7b7b6e589833\transformed\emoji2-views-helper-1.2.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.emoji2:emoji2:1.2.0] C:\Users\Леха гей\.gradle\caches\transforms-3\867fc8e3b2df7542827c93f56fcf8226\transformed\emoji2-1.2.0\AndroidManifest.xml:21:5-44
+MERGED from [androidx.emoji2:emoji2:1.2.0] C:\Users\Леха гей\.gradle\caches\transforms-3\867fc8e3b2df7542827c93f56fcf8226\transformed\emoji2-1.2.0\AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.6.2] C:\Users\Леха гей\.gradle\caches\transforms-3\062f8e1a5a490247e861e9c2228e4ddc\transformed\lifecycle-viewmodel-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.6.2] C:\Users\Леха гей\.gradle\caches\transforms-3\062f8e1a5a490247e861e9c2228e4ddc\transformed\lifecycle-viewmodel-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-service:2.6.2] C:\Users\Леха гей\.gradle\caches\transforms-3\f139b81bad92ad6e59196b6385846145\transformed\lifecycle-service-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-service:2.6.2] C:\Users\Леха гей\.gradle\caches\transforms-3\f139b81bad92ad6e59196b6385846145\transformed\lifecycle-service-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\Леха гей\.gradle\caches\transforms-3\0e348758e4ee5f03d72ecd7bd4f0bfa9\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\Леха гей\.gradle\caches\transforms-3\0e348758e4ee5f03d72ecd7bd4f0bfa9\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.6.2] C:\Users\Леха гей\.gradle\caches\transforms-3\11566ff6f6cea90cb7e37195dd4d4ec7\transformed\lifecycle-livedata-core-ktx-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.6.2] C:\Users\Леха гей\.gradle\caches\transforms-3\11566ff6f6cea90cb7e37195dd4d4ec7\transformed\lifecycle-livedata-core-ktx-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.6.2] C:\Users\Леха гей\.gradle\caches\transforms-3\441fd9568bd6c9db289dbb14e288942e\transformed\lifecycle-livedata-core-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.6.2] C:\Users\Леха гей\.gradle\caches\transforms-3\441fd9568bd6c9db289dbb14e288942e\transformed\lifecycle-livedata-core-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.6.2] C:\Users\Леха гей\.gradle\caches\transforms-3\b140e214f92b965bdf10ee1350eb2206\transformed\lifecycle-livedata-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.6.2] C:\Users\Леха гей\.gradle\caches\transforms-3\b140e214f92b965bdf10ee1350eb2206\transformed\lifecycle-livedata-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.2] C:\Users\Леха гей\.gradle\caches\transforms-3\a83bab6f4581649e9795d8bd362a941f\transformed\lifecycle-viewmodel-savedstate-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.2] C:\Users\Леха гей\.gradle\caches\transforms-3\a83bab6f4581649e9795d8bd362a941f\transformed\lifecycle-viewmodel-savedstate-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.2.1] C:\Users\Леха гей\.gradle\caches\transforms-3\6b7c20be6c6d71dafb21cf0690268f97\transformed\savedstate-1.2.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.2.1] C:\Users\Леха гей\.gradle\caches\transforms-3\6b7c20be6c6d71dafb21cf0690268f97\transformed\savedstate-1.2.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.6.2] C:\Users\Леха гей\.gradle\caches\transforms-3\1aeb3bd7aba9b5c1525b21a8edac6bdd\transformed\lifecycle-runtime-2.6.2\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.6.2] C:\Users\Леха гей\.gradle\caches\transforms-3\1aeb3bd7aba9b5c1525b21a8edac6bdd\transformed\lifecycle-runtime-2.6.2\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2] C:\Users\Леха гей\.gradle\caches\transforms-3\fb00631c019d458c18eec3b14cbcbaac\transformed\lifecycle-viewmodel-ktx-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2] C:\Users\Леха гей\.gradle\caches\transforms-3\fb00631c019d458c18eec3b14cbcbaac\transformed\lifecycle-viewmodel-ktx-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.6.2] C:\Users\Леха гей\.gradle\caches\transforms-3\84a6c89323411f9d743deabad74a0a1b\transformed\lifecycle-runtime-ktx-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.6.2] C:\Users\Леха гей\.gradle\caches\transforms-3\84a6c89323411f9d743deabad74a0a1b\transformed\lifecycle-runtime-ktx-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-installations-interop:17.1.1] C:\Users\Леха гей\.gradle\caches\transforms-3\f8110d4287d2f1cc5a752ab4896ea6ed\transformed\firebase-installations-interop-17.1.1\AndroidManifest.xml:17:5-44
+MERGED from [com.google.firebase:firebase-installations-interop:17.1.1] C:\Users\Леха гей\.gradle\caches\transforms-3\f8110d4287d2f1cc5a752ab4896ea6ed\transformed\firebase-installations-interop-17.1.1\AndroidManifest.xml:17:5-44
+MERGED from [com.google.android.gms:play-services-tasks:18.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\2e9dd17baa921b7a1692f97a1f15febc\transformed\play-services-tasks-18.1.0\AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-tasks:18.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\2e9dd17baa921b7a1692f97a1f15febc\transformed\play-services-tasks-18.1.0\AndroidManifest.xml:4:5-43
+MERGED from [com.google.firebase:firebase-measurement-connector:19.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\c9aee6c777ceb05284d880957366e90a\transformed\firebase-measurement-connector-19.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-measurement-connector:19.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\c9aee6c777ceb05284d880957366e90a\transformed\firebase-measurement-connector-19.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:18.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\3338884a95ac9ac4e0c0dd2b88fc94b6\transformed\play-services-basement-18.3.0\AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-basement:18.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\3338884a95ac9ac4e0c0dd2b88fc94b6\transformed\play-services-basement-18.3.0\AndroidManifest.xml:18:5-43
+MERGED from [androidx.fragment:fragment:1.6.2] C:\Users\Леха гей\.gradle\caches\transforms-3\4cea50ad66674d50dbf258fb11714d3e\transformed\fragment-1.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment:1.6.2] C:\Users\Леха гей\.gradle\caches\transforms-3\4cea50ad66674d50dbf258fb11714d3e\transformed\fragment-1.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment-ktx:1.6.2] C:\Users\Леха гей\.gradle\caches\transforms-3\f6fbff0a2d22ea75771ab7eb3ea1aafd\transformed\fragment-ktx-1.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment-ktx:1.6.2] C:\Users\Леха гей\.gradle\caches\transforms-3\f6fbff0a2d22ea75771ab7eb3ea1aafd\transformed\fragment-ktx-1.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity-ktx:1.8.2] C:\Users\Леха гей\.gradle\caches\transforms-3\fd5ad452bd47f895fd8e229a6a2d817f\transformed\activity-ktx-1.8.2\AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity-ktx:1.8.2] C:\Users\Леха гей\.gradle\caches\transforms-3\fd5ad452bd47f895fd8e229a6a2d817f\transformed\activity-ktx-1.8.2\AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity:1.8.2] C:\Users\Леха гей\.gradle\caches\transforms-3\3c4a27848b844b4aa5837f8e4101e8ed\transformed\activity-1.8.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.8.2] C:\Users\Леха гей\.gradle\caches\transforms-3\3c4a27848b844b4aa5837f8e4101e8ed\transformed\activity-1.8.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] C:\Users\Леха гей\.gradle\caches\transforms-3\da2bb4ceae16306e2d36414c6f354753\transformed\drawerlayout-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] C:\Users\Леха гей\.gradle\caches\transforms-3\da2bb4ceae16306e2d36414c6f354753\transformed\drawerlayout-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\930caf1488a65afcbda4da135eb179bd\transformed\coordinatorlayout-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\930caf1488a65afcbda4da135eb179bd\transformed\coordinatorlayout-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\7afafc367fb48fc2672ee922a1abfb5a\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\7afafc367fb48fc2672ee922a1abfb5a\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\a9b4b6de4d81e6f7ae844465062fa3e3\transformed\vectordrawable-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\a9b4b6de4d81e6f7ae844465062fa3e3\transformed\vectordrawable-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.browser:browser:1.4.0] C:\Users\Леха гей\.gradle\caches\transforms-3\3ac4a8823a44a9276ad1d7b8d2ecadab\transformed\browser-1.4.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.browser:browser:1.4.0] C:\Users\Леха гей\.gradle\caches\transforms-3\3ac4a8823a44a9276ad1d7b8d2ecadab\transformed\browser-1.4.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\41d9ed29d71dffa9a5a738777a841cc1\transformed\recyclerview-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\41d9ed29d71dffa9a5a738777a841cc1\transformed\recyclerview-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\37bd2ebf6a4283d81c34a117b422eb52\transformed\viewpager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\37bd2ebf6a4283d81c34a117b422eb52\transformed\viewpager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\ab9696b38b21aa38da2b17071b8fbf58\transformed\customview-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview:1.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\ab9696b38b21aa38da2b17071b8fbf58\transformed\customview-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.transition:transition:1.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\576841946a9cb3e6b2cdcc0734984d51\transformed\transition-1.4.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.transition:transition:1.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\576841946a9cb3e6b2cdcc0734984d51\transformed\transition-1.4.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.12.0] C:\Users\Леха гей\.gradle\caches\transforms-3\ac096f90094cf9efe180c022c3399272\transformed\core-1.12.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.12.0] C:\Users\Леха гей\.gradle\caches\transforms-3\ac096f90094cf9efe180c022c3399272\transformed\core-1.12.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core-ktx:1.12.0] C:\Users\Леха гей\.gradle\caches\transforms-3\37e00bdc8d131e60b7c08a3089886575\transformed\core-ktx-1.12.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-ktx:1.12.0] C:\Users\Леха гей\.gradle\caches\transforms-3\37e00bdc8d131e60b7c08a3089886575\transformed\core-ktx-1.12.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.test.services:storage:1.4.2] C:\Users\Леха гей\.gradle\caches\transforms-3\8781ad161c51ddddd100c8828b3308d4\transformed\storage-1.4.2\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.test.services:storage:1.4.2] C:\Users\Леха гей\.gradle\caches\transforms-3\8781ad161c51ddddd100c8828b3308d4\transformed\storage-1.4.2\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.test:monitor:1.6.0] C:\Users\Леха гей\.gradle\caches\transforms-3\6f63f7134016b3f4e9c1280b374eb47f\transformed\monitor-1.6.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.test:monitor:1.6.0] C:\Users\Леха гей\.gradle\caches\transforms-3\6f63f7134016b3f4e9c1280b374eb47f\transformed\monitor-1.6.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.test:annotation:1.0.1] C:\Users\Леха гей\.gradle\caches\transforms-3\02f5a406c5bdd1908df8d1914439dfca\transformed\annotation-1.0.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.test:annotation:1.0.1] C:\Users\Леха гей\.gradle\caches\transforms-3\02f5a406c5bdd1908df8d1914439dfca\transformed\annotation-1.0.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.annotation:annotation-experimental:1.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\11a30985dc0927272722fa9fdb647082\transformed\annotation-experimental-1.3.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\11a30985dc0927272722fa9fdb647082\transformed\annotation-experimental-1.3.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\fc8573d1631018da96923f46c17a7b3d\transformed\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\fc8573d1631018da96923f46c17a7b3d\transformed\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\ff1c42eb8d6447253d48d6ec09a6bfe5\transformed\cardview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\ff1c42eb8d6447253d48d6ec09a6bfe5\transformed\cardview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\b82b882e0adb0eaa4321e86b22eb7c30\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\b82b882e0adb0eaa4321e86b22eb7c30\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-components:17.1.5] C:\Users\Леха гей\.gradle\caches\transforms-3\f92674420596b01777595c190550e9cf\transformed\firebase-components-17.1.5\AndroidManifest.xml:18:5-44
+MERGED from [com.google.firebase:firebase-components:17.1.5] C:\Users\Леха гей\.gradle\caches\transforms-3\f92674420596b01777595c190550e9cf\transformed\firebase-components-17.1.5\AndroidManifest.xml:18:5-44
+MERGED from [com.google.firebase:firebase-datatransport:18.1.7] C:\Users\Леха гей\.gradle\caches\transforms-3\77caf861f3298d5af1992a162f2f9b4b\transformed\firebase-datatransport-18.1.7\AndroidManifest.xml:18:5-20:41
+MERGED from [com.google.firebase:firebase-datatransport:18.1.7] C:\Users\Леха гей\.gradle\caches\transforms-3\77caf861f3298d5af1992a162f2f9b4b\transformed\firebase-datatransport-18.1.7\AndroidManifest.xml:18:5-20:41
+MERGED from [com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\Леха гей\.gradle\caches\transforms-3\eb6ab22accc6f330ef639095956f0d73\transformed\transport-backend-cct-3.1.8\AndroidManifest.xml:18:5-20:41
+MERGED from [com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\Леха гей\.gradle\caches\transforms-3\eb6ab22accc6f330ef639095956f0d73\transformed\transport-backend-cct-3.1.8\AndroidManifest.xml:18:5-20:41
+MERGED from [com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\Леха гей\.gradle\caches\transforms-3\5d23f8f38019f700acca14a5af338234\transformed\transport-runtime-3.1.8\AndroidManifest.xml:18:5-20:41
+MERGED from [com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\Леха гей\.gradle\caches\transforms-3\5d23f8f38019f700acca14a5af338234\transformed\transport-runtime-3.1.8\AndroidManifest.xml:18:5-20:41
+MERGED from [com.google.android.datatransport:transport-api:3.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\200e73389310331a8e49ed1a21d9e287\transformed\transport-api-3.1.0\AndroidManifest.xml:18:5-44
+MERGED from [com.google.android.datatransport:transport-api:3.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\200e73389310331a8e49ed1a21d9e287\transformed\transport-api-3.1.0\AndroidManifest.xml:18:5-44
+MERGED from [com.google.firebase:firebase-encoders-json:18.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\f16a55b7def9f3e2d3bb14de60b8fd07\transformed\firebase-encoders-json-18.0.0\AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-encoders-json:18.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\f16a55b7def9f3e2d3bb14de60b8fd07\transformed\firebase-encoders-json-18.0.0\AndroidManifest.xml:19:5-21:41
+MERGED from [com.github.bumptech.glide:gifdecoder:4.16.0] C:\Users\Леха гей\.gradle\caches\transforms-3\bc290f406274def0857f2c47cbe609ec\transformed\gifdecoder-4.16.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.bumptech.glide:gifdecoder:4.16.0] C:\Users\Леха гей\.gradle\caches\transforms-3\bc290f406274def0857f2c47cbe609ec\transformed\gifdecoder-4.16.0\AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.exifinterface:exifinterface:1.3.6] C:\Users\Леха гей\.gradle\caches\transforms-3\b5774378c9d8054fd36bffb59934f420\transformed\exifinterface-1.3.6\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.exifinterface:exifinterface:1.3.6] C:\Users\Леха гей\.gradle\caches\transforms-3\b5774378c9d8054fd36bffb59934f420\transformed\exifinterface-1.3.6\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\96ddbcdad814d02e97153808b6036cbf\transformed\profileinstaller-1.3.0\AndroidManifest.xml:21:5-44
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\96ddbcdad814d02e97153808b6036cbf\transformed\profileinstaller-1.3.0\AndroidManifest.xml:21:5-44
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\Леха гей\.gradle\caches\transforms-3\021068f4910c4d197b4068c0cec0dd14\transformed\startup-runtime-1.1.1\AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\Леха гей\.gradle\caches\transforms-3\021068f4910c4d197b4068c0cec0dd14\transformed\startup-runtime-1.1.1\AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\fb531e0631fbc74fb2d727a3dfb86f93\transformed\tracing-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\fb531e0631fbc74fb2d727a3dfb86f93\transformed\tracing-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\2082fd9692044961465ddd7dc928d940\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\2082fd9692044961465ddd7dc928d940\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\Леха гей\.gradle\caches\transforms-3\5bf52770581ab9b7495e779d7b7ba709\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\Леха гей\.gradle\caches\transforms-3\5bf52770581ab9b7495e779d7b7ba709\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\0678f1a02ce62ed0a55bd202acae3651\transformed\documentfile-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\0678f1a02ce62ed0a55bd202acae3651\transformed\documentfile-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\7307c1b4a2be977ffc4d218e4fba8660\transformed\print-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\7307c1b4a2be977ffc4d218e4fba8660\transformed\print-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\Леха гей\.gradle\caches\transforms-3\96bdbd5f38eebf97921cd3ce7c772f6f\transformed\core-runtime-2.2.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\Леха гей\.gradle\caches\transforms-3\96bdbd5f38eebf97921cd3ce7c772f6f\transformed\core-runtime-2.2.0\AndroidManifest.xml:20:5-44
+MERGED from [de.hdodenhof:circleimageview:3.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\3023b7fb46606802a98675ad76282410\transformed\circleimageview-3.1.0\AndroidManifest.xml:5:5-7:41
+MERGED from [de.hdodenhof:circleimageview:3.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\3023b7fb46606802a98675ad76282410\transformed\circleimageview-3.1.0\AndroidManifest.xml:5:5-7:41
+MERGED from [io.grpc:grpc-android:1.57.2] C:\Users\Леха гей\.gradle\caches\transforms-3\119a18413aee9076cdb7f68fa7b21f56\transformed\grpc-android-1.57.2\AndroidManifest.xml:5:5-44
+MERGED from [io.grpc:grpc-android:1.57.2] C:\Users\Леха гей\.gradle\caches\transforms-3\119a18413aee9076cdb7f68fa7b21f56\transformed\grpc-android-1.57.2\AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:protolite-well-known-types:18.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\5aa6428189a6ee74041d9784bcb8dcc3\transformed\protolite-well-known-types-18.0.0\AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.firebase:protolite-well-known-types:18.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\5aa6428189a6ee74041d9784bcb8dcc3\transformed\protolite-well-known-types-18.0.0\AndroidManifest.xml:7:5-9:41
+	tools:overrideLibrary
+		ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\5ec315e9544c3feba3d46bfd2c50fa8f\transformed\firebase-auth-22.3.1\AndroidManifest.xml:23:9-61
+	android:targetSdkVersion
+		INJECTED from D:\MOM\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from D:\MOM\app\src\main\AndroidManifest.xml
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\5ec315e9544c3feba3d46bfd2c50fa8f\transformed\firebase-auth-22.3.1\AndroidManifest.xml:26:5-79
+MERGED from [com.google.firebase:firebase-firestore:24.11.0] C:\Users\Леха гей\.gradle\caches\transforms-3\c80326beebcd297d4833eda79a78f324\transformed\firebase-firestore-24.11.0\AndroidManifest.xml:10:5-79
+MERGED from [com.google.firebase:firebase-firestore:24.11.0] C:\Users\Леха гей\.gradle\caches\transforms-3\c80326beebcd297d4833eda79a78f324\transformed\firebase-firestore-24.11.0\AndroidManifest.xml:10:5-79
+MERGED from [com.google.firebase:firebase-database:20.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\8348bd9904ce6b8916304953c5502ce7\transformed\firebase-database-20.3.1\AndroidManifest.xml:22:5-79
+MERGED from [com.google.firebase:firebase-database:20.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\8348bd9904ce6b8916304953c5502ce7\transformed\firebase-database-20.3.1\AndroidManifest.xml:22:5-79
+MERGED from [com.google.firebase:firebase-messaging:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\54556b5a3b8e7832fb80adae1061ec2c\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:22:5-79
+MERGED from [com.google.firebase:firebase-messaging:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\54556b5a3b8e7832fb80adae1061ec2c\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:22:5-79
+MERGED from [com.google.firebase:firebase-storage:20.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\577bf19261cb9b35ce477ddfdd7ec1e1\transformed\firebase-storage-20.3.0\AndroidManifest.xml:23:5-79
+MERGED from [com.google.firebase:firebase-storage:20.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\577bf19261cb9b35ce477ddfdd7ec1e1\transformed\firebase-storage-20.3.0\AndroidManifest.xml:23:5-79
+MERGED from [com.google.android.recaptcha:recaptcha:18.4.0] C:\Users\Леха гей\.gradle\caches\transforms-3\5f397f24cf24f6ac2c0b303ee0ee6977\transformed\recaptcha-18.4.0\AndroidManifest.xml:8:5-79
+MERGED from [com.google.android.recaptcha:recaptcha:18.4.0] C:\Users\Леха гей\.gradle\caches\transforms-3\5f397f24cf24f6ac2c0b303ee0ee6977\transformed\recaptcha-18.4.0\AndroidManifest.xml:8:5-79
+MERGED from [com.google.firebase:firebase-installations:17.2.0] C:\Users\Леха гей\.gradle\caches\transforms-3\1330d99c4f7d3de9c4d94f2f334876f3\transformed\firebase-installations-17.2.0\AndroidManifest.xml:7:5-79
+MERGED from [com.google.firebase:firebase-installations:17.2.0] C:\Users\Леха гей\.gradle\caches\transforms-3\1330d99c4f7d3de9c4d94f2f334876f3\transformed\firebase-installations-17.2.0\AndroidManifest.xml:7:5-79
+MERGED from [com.google.android.gms:play-services-cloud-messaging:17.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\3cbd40c07ea824c510824bc1a4c37dc7\transformed\play-services-cloud-messaging-17.1.0\AndroidManifest.xml:7:5-79
+MERGED from [com.google.android.gms:play-services-cloud-messaging:17.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\3cbd40c07ea824c510824bc1a4c37dc7\transformed\play-services-cloud-messaging-17.1.0\AndroidManifest.xml:7:5-79
+MERGED from [com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\Леха гей\.gradle\caches\transforms-3\eb6ab22accc6f330ef639095956f0d73\transformed\transport-backend-cct-3.1.8\AndroidManifest.xml:24:5-79
+MERGED from [com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\Леха гей\.gradle\caches\transforms-3\eb6ab22accc6f330ef639095956f0d73\transformed\transport-backend-cct-3.1.8\AndroidManifest.xml:24:5-79
+MERGED from [com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\Леха гей\.gradle\caches\transforms-3\5d23f8f38019f700acca14a5af338234\transformed\transport-runtime-3.1.8\AndroidManifest.xml:22:5-79
+MERGED from [com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\Леха гей\.gradle\caches\transforms-3\5d23f8f38019f700acca14a5af338234\transformed\transport-runtime-3.1.8\AndroidManifest.xml:22:5-79
+MERGED from [io.grpc:grpc-android:1.57.2] C:\Users\Леха гей\.gradle\caches\transforms-3\119a18413aee9076cdb7f68fa7b21f56\transformed\grpc-android-1.57.2\AndroidManifest.xml:7:5-79
+MERGED from [io.grpc:grpc-android:1.57.2] C:\Users\Леха гей\.gradle\caches\transforms-3\119a18413aee9076cdb7f68fa7b21f56\transformed\grpc-android-1.57.2\AndroidManifest.xml:7:5-79
+	android:name
+		ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\5ec315e9544c3feba3d46bfd2c50fa8f\transformed\firebase-auth-22.3.1\AndroidManifest.xml:26:22-76
+activity#com.google.firebase.auth.internal.GenericIdpActivity
+ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\5ec315e9544c3feba3d46bfd2c50fa8f\transformed\firebase-auth-22.3.1\AndroidManifest.xml:29:9-46:20
+	android:excludeFromRecents
+		ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\5ec315e9544c3feba3d46bfd2c50fa8f\transformed\firebase-auth-22.3.1\AndroidManifest.xml:31:13-46
+	android:launchMode
+		ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\5ec315e9544c3feba3d46bfd2c50fa8f\transformed\firebase-auth-22.3.1\AndroidManifest.xml:33:13-44
+	android:exported
+		ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\5ec315e9544c3feba3d46bfd2c50fa8f\transformed\firebase-auth-22.3.1\AndroidManifest.xml:32:13-36
+	android:theme
+		ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\5ec315e9544c3feba3d46bfd2c50fa8f\transformed\firebase-auth-22.3.1\AndroidManifest.xml:34:13-72
+	android:name
+		ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\5ec315e9544c3feba3d46bfd2c50fa8f\transformed\firebase-auth-22.3.1\AndroidManifest.xml:30:13-80
+intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:firebase.auth+data:path:/+data:scheme:genericidp
+ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\5ec315e9544c3feba3d46bfd2c50fa8f\transformed\firebase-auth-22.3.1\AndroidManifest.xml:35:13-45:29
+action#android.intent.action.VIEW
+ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\5ec315e9544c3feba3d46bfd2c50fa8f\transformed\firebase-auth-22.3.1\AndroidManifest.xml:36:17-69
+	android:name
+		ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\5ec315e9544c3feba3d46bfd2c50fa8f\transformed\firebase-auth-22.3.1\AndroidManifest.xml:36:25-66
+category#android.intent.category.DEFAULT
+ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\5ec315e9544c3feba3d46bfd2c50fa8f\transformed\firebase-auth-22.3.1\AndroidManifest.xml:38:17-76
+	android:name
+		ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\5ec315e9544c3feba3d46bfd2c50fa8f\transformed\firebase-auth-22.3.1\AndroidManifest.xml:38:27-73
+category#android.intent.category.BROWSABLE
+ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\5ec315e9544c3feba3d46bfd2c50fa8f\transformed\firebase-auth-22.3.1\AndroidManifest.xml:39:17-78
+	android:name
+		ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\5ec315e9544c3feba3d46bfd2c50fa8f\transformed\firebase-auth-22.3.1\AndroidManifest.xml:39:27-75
+data
+ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\5ec315e9544c3feba3d46bfd2c50fa8f\transformed\firebase-auth-22.3.1\AndroidManifest.xml:41:17-44:51
+	android:path
+		ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\5ec315e9544c3feba3d46bfd2c50fa8f\transformed\firebase-auth-22.3.1\AndroidManifest.xml:43:21-37
+	android:host
+		ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\5ec315e9544c3feba3d46bfd2c50fa8f\transformed\firebase-auth-22.3.1\AndroidManifest.xml:42:21-49
+	android:scheme
+		ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\5ec315e9544c3feba3d46bfd2c50fa8f\transformed\firebase-auth-22.3.1\AndroidManifest.xml:44:21-48
+activity#com.google.firebase.auth.internal.RecaptchaActivity
+ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\5ec315e9544c3feba3d46bfd2c50fa8f\transformed\firebase-auth-22.3.1\AndroidManifest.xml:47:9-64:20
+	android:excludeFromRecents
+		ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\5ec315e9544c3feba3d46bfd2c50fa8f\transformed\firebase-auth-22.3.1\AndroidManifest.xml:49:13-46
+	android:launchMode
+		ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\5ec315e9544c3feba3d46bfd2c50fa8f\transformed\firebase-auth-22.3.1\AndroidManifest.xml:51:13-44
+	android:exported
+		ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\5ec315e9544c3feba3d46bfd2c50fa8f\transformed\firebase-auth-22.3.1\AndroidManifest.xml:50:13-36
+	android:theme
+		ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\5ec315e9544c3feba3d46bfd2c50fa8f\transformed\firebase-auth-22.3.1\AndroidManifest.xml:52:13-72
+	android:name
+		ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\5ec315e9544c3feba3d46bfd2c50fa8f\transformed\firebase-auth-22.3.1\AndroidManifest.xml:48:13-79
+intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:firebase.auth+data:path:/+data:scheme:recaptcha
+ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\5ec315e9544c3feba3d46bfd2c50fa8f\transformed\firebase-auth-22.3.1\AndroidManifest.xml:53:13-63:29
+service#com.google.firebase.components.ComponentDiscoveryService
+ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\5ec315e9544c3feba3d46bfd2c50fa8f\transformed\firebase-auth-22.3.1\AndroidManifest.xml:66:9-72:19
+MERGED from [com.google.firebase:firebase-firestore:24.11.0] C:\Users\Леха гей\.gradle\caches\transforms-3\c80326beebcd297d4833eda79a78f324\transformed\firebase-firestore-24.11.0\AndroidManifest.xml:14:9-23:19
+MERGED from [com.google.firebase:firebase-firestore:24.11.0] C:\Users\Леха гей\.gradle\caches\transforms-3\c80326beebcd297d4833eda79a78f324\transformed\firebase-firestore-24.11.0\AndroidManifest.xml:14:9-23:19
+MERGED from [com.google.firebase:firebase-database:20.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\8348bd9904ce6b8916304953c5502ce7\transformed\firebase-database-20.3.1\AndroidManifest.xml:26:9-35:19
+MERGED from [com.google.firebase:firebase-database:20.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\8348bd9904ce6b8916304953c5502ce7\transformed\firebase-database-20.3.1\AndroidManifest.xml:26:9-35:19
+MERGED from [com.google.firebase:firebase-messaging-ktx:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\7804668ce64f93f70185d158183b66ea\transformed\firebase-messaging-ktx-23.4.1\AndroidManifest.xml:23:9-29:19
+MERGED from [com.google.firebase:firebase-messaging-ktx:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\7804668ce64f93f70185d158183b66ea\transformed\firebase-messaging-ktx-23.4.1\AndroidManifest.xml:23:9-29:19
+MERGED from [com.google.firebase:firebase-messaging:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\54556b5a3b8e7832fb80adae1061ec2c\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:54:9-63:19
+MERGED from [com.google.firebase:firebase-messaging:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\54556b5a3b8e7832fb80adae1061ec2c\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:54:9-63:19
+MERGED from [com.google.firebase:firebase-storage:20.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\577bf19261cb9b35ce477ddfdd7ec1e1\transformed\firebase-storage-20.3.0\AndroidManifest.xml:27:9-36:19
+MERGED from [com.google.firebase:firebase-storage:20.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\577bf19261cb9b35ce477ddfdd7ec1e1\transformed\firebase-storage-20.3.0\AndroidManifest.xml:27:9-36:19
+MERGED from [com.google.firebase:firebase-appcheck:17.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\4e9e619365e6b70e24e644b3d47057cb\transformed\firebase-appcheck-17.1.0\AndroidManifest.xml:22:9-31:19
+MERGED from [com.google.firebase:firebase-appcheck:17.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\4e9e619365e6b70e24e644b3d47057cb\transformed\firebase-appcheck-17.1.0\AndroidManifest.xml:22:9-31:19
+MERGED from [com.google.firebase:firebase-installations:17.2.0] C:\Users\Леха гей\.gradle\caches\transforms-3\1330d99c4f7d3de9c4d94f2f334876f3\transformed\firebase-installations-17.2.0\AndroidManifest.xml:12:9-21:19
+MERGED from [com.google.firebase:firebase-installations:17.2.0] C:\Users\Леха гей\.gradle\caches\transforms-3\1330d99c4f7d3de9c4d94f2f334876f3\transformed\firebase-installations-17.2.0\AndroidManifest.xml:12:9-21:19
+MERGED from [com.google.firebase:firebase-common-ktx:20.4.2] C:\Users\Леха гей\.gradle\caches\transforms-3\2441ab5d0b7422812aa7ef08014bc165\transformed\firebase-common-ktx-20.4.2\AndroidManifest.xml:9:9-15:19
+MERGED from [com.google.firebase:firebase-common-ktx:20.4.2] C:\Users\Леха гей\.gradle\caches\transforms-3\2441ab5d0b7422812aa7ef08014bc165\transformed\firebase-common-ktx-20.4.2\AndroidManifest.xml:9:9-15:19
+MERGED from [com.google.firebase:firebase-common:20.4.2] C:\Users\Леха гей\.gradle\caches\transforms-3\516598574d9f61a04c87d7fa96b0af38\transformed\firebase-common-20.4.2\AndroidManifest.xml:30:9-38:19
+MERGED from [com.google.firebase:firebase-common:20.4.2] C:\Users\Леха гей\.gradle\caches\transforms-3\516598574d9f61a04c87d7fa96b0af38\transformed\firebase-common-20.4.2\AndroidManifest.xml:30:9-38:19
+MERGED from [com.google.firebase:firebase-datatransport:18.1.7] C:\Users\Леха гей\.gradle\caches\transforms-3\77caf861f3298d5af1992a162f2f9b4b\transformed\firebase-datatransport-18.1.7\AndroidManifest.xml:24:9-30:19
+MERGED from [com.google.firebase:firebase-datatransport:18.1.7] C:\Users\Леха гей\.gradle\caches\transforms-3\77caf861f3298d5af1992a162f2f9b4b\transformed\firebase-datatransport-18.1.7\AndroidManifest.xml:24:9-30:19
+	android:exported
+		ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\5ec315e9544c3feba3d46bfd2c50fa8f\transformed\firebase-auth-22.3.1\AndroidManifest.xml:68:13-37
+	tools:targetApi
+		ADDED from [com.google.firebase:firebase-common:20.4.2] C:\Users\Леха гей\.gradle\caches\transforms-3\516598574d9f61a04c87d7fa96b0af38\transformed\firebase-common-20.4.2\AndroidManifest.xml:34:13-32
+	android:directBootAware
+		ADDED from [com.google.firebase:firebase-common:20.4.2] C:\Users\Леха гей\.gradle\caches\transforms-3\516598574d9f61a04c87d7fa96b0af38\transformed\firebase-common-20.4.2\AndroidManifest.xml:32:13-43
+	android:name
+		ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\5ec315e9544c3feba3d46bfd2c50fa8f\transformed\firebase-auth-22.3.1\AndroidManifest.xml:67:13-84
+meta-data#com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar
+ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\5ec315e9544c3feba3d46bfd2c50fa8f\transformed\firebase-auth-22.3.1\AndroidManifest.xml:69:13-71:85
+	android:value
+		ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\5ec315e9544c3feba3d46bfd2c50fa8f\transformed\firebase-auth-22.3.1\AndroidManifest.xml:71:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\5ec315e9544c3feba3d46bfd2c50fa8f\transformed\firebase-auth-22.3.1\AndroidManifest.xml:70:17-109
+meta-data#com.google.firebase.components:com.google.firebase.firestore.FirebaseFirestoreKtxRegistrar
+ADDED from [com.google.firebase:firebase-firestore:24.11.0] C:\Users\Леха гей\.gradle\caches\transforms-3\c80326beebcd297d4833eda79a78f324\transformed\firebase-firestore-24.11.0\AndroidManifest.xml:17:13-19:85
+	android:value
+		ADDED from [com.google.firebase:firebase-firestore:24.11.0] C:\Users\Леха гей\.gradle\caches\transforms-3\c80326beebcd297d4833eda79a78f324\transformed\firebase-firestore-24.11.0\AndroidManifest.xml:19:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-firestore:24.11.0] C:\Users\Леха гей\.gradle\caches\transforms-3\c80326beebcd297d4833eda79a78f324\transformed\firebase-firestore-24.11.0\AndroidManifest.xml:18:17-122
+meta-data#com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar
+ADDED from [com.google.firebase:firebase-firestore:24.11.0] C:\Users\Леха гей\.gradle\caches\transforms-3\c80326beebcd297d4833eda79a78f324\transformed\firebase-firestore-24.11.0\AndroidManifest.xml:20:13-22:85
+	android:value
+		ADDED from [com.google.firebase:firebase-firestore:24.11.0] C:\Users\Леха гей\.gradle\caches\transforms-3\c80326beebcd297d4833eda79a78f324\transformed\firebase-firestore-24.11.0\AndroidManifest.xml:22:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-firestore:24.11.0] C:\Users\Леха гей\.gradle\caches\transforms-3\c80326beebcd297d4833eda79a78f324\transformed\firebase-firestore-24.11.0\AndroidManifest.xml:21:17-111
+meta-data#com.google.firebase.components:com.google.firebase.database.FirebaseDatabaseKtxRegistrar
+ADDED from [com.google.firebase:firebase-database:20.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\8348bd9904ce6b8916304953c5502ce7\transformed\firebase-database-20.3.1\AndroidManifest.xml:29:13-31:85
+	android:value
+		ADDED from [com.google.firebase:firebase-database:20.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\8348bd9904ce6b8916304953c5502ce7\transformed\firebase-database-20.3.1\AndroidManifest.xml:31:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-database:20.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\8348bd9904ce6b8916304953c5502ce7\transformed\firebase-database-20.3.1\AndroidManifest.xml:30:17-120
+meta-data#com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar
+ADDED from [com.google.firebase:firebase-database:20.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\8348bd9904ce6b8916304953c5502ce7\transformed\firebase-database-20.3.1\AndroidManifest.xml:32:13-34:85
+	android:value
+		ADDED from [com.google.firebase:firebase-database:20.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\8348bd9904ce6b8916304953c5502ce7\transformed\firebase-database-20.3.1\AndroidManifest.xml:34:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-database:20.3.1] C:\Users\Леха гей\.gradle\caches\transforms-3\8348bd9904ce6b8916304953c5502ce7\transformed\firebase-database-20.3.1\AndroidManifest.xml:33:17-109
+meta-data#com.google.firebase.components:com.google.firebase.messaging.ktx.FirebaseMessagingLegacyRegistrar
+ADDED from [com.google.firebase:firebase-messaging-ktx:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\7804668ce64f93f70185d158183b66ea\transformed\firebase-messaging-ktx-23.4.1\AndroidManifest.xml:26:13-28:85
+	android:value
+		ADDED from [com.google.firebase:firebase-messaging-ktx:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\7804668ce64f93f70185d158183b66ea\transformed\firebase-messaging-ktx-23.4.1\AndroidManifest.xml:28:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-messaging-ktx:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\7804668ce64f93f70185d158183b66ea\transformed\firebase-messaging-ktx-23.4.1\AndroidManifest.xml:27:17-129
+uses-permission#android.permission.POST_NOTIFICATIONS
+ADDED from [com.google.firebase:firebase-messaging:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\54556b5a3b8e7832fb80adae1061ec2c\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:23:5-77
+	android:name
+		ADDED from [com.google.firebase:firebase-messaging:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\54556b5a3b8e7832fb80adae1061ec2c\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:23:22-74
+uses-permission#android.permission.WAKE_LOCK
+ADDED from [com.google.firebase:firebase-messaging:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\54556b5a3b8e7832fb80adae1061ec2c\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:24:5-68
+MERGED from [com.google.android.gms:play-services-cloud-messaging:17.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\3cbd40c07ea824c510824bc1a4c37dc7\transformed\play-services-cloud-messaging-17.1.0\AndroidManifest.xml:9:5-68
+MERGED from [com.google.android.gms:play-services-cloud-messaging:17.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\3cbd40c07ea824c510824bc1a4c37dc7\transformed\play-services-cloud-messaging-17.1.0\AndroidManifest.xml:9:5-68
+	android:name
+		ADDED from [com.google.firebase:firebase-messaging:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\54556b5a3b8e7832fb80adae1061ec2c\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:24:22-65
+uses-permission#com.google.android.c2dm.permission.RECEIVE
+ADDED from [com.google.firebase:firebase-messaging:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\54556b5a3b8e7832fb80adae1061ec2c\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:26:5-82
+MERGED from [com.google.android.gms:play-services-cloud-messaging:17.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\3cbd40c07ea824c510824bc1a4c37dc7\transformed\play-services-cloud-messaging-17.1.0\AndroidManifest.xml:11:5-82
+MERGED from [com.google.android.gms:play-services-cloud-messaging:17.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\3cbd40c07ea824c510824bc1a4c37dc7\transformed\play-services-cloud-messaging-17.1.0\AndroidManifest.xml:11:5-82
+	android:name
+		ADDED from [com.google.firebase:firebase-messaging:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\54556b5a3b8e7832fb80adae1061ec2c\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:26:22-79
+receiver#com.google.firebase.iid.FirebaseInstanceIdReceiver
+ADDED from [com.google.firebase:firebase-messaging:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\54556b5a3b8e7832fb80adae1061ec2c\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:29:9-40:20
+	android:exported
+		ADDED from [com.google.firebase:firebase-messaging:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\54556b5a3b8e7832fb80adae1061ec2c\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:31:13-36
+	android:permission
+		ADDED from [com.google.firebase:firebase-messaging:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\54556b5a3b8e7832fb80adae1061ec2c\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:32:13-73
+	android:name
+		ADDED from [com.google.firebase:firebase-messaging:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\54556b5a3b8e7832fb80adae1061ec2c\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:30:13-78
+intent-filter#action:name:com.google.android.c2dm.intent.RECEIVE
+ADDED from [com.google.firebase:firebase-messaging:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\54556b5a3b8e7832fb80adae1061ec2c\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:33:13-35:29
+action#com.google.android.c2dm.intent.RECEIVE
+ADDED from [com.google.firebase:firebase-messaging:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\54556b5a3b8e7832fb80adae1061ec2c\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:34:17-81
+	android:name
+		ADDED from [com.google.firebase:firebase-messaging:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\54556b5a3b8e7832fb80adae1061ec2c\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:34:25-78
+meta-data#com.google.android.gms.cloudmessaging.FINISHED_AFTER_HANDLED
+ADDED from [com.google.firebase:firebase-messaging:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\54556b5a3b8e7832fb80adae1061ec2c\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:37:13-39:40
+	android:value
+		ADDED from [com.google.firebase:firebase-messaging:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\54556b5a3b8e7832fb80adae1061ec2c\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:39:17-37
+	android:name
+		ADDED from [com.google.firebase:firebase-messaging:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\54556b5a3b8e7832fb80adae1061ec2c\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:38:17-92
+service#com.google.firebase.messaging.FirebaseMessagingService
+ADDED from [com.google.firebase:firebase-messaging:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\54556b5a3b8e7832fb80adae1061ec2c\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:46:9-53:19
+	android:exported
+		ADDED from [com.google.firebase:firebase-messaging:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\54556b5a3b8e7832fb80adae1061ec2c\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:49:13-37
+	android:directBootAware
+		ADDED from [com.google.firebase:firebase-messaging:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\54556b5a3b8e7832fb80adae1061ec2c\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:48:13-43
+	android:name
+		ADDED from [com.google.firebase:firebase-messaging:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\54556b5a3b8e7832fb80adae1061ec2c\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:47:13-82
+intent-filter#action:name:com.google.firebase.MESSAGING_EVENT
+ADDED from [com.google.firebase:firebase-messaging:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\54556b5a3b8e7832fb80adae1061ec2c\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:50:13-52:29
+	android:priority
+		ADDED from [com.google.firebase:firebase-messaging:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\54556b5a3b8e7832fb80adae1061ec2c\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:50:28-51
+action#com.google.firebase.MESSAGING_EVENT
+ADDED from [com.google.firebase:firebase-messaging:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\54556b5a3b8e7832fb80adae1061ec2c\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:51:17-78
+	android:name
+		ADDED from [com.google.firebase:firebase-messaging:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\54556b5a3b8e7832fb80adae1061ec2c\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:51:25-75
+meta-data#com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingKtxRegistrar
+ADDED from [com.google.firebase:firebase-messaging:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\54556b5a3b8e7832fb80adae1061ec2c\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:57:13-59:85
+	android:value
+		ADDED from [com.google.firebase:firebase-messaging:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\54556b5a3b8e7832fb80adae1061ec2c\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:59:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-messaging:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\54556b5a3b8e7832fb80adae1061ec2c\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:58:17-122
+meta-data#com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar
+ADDED from [com.google.firebase:firebase-messaging:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\54556b5a3b8e7832fb80adae1061ec2c\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:60:13-62:85
+	android:value
+		ADDED from [com.google.firebase:firebase-messaging:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\54556b5a3b8e7832fb80adae1061ec2c\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:62:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-messaging:23.4.1] C:\Users\Леха гей\.gradle\caches\transforms-3\54556b5a3b8e7832fb80adae1061ec2c\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:61:17-119
+meta-data#com.google.firebase.components:com.google.firebase.storage.FirebaseStorageKtxRegistrar
+ADDED from [com.google.firebase:firebase-storage:20.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\577bf19261cb9b35ce477ddfdd7ec1e1\transformed\firebase-storage-20.3.0\AndroidManifest.xml:30:13-32:85
+	android:value
+		ADDED from [com.google.firebase:firebase-storage:20.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\577bf19261cb9b35ce477ddfdd7ec1e1\transformed\firebase-storage-20.3.0\AndroidManifest.xml:32:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-storage:20.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\577bf19261cb9b35ce477ddfdd7ec1e1\transformed\firebase-storage-20.3.0\AndroidManifest.xml:31:17-118
+meta-data#com.google.firebase.components:com.google.firebase.storage.StorageRegistrar
+ADDED from [com.google.firebase:firebase-storage:20.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\577bf19261cb9b35ce477ddfdd7ec1e1\transformed\firebase-storage-20.3.0\AndroidManifest.xml:33:13-35:85
+	android:value
+		ADDED from [com.google.firebase:firebase-storage:20.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\577bf19261cb9b35ce477ddfdd7ec1e1\transformed\firebase-storage-20.3.0\AndroidManifest.xml:35:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-storage:20.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\577bf19261cb9b35ce477ddfdd7ec1e1\transformed\firebase-storage-20.3.0\AndroidManifest.xml:34:17-107
+meta-data#com.google.firebase.components:com.google.firebase.appcheck.FirebaseAppCheckKtxRegistrar
+ADDED from [com.google.firebase:firebase-appcheck:17.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\4e9e619365e6b70e24e644b3d47057cb\transformed\firebase-appcheck-17.1.0\AndroidManifest.xml:25:13-27:85
+	android:value
+		ADDED from [com.google.firebase:firebase-appcheck:17.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\4e9e619365e6b70e24e644b3d47057cb\transformed\firebase-appcheck-17.1.0\AndroidManifest.xml:27:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-appcheck:17.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\4e9e619365e6b70e24e644b3d47057cb\transformed\firebase-appcheck-17.1.0\AndroidManifest.xml:26:17-120
+meta-data#com.google.firebase.components:com.google.firebase.appcheck.FirebaseAppCheckRegistrar
+ADDED from [com.google.firebase:firebase-appcheck:17.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\4e9e619365e6b70e24e644b3d47057cb\transformed\firebase-appcheck-17.1.0\AndroidManifest.xml:28:13-30:85
+	android:value
+		ADDED from [com.google.firebase:firebase-appcheck:17.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\4e9e619365e6b70e24e644b3d47057cb\transformed\firebase-appcheck-17.1.0\AndroidManifest.xml:30:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-appcheck:17.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\4e9e619365e6b70e24e644b3d47057cb\transformed\firebase-appcheck-17.1.0\AndroidManifest.xml:29:17-117
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:18.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\0e034375a611538ca61f20239ec22301\transformed\play-services-base-18.1.0\AndroidManifest.xml:20:9-22:45
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:18.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\0e034375a611538ca61f20239ec22301\transformed\play-services-base-18.1.0\AndroidManifest.xml:22:19-43
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:18.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\0e034375a611538ca61f20239ec22301\transformed\play-services-base-18.1.0\AndroidManifest.xml:21:19-78
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:18.1.0] C:\Users\Леха гей\.gradle\caches\transforms-3\0e034375a611538ca61f20239ec22301\transformed\play-services-base-18.1.0\AndroidManifest.xml:20:19-85
+uses-permission#com.google.android.providers.gsf.permission.READ_GSERVICES
+ADDED from [com.google.android.recaptcha:recaptcha:18.4.0] C:\Users\Леха гей\.gradle\caches\transforms-3\5f397f24cf24f6ac2c0b303ee0ee6977\transformed\recaptcha-18.4.0\AndroidManifest.xml:9:5-98
+	android:name
+		ADDED from [com.google.android.recaptcha:recaptcha:18.4.0] C:\Users\Леха гей\.gradle\caches\transforms-3\5f397f24cf24f6ac2c0b303ee0ee6977\transformed\recaptcha-18.4.0\AndroidManifest.xml:9:22-95
+meta-data#com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsKtxRegistrar
+ADDED from [com.google.firebase:firebase-installations:17.2.0] C:\Users\Леха гей\.gradle\caches\transforms-3\1330d99c4f7d3de9c4d94f2f334876f3\transformed\firebase-installations-17.2.0\AndroidManifest.xml:15:13-17:85
+	android:value
+		ADDED from [com.google.firebase:firebase-installations:17.2.0] C:\Users\Леха гей\.gradle\caches\transforms-3\1330d99c4f7d3de9c4d94f2f334876f3\transformed\firebase-installations-17.2.0\AndroidManifest.xml:17:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-installations:17.2.0] C:\Users\Леха гей\.gradle\caches\transforms-3\1330d99c4f7d3de9c4d94f2f334876f3\transformed\firebase-installations-17.2.0\AndroidManifest.xml:16:17-130
+meta-data#com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar
+ADDED from [com.google.firebase:firebase-installations:17.2.0] C:\Users\Леха гей\.gradle\caches\transforms-3\1330d99c4f7d3de9c4d94f2f334876f3\transformed\firebase-installations-17.2.0\AndroidManifest.xml:18:13-20:85
+	android:value
+		ADDED from [com.google.firebase:firebase-installations:17.2.0] C:\Users\Леха гей\.gradle\caches\transforms-3\1330d99c4f7d3de9c4d94f2f334876f3\transformed\firebase-installations-17.2.0\AndroidManifest.xml:20:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-installations:17.2.0] C:\Users\Леха гей\.gradle\caches\transforms-3\1330d99c4f7d3de9c4d94f2f334876f3\transformed\firebase-installations-17.2.0\AndroidManifest.xml:19:17-127
+meta-data#com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonLegacyRegistrar
+ADDED from [com.google.firebase:firebase-common-ktx:20.4.2] C:\Users\Леха гей\.gradle\caches\transforms-3\2441ab5d0b7422812aa7ef08014bc165\transformed\firebase-common-ktx-20.4.2\AndroidManifest.xml:12:13-14:85
+	android:value
+		ADDED from [com.google.firebase:firebase-common-ktx:20.4.2] C:\Users\Леха гей\.gradle\caches\transforms-3\2441ab5d0b7422812aa7ef08014bc165\transformed\firebase-common-ktx-20.4.2\AndroidManifest.xml:14:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-common-ktx:20.4.2] C:\Users\Леха гей\.gradle\caches\transforms-3\2441ab5d0b7422812aa7ef08014bc165\transformed\firebase-common-ktx-20.4.2\AndroidManifest.xml:13:17-116
+provider#com.google.firebase.provider.FirebaseInitProvider
+ADDED from [com.google.firebase:firebase-common:20.4.2] C:\Users\Леха гей\.gradle\caches\transforms-3\516598574d9f61a04c87d7fa96b0af38\transformed\firebase-common-20.4.2\AndroidManifest.xml:23:9-28:39
+	android:authorities
+		ADDED from [com.google.firebase:firebase-common:20.4.2] C:\Users\Леха гей\.gradle\caches\transforms-3\516598574d9f61a04c87d7fa96b0af38\transformed\firebase-common-20.4.2\AndroidManifest.xml:25:13-72
+	android:exported
+		ADDED from [com.google.firebase:firebase-common:20.4.2] C:\Users\Леха гей\.gradle\caches\transforms-3\516598574d9f61a04c87d7fa96b0af38\transformed\firebase-common-20.4.2\AndroidManifest.xml:27:13-37
+	android:directBootAware
+		ADDED from [com.google.firebase:firebase-common:20.4.2] C:\Users\Леха гей\.gradle\caches\transforms-3\516598574d9f61a04c87d7fa96b0af38\transformed\firebase-common-20.4.2\AndroidManifest.xml:26:13-43
+	android:initOrder
+		ADDED from [com.google.firebase:firebase-common:20.4.2] C:\Users\Леха гей\.gradle\caches\transforms-3\516598574d9f61a04c87d7fa96b0af38\transformed\firebase-common-20.4.2\AndroidManifest.xml:28:13-36
+	android:name
+		ADDED from [com.google.firebase:firebase-common:20.4.2] C:\Users\Леха гей\.gradle\caches\transforms-3\516598574d9f61a04c87d7fa96b0af38\transformed\firebase-common-20.4.2\AndroidManifest.xml:24:13-77
+meta-data#com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar
+ADDED from [com.google.firebase:firebase-common:20.4.2] C:\Users\Леха гей\.gradle\caches\transforms-3\516598574d9f61a04c87d7fa96b0af38\transformed\firebase-common-20.4.2\AndroidManifest.xml:35:13-37:85
+	android:value
+		ADDED from [com.google.firebase:firebase-common:20.4.2] C:\Users\Леха гей\.gradle\caches\transforms-3\516598574d9f61a04c87d7fa96b0af38\transformed\firebase-common-20.4.2\AndroidManifest.xml:37:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-common:20.4.2] C:\Users\Леха гей\.gradle\caches\transforms-3\516598574d9f61a04c87d7fa96b0af38\transformed\firebase-common-20.4.2\AndroidManifest.xml:36:17-109
+uses-library#androidx.window.extensions
+ADDED from [androidx.window:window:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\30585890b140a2634f93b5c3279cf7b3\transformed\window-1.0.0\AndroidManifest.xml:25:9-27:40
+	android:required
+		ADDED from [androidx.window:window:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\30585890b140a2634f93b5c3279cf7b3\transformed\window-1.0.0\AndroidManifest.xml:27:13-37
+	android:name
+		ADDED from [androidx.window:window:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\30585890b140a2634f93b5c3279cf7b3\transformed\window-1.0.0\AndroidManifest.xml:26:13-54
+uses-library#androidx.window.sidecar
+ADDED from [androidx.window:window:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\30585890b140a2634f93b5c3279cf7b3\transformed\window-1.0.0\AndroidManifest.xml:28:9-30:40
+	android:required
+		ADDED from [androidx.window:window:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\30585890b140a2634f93b5c3279cf7b3\transformed\window-1.0.0\AndroidManifest.xml:30:13-37
+	android:name
+		ADDED from [androidx.window:window:1.0.0] C:\Users\Леха гей\.gradle\caches\transforms-3\30585890b140a2634f93b5c3279cf7b3\transformed\window-1.0.0\AndroidManifest.xml:29:13-51
+uses-permission#android.permission.REORDER_TASKS
+ADDED from [androidx.test:core:1.5.0] C:\Users\Леха гей\.gradle\caches\transforms-3\bc8cacc7558ef96472cfc15949458509\transformed\core-1.5.0\AndroidManifest.xml:24:5-72
+	android:name
+		ADDED from [androidx.test:core:1.5.0] C:\Users\Леха гей\.gradle\caches\transforms-3\bc8cacc7558ef96472cfc15949458509\transformed\core-1.5.0\AndroidManifest.xml:24:22-69
+activity#androidx.test.core.app.InstrumentationActivityInvoker$BootstrapActivity
+ADDED from [androidx.test:core:1.5.0] C:\Users\Леха гей\.gradle\caches\transforms-3\bc8cacc7558ef96472cfc15949458509\transformed\core-1.5.0\AndroidManifest.xml:27:9-34:20
+	android:exported
+		ADDED from [androidx.test:core:1.5.0] C:\Users\Леха гей\.gradle\caches\transforms-3\bc8cacc7558ef96472cfc15949458509\transformed\core-1.5.0\AndroidManifest.xml:29:13-36
+	android:theme
+		ADDED from [androidx.test:core:1.5.0] C:\Users\Леха гей\.gradle\caches\transforms-3\bc8cacc7558ef96472cfc15949458509\transformed\core-1.5.0\AndroidManifest.xml:30:13-56
+	android:name
+		ADDED from [androidx.test:core:1.5.0] C:\Users\Леха гей\.gradle\caches\transforms-3\bc8cacc7558ef96472cfc15949458509\transformed\core-1.5.0\AndroidManifest.xml:28:13-99
+intent-filter#category:name:android.intent.category.LAUNCHER
+ADDED from [androidx.test:core:1.5.0] C:\Users\Леха гей\.gradle\caches\transforms-3\bc8cacc7558ef96472cfc15949458509\transformed\core-1.5.0\AndroidManifest.xml:31:13-33:29
+	android:priority
+		ADDED from [androidx.test:core:1.5.0] C:\Users\Леха гей\.gradle\caches\transforms-3\bc8cacc7558ef96472cfc15949458509\transformed\core-1.5.0\AndroidManifest.xml:31:28-51
+activity#androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity
+ADDED from [androidx.test:core:1.5.0] C:\Users\Леха гей\.gradle\caches\transforms-3\bc8cacc7558ef96472cfc15949458509\transformed\core-1.5.0\AndroidManifest.xml:35:9-42:20
+	android:exported
+		ADDED from [androidx.test:core:1.5.0] C:\Users\Леха гей\.gradle\caches\transforms-3\bc8cacc7558ef96472cfc15949458509\transformed\core-1.5.0\AndroidManifest.xml:37:13-36
+	android:theme
+		ADDED from [androidx.test:core:1.5.0] C:\Users\Леха гей\.gradle\caches\transforms-3\bc8cacc7558ef96472cfc15949458509\transformed\core-1.5.0\AndroidManifest.xml:38:13-56
+	android:name
+		ADDED from [androidx.test:core:1.5.0] C:\Users\Леха гей\.gradle\caches\transforms-3\bc8cacc7558ef96472cfc15949458509\transformed\core-1.5.0\AndroidManifest.xml:36:13-95
+activity#androidx.test.core.app.InstrumentationActivityInvoker$EmptyFloatingActivity
+ADDED from [androidx.test:core:1.5.0] C:\Users\Леха гей\.gradle\caches\transforms-3\bc8cacc7558ef96472cfc15949458509\transformed\core-1.5.0\AndroidManifest.xml:43:9-50:20
+	android:exported
+		ADDED from [androidx.test:core:1.5.0] C:\Users\Леха гей\.gradle\caches\transforms-3\bc8cacc7558ef96472cfc15949458509\transformed\core-1.5.0\AndroidManifest.xml:45:13-36
+	android:theme
+		ADDED from [androidx.test:core:1.5.0] C:\Users\Леха гей\.gradle\caches\transforms-3\bc8cacc7558ef96472cfc15949458509\transformed\core-1.5.0\AndroidManifest.xml:46:13-62
+	android:name
+		ADDED from [androidx.test:core:1.5.0] C:\Users\Леха гей\.gradle\caches\transforms-3\bc8cacc7558ef96472cfc15949458509\transformed\core-1.5.0\AndroidManifest.xml:44:13-103
+provider#androidx.startup.InitializationProvider
+ADDED from [androidx.emoji2:emoji2:1.2.0] C:\Users\Леха гей\.gradle\caches\transforms-3\867fc8e3b2df7542827c93f56fcf8226\transformed\emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\Леха гей\.gradle\caches\transforms-3\0e348758e4ee5f03d72ecd7bd4f0bfa9\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\Леха гей\.gradle\caches\transforms-3\0e348758e4ee5f03d72ecd7bd4f0bfa9\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\96ddbcdad814d02e97153808b6036cbf\transformed\profileinstaller-1.3.0\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\96ddbcdad814d02e97153808b6036cbf\transformed\profileinstaller-1.3.0\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\Леха гей\.gradle\caches\transforms-3\021068f4910c4d197b4068c0cec0dd14\transformed\startup-runtime-1.1.1\AndroidManifest.xml:26:9-30:34
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\Леха гей\.gradle\caches\transforms-3\021068f4910c4d197b4068c0cec0dd14\transformed\startup-runtime-1.1.1\AndroidManifest.xml:26:9-30:34
+	tools:node
+		ADDED from [androidx.emoji2:emoji2:1.2.0] C:\Users\Леха гей\.gradle\caches\transforms-3\867fc8e3b2df7542827c93f56fcf8226\transformed\emoji2-1.2.0\AndroidManifest.xml:28:13-31
+	android:authorities
+		ADDED from [androidx.emoji2:emoji2:1.2.0] C:\Users\Леха гей\.gradle\caches\transforms-3\867fc8e3b2df7542827c93f56fcf8226\transformed\emoji2-1.2.0\AndroidManifest.xml:26:13-68
+	android:exported
+		ADDED from [androidx.emoji2:emoji2:1.2.0] C:\Users\Леха гей\.gradle\caches\transforms-3\867fc8e3b2df7542827c93f56fcf8226\transformed\emoji2-1.2.0\AndroidManifest.xml:27:13-37
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.2.0] C:\Users\Леха гей\.gradle\caches\transforms-3\867fc8e3b2df7542827c93f56fcf8226\transformed\emoji2-1.2.0\AndroidManifest.xml:25:13-67
+meta-data#androidx.emoji2.text.EmojiCompatInitializer
+ADDED from [androidx.emoji2:emoji2:1.2.0] C:\Users\Леха гей\.gradle\caches\transforms-3\867fc8e3b2df7542827c93f56fcf8226\transformed\emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.emoji2:emoji2:1.2.0] C:\Users\Леха гей\.gradle\caches\transforms-3\867fc8e3b2df7542827c93f56fcf8226\transformed\emoji2-1.2.0\AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.2.0] C:\Users\Леха гей\.gradle\caches\transforms-3\867fc8e3b2df7542827c93f56fcf8226\transformed\emoji2-1.2.0\AndroidManifest.xml:30:17-75
+meta-data#androidx.lifecycle.ProcessLifecycleInitializer
+ADDED from [androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\Леха гей\.gradle\caches\transforms-3\0e348758e4ee5f03d72ecd7bd4f0bfa9\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\Леха гей\.gradle\caches\transforms-3\0e348758e4ee5f03d72ecd7bd4f0bfa9\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\Леха гей\.gradle\caches\transforms-3\0e348758e4ee5f03d72ecd7bd4f0bfa9\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:30:17-78
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:18.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\3338884a95ac9ac4e0c0dd2b88fc94b6\transformed\play-services-basement-18.3.0\AndroidManifest.xml:21:9-23:69
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:18.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\3338884a95ac9ac4e0c0dd2b88fc94b6\transformed\play-services-basement-18.3.0\AndroidManifest.xml:23:13-66
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:18.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\3338884a95ac9ac4e0c0dd2b88fc94b6\transformed\play-services-basement-18.3.0\AndroidManifest.xml:22:13-58
+permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.12.0] C:\Users\Леха гей\.gradle\caches\transforms-3\ac096f90094cf9efe180c022c3399272\transformed\core-1.12.0\AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.12.0] C:\Users\Леха гей\.gradle\caches\transforms-3\ac096f90094cf9efe180c022c3399272\transformed\core-1.12.0\AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.12.0] C:\Users\Леха гей\.gradle\caches\transforms-3\ac096f90094cf9efe180c022c3399272\transformed\core-1.12.0\AndroidManifest.xml:23:9-81
+permission#com.example.tm.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.12.0] C:\Users\Леха гей\.gradle\caches\transforms-3\ac096f90094cf9efe180c022c3399272\transformed\core-1.12.0\AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.12.0] C:\Users\Леха гей\.gradle\caches\transforms-3\ac096f90094cf9efe180c022c3399272\transformed\core-1.12.0\AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.12.0] C:\Users\Леха гей\.gradle\caches\transforms-3\ac096f90094cf9efe180c022c3399272\transformed\core-1.12.0\AndroidManifest.xml:23:9-81
+uses-permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.12.0] C:\Users\Леха гей\.gradle\caches\transforms-3\ac096f90094cf9efe180c022c3399272\transformed\core-1.12.0\AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.12.0] C:\Users\Леха гей\.gradle\caches\transforms-3\ac096f90094cf9efe180c022c3399272\transformed\core-1.12.0\AndroidManifest.xml:26:22-94
+uses-permission#com.example.tm.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.12.0] C:\Users\Леха гей\.gradle\caches\transforms-3\ac096f90094cf9efe180c022c3399272\transformed\core-1.12.0\AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.12.0] C:\Users\Леха гей\.gradle\caches\transforms-3\ac096f90094cf9efe180c022c3399272\transformed\core-1.12.0\AndroidManifest.xml:26:22-94
+meta-data#com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar
+ADDED from [com.google.firebase:firebase-datatransport:18.1.7] C:\Users\Леха гей\.gradle\caches\transforms-3\77caf861f3298d5af1992a162f2f9b4b\transformed\firebase-datatransport-18.1.7\AndroidManifest.xml:27:13-29:85
+	android:value
+		ADDED from [com.google.firebase:firebase-datatransport:18.1.7] C:\Users\Леха гей\.gradle\caches\transforms-3\77caf861f3298d5af1992a162f2f9b4b\transformed\firebase-datatransport-18.1.7\AndroidManifest.xml:29:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-datatransport:18.1.7] C:\Users\Леха гей\.gradle\caches\transforms-3\77caf861f3298d5af1992a162f2f9b4b\transformed\firebase-datatransport-18.1.7\AndroidManifest.xml:28:17-115
+service#com.google.android.datatransport.runtime.backends.TransportBackendDiscovery
+ADDED from [com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\Леха гей\.gradle\caches\transforms-3\eb6ab22accc6f330ef639095956f0d73\transformed\transport-backend-cct-3.1.8\AndroidManifest.xml:28:9-34:19
+MERGED from [com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\Леха гей\.gradle\caches\transforms-3\5d23f8f38019f700acca14a5af338234\transformed\transport-runtime-3.1.8\AndroidManifest.xml:36:9-38:40
+MERGED from [com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\Леха гей\.gradle\caches\transforms-3\5d23f8f38019f700acca14a5af338234\transformed\transport-runtime-3.1.8\AndroidManifest.xml:36:9-38:40
+	android:exported
+		ADDED from [com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\Леха гей\.gradle\caches\transforms-3\eb6ab22accc6f330ef639095956f0d73\transformed\transport-backend-cct-3.1.8\AndroidManifest.xml:30:13-37
+	android:name
+		ADDED from [com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\Леха гей\.gradle\caches\transforms-3\eb6ab22accc6f330ef639095956f0d73\transformed\transport-backend-cct-3.1.8\AndroidManifest.xml:29:13-103
+meta-data#backend:com.google.android.datatransport.cct.CctBackendFactory
+ADDED from [com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\Леха гей\.gradle\caches\transforms-3\eb6ab22accc6f330ef639095956f0d73\transformed\transport-backend-cct-3.1.8\AndroidManifest.xml:31:13-33:39
+	android:value
+		ADDED from [com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\Леха гей\.gradle\caches\transforms-3\eb6ab22accc6f330ef639095956f0d73\transformed\transport-backend-cct-3.1.8\AndroidManifest.xml:33:17-36
+	android:name
+		ADDED from [com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\Леха гей\.gradle\caches\transforms-3\eb6ab22accc6f330ef639095956f0d73\transformed\transport-backend-cct-3.1.8\AndroidManifest.xml:32:17-94
+service#com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService
+ADDED from [com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\Леха гей\.gradle\caches\transforms-3\5d23f8f38019f700acca14a5af338234\transformed\transport-runtime-3.1.8\AndroidManifest.xml:26:9-30:19
+	android:exported
+		ADDED from [com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\Леха гей\.gradle\caches\transforms-3\5d23f8f38019f700acca14a5af338234\transformed\transport-runtime-3.1.8\AndroidManifest.xml:28:13-37
+	android:permission
+		ADDED from [com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\Леха гей\.gradle\caches\transforms-3\5d23f8f38019f700acca14a5af338234\transformed\transport-runtime-3.1.8\AndroidManifest.xml:29:13-69
+	android:name
+		ADDED from [com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\Леха гей\.gradle\caches\transforms-3\5d23f8f38019f700acca14a5af338234\transformed\transport-runtime-3.1.8\AndroidManifest.xml:27:13-117
+receiver#com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver
+ADDED from [com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\Леха гей\.gradle\caches\transforms-3\5d23f8f38019f700acca14a5af338234\transformed\transport-runtime-3.1.8\AndroidManifest.xml:32:9-34:40
+	android:exported
+		ADDED from [com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\Леха гей\.gradle\caches\transforms-3\5d23f8f38019f700acca14a5af338234\transformed\transport-runtime-3.1.8\AndroidManifest.xml:34:13-37
+	android:name
+		ADDED from [com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\Леха гей\.gradle\caches\transforms-3\5d23f8f38019f700acca14a5af338234\transformed\transport-runtime-3.1.8\AndroidManifest.xml:33:13-132
+meta-data#androidx.profileinstaller.ProfileInstallerInitializer
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\96ddbcdad814d02e97153808b6036cbf\transformed\profileinstaller-1.3.0\AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\96ddbcdad814d02e97153808b6036cbf\transformed\profileinstaller-1.3.0\AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\96ddbcdad814d02e97153808b6036cbf\transformed\profileinstaller-1.3.0\AndroidManifest.xml:30:17-85
+receiver#androidx.profileinstaller.ProfileInstallReceiver
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\96ddbcdad814d02e97153808b6036cbf\transformed\profileinstaller-1.3.0\AndroidManifest.xml:34:9-52:20
+	android:enabled
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\96ddbcdad814d02e97153808b6036cbf\transformed\profileinstaller-1.3.0\AndroidManifest.xml:37:13-35
+	android:exported
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\96ddbcdad814d02e97153808b6036cbf\transformed\profileinstaller-1.3.0\AndroidManifest.xml:38:13-36
+	android:permission
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\96ddbcdad814d02e97153808b6036cbf\transformed\profileinstaller-1.3.0\AndroidManifest.xml:39:13-57
+	android:directBootAware
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\96ddbcdad814d02e97153808b6036cbf\transformed\profileinstaller-1.3.0\AndroidManifest.xml:36:13-44
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\96ddbcdad814d02e97153808b6036cbf\transformed\profileinstaller-1.3.0\AndroidManifest.xml:35:13-76
+intent-filter#action:name:androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\96ddbcdad814d02e97153808b6036cbf\transformed\profileinstaller-1.3.0\AndroidManifest.xml:40:13-42:29
+action#androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\96ddbcdad814d02e97153808b6036cbf\transformed\profileinstaller-1.3.0\AndroidManifest.xml:41:17-91
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\96ddbcdad814d02e97153808b6036cbf\transformed\profileinstaller-1.3.0\AndroidManifest.xml:41:25-88
+intent-filter#action:name:androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\96ddbcdad814d02e97153808b6036cbf\transformed\profileinstaller-1.3.0\AndroidManifest.xml:43:13-45:29
+action#androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\96ddbcdad814d02e97153808b6036cbf\transformed\profileinstaller-1.3.0\AndroidManifest.xml:44:17-85
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\96ddbcdad814d02e97153808b6036cbf\transformed\profileinstaller-1.3.0\AndroidManifest.xml:44:25-82
+intent-filter#action:name:androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\96ddbcdad814d02e97153808b6036cbf\transformed\profileinstaller-1.3.0\AndroidManifest.xml:46:13-48:29
+action#androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\96ddbcdad814d02e97153808b6036cbf\transformed\profileinstaller-1.3.0\AndroidManifest.xml:47:17-88
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\96ddbcdad814d02e97153808b6036cbf\transformed\profileinstaller-1.3.0\AndroidManifest.xml:47:25-85
+intent-filter#action:name:androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\96ddbcdad814d02e97153808b6036cbf\transformed\profileinstaller-1.3.0\AndroidManifest.xml:49:13-51:29
+action#androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\96ddbcdad814d02e97153808b6036cbf\transformed\profileinstaller-1.3.0\AndroidManifest.xml:50:17-95
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Леха гей\.gradle\caches\transforms-3\96ddbcdad814d02e97153808b6036cbf\transformed\profileinstaller-1.3.0\AndroidManifest.xml:50:25-92

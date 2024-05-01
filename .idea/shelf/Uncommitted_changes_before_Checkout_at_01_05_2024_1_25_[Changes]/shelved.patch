@@ -1,0 +1,305 @@
+Index: app/src/main/java/com/example/tm/Fragments/DoneTasksFragment.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.tm.Fragments\n\nimport DataClasses.DairyTaskData\nimport ModulesAndAdapters.DairyTaskAdapter\nimport ModulesAndAdapters.FireHelper\nimport android.app.AlertDialog\nimport android.os.Bundle\nimport androidx.fragment.app.Fragment\nimport android.view.LayoutInflater\nimport android.view.View\nimport android.view.ViewGroup\nimport android.widget.Toast\nimport androidx.navigation.NavController\nimport androidx.navigation.Navigation\nimport androidx.recyclerview.widget.LinearLayoutManager\nimport androidx.recyclerview.widget.RecyclerView.Adapter\nimport com.example.tm.R\nimport com.example.tm.databinding.FragmentDoneTasksBinding\nimport com.google.firebase.database.ChildEventListener\nimport com.google.firebase.database.DataSnapshot\nimport com.google.firebase.database.DatabaseError\nimport com.google.firebase.database.DatabaseReference\nimport com.google.firebase.database.ValueEventListener\n\n\nclass DoneTasksFragment : Fragment(), DairyTaskAdapter.DairyTaskAdapterClickInterface {\n    private lateinit var navControl: NavController\n    private lateinit var binding: FragmentDoneTasksBinding\n    private lateinit var adapter : DairyTaskAdapter\n    private lateinit var mlist:MutableList<DairyTaskData>\n    private lateinit var dbref:DatabaseReference\n    override fun onCreate(savedInstanceState: Bundle?) {\n        super.onCreate(savedInstanceState)\n\n        }\n    override fun onCreateView(\n        inflater: LayoutInflater, container: ViewGroup?,\n        savedInstanceState: Bundle?\n    ): View {\n        // Inflate the layout for this fragment\n        binding = FragmentDoneTasksBinding.inflate(inflater, container, false)\n        return binding.root\n\n    }\n\n    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {\n        super.onViewCreated(view, savedInstanceState)\n        init(view)\n        registerEvents(view)\n    }\n    private fun init(view:View){\n        dbref= FireHelper.dbref.child(\"Users\").child(FireHelper.firebaseAuth.currentUser?.uid.toString()).child(\"DairyTasks\")\n        binding.recyclerView.setHasFixedSize(true)\n        binding.recyclerView.layoutManager = LinearLayoutManager(context)\n        navControl= Navigation.findNavController(view)\n        getDataFromFirebase()\n        mlist= mutableListOf()\n        adapter= DairyTaskAdapter(mlist)\n        adapter.setListener(this)\n\n        binding.recyclerView.adapter=adapter\n        dbref.addChildEventListener(object:ChildEventListener{\n            override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {\n                if(snapshot.getValue().toString()!=\"\"){\n                    mlist.add(\n                        DairyTaskData(\n                            snapshot.child(\"dairyTaskName\").value.toString() ,snapshot.child(\"dairyTaskDescription\").value.toString(), snapshot.key.toString())\n                    )\n\n                    adapter.notifyItemInserted(mlist.size - 1)\n                }\n            }\n\n            override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {\n                adapter.notifyDataSetChanged()\n            }\n\n            override fun onChildRemoved(snapshot: DataSnapshot) {\n                if(snapshot.value.toString()!=\"\"){\n                    mlist.add(\n                        DairyTaskData(\n                            snapshot.child(\"dairyTaskName\").value.toString() ,snapshot.child(\"dairyTaskDescription\").value.toString(), snapshot.key.toString())\n                    )\n\n                    adapter.notifyItemInserted(mlist.size - 1)\n                }\n            }\n\n            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {\n                TODO(\"Not yet implemented\")\n            }\n\n            override fun onCancelled(error: DatabaseError) {\n                TODO(\"Not yet implemented\")\n            }\n\n        })\n    }\n    private fun registerEvents(view: View){\n        binding.BackBtn.setOnClickListener(){\n            navControl.navigate(R.id.action_doneTasksFragment_to_homeFragment)\n        }\n        binding.recyclerView\n\n\n    }\n    override fun onResume() {\n        super.onResume()\n        getDataFromFirebase()\n    }\n\n    private fun getDataFromFirebase(){\n        dbref.addValueEventListener(object: ValueEventListener {\n            override fun onDataChange(snapshot: DataSnapshot) {\n\n                mlist.clear()\n                adapter.notifyDataSetChanged()\n\n                for (taskSnapshot in snapshot.children) {\n                    val task = taskSnapshot.getValue(DairyTaskData::class.java)\n                    if (task!= null && task.isDone)\n                     {\n                        mlist.add(task)\n                        adapter.notifyItemInserted(mlist.size-1)\n                    }\n                }\n\n            }\n            override fun onCancelled(error: DatabaseError) {\n                Toast.makeText(context, error.message, Toast.LENGTH_SHORT).show()\n            }\n\n        })\n    }\n\n    override fun onTaskClicked(taskData: DairyTaskData) {\n        TODO(\"Not yet implemented\")\n    }\n\n    override fun onEditTaskButtonClicked(taskData: DairyTaskData) {\n        TODO(\"Not yet implemented\")\n    }\n\n    override fun onCheckBoxClicked(taskData: DairyTaskData, position: Int) {\n        val builder= AlertDialog.Builder(context)\n        builder.setTitle(\"Confirmation\")\n            .setMessage(\"Are you sure you want to recreate this task?\")\n            .setPositiveButton(\"I`m sure\"){ _, _ ->\n                taskData.isDone=false\n                FireHelper.Users.child(FireHelper.firebaseAuth.currentUser?.uid.toString()).child(\"DairyTasks\")\n                    .child(taskData.dairyTaskId).child(\"done\").setValue(false)\n\n                mlist.add(position, mlist.removeAt(position) )\n\n                view?.post(){\n                    binding.recyclerView.adapter?.notifyDataSetChanged()\n                }\n            }\n            .setNegativeButton(\"No\"){ _, _ ->\n            }.show()\n\n\n\n    }\n\n\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/tm/Fragments/DoneTasksFragment.kt b/app/src/main/java/com/example/tm/Fragments/DoneTasksFragment.kt
+--- a/app/src/main/java/com/example/tm/Fragments/DoneTasksFragment.kt	
++++ b/app/src/main/java/com/example/tm/Fragments/DoneTasksFragment.kt	
+@@ -141,6 +141,10 @@
+         TODO("Not yet implemented")
+     }
+ 
++    override fun onDeleteButtonClicked(taskData: DairyTaskData) {
++        dbref.child(taskData.dairyTaskId).removeValue()
++    }
++
+     override fun onCheckBoxClicked(taskData: DairyTaskData, position: Int) {
+         val builder= AlertDialog.Builder(context)
+         builder.setTitle("Confirmation")
+Index: app/src/main/res/layout/fragment_task_description.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\"\n    android:layout_margin=\"5dp\"\n    tools:context=\".Fragments.AddTaskPopUpFragment\">\n\n\n    <com.google.android.material.card.MaterialCardView\n        android:id=\"@+id/cardView1\"\n        android:layout_width=\"350dp\"\n        android:layout_height=\"250dp\"\n        android:layout_marginHorizontal=\"16dp\"\n        android:layout_marginTop=\"60dp\"\n        android:backgroundTint=\"@color/grey\"\n        app:cardCornerRadius=\"8dp\"\n        app:cardElevation=\"8dp\"\n        app:cardUseCompatPadding=\"true\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:layout_constraintHorizontal_bias=\"0.64\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toTopOf=\"parent\">\n\n        <LinearLayout\n            android:layout_width=\"342dp\"\n            android:layout_height=\"220dp\"\n            android:layout_gravity=\"center\"\n            android:orientation=\"vertical\">\n\n            <com.google.android.material.textfield.TextInputLayout\n                android:id=\"@+id/textInputLayoutName\"\n                android:layout_width=\"wrap_content\"\n                android:layout_height=\"70dp\"\n                >\n\n                <com.google.android.material.textfield.TextInputEditText\n                    android:id=\"@+id/TaskEntryTextName\"\n                    android:layout_width=\"377dp\"\n                    android:layout_height=\"match_parent\"\n                    android:layout_marginTop=\"68dp\"\n\n                    android:backgroundTint=\"@color/grey\"\n                    android:hint=\"Task\"\n                    android:paddingStart=\"12dp\"\n                    android:paddingTop=\"15dp\"\n                    android:textColorHint=\"@color/white\"\n                    android:textSize=\"30dp\" />\n            </com.google.android.material.textfield.TextInputLayout>\n\n            <com.google.android.material.textfield.TextInputLayout\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"110dp\"\n                app:boxStrokeWidth=\"0dp\"\n                app:boxStrokeWidthFocused=\"0dp\">\n\n                <com.google.android.material.textfield.TextInputEditText\n                    android:id=\"@+id/TaskEntryTextDescription\"\n                    android:layout_width=\"313dp\"\n                    android:layout_height=\"match_parent\"\n                    android:gravity=\"top\"\n                    android:hint=\"Description\"\n                    android:paddingStart=\"12dp\"\n\n                    android:textColorHint=\"@color/white\" />\n\n            </com.google.android.material.textfield.TextInputLayout>\n\n\n            <LinearLayout\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"wrap_content\"\n                android:orientation=\"horizontal\">\n\n                <ImageView\n                    android:id=\"@+id/TimeSetter\"\n                    android:layout_width=\"55dp\"\n                    android:layout_height=\"40dp\"\n                    android:layout_gravity=\"right\"\n                    android:layout_marginBottom=\"392dp\"\n                    android:src=\"@drawable/date_change_task_image\" />\n\n                <ImageView\n                    android:id=\"@+id/deleteTask\"\n                    android:layout_width=\"55dp\"\n                    android:layout_height=\"40dp\"\n                    android:layout_gravity=\"left\"\n                    android:layout_marginBottom=\"392dp\"\n                    android:src=\"@drawable/delete_task_image\" />\n\n            </LinearLayout>\n\n\n        </LinearLayout>\n\n\n    </com.google.android.material.card.MaterialCardView>\n\n    <Button\n        android:id=\"@+id/BtnTaskSave\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginTop=\"8dp\"\n        android:text=\"Save\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:layout_constraintHorizontal_bias=\"0.933\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toBottomOf=\"@+id/cardView1\" />\n\n    <ImageButton\n        android:id=\"@+id/ibAddST\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:backgroundTint=\"@android:color/transparent\"\n        android:contentDescription=\"image button\"\n        android:src=\"@drawable/sub_task_icon\"\n        app:layout_constraintHeight_min=\"48dp\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toBottomOf=\"@+id/cardView1\" />\n\n    <EditText\n        android:id=\"@+id/etSubTask\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:ems=\"10\"\n        android:inputType=\"text\"\n        android:visibility=\"gone\"\n        app:layout_constraintBottom_toBottomOf=\"parent\"\n        app:layout_constraintEnd_toStartOf=\"@+id/btSubmitST\"\n        app:layout_constraintHeight_min=\"48dp\"\n        app:layout_constraintStart_toStartOf=\"parent\" />\n\n    <Button\n        android:id=\"@+id/btSubmitST\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:contentDescription=\"button\"\n        android:visibility=\"gone\"\n        app:icon=\"@drawable/sub_task_icon\"\n        app:iconGravity=\"textTop\"\n        app:iconPadding=\"0dp\"\n        app:layout_constraintBottom_toBottomOf=\"parent\"\n        app:layout_constraintEnd_toEndOf=\"parent\" />\n\n    <androidx.recyclerview.widget.RecyclerView\n        android:id=\"@+id/rvSubtask\"\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"250dp\"\n        android:layout_marginBottom=\"60dp\"\n        app:layout_constraintBottom_toBottomOf=\"parent\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:layout_constraintHeight_max=\"250dp\"\n        app:layout_constraintHorizontal_bias=\"0.0\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toBottomOf=\"@+id/BtnTaskSave\">\n\n    </androidx.recyclerview.widget.RecyclerView>\n\n\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_task_description.xml b/app/src/main/res/layout/fragment_task_description.xml
+--- a/app/src/main/res/layout/fragment_task_description.xml	
++++ b/app/src/main/res/layout/fragment_task_description.xml	
+@@ -104,14 +104,16 @@
+         android:layout_marginTop="8dp"
+         android:text="Save"
+         app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.933"
++        app:layout_constraintHorizontal_bias="0.926"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toBottomOf="@+id/cardView1" />
+ 
+     <ImageButton
+         android:id="@+id/ibAddST"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
++        android:layout_width="49dp"
++        android:layout_height="32dp"
++        android:layout_marginStart="28dp"
++        android:layout_marginTop="8dp"
+         android:backgroundTint="@android:color/transparent"
+         android:contentDescription="image button"
+         android:src="@drawable/sub_task_icon"
+@@ -145,7 +147,7 @@
+ 
+     <androidx.recyclerview.widget.RecyclerView
+         android:id="@+id/rvSubtask"
+-        android:layout_width="match_parent"
++        android:layout_width="380dp"
+         android:layout_height="250dp"
+         android:layout_marginBottom="60dp"
+         app:layout_constraintBottom_toBottomOf="parent"
+Index: app/src/main/java/com/example/tm/Fragments/HomeFragment.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.tm.Fragments\r\n\r\nimport android.os.Bundle\r\nimport android.util.Log\r\nimport androidx.fragment.app.Fragment\r\nimport android.view.LayoutInflater\r\nimport android.view.View\r\nimport android.view.ViewGroup\r\nimport android.widget.RadioButton\r\nimport android.widget.Toast\r\nimport androidx.activity.addCallback\r\nimport androidx.appcompat.app.ActionBarDrawerToggle\r\nimport androidx.navigation.NavController\r\nimport androidx.navigation.Navigation\r\nimport androidx.recyclerview.widget.LinearLayoutManager\r\nimport com.example.tm.R\r\nimport com.example.tm.databinding.FragmentHomeBinding\r\nimport DataClasses.Category\r\nimport ModulesAndAdapters.DairyTaskAdapter\r\nimport DataClasses.DairyTaskData\r\nimport ModulesAndAdapters.FireHelper\r\nimport androidx.core.view.GravityCompat\r\nimport com.google.android.material.textfield.TextInputEditText\r\nimport com.google.firebase.auth.FirebaseAuth\r\nimport com.google.firebase.database.ChildEventListener\r\nimport com.google.firebase.database.DataSnapshot\r\nimport com.google.firebase.database.DatabaseError\r\nimport com.google.firebase.database.DatabaseReference\r\nimport com.google.firebase.database.ValueEventListener\r\nimport com.google.firebase.messaging.FirebaseMessaging\r\nimport java.text.SimpleDateFormat\r\nimport java.util.Calendar\r\nimport java.util.Date\r\nimport java.util.Locale\r\nimport com.example.tm.Fragments.AddTaskPopUpFragment.Companion as AddTaskPopUpFragment1\r\n\r\n\r\nclass HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,\r\n    DairyTaskAdapter.DairyTaskAdapterClickInterface, View.OnClickListener {\r\n\r\n    private lateinit var auth:FirebaseAuth\r\n    private lateinit var navControl:NavController\r\n    private lateinit var binding:FragmentHomeBinding\r\n    private lateinit var dbref:DatabaseReference\r\n    private  var addPopUpFragment: AddTaskPopUpFragment?=null\r\n    private  var taskPopUpFragment:TaskDescriptionFragment?=null\r\n    private lateinit var adapter: DairyTaskAdapter\r\n    private lateinit var mlist:MutableList<DairyTaskData>\r\n    private  lateinit var actionBarToggle:ActionBarDrawerToggle\r\n    private var category: String = \"All\"\r\n\r\n\r\n\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n    }\r\n\r\n    override fun onCreateView(\r\n        inflater: LayoutInflater, container: ViewGroup?,\r\n        savedInstanceState: Bundle?\r\n    ): View {\r\n        binding = FragmentHomeBinding.inflate(inflater, container, false)\r\n        return binding.root\r\n    }\r\n    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {\r\n        super.onViewCreated(view, savedInstanceState)\r\n\r\n        init(view)\r\n        registerEvents()\r\n\r\n        requireActivity().onBackPressedDispatcher.addCallback(this) {\r\n            requireActivity().finish()\r\n        }\r\n\r\n        binding.apply {\r\n            actionBarToggle = ActionBarDrawerToggle(requireActivity(), drawerlayout, 0, 0)\r\n            drawerlayout.addDrawerListener(actionBarToggle)\r\n            actionBarToggle.syncState()\r\n\r\n            callmenubtn.setOnClickListener(this@HomeFragment)\r\n\r\n            navView.setNavigationItemSelectedListener { menuItem ->\r\n                when (menuItem.itemId) {\r\n                    R.id.nav_home -> {\r\n                        drawerlayout.closeDrawer(GravityCompat.START)\r\n                        true\r\n                    }\r\n\r\n                    R.id.nav_settings -> {\r\n                        navControl.navigate(R.id.action_homeFragment_to_settingsFragment)\r\n                        true\r\n                    }\r\n\r\n                    R.id.Categories -> {\r\n                        val fragment = CategoriesFragment()\r\n\r\n                        fragment.show(\r\n                            childFragmentManager, \"Categories\"\r\n                        )\r\n                        true\r\n                    }\r\n                    R.id.nav_done_list ->{\r\n                        navControl.navigate(R.id.action_homeFragment_to_doneTasksFragment)\r\n                        true\r\n                    }\r\n\r\n                    R.id.Today -> {\r\n                        sortByDate(\"Today\")\r\n                        drawerlayout.closeDrawer(GravityCompat.START)\r\n                        true\r\n                    }\r\n\r\n                    R.id.Tomorow -> {\r\n                        sortByDate(\"Tomorow\")\r\n                        drawerlayout.closeDrawer(GravityCompat.START)\r\n                        true\r\n                    }\r\n\r\n                    R.id.ThisWeek -> {\r\n                        sortByDate(\"ThisWeek\")\r\n                        drawerlayout.closeDrawer(GravityCompat.START)\r\n                        true\r\n                    }\r\n\r\n                    R.id.Scheduled -> {\r\n                        sortByDate(\"Scheduled\")\r\n                        drawerlayout.closeDrawer(GravityCompat.START)\r\n                        true\r\n                    }\r\n\r\n                    else -> {\r\n                        false\r\n                    }\r\n                }\r\n            }\r\n\r\n        }\r\n\r\n\r\n    }\r\n\r\n\r\n    //Functions\r\n    private fun sortByDate(d: String){\r\n        mlist.clear()\r\n\r\n        FireHelper.Users.child(FireHelper.firebaseAuth.currentUser!!.uid).child(\"DairyTasks\").get().addOnCompleteListener {\r\n            for(i in it.result.children){\r\n                val task = i.getValue(DairyTaskData::class.java)\r\n\r\n                if(task != null && task.date != \"Not set\"){\r\n                    when(d){\r\n                        \"Today\" ->{\r\n                            val dateFormat = SimpleDateFormat(\"dd-MM-yyyy\", Locale.getDefault())\r\n                            val currentDate = dateFormat.format(Date())\r\n                            if(task.date == currentDate){\r\n                                mlist.add(task)\r\n                            }\r\n                        }\r\n                        \"Tomorow\" -> {\r\n                            val dateFormat = SimpleDateFormat(\"dd-MM-yyyy\", Locale.getDefault())\r\n                            val date = Calendar.getInstance()\r\n                            date.add(Calendar.DAY_OF_YEAR, 1)\r\n                            val tomorowDate = dateFormat.format(date.time)\r\n                            if(task.date == tomorowDate){\r\n                                mlist.add(task)\r\n                            }\r\n                        }\r\n                        \"ThisWeek\" -> {\r\n                            if(isEventThisWeek(task.date)){\r\n                                mlist.add(task)\r\n                            }\r\n                        }\r\n                        else -> {\r\n                            mlist.add(task)\r\n                        }\r\n                    }\r\n                }\r\n            }\r\n            adapter.notifyDataSetChanged()\r\n        }\r\n    }\r\n\r\n    fun isEventThisWeek(eventDate: String): Boolean {\r\n        val dateFormat = SimpleDateFormat(\"yyyy-MM-dd\", Locale.getDefault())\r\n        val currentDate = Date()\r\n\r\n        val calendar = Calendar.getInstance()\r\n        calendar.time = currentDate\r\n        val currentWeekStart = calendar.firstDayOfWeek\r\n        calendar.set(Calendar.DAY_OF_WEEK, currentWeekStart)\r\n        val startOfWeek = calendar.time\r\n\r\n        calendar.add(Calendar.DAY_OF_WEEK, 6)\r\n        val endOfWeek = calendar.time\r\n\r\n        val eventDateTime = dateFormat.parse(eventDate)\r\n\r\n        return eventDateTime in startOfWeek..endOfWeek\r\n    }\r\n\r\n    override fun onResume() {\r\n        super.onResume()\r\n        getDataFromFirebase()\r\n    }\r\n\r\n    private fun init(view:View){\r\n        navControl=Navigation.findNavController(view)\r\n        auth= FireHelper.firebaseAuth\r\n        dbref= FireHelper.dbref.child(\"Users\").child(auth.currentUser?.uid.toString()).child(\"DairyTasks\")\r\n\r\n\r\n\r\n        binding.mainRecyclerView.setHasFixedSize(true)\r\n        getDataFromFirebase()\r\n        binding.mainRecyclerView.layoutManager = LinearLayoutManager(context)\r\n        mlist= mutableListOf()\r\n        adapter= DairyTaskAdapter(mlist)\r\n        adapter.setListener(this)\r\n        binding.mainRecyclerView.adapter=adapter\r\n        dbref.addChildEventListener(object :ChildEventListener{\r\n            override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {\r\n                if(snapshot.value.toString()!=\"\"){\r\n                    mlist.add(\r\n                        DairyTaskData(\r\n                        snapshot.child(\"dairyTaskName\").value.toString() ,snapshot.child(\"dairyTaskDescription\").value.toString(), snapshot.key.toString())\r\n                    )\r\n\r\n                    adapter.notifyItemInserted(mlist.size - 1)\r\n                }\r\n\r\n            }\r\n\r\n            override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {\r\n                if(snapshot.value.toString()!=\"\"){\r\n\r\n                    adapter.notifyDataSetChanged()\r\n                }\r\n            }\r\n\r\n            override fun onChildRemoved(snapshot: DataSnapshot) {\r\n                if(snapshot.value.toString()!=\"\"){\r\n                    val index=mlist.indexOf(\r\n                        DairyTaskData(\r\n                        snapshot.child(\r\n                            \"dairyTaskName\").value.toString(), snapshot.child(\"dairyTaskDescription\").value.toString(), snapshot.key.toString())\r\n                    )\r\n                    mlist.remove(\r\n                        DairyTaskData(\r\n                        snapshot.child(\r\n                            \"dairyTaskName\").value.toString(), snapshot.child(\"dairyTaskDescription\").value.toString() , snapshot.key.toString())\r\n                    )\r\n                    adapter.notifyItemRemoved(index)\r\n\r\n                }\r\n            }\r\n\r\n            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {\r\n                TODO(\"Not yet implemented\")\r\n            }\r\n\r\n\r\n            override fun onCancelled(error: DatabaseError) {\r\n                Log.e(\"error\", error.toString())\r\n            }\r\n\r\n        })\r\n    }\r\n\r\n    private fun registerEvents(){\r\n        if(addPopUpFragment!= null){\r\n            childFragmentManager.beginTransaction().remove(addPopUpFragment!!).commit()\r\n        }\r\n        binding.AddTaskButton.setOnClickListener{\r\n            addPopUpFragment=AddTaskPopUpFragment()\r\n            addPopUpFragment!!.setListener(this)\r\n            addPopUpFragment!!.show(\r\n                childFragmentManager, AddTaskPopUpFragment1.TAG\r\n            )\r\n        }\r\n        binding.mainRecyclerView.setOnClickListener(){\r\n            taskPopUpFragment= TaskDescriptionFragment()\r\n            taskPopUpFragment!!.setListener(this)\r\n            taskPopUpFragment!!.show(\r\n                childFragmentManager, TaskDescriptionFragment.TAG\r\n            )\r\n        }\r\n\r\n        getCats()\r\n\r\n        binding.rgCats.setOnCheckedChangeListener { group, checkedId ->\r\n            val button = requireView().findViewById<RadioButton>(checkedId)\r\n            binding.btCat.text = button.text.toString()\r\n            category = button.text.toString()\r\n            binding.rgCats.visibility = View.GONE\r\n\r\n            sortTasks()\r\n        }\r\n\r\n        binding.btCat.setOnClickListener {\r\n            binding.rgCats.visibility = View.VISIBLE\r\n        }\r\n    }\r\n\r\n    private fun sortTasks(){\r\n        Log.e(\"Cat\", \"Sorting tasks\")\r\n        if(category == \"All\"){\r\n            getDataFromFirebase()\r\n        }\r\n\r\n        mlist.clear()\r\n\r\n        FireHelper.Users.child(FireHelper.firebaseAuth.currentUser!!.uid).child(\"DairyTasks\").get().addOnCompleteListener {\r\n            if(it.isSuccessful){\r\n                for(i in it.result.children){\r\n                    val task = i.getValue(DairyTaskData::class.java)\r\n\r\n                    Log.i(\"CAT\", \"${task!!.category == \"# \"+category && task != null}\")\r\n                    if(task.category == \"# \"+category){\r\n                        mlist.add(task)\r\n                    }\r\n                }\r\n                Log.i(\"CAT\", mlist.size.toString())\r\n                adapter.notifyDataSetChanged()\r\n            }\r\n        }\r\n    }\r\n\r\n    private fun getCats(){\r\n        val radio = RadioButton(context)\r\n        radio.text = \"All\"\r\n        radio.id = View.generateViewId()\r\n\r\n        binding.rgCats.addView(radio)\r\n        FireHelper.Users.child(FireHelper.firebaseAuth.currentUser!!.uid).child(\"Categories\").get().addOnCompleteListener {\r\n            if(it.isSuccessful){\r\n                for(i in it.result.children){\r\n                    val cat = i.getValue(Category::class.java)\r\n\r\n                    if(cat != null){\r\n                        val radio = RadioButton(context)\r\n                        Log.i(\"Cat\", cat.name)\r\n                        radio.text = cat.name\r\n                        radio.id = View.generateViewId()\r\n\r\n                        binding.rgCats.addView(radio)\r\n                    }\r\n                }\r\n            }\r\n        }\r\n    }\r\n\r\n    private fun getDataFromFirebase(){\r\n        dbref.addValueEventListener(object:ValueEventListener{\r\n            override fun onDataChange(snapshot: DataSnapshot) {\r\n\r\n                mlist.clear()\r\n                adapter.notifyDataSetChanged()\r\n\r\n                for (taskSnapshot in snapshot.children) {\r\n                    val task = taskSnapshot.getValue(DairyTaskData::class.java)\r\n                    if ( task!= null&& !task.isDone) {\r\n                        if(taskSnapshot.hasChild(\"SubTasks\")){\r\n                            task.containsSub = true\r\n                        }\r\n                        mlist.add(task)\r\n                        adapter.notifyItemInserted(mlist.size-1)\r\n                    }\r\n                }\r\n\r\n                }\r\n            override fun onCancelled(error: DatabaseError) {\r\n                Toast.makeText(context, error.message, Toast.LENGTH_SHORT).show()\r\n            }\r\n\r\n        })\r\n    }\r\n\r\n    override fun onDeleteDairyTaskData(dairyTaskData: DairyTaskData) {\r\n        dbref.child(dairyTaskData.dairyTaskId).removeValue().addOnCompleteListener(){\r\n            if(it.isSuccessful.not()){\r\n                Toast.makeText(context, it.exception?.message, Toast.LENGTH_SHORT    ).show()\r\n            }\r\n        }\r\n    }\r\n\r\n    override fun onTaskClicked(dairyTaskData: DairyTaskData) {\r\n        if(taskPopUpFragment!=null)\r\n            childFragmentManager.beginTransaction().remove(taskPopUpFragment!!).commit()\r\n\r\n        taskPopUpFragment=TaskDescriptionFragment.newInstance(dairyTaskData.dairyTaskName, dairyTaskData.dairyTaskDescription, dairyTaskData.dairyTaskId)\r\n        taskPopUpFragment!!.setListener(this)\r\n        taskPopUpFragment!!.show(\r\n            childFragmentManager,\r\n            TaskDescriptionFragment.TAG\r\n\r\n        )\r\n        FirebaseMessaging.getInstance().getToken()\r\n    }\r\n\r\n    override fun onEditTaskButtonClicked(dairyTaskData: DairyTaskData) {\r\n        if (taskPopUpFragment != null)\r\n            childFragmentManager.beginTransaction().remove(taskPopUpFragment!!).commit()\r\n\r\n        taskPopUpFragment = TaskDescriptionFragment.newInstance(\r\n            dairyTaskData.dairyTaskName,\r\n            dairyTaskData.dairyTaskDescription,\r\n            dairyTaskData.dairyTaskId\r\n        )\r\n        taskPopUpFragment!!.setListener(this)\r\n        taskPopUpFragment!!.show(\r\n            childFragmentManager,\r\n            TaskDescriptionFragment.TAG\r\n        )\r\n    }\r\n\r\n    override fun onCheckBoxClicked(taskData: DairyTaskData, position: Int) {\r\n        taskData.isDone=true\r\n        FireHelper.Users.child(FireHelper.firebaseAuth.currentUser?.uid.toString()).child(\"DairyTasks\")\r\n            .child(taskData.dairyTaskId).child(\"done\").setValue(true)\r\n\r\n        mlist.add(position, mlist.removeAt(position) )\r\n\r\n        view?.post(){\r\n            binding.mainRecyclerView.adapter?.notifyDataSetChanged()\r\n        }\r\n\r\n    }\r\n\r\n    override fun onSaveDairyTask(taskName:String, taskDescription:String , time:String, date:String, taskDescriptionEntryText: TextInputEditText,   taskNameEntryText: TextInputEditText, taskCategory: String) {\r\n        val k=dbref.push()\r\n        k.setValue(DairyTaskData(taskName, taskDescription, k.key.toString(), time, date, category = taskCategory)).addOnCompleteListener{\r\n            if(it.isSuccessful){\r\n                Toast.makeText(context, \"Task added succesfully\", Toast.LENGTH_SHORT).show()\r\n            }\r\n            else{\r\n                Toast.makeText(context, it.exception?.message, Toast.LENGTH_SHORT).show()\r\n            }\r\n\r\n            }\r\n            taskDescriptionEntryText.text=null\r\n            taskNameEntryText.text=null\r\n            addPopUpFragment!!.dismiss()\r\n\r\n        }\r\n\r\n     override fun onUpdateDairyTask(taskName:String, taskDescription:String , taskId:String, time:String, date:String, taskEntryTextName: TextInputEditText, taskEntryTextDescription:TextInputEditText) {\r\n        val map = mapOf<String, Any>(\r\n            \"dairyTaskDescription\" to taskDescription,\r\n            \"dairyTaskId\" to taskId,\r\n            \"dairyTaskName\" to taskName,\r\n            \"dairyTaskNotifyTime\" to time,\r\n            \"dairyTaskDate\" to date)\r\n        dbref.child(taskId).updateChildren(map).addOnCompleteListener() {\r\n            if (it.isSuccessful)\r\n                Toast.makeText(context, \"Updated successfully\", Toast.LENGTH_SHORT).show()\r\n            else {\r\n                Toast.makeText(context, it.exception?.message, Toast.LENGTH_SHORT).show()\r\n            }\r\n            taskEntryTextName.text = null\r\n            taskEntryTextDescription.text=null\r\n\r\n            addPopUpFragment!!.dismiss()\r\n\r\n            taskPopUpFragment!!.dismiss()\r\n        }\r\n    }\r\n    override fun onClick( view: View?) {\r\n        when (view?.id) {\r\n            R.id.callmenubtn -> {\r\n                binding.drawerlayout.openDrawer(binding.navView)\r\n            }\r\n        }\r\n    }\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/tm/Fragments/HomeFragment.kt b/app/src/main/java/com/example/tm/Fragments/HomeFragment.kt
+--- a/app/src/main/java/com/example/tm/Fragments/HomeFragment.kt	
++++ b/app/src/main/java/com/example/tm/Fragments/HomeFragment.kt	
+@@ -123,7 +123,7 @@
+                     }
+ 
+                     R.id.Scheduled -> {
+-                        sortByDate("Scheduled")
++                        sortByDate("EvryTask")
+                         drawerlayout.closeDrawer(GravityCompat.START)
+                         true
+                     }
+@@ -140,7 +140,10 @@
+     }
+ 
+ 
+-    //Functions
++    ////Functions
++
++
++    //sorting the tasks by the day
+     private fun sortByDate(d: String){
+         mlist.clear()
+ 
+@@ -157,7 +160,7 @@
+                                 mlist.add(task)
+                             }
+                         }
+-                        "Tomorow" -> {
++                        "Tomorrow" -> {
+                             val dateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+                             val date = Calendar.getInstance()
+                             date.add(Calendar.DAY_OF_YEAR, 1)
+@@ -171,7 +174,7 @@
+                                 mlist.add(task)
+                             }
+                         }
+-                        else -> {
++                        "Scheduled" ->{
+                             mlist.add(task)
+                         }
+                     }
+@@ -181,6 +184,7 @@
+         }
+     }
+ 
++    //checking if the task is planned on the date in the current week
+     fun isEventThisWeek(eventDate: String): Boolean {
+         val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+         val currentDate = Date()
+@@ -194,9 +198,15 @@
+         calendar.add(Calendar.DAY_OF_WEEK, 6)
+         val endOfWeek = calendar.time
+ 
+-        val eventDateTime = dateFormat.parse(eventDate)
++
++        //checking if task has an expiration date to avoid fatal error
++        if(eventDate.isNotEmpty()){
++            val eventDateTime = dateFormat.parse(eventDate)
+ 
+-        return eventDateTime in startOfWeek..endOfWeek
++            return eventDateTime in startOfWeek..endOfWeek
++        }
++        return false
++
+     }
+ 
+     override fun onResume() {
+@@ -414,6 +424,11 @@
+         )
+     }
+ 
++    override fun onDeleteButtonClicked(taskData: DairyTaskData) {
++        dbref.child(taskData.dairyTaskId).removeValue()
++
++    }
++
+     override fun onCheckBoxClicked(taskData: DairyTaskData, position: Int) {
+         taskData.isDone=true
+         FireHelper.Users.child(FireHelper.firebaseAuth.currentUser?.uid.toString()).child("DairyTasks")
+@@ -421,7 +436,7 @@
+ 
+         mlist.add(position, mlist.removeAt(position) )
+ 
+-        view?.post(){
++        view?.post{
+             binding.mainRecyclerView.adapter?.notifyDataSetChanged()
+         }
+ 
+@@ -460,9 +475,13 @@
+             taskEntryTextName.text = null
+             taskEntryTextDescription.text=null
+ 
+-            addPopUpFragment!!.dismiss()
+-
+-            taskPopUpFragment!!.dismiss()
++            if(addPopUpFragment!=null){
++                addPopUpFragment!!.dismiss()
++            }
++            if(taskPopUpFragment!=null){
++                taskPopUpFragment!!.dismiss()
++            }
++
+         }
+     }
+     override fun onClick( view: View?) {
+Index: app/src/main/res/drawable/done_tasks.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><vector android:autoMirrored=\"true\" android:height=\"24dp\"\n    android:tint=\"#000000\" android:viewportHeight=\"24\"\n    android:viewportWidth=\"24\" android:width=\"24dp\" xmlns:android=\"http://schemas.android.com/apk/res/android\">\n    <path android:fillColor=\"@android:color/white\" android:pathData=\"M4,10.5c-0.83,0 -1.5,0.67 -1.5,1.5s0.67,1.5 1.5,1.5 1.5,-0.67 1.5,-1.5 -0.67,-1.5 -1.5,-1.5zM4,4.5c-0.83,0 -1.5,0.67 -1.5,1.5S3.17,7.5 4,7.5 5.5,6.83 5.5,6 4.83,4.5 4,4.5zM4,16.5c-0.83,0 -1.5,0.68 -1.5,1.5s0.68,1.5 1.5,1.5 1.5,-0.68 1.5,-1.5 -0.67,-1.5 -1.5,-1.5zM7,19h14v-2L7,17v2zM7,13h14v-2L7,11v2zM7,5v2h14L21,5L7,5z\"/>\n</vector>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/done_tasks.xml b/app/src/main/res/drawable/done_tasks.xml
+--- a/app/src/main/res/drawable/done_tasks.xml	
++++ b/app/src/main/res/drawable/done_tasks.xml	
+@@ -1,5 +1,5 @@
+-<vector android:autoMirrored="true" android:height="24dp"
+-    android:tint="#000000" android:viewportHeight="24"
+-    android:viewportWidth="24" android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
+-    <path android:fillColor="@android:color/white" android:pathData="M4,10.5c-0.83,0 -1.5,0.67 -1.5,1.5s0.67,1.5 1.5,1.5 1.5,-0.67 1.5,-1.5 -0.67,-1.5 -1.5,-1.5zM4,4.5c-0.83,0 -1.5,0.67 -1.5,1.5S3.17,7.5 4,7.5 5.5,6.83 5.5,6 4.83,4.5 4,4.5zM4,16.5c-0.83,0 -1.5,0.68 -1.5,1.5s0.68,1.5 1.5,1.5 1.5,-0.68 1.5,-1.5 -0.67,-1.5 -1.5,-1.5zM7,19h14v-2L7,17v2zM7,13h14v-2L7,11v2zM7,5v2h14L21,5L7,5z"/>
++<vector android:height="24dp" android:tint="#000000"
++    android:viewportHeight="24" android:viewportWidth="24"
++    android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
++    <path android:fillColor="@android:color/white" android:pathData="M18,7l-1.41,-1.41 -6.34,6.34 1.41,1.41L18,7zM22.24,5.59L11.66,16.17 7.48,12l-1.41,1.41L11.66,19l12,-12 -1.42,-1.41zM0.41,13.41L6,19l1.41,-1.41L1.83,12 0.41,13.41z"/>
+ </vector>
+Index: app/src/main/res/menu/nav_menu.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<menu xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    tools:showIn=\"navigation_view\">\n\n    <item\n        android:id=\"@+id/nav_home\"\n        android:title=\"Home\"\n        android:icon=\"@drawable/home\"\n        android:iconTint=\"@color/white\"\n        />\n\n\n    <item\n        android:id=\"@+id/nav_settings\"\n        android:title=\"Settings\"\n        android:icon=\"@drawable/settings\"\n        android:iconTint=\"@color/white\"\n        />\n    <item\n        android:id=\"@+id/nav_done_list\"\n        android:title=\"Completed list\"\n        android:icon=\"@drawable/done_tasks\"\n        android:iconTint=\"@color/white\"\n        />\n    <item android:title=\"Categories\"\n        android:id=\"@+id/Categories\"/>\n\n<!--Не рабочая хуйня, надо подумать над тем, чтобы вообще нахуй это убрать-->\n    <item android:title=\"Tasks\">\n        <menu>\n            <item android:title=\"Today\"\n                android:id=\"@+id/Today\"/>\n\n            <item android:title=\"Tomorow\"\n                android:id=\"@+id/Tomorow\"/>\n\n            <item android:title=\"This week\"\n                android:id=\"@+id/ThisWeek\"/>\n\n            <item android:title=\"Scheduled\"\n                android:id=\"@+id/Scheduled\"/>\n        </menu>\n    </item>\n\n</menu>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/menu/nav_menu.xml b/app/src/main/res/menu/nav_menu.xml
+--- a/app/src/main/res/menu/nav_menu.xml	
++++ b/app/src/main/res/menu/nav_menu.xml	
+@@ -1,7 +1,8 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <menu xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:tools="http://schemas.android.com/tools"
+-    tools:showIn="navigation_view">
++    tools:showIn="navigation_view"
++    >
+ 
+     <item
+         android:id="@+id/nav_home"
+@@ -24,22 +25,27 @@
+         android:iconTint="@color/white"
+         />
+     <item android:title="Categories"
+-        android:id="@+id/Categories"/>
++        android:id="@+id/Categories"
++        android:icon="@drawable/d_menu_btn"/>
++
+ 
+-<!--Не рабочая хуйня, надо подумать над тем, чтобы вообще нахуй это убрать-->
+-    <item android:title="Tasks">
++
++<!--submenu-->
++    <item android:title="SORTED"
++        >
+         <menu>
+-            <item android:title="Today"
+-                android:id="@+id/Today"/>
++                <item android:title="Today"
++                    android:id="@+id/Today"/>
+ 
+-            <item android:title="Tomorow"
+-                android:id="@+id/Tomorow"/>
++                <item android:title="Tomorow"
++                    android:id="@+id/Tomorow"/>
+ 
+-            <item android:title="This week"
+-                android:id="@+id/ThisWeek"/>
++                <item android:title="This week"
++                    android:id="@+id/ThisWeek"/>
+ 
+-            <item android:title="Scheduled"
+-                android:id="@+id/Scheduled"/>
++                <item android:title="All the tasks"
++                    android:titleCondensed="All"
++                    android:id="@+id/Scheduled"/>
+         </menu>
+     </item>
+ 
+Index: app/src/main/res/layout/fragment_done_tasks.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\"\n    android:paddingTop=\"0dp\"\n    tools:context=\".Fragments.DoneTasksFragment\">\n\n    <TextView\n        android:id=\"@+id/textView4\"\n        android:layout_width=\"278dp\"\n        android:layout_height=\"44dp\"\n        android:layout_marginTop=\"20dp\"\n        android:gravity=\"center\"\n        android:text=\"Done Tasks\"\n        android:textSize=\"35dp\"\n\n        android:textStyle=\"bold\"\n        app:layout_constraintBottom_toTopOf=\"@id/recyclerView\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:layout_constraintHorizontal_bias=\"0.496\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toTopOf=\"parent\" />\n\n    <androidx.recyclerview.widget.RecyclerView\n        android:id=\"@+id/recyclerView\"\n        android:layout_width=\"410dp\"\n        android:layout_height=\"662dp\"\n\n        android:layout_marginTop=\"9dp\"\n        app:layout_constraintBottom_toBottomOf=\"parent\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n\n        app:layout_constraintHorizontal_bias=\"0.0\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toBottomOf=\"@+id/textView4\"\n        app:layout_constraintVertical_bias=\"1.0\">\n\n\n    </androidx.recyclerview.widget.RecyclerView>\n\n    <ImageView\n        android:id=\"@+id/BackBtn\"\n        android:layout_width=\"50dp\"\n        android:layout_height=\"50dp\"\n\n        android:layout_marginStart=\"16dp\"\n        android:layout_marginTop=\"16dp\"\n        android:src=\"@drawable/d_menu_btn\"\n        app:layout_constraintEnd_toStartOf=\"@+id/textView4\"\n        app:layout_constraintHorizontal_bias=\"0.0\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toTopOf=\"parent\" />\n\n\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_done_tasks.xml b/app/src/main/res/layout/fragment_done_tasks.xml
+--- a/app/src/main/res/layout/fragment_done_tasks.xml	
++++ b/app/src/main/res/layout/fragment_done_tasks.xml	
+@@ -47,7 +47,7 @@
+ 
+         android:layout_marginStart="16dp"
+         android:layout_marginTop="16dp"
+-        android:src="@drawable/d_menu_btn"
++        android:src="@drawable/arrow_back_24"
+         app:layout_constraintEnd_toStartOf="@+id/textView4"
+         app:layout_constraintHorizontal_bias="0.0"
+         app:layout_constraintStart_toStartOf="parent"
+Index: app/src/main/java/ModulesAndAdapters/DairyTaskAdapter.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package ModulesAndAdapters\r\n\r\nimport DataClasses.DairyTaskData\r\nimport android.view.LayoutInflater\r\nimport android.view.View\r\nimport android.view.ViewGroup\r\nimport android.widget.CheckBox\r\nimport androidx.recyclerview.widget.RecyclerView\r\nimport androidx.recyclerview.widget.RecyclerView.Adapter\r\nimport com.example.tm.Fragments.DoneTasksFragment\r\nimport com.example.tm.Fragments.HomeFragment\r\nimport com.example.tm.R\r\nimport com.example.tm.databinding.EachTaskItemBinding\r\nimport com.google.android.gms.tasks.Task\r\n\r\nclass DairyTaskAdapter(private val list:MutableList<DairyTaskData>) : Adapter<DairyTaskAdapter.TaskViewHolder>()\r\n{\r\n    private var listener: DairyTaskAdapterClickInterface?=null\r\n\r\n\r\n    fun setListener(listener: HomeFragment){\r\n        this.listener=listener\r\n    }\r\n    fun setListener(listener: DoneTasksFragment){\r\n        this.listener=listener\r\n    }\r\n\r\n\r\n\r\n\r\n\r\n    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {\r\n\r\n        val binding =\r\n            EachTaskItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)\r\n        return TaskViewHolder(binding)\r\n    }\r\n\r\n    override fun getItemCount(): Int {\r\n        return list.size\r\n    }\r\n\r\n    override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {\r\n        if(list.isNotEmpty()){\r\n            with(holder){\r\n                with(list[position]) {\r\n                    binding.DairyTaskName.text = this.dairyTaskName\r\n                    binding.tvCategory.text = this.category\r\n\r\n                    if (this.notificationTime != \"Not set\") {\r\n                        binding.tvTime.setText(this.notificationTime)\r\n                    }\r\n                    if(list[position].isDone){\r\n                        binding.isDoneCheckBox.isChecked=true\r\n                    }\r\n                    else{\r\n                        binding.isDoneCheckBox.isChecked=false\r\n                    }\r\n                    if (list[position].containsSub) {\r\n                        binding.ivSubIcon.visibility = View.VISIBLE\r\n                    }\r\n\r\n\r\n                    binding.isDoneCheckBox.setOnCheckedChangeListener { buttonView, isChecked ->\r\n                        listener?.onCheckBoxClicked(this, position)\r\n                    }\r\n\r\n                    binding.editTask.setOnClickListener() {\r\n                        listener?.onEditTaskButtonClicked(this)\r\n                    }\r\n                    binding.EachItemDairyTask.setOnClickListener() {\r\n                        listener?.onTaskClicked(this)\r\n                    }\r\n                }\r\n            }\r\n        }\r\n\r\n    }\r\n    inner class TaskViewHolder(val binding:EachTaskItemBinding) : RecyclerView.ViewHolder(binding.root) {\r\n        private val checkbox: CheckBox = itemView.findViewById(R.id.isDoneCheckBox)\r\n\r\n        fun bind(task: DairyTaskData) {\r\n\r\n            checkbox.isChecked = task.isDone\r\n\r\n            checkbox.setOnCheckedChangeListener { _, isChecked ->\r\n                // Update dataset and notify adapter when checkbox state changes\r\n                task.isDone = isChecked\r\n                listener?.onCheckBoxClicked(task, adapterPosition)\r\n            }\r\n        }\r\n    }\r\n    interface DairyTaskAdapterClickInterface{\r\n        fun onTaskClicked(taskData: DairyTaskData)\r\n        fun onEditTaskButtonClicked(taskData: DairyTaskData)\r\n\r\n        fun onCheckBoxClicked(taskData: DairyTaskData, position: Int)\r\n\r\n\r\n    }\r\n\r\n}
+===================================================================
+diff --git a/app/src/main/java/ModulesAndAdapters/DairyTaskAdapter.kt b/app/src/main/java/ModulesAndAdapters/DairyTaskAdapter.kt
+--- a/app/src/main/java/ModulesAndAdapters/DairyTaskAdapter.kt	
++++ b/app/src/main/java/ModulesAndAdapters/DairyTaskAdapter.kt	
+@@ -93,7 +93,7 @@
+     interface DairyTaskAdapterClickInterface{
+         fun onTaskClicked(taskData: DairyTaskData)
+         fun onEditTaskButtonClicked(taskData: DairyTaskData)
+-
++        fun onDeleteButtonClicked(taskData: DairyTaskData)
+         fun onCheckBoxClicked(taskData: DairyTaskData, position: Int)
+ 
+ 
+Index: app/src/main/res/drawable/sub_task_icon.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><vector xmlns:android=\"http://schemas.android.com/apk/res/android\" android:height=\"24dp\" android:tint=\"#000000\" android:viewportHeight=\"24\" android:viewportWidth=\"24\" android:width=\"24dp\">\n      \n    <path android:fillColor=\"@android:color/white\" android:pathData=\"M22,5.18L10.59,16.6l-4.24,-4.24l1.41,-1.41l2.83,2.83l10,-10L22,5.18zM12,20c-4.41,0 -8,-3.59 -8,-8s3.59,-8 8,-8c1.57,0 3.04,0.46 4.28,1.25l1.45,-1.45C16.1,2.67 14.13,2 12,2C6.48,2 2,6.48 2,12s4.48,10 10,10c1.73,0 3.36,-0.44 4.78,-1.22l-1.5,-1.5C14.28,19.74 13.17,20 12,20zM19,15h-3v2h3v3h2v-3h3v-2h-3v-3h-2V15z\"/>\n    \n</vector>\n
+===================================================================
+diff --git a/app/src/main/res/drawable/sub_task_icon.xml b/app/src/main/res/drawable/sub_task_icon.xml
+--- a/app/src/main/res/drawable/sub_task_icon.xml	
++++ b/app/src/main/res/drawable/sub_task_icon.xml	
+@@ -1,5 +1,5 @@
+-<vector xmlns:android="http://schemas.android.com/apk/res/android" android:height="24dp" android:tint="#000000" android:viewportHeight="24" android:viewportWidth="24" android:width="24dp">
+-      
++<vector android:height="24dp" android:tint="#000000"
++    android:viewportHeight="24" android:viewportWidth="24"
++    android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
+     <path android:fillColor="@android:color/white" android:pathData="M22,5.18L10.59,16.6l-4.24,-4.24l1.41,-1.41l2.83,2.83l10,-10L22,5.18zM12,20c-4.41,0 -8,-3.59 -8,-8s3.59,-8 8,-8c1.57,0 3.04,0.46 4.28,1.25l1.45,-1.45C16.1,2.67 14.13,2 12,2C6.48,2 2,6.48 2,12s4.48,10 10,10c1.73,0 3.36,-0.44 4.78,-1.22l-1.5,-1.5C14.28,19.74 13.17,20 12,20zM19,15h-3v2h3v3h2v-3h3v-2h-3v-3h-2V15z"/>
+-    
+ </vector>
