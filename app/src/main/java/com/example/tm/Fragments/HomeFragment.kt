@@ -83,6 +83,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                 when (menuItem.itemId) {
                     R.id.nav_home -> {
                         drawerlayout.closeDrawer(GravityCompat.START)
+                        onResume()
                         true
                     }
 
@@ -107,24 +108,28 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                     R.id.Today -> {
                         sortByDate("Today")
                         drawerlayout.closeDrawer(GravityCompat.START)
+
                         true
                     }
 
-                    R.id.Tomorow -> {
-                        sortByDate("Tomorow")
+                    R.id.Tomorrow -> {
+                        sortByDate("Tomorrow")
                         drawerlayout.closeDrawer(GravityCompat.START)
+
                         true
                     }
 
                     R.id.ThisWeek -> {
                         sortByDate("ThisWeek")
                         drawerlayout.closeDrawer(GravityCompat.START)
+
                         true
                     }
 
-                    R.id.Scheduled -> {
-                        sortByDate("Scheduled")
+                    R.id.AllTheTasks -> {
+                        sortByDate("All the tasks")
                         drawerlayout.closeDrawer(GravityCompat.START)
+                        onResume()
                         true
                     }
 
@@ -157,12 +162,12 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                                 mlist.add(task)
                             }
                         }
-                        "Tomorow" -> {
+                        "Tomorrow" -> {
                             val dateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
                             val date = Calendar.getInstance()
                             date.add(Calendar.DAY_OF_YEAR, 1)
-                            val tomorowDate = dateFormat.format(date.time)
-                            if(task.date == tomorowDate){
+                            val tomorrowDate = dateFormat.format(date.time)
+                            if(task.date == tomorrowDate){
                                 mlist.add(task)
                             }
                         }
@@ -171,7 +176,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                                 mlist.add(task)
                             }
                         }
-                        else -> {
+                        "All the tasks" ->{
                             mlist.add(task)
                         }
                     }
@@ -194,9 +199,14 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
         calendar.add(Calendar.DAY_OF_WEEK, 6)
         val endOfWeek = calendar.time
 
-        val eventDateTime = dateFormat.parse(eventDate)
+        if(eventDate.isNotEmpty()){
+            val eventDateTime = dateFormat.parse(eventDate)
+            return eventDateTime in startOfWeek..endOfWeek
+        }
+        return false
 
-        return eventDateTime in startOfWeek..endOfWeek
+
+
     }
 
     override fun onResume() {

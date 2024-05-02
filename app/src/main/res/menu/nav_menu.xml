@@ -20,26 +20,26 @@
     <item
         android:id="@+id/nav_done_list"
         android:title="Completed list"
-        android:icon="@drawable/done_tasks"
-        android:iconTint="@color/white"
+        android:icon="@drawable/compketed_tasks"
         />
     <item android:title="Categories"
-        android:id="@+id/Categories"/>
+        android:id="@+id/Categories"
+        android:icon="@drawable/categories"
+        />
 
-<!--Не рабочая хуйня, надо подумать над тем, чтобы вообще нахуй это убрать-->
-    <item android:title="Tasks">
+    <item android:title="SORTED">
         <menu>
             <item android:title="Today"
                 android:id="@+id/Today"/>
 
-            <item android:title="Tomorow"
-                android:id="@+id/Tomorow"/>
+            <item android:title="Tomorrow"
+                android:id="@+id/Tomorrow"/>
 
             <item android:title="This week"
                 android:id="@+id/ThisWeek"/>
 
-            <item android:title="Scheduled"
-                android:id="@+id/Scheduled"/>
+            <item android:title="All the tasks"
+                android:id="@+id/AllTheTasks"/>
         </menu>
     </item>
 
