@@ -204,9 +204,6 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
             return eventDateTime in startOfWeek..endOfWeek
         }
         return false
-
-
-
     }
 
     override fun onResume() {

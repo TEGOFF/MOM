@@ -108,15 +108,7 @@ class TaskDescriptionFragment : DialogFragment(), OnClickInterface {
                 listener?.onUpdateDairyTask(taskName, taskDescription, dairyTaskData?.dairyTaskId.toString(), time, date, binding.TaskEntryTextName, binding.TaskEntryTextDescription)
             }
         }
-        binding.deleteTask.setOnClickListener(){
-            listener?.onDeleteDairyTaskData(
-                DairyTaskData(
-                arguments?.getString("dairyTaskName").toString(),
-                arguments?.getString("dairyTaskDescription").toString(),
-                arguments?.getString("dairyTaskId").toString()
-            )
-            )
-        }
+
         binding.TimeSetter.setOnClickListener(){
             time=openTimePicker()
         }
