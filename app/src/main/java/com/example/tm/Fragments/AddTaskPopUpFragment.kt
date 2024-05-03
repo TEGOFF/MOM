@@ -75,7 +75,6 @@ class AddTaskPopUpFragment : DialogFragment() {
                 if(dairyTaskData==null){
                     listener?.onSaveDairyTask(
                         taskName, taskDescription , time, date, binding.TaskEntryTextName, binding.TaskEntryTextDescription, taskCategory)
-
                 }
                 else{
                     listener?.onUpdateDairyTask(
@@ -162,7 +161,8 @@ class AddTaskPopUpFragment : DialogFragment() {
             .build()
 
         datePicker.addOnPositiveButtonClickListener {
-            date = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(Date(it))
+            date = Locale.getDefault().toString()
+            Log.d("SDF", date)
         }
 
         datePicker.show(childFragmentManager, "TAG")

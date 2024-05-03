@@ -9,4 +9,3 @@ data class DairyTaskData(
     var isDone:Boolean=false,
     val category: String= "",
     var containsSub: Boolean = false)
-

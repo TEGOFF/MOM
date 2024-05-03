@@ -24,7 +24,7 @@
         />
     <item android:title="Categories"
         android:id="@+id/Categories"
-        android:icon="@drawable/categories"
+        android:icon="@drawable/d_menu_btn"
         />
 
     <item android:title="SORTED">

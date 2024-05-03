@@ -157,8 +157,9 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                     when(d){
                         "Today" ->{
                             val dateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
-                            val currentDate = dateFormat.format(Date())
-                            if(task.date == currentDate){
+                            val currentDate = Date()
+                            val date = Date(task.date)
+                            if(date == currentDate){
                                 mlist.add(task)
                             }
                         }
@@ -188,7 +189,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
 
     fun isEventThisWeek(eventDate: String): Boolean {
         val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-        val currentDate = Date()
+        val currentDate = Date() 
 
         val calendar = Calendar.getInstance()
         calendar.time = currentDate
@@ -199,14 +200,30 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
         calendar.add(Calendar.DAY_OF_WEEK, 6)
         val endOfWeek = calendar.time
 
+        Log.d("SDF", eventDate.isNotEmpty().toString())
         if(eventDate.isNotEmpty()){
-            val eventDateTime = dateFormat.parse(eventDate)
-            return eventDateTime in startOfWeek..endOfWeek
+            val eventDateTime = Date(eventDate)
+            if (eventDateTime != null) {
+                Log.d("SDF", (eventDateTime in startOfWeek..endOfWeek).toString())
+                Log.d("SDF", "START OF WEEK: ${startOfWeek}, END OF WEEK: ${endOfWeek}, EVENT DATE: ${eventDateTime}")
+
+                Log.d("SDF",
+                    (eventDateTime.month in Math.min(startOfWeek.month, endOfWeek.month) ..Math.max(startOfWeek.month, endOfWeek.month)).toString()
+                )
+                Log.d("SDF", "START OF WEEK month: ${startOfWeek.month}, END OF WEEK: ${endOfWeek.month}, EVENT DATE: ${eventDateTime.month}")
+
+                if(eventDateTime.month in Math.min(startOfWeek.month, endOfWeek.month) ..Math.max(startOfWeek.month, endOfWeek.month)){
+
+                    Log.d("SDF", (eventDateTime.date in Math.min(startOfWeek.date, endOfWeek.date)..Math.max(startOfWeek.date, endOfWeek.date)).toString())
+                    Log.d("SDF", "START OF WEEK: ${startOfWeek.date}, END OF WEEK: ${endOfWeek.date}, EVENT DATE: ${eventDateTime.date}")
+
+                    if(eventDateTime.date in Math.min(startOfWeek.date, endOfWeek.date)..Math.max(startOfWeek.date, endOfWeek.date)){
+                        return true
+                    }
+                }
+            }
         }
         return false
-
-
-
     }
 
     override fun onResume() {
