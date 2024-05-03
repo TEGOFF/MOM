@@ -161,7 +161,7 @@ class AddTaskPopUpFragment : DialogFragment() {
             .build()
 
         datePicker.addOnPositiveButtonClickListener {
-            date = Locale.getDefault().toString()
+            date = Date().toString()
             Log.d("SDF", date)
         }
 

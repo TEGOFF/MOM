@@ -12,6 +12,7 @@ import com.example.tm.Fragments.HomeFragment
 import com.example.tm.R
 import com.example.tm.databinding.EachTaskItemBinding
 import com.google.android.gms.tasks.Task
+import java.util.Date
 
 class DairyTaskAdapter(private val list:MutableList<DairyTaskData>) : Adapter<DairyTaskAdapter.TaskViewHolder>()
 {
@@ -47,11 +48,22 @@ class DairyTaskAdapter(private val list:MutableList<DairyTaskData>) : Adapter<Da
                     binding.DairyTaskName.text = this.dairyTaskName
                     binding.tvCategory.text = this.category
 
-                    if (this.notificationTime != "Not set") {
+                    if (this.notificationTime.isNotEmpty()) {
                         binding.tvTime.setText(this.notificationTime)
                     }
+                    else{
+                        binding.ifTime.visibility=View.GONE
+                    }
                     if(this.date.isNotEmpty()){
-                        binding.tvDate.setText(this.date)
+                        try {
+                            val d = Date(this.date)
+                            binding.tvDate.setText("${d.date}.${d.month+1}")
+                        }
+                        catch (_: Exception){
+                        }
+                    }
+                    else{
+                        binding.ifDate.visibility=View.GONE
                     }
                     if(list[position].isDone){
                         binding.isDoneCheckBox.isChecked=true
@@ -59,8 +71,8 @@ class DairyTaskAdapter(private val list:MutableList<DairyTaskData>) : Adapter<Da
                     else{
                         binding.isDoneCheckBox.isChecked=false
                     }
-                    if (list[position].containsSub) {
-                        binding.subTaskIcon.visibility = View.VISIBLE
+                    if (!list[position].containsSub) {
+                        binding.subTaskIcon.visibility = View.GONE
                     }
 
 
