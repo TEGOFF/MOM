@@ -45,18 +45,28 @@ class DairyTaskAdapter(private val list:MutableList<DairyTaskData>) : Adapter<Da
         if(list.isNotEmpty()){
             with(holder){
                 with(list[position]) {
+                    //Initialization
                     binding.DairyTaskName.text = this.dairyTaskName
                     binding.tvCategory.text = this.category
                     binding.deleteTask.setOnClickListener(){
                         listener?.onDeleteTaskClicked(list[position])
                     }
-
+                    //if SubTask
+                    if(list[position].ifSub){
+                        binding.ifDate.visibility=View.GONE
+                        binding.ifTime.visibility=View.GONE
+                        binding.tvDate.setText("")
+                        binding.tvTime.setText("")
+                        binding.tvCategory.setText("")
+                    }
+                    //If have notification time
                     if (this.notificationTime.isNotEmpty()) {
                         binding.tvTime.setText(this.notificationTime)
                     }
                     else{
                         binding.tvTime.setText("None")
                     }
+                    //if Have a date
                     if(this.date.isNotEmpty()){
                         try {
                             val d = Date(this.date)
@@ -66,29 +76,28 @@ class DairyTaskAdapter(private val list:MutableList<DairyTaskData>) : Adapter<Da
                         }
                     }
                     else{
-                        binding.ifDate.visibility=View.GONE
-                    }
-                    else{
                         binding.tvDate.setText("None")
                     }
+
+                    //if task is done
                     if(list[position].isDone){
                         binding.isDoneCheckBox.isChecked=true
                     }
                     else{
                         binding.isDoneCheckBox.isChecked=false
                     }
+                    //if task contains sub tasks
                     if (!list[position].containsSub) {
                         binding.subTaskIcon.visibility = View.GONE
                     }
 
-
+                    //checkbox clicklistener
                     binding.isDoneCheckBox.setOnCheckedChangeListener { buttonView, isChecked ->
                         listener?.onCheckBoxClicked(this, position)
                     }
+                    //edit task clicklistener
 
-                    binding.editTask.setOnClickListener() {
-                        listener?.onEditTaskButtonClicked(this)
-                    }
+
                     binding.EachItemDairyTask.setOnClickListener() {
                         listener?.onTaskClicked(this)
                     }
@@ -113,7 +122,7 @@ class DairyTaskAdapter(private val list:MutableList<DairyTaskData>) : Adapter<Da
     }
     interface DairyTaskAdapterClickInterface{
         fun onTaskClicked(taskData: DairyTaskData)
-        fun onEditTaskButtonClicked(taskData: DairyTaskData)
+
 
         fun onDeleteTaskClicked(taskData: DairyTaskData)
         fun onCheckBoxClicked(taskData: DairyTaskData, position: Int)

@@ -383,13 +383,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
         })
     }
 
-    override fun onDeleteDairyTaskData(dairyTaskData: DairyTaskData) {
-        dbref.child(dairyTaskData.dairyTaskId).removeValue().addOnCompleteListener(){
-            if(it.isSuccessful.not()){
-                Toast.makeText(context, it.exception?.message, Toast.LENGTH_SHORT    ).show()
-            }
-        }
-    }
+
 
     override fun onTaskClicked(dairyTaskData: DairyTaskData) {
         if(taskPopUpFragment!=null)
@@ -405,20 +399,14 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
         FirebaseMessaging.getInstance().getToken()
     }
 
-    override fun onEditTaskButtonClicked(dairyTaskData: DairyTaskData) {
-        if (taskPopUpFragment != null)
-            childFragmentManager.beginTransaction().remove(taskPopUpFragment!!).commit()
+    //
 
-        taskPopUpFragment = TaskDescriptionFragment.newInstance(
-            dairyTaskData.dairyTaskName,
-            dairyTaskData.dairyTaskDescription,
-            dairyTaskData.dairyTaskId
-        )
-        taskPopUpFragment!!.setListener(this)
-        taskPopUpFragment!!.show(
-            childFragmentManager,
-            TaskDescriptionFragment.TAG
-        )
+    override fun onDeleteTaskClicked(dairyTaskData: DairyTaskData) {
+        dbref.child(dairyTaskData.dairyTaskId).removeValue().addOnCompleteListener(){
+            if(it.isSuccessful.not()){
+                Toast.makeText(context, it.exception?.message, Toast.LENGTH_SHORT    ).show()
+            }
+        }
     }
 
     override fun onCheckBoxClicked(taskData: DairyTaskData, position: Int) {
@@ -467,9 +455,14 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
             taskEntryTextName.text = null
             taskEntryTextDescription.text=null
 
-            addPopUpFragment!!.dismiss()
+            //checking which one of popupfragments was in use to avoid fatal errors
+            if(addPopUpFragment!=null){
+                addPopUpFragment!!.dismiss()
+            }
+            if(taskPopUpFragment!=null){
+                taskPopUpFragment!!.dismiss()
+            }
 
-            taskPopUpFragment!!.dismiss()
         }
     }
     override fun onClick( view: View?) {

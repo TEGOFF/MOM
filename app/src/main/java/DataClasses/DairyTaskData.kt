@@ -8,4 +8,5 @@ data class DairyTaskData(
     val date:String="",
     var isDone:Boolean=false,
     val category: String= "",
-    var containsSub: Boolean = false)
+    var containsSub: Boolean = false,
+    var ifSub:Boolean=false)

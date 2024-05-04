@@ -13,9 +13,9 @@ import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.example.tm.R
 import com.example.tm.databinding.FragmentDoneTasksBinding
+import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -23,12 +23,14 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 
 
-class DoneTasksFragment : Fragment(), DairyTaskAdapter.DairyTaskAdapterClickInterface {
+class DoneTasksFragment : Fragment(), DairyTaskAdapter.DairyTaskAdapterClickInterface,
+    AddTaskPopUpFragment.DialogBtnClickListeners {
     private lateinit var navControl: NavController
     private lateinit var binding: FragmentDoneTasksBinding
     private lateinit var adapter : DairyTaskAdapter
     private lateinit var mlist:MutableList<DairyTaskData>
     private lateinit var dbref:DatabaseReference
+    private var taskPopUpFragment:TaskDescriptionFragment? =null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -53,6 +55,7 @@ class DoneTasksFragment : Fragment(), DairyTaskAdapter.DairyTaskAdapterClickInte
         binding.recyclerView.setHasFixedSize(true)
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
         navControl= Navigation.findNavController(view)
+
         getDataFromFirebase()
         mlist= mutableListOf()
         adapter= DairyTaskAdapter(mlist)
@@ -100,7 +103,14 @@ class DoneTasksFragment : Fragment(), DairyTaskAdapter.DairyTaskAdapterClickInte
         binding.BackBtn.setOnClickListener(){
             navControl.navigate(R.id.action_doneTasksFragment_to_homeFragment)
         }
-        binding.recyclerView
+
+        binding.recyclerView.setOnClickListener(){
+            taskPopUpFragment= TaskDescriptionFragment()
+            taskPopUpFragment!!.setListener(this)
+            taskPopUpFragment!!.show(
+                childFragmentManager, TaskDescriptionFragment.TAG
+            )
+        }
 
 
     }
@@ -118,8 +128,10 @@ class DoneTasksFragment : Fragment(), DairyTaskAdapter.DairyTaskAdapterClickInte
 
                 for (taskSnapshot in snapshot.children) {
                     val task = taskSnapshot.getValue(DairyTaskData::class.java)
-                    if (task!= null && task.isDone)
-                     {
+                    if ( task!= null&& !task.isDone) {
+                        if(taskSnapshot.hasChild("SubTasks")){
+                            task.containsSub = true
+                        }
                         mlist.add(task)
                         adapter.notifyItemInserted(mlist.size-1)
                     }
@@ -133,16 +145,30 @@ class DoneTasksFragment : Fragment(), DairyTaskAdapter.DairyTaskAdapterClickInte
         })
     }
 
-    override fun onTaskClicked(taskData: DairyTaskData) {
-        TODO("Not yet implemented")
+    override fun onTaskClicked(dairyTaskData: DairyTaskData) {
+        if (taskPopUpFragment != null)
+            childFragmentManager.beginTransaction().remove(taskPopUpFragment!!).commit()
+
+        taskPopUpFragment = TaskDescriptionFragment.newInstance(
+            dairyTaskData.dairyTaskName,
+            dairyTaskData.dairyTaskDescription,
+            dairyTaskData.dairyTaskId
+        )
+        taskPopUpFragment!!.setListener(this)
+        taskPopUpFragment!!.show(
+            childFragmentManager,
+            TaskDescriptionFragment.TAG
+        )
     }
 
-    override fun onEditTaskButtonClicked(taskData: DairyTaskData) {
-        TODO("Not yet implemented")
-    }
 
-    override fun onDeleteTaskClicked(taskData: DairyTaskData) {
-        TODO("Not yet implemented")
+
+    override fun onDeleteTaskClicked(dairyTaskData: DairyTaskData) {
+        dbref.child(dairyTaskData.dairyTaskId).removeValue().addOnCompleteListener(){
+            if(it.isSuccessful.not()){
+                Toast.makeText(context, it.exception?.message, Toast.LENGTH_SHORT    ).show()
+            }
+        }
     }
 
     override fun onCheckBoxClicked(taskData: DairyTaskData, position: Int) {
@@ -165,6 +191,30 @@ class DoneTasksFragment : Fragment(), DairyTaskAdapter.DairyTaskAdapterClickInte
 
 
 
+    }
+
+    override fun onSaveDairyTask(
+        taskName: String,
+        taskDescription: String,
+        time: String,
+        date: String,
+        taskEntryTextDescription: TextInputEditText,
+        taskEntryTextName: TextInputEditText,
+        taskCategory: String
+    ) {
+        //doesn`t need to be implemented because not in use
+    }
+
+    override fun onUpdateDairyTask(
+        taskName: String,
+        taskDescription: String,
+        time: String,
+        date: String,
+        taskId: String,
+        taskEntryTextDescription: TextInputEditText,
+        taskEntryTextName: TextInputEditText
+    ) {
+        //doesn`t need to be implemented because not in use
     }
 
 
