@@ -156,7 +156,6 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                 if(task != null && task.date != "Not set"){
                     when(d){
                         "Today" ->{
-                            val dateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
                             val currentDate = Date()
                             val date = Date(task.date)
                             if(date == currentDate){
@@ -164,13 +163,31 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                             }
                         }
                         "Tomorrow" -> {
-                            val dateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
-                            val date = Calendar.getInstance()
-                            date.add(Calendar.DAY_OF_YEAR, 1)
-                            val tomorrowDate = dateFormat.format(date.time)
-                            if(task.date == tomorrowDate){
-                                mlist.add(task)
+                            val dateFormat = SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ENGLISH)
+                            try{
+                                //Parsing the date from task to calendar
+                                val date = dateFormat.parse(task.date)
+
+                                //Getting calendar
+                                val cal = Calendar.getInstance()
+                                cal.time = date //Setting parsed date to calendar
+
+                                //Setting tomorrow date
+                                val tomorrow = Calendar.getInstance()
+
+                                //Setting day + 1 and hour, minutes and seconds to 0
+                                tomorrow.add(Calendar.DAY_OF_WEEK, 1)
+                                tomorrow.set(Calendar.HOUR, 0)
+                                tomorrow.set(Calendar.MINUTE, 0)
+                                tomorrow.set(Calendar.SECOND, 0)
+                                Log.d("DATE", "Event Date: $date TodayDate: ${Date()}")
+                                Log.d("DATE", "Tomorrow: ${tomorrow.time}")
+
+                                if(tomorrow.time == date){
+                                    mlist.add(task)
+                                }
                             }
+                            catch (_:Exception){}
                         }
                         "ThisWeek" -> {
                             if(isEventThisWeek(task.date)){
