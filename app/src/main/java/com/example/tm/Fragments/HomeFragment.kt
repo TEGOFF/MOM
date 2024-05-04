@@ -122,7 +122,6 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                     R.id.ThisWeek -> {
                         sortByDate("ThisWeek")
                         drawerlayout.closeDrawer(GravityCompat.START)
-
                         true
                     }
 
@@ -156,14 +155,14 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                 if(task != null && task.date != "Not set"){
                     when(d){
                         "Today" ->{
-                            val dateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+                            val dateFormat = SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.getDefault())
                             val currentDate = dateFormat.format(Date())
                             if(task.date == currentDate){
                                 mlist.add(task)
                             }
                         }
                         "Tomorrow" -> {
-                            val dateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+                            val dateFormat = SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.getDefault())
                             val date = Calendar.getInstance()
                             date.add(Calendar.DAY_OF_YEAR, 1)
                             val tomorrowDate = dateFormat.format(date.time)
@@ -186,12 +185,11 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
         }
     }
 
-    fun isEventThisWeek(eventDate: String): Boolean {
-        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-        val currentDate = Date()
+    private fun isEventThisWeek(eventDate: String): Boolean {
+        val dateFormat = SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.getDefault())
 
         val calendar = Calendar.getInstance()
-        calendar.time = currentDate
+
         val currentWeekStart = calendar.firstDayOfWeek
         calendar.set(Calendar.DAY_OF_WEEK, currentWeekStart)
         val startOfWeek = calendar.time
@@ -201,7 +199,10 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
 
         if(eventDate.isNotEmpty()){
             val eventDateTime = dateFormat.parse(eventDate)
-            return eventDateTime in startOfWeek..endOfWeek
+
+            if (eventDateTime != null) {
+                return eventDateTime.time in startOfWeek.time..endOfWeek.time
+            }
         }
         return false
     }
@@ -240,7 +241,6 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
 
             override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
                 if(snapshot.value.toString()!=""){
-
                     adapter.notifyDataSetChanged()
                 }
             }
