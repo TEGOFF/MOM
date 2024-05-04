@@ -81,13 +81,13 @@
                     android:layout_marginBottom="392dp"
                     android:src="@drawable/date_change_task_image" />
 
-                <ImageView
-                    android:id="@+id/deleteTask"
-                    android:layout_width="55dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="left"
-                    android:layout_marginBottom="392dp"
-                    android:src="@drawable/delete_task_image" />
+                <ImageButton
+                    android:id="@+id/ibAddST"
+                    android:layout_width="50dp"
+                    android:layout_height="43dp"
+                    android:backgroundTint="@android:color/transparent"
+                    android:contentDescription="image button"
+                    android:src="@drawable/sub_task_icon" />
 
             </LinearLayout>
 
@@ -105,17 +105,6 @@
         android:text="Save"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.933"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView1" />
-
-    <ImageButton
-        android:id="@+id/ibAddST"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/transparent"
-        android:contentDescription="image button"
-        android:src="@drawable/sub_task_icon"
-        app:layout_constraintHeight_min="48dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView1" />
 

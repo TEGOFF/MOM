@@ -11,111 +11,126 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/EachItemDairyTask"
         android:layout_width="384dp"
-        android:layout_height="wrap_content"
+        android:layout_height="105dp"
         android:paddingVertical="10dp">
+
 
         <CheckBox
             android:id="@+id/isDoneCheckBox"
-            android:layout_width="60dp"
-            android:layout_height="34dp"
+            android:layout_width="50dp"
+            android:layout_height="37dp"
             android:checked="false"
 
 
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.489"
             tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="-8dp" />
+            tools:layout_editor_absoluteX="-9dp" />
 
         <TextView
             android:id="@+id/DairyTaskName"
-            android:layout_width="145dp"
-            android:layout_height="28dp"
-            android:layout_marginStart="52dp"
+
+            android:layout_width="185dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="40dp"
+            android:gravity="start"
             android:paddingStart="16dp"
             android:textSize="25sp"
 
 
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/editTask"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/editTask"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.023" />
 
         <ImageView
             android:id="@+id/editTask"
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:layout_marginEnd="10dp"
             android:src="@drawable/edit_task_image"
             app:layout_constraintBottom_toBottomOf="@+id/DairyTaskName"
             app:layout_constraintEnd_toStartOf="@+id/deleteTask"
-            app:layout_constraintTop_toTopOf="@+id/DairyTaskName" />
-
+            app:layout_constraintTop_toTopOf="@+id/DairyTaskName"
+            app:layout_constraintVertical_bias="0.0" />
 
         <ImageView
             android:id="@+id/deleteTask"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="12dp"
             android:src="@drawable/delete_task_image"
-            app:layout_constraintBottom_toBottomOf="@+id/DairyTaskName"
+            app:layout_constraintBottom_toBottomOf="@+id/editTask"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/DairyTaskName"
-            app:layout_constraintVertical_bias="0.62" />
+            app:layout_constraintTop_toTopOf="@+id/editTask"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/tvCategory"
-            android:layout_width="103dp"
-            android:layout_height="22dp"
+            android:layout_width="133dp"
+            android:layout_height="26dp"
             android:layout_marginTop="28dp"
             android:gravity="end"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.938"
-            app:layout_constraintStart_toEndOf="@+id/tvTime"
+            app:layout_constraintEnd_toEndOf="@+id/deleteTask"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/sub_task_icon"
             app:layout_constraintTop_toTopOf="@+id/DairyTaskName"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="0.964" />
+
+        <ImageView
+            android:id="@+id/ifTime"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/date_change_task_image"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tvTime" />
+
+        <ImageView
+            android:id="@+id/ifDate"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/calendar_icon"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tvDate" />
 
         <ImageView
             android:id="@+id/sub_task_icon"
+
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:layout_marginBottom="36dp"
+            android:layout_marginBottom="2dp"
             android:src="@drawable/sub_task_sign"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/editTask"
             app:layout_constraintEnd_toStartOf="@+id/editTask"
-            app:layout_constraintHorizontal_bias="0.656"
-            app:layout_constraintStart_toEndOf="@+id/DairyTaskName" />
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/DairyTaskName"
+            app:layout_constraintTop_toTopOf="@+id/editTask" />
 
         <TextView
             android:id="@+id/tvTime"
-            android:layout_width="81dp"
-            android:layout_height="27dp"
-            android:layout_marginTop="8dp"
+            android:layout_width="67dp"
+            android:layout_height="30dp"
             android:gravity="start"
-            android:paddingStart="16dp"
             android:textSize="20sp"
             android:textStyle="italic"
 
-            app:layout_constraintEnd_toEndOf="@+id/DairyTaskName"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/DairyTaskName"
-            app:layout_constraintTop_toBottomOf="@id/DairyTaskName" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tvCategory"
+            app:layout_constraintHorizontal_bias="0.453"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/tvDate"
-            android:layout_width="54dp"
-            android:layout_height="25dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="11dp"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="36dp"
             android:gravity="start"
             android:textSize="20sp"
             android:textStyle="italic"
-            app:layout_constraintBottom_toBottomOf="@+id/tvTime"
-            app:layout_constraintEnd_toStartOf="@+id/tvCategory"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tvTime" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

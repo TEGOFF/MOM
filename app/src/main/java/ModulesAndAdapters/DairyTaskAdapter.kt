@@ -47,11 +47,17 @@ class DairyTaskAdapter(private val list:MutableList<DairyTaskData>) : Adapter<Da
                     binding.DairyTaskName.text = this.dairyTaskName
                     binding.tvCategory.text = this.category
 
-                    if (this.notificationTime != "Not set") {
+                    if (this.notificationTime.isNotEmpty()) {
                         binding.tvTime.setText(this.notificationTime)
+                    }
+                    else{
+                        binding.ifTime.visibility=View.GONE
                     }
                     if(this.date.isNotEmpty()){
                         binding.tvDate.setText(this.date)
+                    }
+                    else{
+                        binding.ifDate.visibility=View.GONE
                     }
                     if(list[position].isDone){
                         binding.isDoneCheckBox.isChecked=true
@@ -59,8 +65,8 @@ class DairyTaskAdapter(private val list:MutableList<DairyTaskData>) : Adapter<Da
                     else{
                         binding.isDoneCheckBox.isChecked=false
                     }
-                    if (list[position].containsSub) {
-                        binding.subTaskIcon.visibility = View.VISIBLE
+                    if (!list[position].containsSub) {
+                        binding.subTaskIcon.visibility = View.GONE
                     }
 
 
