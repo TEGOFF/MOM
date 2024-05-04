@@ -171,6 +171,5 @@ class AddTaskPopUpFragment : DialogFragment() {
     interface DialogBtnClickListeners{
         fun onSaveDairyTask(taskName:String , taskDescription:String, time:String = "Not set", date:String = "Not set", taskEntryTextDescription: TextInputEditText, taskEntryTextName:TextInputEditText, taskCategory: String = "Not set")
         fun onUpdateDairyTask(taskName:String , taskDescription:String, time:String, date:String, taskId:String ,taskEntryTextDescription: TextInputEditText, taskEntryTextName:TextInputEditText)
-        fun onDeleteDairyTaskData(dairyTaskData: DairyTaskData)
     }
 }

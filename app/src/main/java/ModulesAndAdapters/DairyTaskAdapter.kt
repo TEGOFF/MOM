@@ -46,18 +46,21 @@ class DairyTaskAdapter(private val list:MutableList<DairyTaskData>) : Adapter<Da
                 with(list[position]) {
                     binding.DairyTaskName.text = this.dairyTaskName
                     binding.tvCategory.text = this.category
+                    binding.deleteTask.setOnClickListener(){
+                        listener?.onDeleteTaskClicked(list[position])
+                    }
 
                     if (this.notificationTime.isNotEmpty()) {
                         binding.tvTime.setText(this.notificationTime)
                     }
                     else{
-                        binding.ifTime.visibility=View.GONE
+                        binding.tvTime.setText("None")
                     }
                     if(this.date.isNotEmpty()){
                         binding.tvDate.setText(this.date)
                     }
                     else{
-                        binding.ifDate.visibility=View.GONE
+                        binding.tvDate.setText("None")
                     }
                     if(list[position].isDone){
                         binding.isDoneCheckBox.isChecked=true
@@ -103,6 +106,7 @@ class DairyTaskAdapter(private val list:MutableList<DairyTaskData>) : Adapter<Da
         fun onTaskClicked(taskData: DairyTaskData)
         fun onEditTaskButtonClicked(taskData: DairyTaskData)
 
+        fun onDeleteTaskClicked(taskData: DairyTaskData)
         fun onCheckBoxClicked(taskData: DairyTaskData, position: Int)
 
 

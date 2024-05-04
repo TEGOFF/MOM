@@ -19,6 +19,7 @@ import DataClasses.User
 import android.app.AlertDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.storage.FirebaseStorage
+import android.widget.PopupMenu
 
 
 class SettingsFragment : Fragment() , NameChangeFragment.DialogNameChangeListener{
@@ -29,6 +30,7 @@ class SettingsFragment : Fragment() , NameChangeFragment.DialogNameChangeListene
     private lateinit var firebaseStorageRef:FirebaseStorage
     private lateinit var nameChangeFragment:NameChangeFragment
     private lateinit var me: User
+    private lateinit var PopUpMenu:PopupMenu
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +51,7 @@ class SettingsFragment : Fragment() , NameChangeFragment.DialogNameChangeListene
         init(view)
         registerEvents()
         binding.profilePhotoCard.setOnClickListener{
-            saveProfImage()
+                saveProfImage()
         }
         setPage()
     }

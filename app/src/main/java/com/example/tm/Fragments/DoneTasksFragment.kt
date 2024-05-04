@@ -141,6 +141,10 @@ class DoneTasksFragment : Fragment(), DairyTaskAdapter.DairyTaskAdapterClickInte
         TODO("Not yet implemented")
     }
 
+    override fun onDeleteTaskClicked(taskData: DairyTaskData) {
+        TODO("Not yet implemented")
+    }
+
     override fun onCheckBoxClicked(taskData: DairyTaskData, position: Int) {
         val builder= AlertDialog.Builder(context)
         builder.setTitle("Confirmation")
