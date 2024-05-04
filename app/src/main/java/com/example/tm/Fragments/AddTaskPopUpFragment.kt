@@ -14,6 +14,7 @@ import com.example.tm.databinding.FragmentAddTaskPopUpBinding
 import DataClasses.Category
 import DataClasses.DairyTaskData
 import ModulesAndAdapters.FireHelper
+import android.icu.util.Calendar
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.timepicker.MaterialTimePicker
@@ -75,7 +76,6 @@ class AddTaskPopUpFragment : DialogFragment() {
                 if(dairyTaskData==null){
                     listener?.onSaveDairyTask(
                         taskName, taskDescription , time, date, binding.TaskEntryTextName, binding.TaskEntryTextDescription, taskCategory)
-
                 }
                 else{
                     listener?.onUpdateDairyTask(
@@ -162,7 +162,20 @@ class AddTaskPopUpFragment : DialogFragment() {
             .build()
 
         datePicker.addOnPositiveButtonClickListener {
-            date = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(Date(it))
+            // Getting instance of calendar
+            val d = Calendar.getInstance()
+
+            //Setting the calendar date that user chose
+            d.timeInMillis = it
+
+            //Setting hour, minutes and seconds to 0
+            d.set(Calendar.HOUR_OF_DAY, 0)
+            d.set(Calendar.MINUTE, 0)
+            d.set(Calendar.SECOND, 0)
+
+            //Setting the global date in this function
+            date = d.time.toString()
+            Log.d("SDF", date)
         }
 
         datePicker.show(childFragmentManager, "TAG")

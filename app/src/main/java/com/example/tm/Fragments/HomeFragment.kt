@@ -48,7 +48,6 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
     private lateinit var mlist:MutableList<DairyTaskData>
     private  lateinit var actionBarToggle:ActionBarDrawerToggle
     private var category: String = "All"
-    private lateinit var globalDate:String
 
 
 
@@ -108,7 +107,6 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
 
                     R.id.Today -> {
                         sortByDate("Today")
-                        globalDate="Today"
                         drawerlayout.closeDrawer(GravityCompat.START)
 
                         true
@@ -116,7 +114,6 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
 
                     R.id.Tomorrow -> {
                         sortByDate("Tomorrow")
-                        globalDate="Tomorrow"
                         drawerlayout.closeDrawer(GravityCompat.START)
 
                         true
@@ -124,7 +121,6 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
 
                     R.id.ThisWeek -> {
                         sortByDate("ThisWeek")
-                        globalDate="ThisWeek"
                         drawerlayout.closeDrawer(GravityCompat.START)
 
                         true
@@ -132,9 +128,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
 
                     R.id.AllTheTasks -> {
                         sortByDate("All the tasks")
-                        globalDate= ""
                         drawerlayout.closeDrawer(GravityCompat.START)
-
                         onResume()
                         true
                     }
@@ -164,7 +158,6 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                         "Today" ->{
                             val dateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
                             val currentDate = dateFormat.format(Date())
-
                             if(task.date == currentDate){
                                 mlist.add(task)
                             }
@@ -174,7 +167,6 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                             val date = Calendar.getInstance()
                             date.add(Calendar.DAY_OF_YEAR, 1)
                             val tomorrowDate = dateFormat.format(date.time)
-
                             if(task.date == tomorrowDate){
                                 mlist.add(task)
                             }
@@ -185,7 +177,6 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                             }
                         }
                         "All the tasks" ->{
-
                             mlist.add(task)
                         }
                     }
@@ -321,12 +312,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
     private fun sortTasks(){
         Log.e("Cat", "Sorting tasks")
         if(category == "All"){
-            if(globalDate.isNotEmpty()){
-                sortByDate(globalDate)
-            }
-            else {
-                getDataFromFirebase()
-            }
+            getDataFromFirebase()
         }
 
         mlist.clear()
@@ -338,9 +324,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
 
                     Log.i("CAT", "${task!!.category == "# "+category && task != null}")
                     if(task.category == "# "+category){
-                        if(task.date==globalDate&&globalDate.isEmpty()) {
-                            mlist.add(task)
-                        }
+                        mlist.add(task)
                     }
                 }
                 Log.i("CAT", mlist.size.toString())
@@ -399,11 +383,10 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
         })
     }
 
-    override fun onDeleteTaskClicked(dairyTaskData:DairyTaskData) {
+    override fun onDeleteDairyTaskData(dairyTaskData: DairyTaskData) {
         dbref.child(dairyTaskData.dairyTaskId).removeValue().addOnCompleteListener(){
             if(it.isSuccessful.not()){
                 Toast.makeText(context, it.exception?.message, Toast.LENGTH_SHORT    ).show()
-
             }
         }
     }
@@ -483,12 +466,10 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
             }
             taskEntryTextName.text = null
             taskEntryTextDescription.text=null
-            if(addPopUpFragment!=null) {
-                addPopUpFragment!!.dismiss()
-            }
-            if(taskPopUpFragment!=null){
-                taskPopUpFragment!!.dismiss()
-            }
+
+            addPopUpFragment!!.dismiss()
+
+            taskPopUpFragment!!.dismiss()
         }
     }
     override fun onClick( view: View?) {
