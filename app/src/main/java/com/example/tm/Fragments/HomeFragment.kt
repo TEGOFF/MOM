@@ -165,10 +165,18 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                             val dateFormat = SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.getDefault())
                             val date = Calendar.getInstance()
                             date.add(Calendar.DAY_OF_YEAR, 1)
-                            val tomorrowDate = dateFormat.format(date.time)
-                            if(task.date == tomorrowDate){
-                                mlist.add(task)
-                            }
+                            date.set(Calendar.HOUR_OF_DAY, 0)
+                            date.set(Calendar.MINUTE, 0)
+                            date.set(Calendar.SECOND, 0)
+
+                            val tomorrowDate = date.time
+
+                            try{val taskDate = dateFormat.parse(task.date)
+                                if(taskDate.toString() == tomorrowDate.toString()){
+
+                                    mlist.add(task)
+                                }
+                            }catch (e: Exception){}
                         }
                         "ThisWeek" -> {
                             if(isEventThisWeek(task.date)){
