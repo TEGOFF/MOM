@@ -111,9 +111,9 @@ class SettingsFragment : Fragment() , NameChangeFragment.DialogNameChangeListene
              builder.setTitle("Confirmation")
                  .setMessage("Are you sure you want to delete an account? All the data will also be deleted ")
                  .setPositiveButton("I`m sure"){ _, _ ->
-                     FireHelper.Users.child(FireHelper.firebaseAuth.currentUser?.uid.toString()).removeValue()
                      FireHelper.firebaseAuth.currentUser?.delete()
-                     FireHelper.firebaseAuth.signOut()
+                     FireHelper.Users.child(FireHelper.firebaseAuth.currentUser?.uid.toString()).removeValue()
+
                      navControl.navigate(R.id.action_settingsFragment_to_signInFragment)
                  }
                  .setNegativeButton("No, take me back"){ _, _ ->
