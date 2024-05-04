@@ -48,6 +48,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
     private lateinit var mlist:MutableList<DairyTaskData>
     private  lateinit var actionBarToggle:ActionBarDrawerToggle
     private var category: String = "All"
+    private var globalDate:String=""
 
 
 
@@ -157,6 +158,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                         "Today" ->{
                             val dateFormat = SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.getDefault())
                             val currentDate = dateFormat.format(Date())
+                            globalDate=currentDate
                             if(task.date == currentDate){
                                 mlist.add(task)
                             }
@@ -166,7 +168,9 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                             val date = Calendar.getInstance()
                             date.add(Calendar.DAY_OF_YEAR, 1)
                             val tomorrowDate = dateFormat.format(date.time)
+                            globalDate=tomorrowDate
                             if(task.date == tomorrowDate){
+
                                 mlist.add(task)
                             }
                         }
@@ -176,6 +180,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                             }
                         }
                         "All the tasks" ->{
+                            globalDate=""
                             mlist.add(task)
                         }
                     }
@@ -311,8 +316,20 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
 
     private fun sortTasks(){
         Log.e("Cat", "Sorting tasks")
-        if(category == "All"){
+        if(category == "All"&&globalDate==""){
             getDataFromFirebase()
+        }
+        else {
+            FireHelper.Users.child(FireHelper.firebaseAuth.currentUser!!.uid).child("DairyTasks").get().addOnCompleteListener {
+                if (it.isSuccessful) {
+                    for (i in it.result.children) {
+                        val task=i.getValue(DairyTaskData::class.java)
+                        if(task?.date==globalDate){
+                            mlist.add(task)
+                        }
+                    }
+                }
+            }
         }
 
         mlist.clear()
@@ -323,7 +340,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                     val task = i.getValue(DairyTaskData::class.java)
 
                     Log.i("CAT", "${task!!.category == "# "+category && task != null}")
-                    if(task.category == "# "+category){
+                    if(task.category == "# "+category&&globalDate==task.date){
                         mlist.add(task)
                     }
                 }

@@ -53,18 +53,18 @@ class DairyTaskAdapter(private val list:MutableList<DairyTaskData>) : Adapter<Da
                     }
                     //if SubTask
                     if(list[position].ifSub){
-                        binding.ifDate.visibility=View.GONE
-                        binding.ifTime.visibility=View.GONE
-                        binding.tvDate.setText("")
-                        binding.tvTime.setText("")
-                        binding.tvCategory.setText("")
+                        binding.tvDate.visibility=View.GONE
+                        binding.tvTime.visibility=View.GONE
+                        binding.tvCategory.visibility=View.GONE
                     }
                     //If have notification time
                     if (this.notificationTime.isNotEmpty()) {
                         binding.tvTime.setText(this.notificationTime)
+                        binding.ifTime.visibility=View.VISIBLE
                     }
                     else{
-                        binding.tvTime.setText("None")
+                        binding.tvTime.setText("")
+
                     }
                     //if Have a date
                     if(this.date.isNotEmpty()){
@@ -74,6 +74,7 @@ class DairyTaskAdapter(private val list:MutableList<DairyTaskData>) : Adapter<Da
                         }
                         catch (_: Exception){
                         }
+                        binding.ifDate.visibility=View.VISIBLE
                     }
                     else{
                         binding.tvDate.setText("None")
@@ -87,8 +88,8 @@ class DairyTaskAdapter(private val list:MutableList<DairyTaskData>) : Adapter<Da
                         binding.isDoneCheckBox.isChecked=false
                     }
                     //if task contains sub tasks
-                    if (!list[position].containsSub) {
-                        binding.subTaskIcon.visibility = View.GONE
+                    if (list[position].containsSub) {
+                        binding.subTaskIcon.visibility = View.VISIBLE
                     }
 
                     //checkbox clicklistener

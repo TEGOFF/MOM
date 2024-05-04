@@ -28,16 +28,17 @@
             android:id="@+id/AddTaskButton"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="24dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
             android:src="@android:drawable/ic_menu_add"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/mainRecyclerView"
-            android:layout_width="405dp"
-            android:layout_height="650dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="85dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -51,8 +52,10 @@
             android:text="Choose category"
             app:layout_constraintBottom_toTopOf="@+id/mainRecyclerView"
             app:layout_constraintEnd_toStartOf="@+id/AddTaskButton"
+            app:layout_constraintHorizontal_bias="0.525"
             app:layout_constraintStart_toEndOf="@+id/callmenubtn"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.189" />
 
         <RadioGroup
             android:id="@+id/rgCats"

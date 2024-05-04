@@ -10,7 +10,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/EachItemDairyTask"
-        android:layout_width="384dp"
+        android:layout_width="match_parent"
         android:layout_height="105dp"
         android:paddingVertical="10dp">
 
@@ -18,7 +18,7 @@
         <CheckBox
             android:id="@+id/isDoneCheckBox"
             android:layout_width="50dp"
-            android:layout_height="37dp"
+            android:layout_height="40dp"
             android:checked="false"
 
 
@@ -36,8 +36,6 @@
             android:gravity="start"
             android:paddingStart="16dp"
             android:textSize="25sp"
-
-
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -83,7 +81,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/date_change_task_image"
-            android:visibility="visible"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/tvTime" />
 
@@ -92,13 +90,13 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/calendar_icon"
-            android:visibility="visible"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/tvDate" />
 
         <ImageView
             android:id="@+id/sub_task_icon"
-
+            android:visibility="gone"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_marginBottom="2dp"
