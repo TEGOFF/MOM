@@ -156,7 +156,6 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                 if(task != null && task.date != "Not set"){
                     when(d){
                         "Today" ->{
-                            val dateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
                             val currentDate = Date()
                             val date = Date(task.date)
                             if(date == currentDate){
@@ -164,13 +163,31 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                             }
                         }
                         "Tomorrow" -> {
-                            val dateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
-                            val date = Calendar.getInstance()
-                            date.add(Calendar.DAY_OF_YEAR, 1)
-                            val tomorrowDate = dateFormat.format(date.time)
-                            if(task.date == tomorrowDate){
-                                mlist.add(task)
+                            val dateFormat = SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ENGLISH)
+                            try{
+                                //Parsing the date from task to calendar
+                                val date = dateFormat.parse(task.date)
+
+                                //Getting calendar
+                                val cal = Calendar.getInstance()
+                                cal.time = date //Setting parsed date to calendar
+
+                                //Setting tomorrow date
+                                val tomorrow = Calendar.getInstance()
+
+                                //Setting day + 1 and hour, minutes and seconds to 0
+                                tomorrow.add(Calendar.DAY_OF_WEEK, 1)
+                                tomorrow.set(Calendar.HOUR, 0)
+                                tomorrow.set(Calendar.MINUTE, 0)
+                                tomorrow.set(Calendar.SECOND, 0)
+                                Log.d("DATE", "Event Date: $date TodayDate: ${Date()}")
+                                Log.d("DATE", "Tomorrow: ${tomorrow.time}")
+
+                                if(tomorrow.time == date){
+                                    mlist.add(task)
+                                }
                             }
+                            catch (_:Exception){}
                         }
                         "ThisWeek" -> {
                             if(isEventThisWeek(task.date)){
@@ -189,7 +206,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
 
     fun isEventThisWeek(eventDate: String): Boolean {
         val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-        val currentDate = Date() 
+        val currentDate = Date()
 
         val calendar = Calendar.getInstance()
         calendar.time = currentDate
@@ -202,26 +219,13 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
 
         Log.d("SDF", eventDate.isNotEmpty().toString())
         if(eventDate.isNotEmpty()){
-            val eventDateTime = Date(eventDate)
-            if (eventDateTime != null) {
-                Log.d("SDF", (eventDateTime in startOfWeek..endOfWeek).toString())
-                Log.d("SDF", "START OF WEEK: ${startOfWeek}, END OF WEEK: ${endOfWeek}, EVENT DATE: ${eventDateTime}")
-
-                Log.d("SDF",
-                    (eventDateTime.month in Math.min(startOfWeek.month, endOfWeek.month) ..Math.max(startOfWeek.month, endOfWeek.month)).toString()
-                )
-                Log.d("SDF", "START OF WEEK month: ${startOfWeek.month}, END OF WEEK: ${endOfWeek.month}, EVENT DATE: ${eventDateTime.month}")
-
-                if(eventDateTime.month in Math.min(startOfWeek.month, endOfWeek.month) ..Math.max(startOfWeek.month, endOfWeek.month)){
-
-                    Log.d("SDF", (eventDateTime.date in Math.min(startOfWeek.date, endOfWeek.date)..Math.max(startOfWeek.date, endOfWeek.date)).toString())
-                    Log.d("SDF", "START OF WEEK: ${startOfWeek.date}, END OF WEEK: ${endOfWeek.date}, EVENT DATE: ${eventDateTime.date}")
-
-                    if(eventDateTime.date in Math.min(startOfWeek.date, endOfWeek.date)..Math.max(startOfWeek.date, endOfWeek.date)){
-                        return true
-                    }
+            try {
+                val eventDateTime = Date(eventDate)
+                if (eventDateTime != null) {
+                    return eventDateTime in startOfWeek..endOfWeek
                 }
             }
+            catch (_:Exception){}
         }
         return false
     }

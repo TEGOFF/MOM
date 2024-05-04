@@ -12,6 +12,7 @@ import com.example.tm.Fragments.HomeFragment
 import com.example.tm.R
 import com.example.tm.databinding.EachTaskItemBinding
 import com.google.android.gms.tasks.Task
+import java.util.Date
 
 class DairyTaskAdapter(private val list:MutableList<DairyTaskData>) : Adapter<DairyTaskAdapter.TaskViewHolder>()
 {
@@ -54,7 +55,15 @@ class DairyTaskAdapter(private val list:MutableList<DairyTaskData>) : Adapter<Da
                         binding.ifTime.visibility=View.GONE
                     }
                     if(this.date.isNotEmpty()){
-                        binding.tvDate.setText(this.date)
+                        try {
+                            val d = Date(this.date)
+                            binding.tvDate.setText("${d.date}.${d.month+1}")
+                        }
+                        catch (_: Exception){
+                        }
+                    }
+                    else{
+                        binding.ifDate.visibility=View.GONE
                     }
                     else{
                         binding.ifDate.visibility=View.GONE
