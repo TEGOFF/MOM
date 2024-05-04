@@ -157,30 +157,52 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                     when(d){
                         "Today" ->{
                             val dateFormat = SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.getDefault())
-                            val currentDate = dateFormat.format(Date())
-                            globalDate=currentDate
-                            if(task.date == currentDate){
-                                mlist.add(task)
+
+                            val date = Calendar.getInstance()
+                            date.set(Calendar.HOUR_OF_DAY, 0)
+                            date.set(Calendar.MINUTE, 0)
+                            date.set(Calendar.SECOND, 0)
+
+                            try{
+                                if(task.date.isNotEmpty()){
+                                    val taskDate = dateFormat.parse(task.date)
+                                    Log.d("DATE", "$taskDate today: ${date.time}")
+                                    if(taskDate.toString() == date.time.toString()){
+                                        mlist.add(task)
+                                    }
+                                }
+                            }
+                            catch (e:Exception){
+                                Log.e("DATE", e.message.toString())
                             }
                         }
+
                         "Tomorrow" -> {
                             val dateFormat = SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.getDefault())
                             val date = Calendar.getInstance()
                             date.add(Calendar.DAY_OF_YEAR, 1)
-                            val tomorrowDate = dateFormat.format(date.time)
-                            globalDate=tomorrowDate
-                            if(task.date == tomorrowDate){
+                            date.set(Calendar.HOUR_OF_DAY, 0)
+                            date.set(Calendar.MINUTE, 0)
+                            date.set(Calendar.SECOND, 0)
 
-                                mlist.add(task)
-                            }
+                            val tomorrowDate = date.time
+
+                            try{
+                                val taskDate = dateFormat.parse(task.date)
+
+                                if(taskDate.toString() == tomorrowDate.toString()){
+                                    mlist.add(task)
+                                }
+                            }catch (e: Exception){}
                         }
+
                         "ThisWeek" -> {
                             if(isEventThisWeek(task.date)){
                                 mlist.add(task)
                             }
                         }
+
                         "All the tasks" ->{
-                            globalDate=""
                             mlist.add(task)
                         }
                     }
