@@ -61,6 +61,7 @@ class SignUpFragment() : Fragment() {
                     if(it.isSuccessful){
                         Toast.makeText(context, "User registered successfully", Toast.LENGTH_SHORT).show()
                         val user = User(name, email, pass, auth.uid.toString())
+                        navControl.navigate(R.id.action_signUpFragment_to_homeFragment)
                         dbref.child(user.userId).setValue(user).addOnCompleteListener {
                             if(it.isSuccessful){
                                 addStandartCats()

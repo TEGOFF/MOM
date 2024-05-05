@@ -337,39 +337,42 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
     }
 
     private fun sortTasks(){
+        var mlistCopy : MutableList<DairyTaskData> =mlist
         Log.e("Cat", "Sorting tasks")
         if(category == "All"&&globalDate==""){
             getDataFromFirebase()
         }
+        else if (category=="All"){
+            if(globalDate!=""&& globalDate!="ThisWeek") {
+                for (i in mlistCopy) {
+                    if (i.date != globalDate) {
+                        mlistCopy.remove(i)
+                    }
+                }
+            }
+            adapter.notifyDataSetChanged()
+        }
+        else if(globalDate==""||globalDate=="ThisWeek"){
+            for(i in mlistCopy){
+                if(i.category!=category){
+                    mlistCopy.remove(i)
+                }
+            }
+
+        }
         else {
-            FireHelper.Users.child(FireHelper.firebaseAuth.currentUser!!.uid).child("DairyTasks").get().addOnCompleteListener {
-                if (it.isSuccessful) {
-                    for (i in it.result.children) {
-                        val task=i.getValue(DairyTaskData::class.java)
-                        if(task?.date==globalDate){
-                            mlist.add(task)
-                        }
-                    }
+            for (i in mlistCopy) {
+                if (i.category != "# " + category && globalDate != i.date) {
+                    mlistCopy.remove(i)
+
                 }
             }
+            Log.i("CAT", mlistCopy.size.toString())
+            adapter.notifyDataSetChanged()
         }
+        adapter=DairyTaskAdapter(mlistCopy)
 
-        mlist.clear()
 
-        FireHelper.Users.child(FireHelper.firebaseAuth.currentUser!!.uid).child("DairyTasks").get().addOnCompleteListener {
-            if(it.isSuccessful){
-                for(i in it.result.children){
-                    val task = i.getValue(DairyTaskData::class.java)
-
-                    Log.i("CAT", "${task!!.category == "# "+category && task != null}")
-                    if(task.category == "# "+category&&globalDate==task.date){
-                        mlist.add(task)
-                    }
-                }
-                Log.i("CAT", mlist.size.toString())
-                adapter.notifyDataSetChanged()
-            }
-        }
     }
 
     private fun getCats(){

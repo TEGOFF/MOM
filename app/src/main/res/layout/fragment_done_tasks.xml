@@ -4,37 +4,78 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:paddingTop="0dp"
     tools:context=".Fragments.DoneTasksFragment">
 
+    <ImageView
+        android:id="@+id/design_element_moon"
+        android:layout_width="740dp"
+        android:layout_height="675dp"
+        android:layout_marginTop="600dp"
+        android:rotation="90"
+        android:scaleType="fitXY"
+        android:src="@drawable/design_element_moon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.195" />
+
+    <ImageView
+        android:id="@+id/design_element_circle_left"
+        android:layout_width="84dp"
+        android:layout_height="84dp"
+        android:layout_marginBottom="580dp"
+        android:src="@drawable/design_element_circle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+
+    <ImageView
+        android:id="@+id/AddTaskButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
+        android:src="@android:drawable/ic_menu_add"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
-        android:id="@+id/textView4"
-        android:layout_width="278dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="20dp"
+        android:id="@+id/DoneTaskPageTitle"
+        android:layout_width="303dp"
+        android:layout_height="73dp"
+        android:fontFamily="@font/baumans"
         android:gravity="center"
         android:text="Done Tasks"
-        android:textSize="35dp"
-
+        android:textColor="@color/black"
+        android:textSize="55dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/recyclerView"
+
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.877"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.024" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="410dp"
-        android:layout_height="662dp"
-
-        android:layout_marginTop="9dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="90dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/DoneTaskPageTitle"
         app:layout_constraintVertical_bias="1.0">
 
 
@@ -44,14 +85,27 @@
         android:id="@+id/BackBtn"
         android:layout_width="50dp"
         android:layout_height="50dp"
-
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="17dp"
         android:layout_marginTop="16dp"
-        android:src="@drawable/d_menu_btn"
-        app:layout_constraintEnd_toStartOf="@+id/textView4"
+        android:src="@drawable/arrow_back_24"
+        app:layout_constraintEnd_toStartOf="@+id/DoneTaskPageTitle"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

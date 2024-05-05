@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,56 +7,189 @@
     tools:context=".Fragments.SignInFragment"
     android:orientation="vertical"
     android:gravity="center"
-    android:layout_margin="20dp"
     android:weightSum="100"
+    android:background="@color/white"
+
     >
 
+    <ImageView
+        android:id="@+id/design_element_circle_center"
+        android:layout_width="429dp"
+        android:layout_height="396dp"
+        android:layout_marginBottom="700dp"
+        android:src="@drawable/design_element_circle"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonRegPage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/design_element_circle_left"
+
+        android:layout_width="450dp"
+        android:layout_height="300dp"
+        android:layout_marginEnd="180dp"
+        android:layout_marginBottom="530dp"
+        android:src="@drawable/design_element_circle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/design_element_circle_right"
+        android:layout_width="340dp"
+        android:layout_height="370dp"
+        android:layout_marginStart="240dp"
+        android:layout_marginBottom="730dp"
+        android:src="@drawable/design_element_circle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonRegPage"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/design_element_rectangle_left"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="650dp"
+        android:layout_marginEnd="200dp"
+        android:rotation="45"
+        android:src="@drawable/design_element_rectangle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/design_element_rectangle_right"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="650dp"
+        android:rotation="135"
+        android:src="@drawable/design_element_rectangle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/Welcome_Text"
         android:layout_width="wrap_content"
         android:layout_height="245dp"
         android:layout_gravity="center"
-        android:layout_marginTop="56dp"
         android:layout_weight="40"
-
+        android:gravity="center"
         android:text="Welcome Back!"
-        android:textSize="50dp"
+        android:textStyle="bold"
+        android:textSize="65dp"
+        android:textColor="@color/btnPurple"
+        android:fontFamily="@font/baumans"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.551"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/EntryEmail" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/entryEmailSignIn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Entry your email"
-        android:inputType="textEmailAddress"
-        tools:layout_editor_absoluteX="dp"
-        tools:layout_editor_absoluteY="dp" />
 
-    <EditText
-        android:id="@+id/entryPasswordSignIn"
+
+
+
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Entry your password"
-        android:inputType="textPassword"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="489dp" />
+        android:layout_height="60dp"
+        android:layout_marginBottom="224dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:cardBackgroundColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonRegPage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:boxBackgroundColor="@color/white"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="438dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/entryEmailSignIn"
+                android:background="@color/white"
+                android:textColor="@color/black"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:paddingStart="12dp"
+                android:paddingTop="15dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="156dp"
+        app:cardBackgroundColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonRegPage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:boxBackgroundColor="@color/white"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="438dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/entryPasswordSignIn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:hint="Password"
+                android:textColor="@color/black"
+                android:inputType="textPassword"
+                android:paddingStart="12dp"
+                android:paddingTop="15dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </com.google.android.material.card.MaterialCardView>
 
     <Button
         android:id="@+id/buttonSignIn"
-        android:layout_width="210dp"
-        android:layout_height="41dp"
+        android:layout_width="132dp"
+        android:layout_height="57dp"
+        android:backgroundTint="@color/btnPurple"
         android:text="SignIn"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="545dp" />
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/materialCardView"
+        app:layout_constraintVertical_bias="0.161" />
 
-    <Button
+    <TextView
         android:id="@+id/buttonRegPage"
-        android:layout_width="210dp"
-        android:layout_height="41dp"
-        android:text="Register"
-        tools:layout_editor_absoluteX="103dp"
-        tools:layout_editor_absoluteY="593dp" />
-</LinearLayout>
+        android:layout_width="399dp"
+        android:layout_height="39dp"
+        android:fontFamily="@font/baumans"
+        android:gravity="center"
+        android:shadowColor="@color/white"
+        android:shadowRadius="50"
+        android:text="Don`t have an account? Register!"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

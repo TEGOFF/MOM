@@ -128,7 +128,7 @@ class DoneTasksFragment : Fragment(), DairyTaskAdapter.DairyTaskAdapterClickInte
 
                 for (taskSnapshot in snapshot.children) {
                     val task = taskSnapshot.getValue(DairyTaskData::class.java)
-                    if ( task!= null&& !task.isDone) {
+                    if ( task!= null&& task.isDone) {
                         if(taskSnapshot.hasChild("SubTasks")){
                             task.containsSub = true
                         }
