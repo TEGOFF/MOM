@@ -48,7 +48,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
     private lateinit var mlist:MutableList<DairyTaskData>
     private  lateinit var actionBarToggle:ActionBarDrawerToggle
     private var category: String = "All"
-    private var globalDate:String=""
+    private var globalSort:String="None"
 
 
 
@@ -60,11 +60,13 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        globalSort="None"
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
         init(view)
         registerEvents()
@@ -128,6 +130,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
 
                     R.id.AllTheTasks -> {
                         sortByDate("All the tasks")
+                        globalSort="All the tasks"
                         drawerlayout.closeDrawer(GravityCompat.START)
                         onResume()
                         true
@@ -140,10 +143,11 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
             }
 
         }
-
-
     }
 
+    override fun onPause() {
+        super.onPause()
+    }
 
     //Functions
     private fun sortByDate(d: String){
@@ -156,6 +160,8 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                 if(task != null && task.date != "Not set"){
                     when(d){
                         "Today" ->{
+                            globalSort="Today"
+
                             val dateFormat = SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.getDefault())
 
                             val date = Calendar.getInstance()
@@ -178,6 +184,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                         }
 
                         "Tomorrow" -> {
+                            globalSort="Tomorrow"
                             val dateFormat = SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.getDefault())
                             val date = Calendar.getInstance()
                             date.add(Calendar.DAY_OF_YEAR, 1)
@@ -197,12 +204,14 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                         }
 
                         "ThisWeek" -> {
+                            globalSort="ThisWeek"
                             if(isEventThisWeek(task.date)){
                                 mlist.add(task)
                             }
                         }
 
                         "All the tasks" ->{
+                            globalSort="All the tasks"
                             mlist.add(task)
                         }
                     }
@@ -337,43 +346,43 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
     }
 
     private fun sortTasks(){
-        var mlistCopy : MutableList<DairyTaskData> =mlist
         Log.e("Cat", "Sorting tasks")
-        if(category == "All"&&globalDate==""){
+        if(category == "All"&&globalSort==""){
             getDataFromFirebase()
         }
-        else if (category=="All"){
-            if(globalDate!=""&& globalDate!="ThisWeek") {
-                for (i in mlistCopy) {
-                    if (i.date != globalDate) {
-                        mlistCopy.remove(i)
+        else {
+            FireHelper.Users.child(FireHelper.firebaseAuth.currentUser!!.uid).child("DairyTasks").get().addOnCompleteListener {
+                if (it.isSuccessful) {
+                    for (i in it.result.children) {
+                        val task=i.getValue(DairyTaskData::class.java)
+                        if(task?.date==globalSort){
+                            mlist.add(task)
+                        }
                     }
                 }
             }
-            adapter.notifyDataSetChanged()
         }
-        else if(globalDate==""||globalDate=="ThisWeek"){
-            for(i in mlistCopy){
-                if(i.category!=category){
-                    mlistCopy.remove(i)
+
+        mlist.clear()
+
+        FireHelper.Users.child(FireHelper.firebaseAuth.currentUser!!.uid).child("DairyTasks").get().addOnCompleteListener {
+            if(it.isSuccessful){
+                for(i in it.result.children){
+                    val task = i.getValue(DairyTaskData::class.java)
+
+                    Log.i("CAT", "${task!!.category == "# "+category && task != null}")
+                    if(task.category == "# "+category&&globalSort==task.date){
+                        mlist.add(task)
+                    }
                 }
+                Log.i("CAT", mlist.size.toString())
+                adapter.notifyDataSetChanged()
             }
-
         }
-        else {
-            for (i in mlistCopy) {
-                if (i.category != "# " + category && globalDate != i.date) {
-                    mlistCopy.remove(i)
-
-                }
-            }
-            Log.i("CAT", mlistCopy.size.toString())
-            adapter.notifyDataSetChanged()
-        }
-        adapter=DairyTaskAdapter(mlistCopy)
-
-
     }
+
+
+
 
     private fun getCats(){
         val radio = RadioButton(context)
@@ -408,7 +417,14 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
 
                 for (taskSnapshot in snapshot.children) {
                     val task = taskSnapshot.getValue(DairyTaskData::class.java)
-                    if ( task!= null&& !task.isDone) {
+                    if (task!= null&&globalSort=="All the tasks") {
+                        if(taskSnapshot.hasChild("SubTasks")){
+                            task.containsSub = true
+                        }
+                        mlist.add(task)
+                        adapter.notifyItemInserted(mlist.size-1)
+                    }
+                    else if(task!=null){
                         if(taskSnapshot.hasChild("SubTasks")){
                             task.containsSub = true
                         }

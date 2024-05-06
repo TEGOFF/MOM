@@ -56,6 +56,7 @@ class DairyTaskAdapter(private val list:MutableList<DairyTaskData>) : Adapter<Da
                         binding.tvDate.visibility=View.GONE
                         binding.tvTime.visibility=View.GONE
                         binding.tvCategory.visibility=View.GONE
+                        binding.editTask.visibility=View.GONE
                     }
                     //If have notification time
                     if (this.notificationTime.isNotEmpty()) {
@@ -77,7 +78,7 @@ class DairyTaskAdapter(private val list:MutableList<DairyTaskData>) : Adapter<Da
                         binding.ifDate.visibility=View.VISIBLE
                     }
                     else{
-                        binding.tvDate.setText("None")
+                        binding.tvDate.setText("")
                     }
 
                     //if task is done
