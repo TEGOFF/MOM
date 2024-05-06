@@ -10,6 +10,8 @@
         android:id="@+id/cameraTextureView"/>
 
     <Button
+        android:backgroundTint="@color/btnPurple"
+
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="Photo"

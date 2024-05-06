@@ -142,8 +142,6 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
             }
 
         }
-
-
     }
 
 

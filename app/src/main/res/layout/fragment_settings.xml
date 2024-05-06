@@ -4,8 +4,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.SettingsFragment">
+    tools:context=".Fragments.SettingsFragment"
+    android:background="@color/white"
+    >
 
+    <ImageView
+        android:id="@+id/design_element_circle_left"
+        android:layout_width="421dp"
+        android:layout_height="452dp"
+        android:layout_marginTop="480dp"
+        android:layout_marginEnd="140dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/design_element_circle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/design_element_moon"
+        android:layout_width="500dp"
+        android:layout_height="500dp"
+        android:rotation="270"
+        android:scaleType="fitXY"
+        android:src="@drawable/design_element_moon"
+        app:layout_constraintBottom_toTopOf="@+id/UserName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.995" />
+
+    <ImageView
+        android:id="@+id/design_element_circle_right"
+        android:layout_width="722dp"
+        android:layout_height="600dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="416dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/design_element_circle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView2"
@@ -13,6 +54,9 @@
         android:layout_height="56dp"
         android:layout_marginTop="4dp"
         android:gravity="center"
+        android:fontFamily="@font/baumans"
+        android:textColor="@color/black"
+
         android:text="Settings"
         android:textSize="35dp"
         android:textStyle="bold"
@@ -27,17 +71,21 @@
         android:layout_height="38dp"
         android:gravity="center"
         android:text="User"
+        android:textColor="@color/black"
+        android:fontFamily="@font/alatsi"
         android:textSize="25dp"
-        android:textStyle="italic"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profilePhotoCard" />
 
     <Button
         android:id="@+id/nameChangeBtn"
-        android:layout_width="140dp"
-        android:layout_height="55dp"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
         android:layout_marginBottom="15dp"
+        android:backgroundTint="@color/btnPurple"
+        android:textColor="@color/white"
         android:text="Name Change"
         app:layout_constraintBottom_toTopOf="@+id/logoutBtn"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,11 +96,12 @@
 
     <Button
         android:id="@+id/takePhotoBtn"
-        android:layout_width="140dp"
-        android:layout_height="55dp"
+        android:layout_width="150dp"
+        android:backgroundTint="@color/btnPurple"
+        android:textColor="@color/white"
+        android:layout_height="60dp"
         android:layout_marginTop="14dp"
         android:layout_marginBottom="15dp"
-
         android:text="Take a photo"
         app:layout_constraintBottom_toTopOf="@+id/logoutBtn"
         app:layout_constraintEnd_toEndOf="parent"
@@ -63,11 +112,12 @@
 
     <Button
         android:id="@+id/accDeleteBtn"
-        android:layout_width="140dp"
-        android:layout_height="55dp"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
         android:layout_marginBottom="15dp"
         android:text="Delete account"
-
+        android:textColor="@color/white"
+        android:backgroundTint="@color/btnPurple"
         app:layout_constraintBottom_toTopOf="@+id/logoutBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -76,10 +126,12 @@
         app:layout_constraintVertical_bias="0.049" />
 
     <Button
-        android:layout_width="140dp"
-        android:layout_height="55dp"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
         android:id="@+id/apply_changes"
         android:text="Apply changes"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/btnPurple"
         app:layout_constraintBottom_toTopOf="@+id/logoutBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
@@ -94,19 +146,23 @@
         android:layout_marginStart="16dp"
         android:src="@drawable/arrow_back_24"
         android:id="@+id/homePageBtn"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 
+
     <Button
         android:id="@+id/logoutBtn"
-        android:layout_width="140dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="616dp"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="608dp"
         android:text="LogOut"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/btnPurple"
         android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
@@ -114,7 +170,7 @@
         android:id="@+id/profilePhotoCard"
         android:layout_width="255dp"
         android:layout_height="255dp"
-        app:cardBackgroundColor="@color/white"
+        app:cardBackgroundColor="@color/black"
         app:cardCornerRadius="250dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -131,7 +187,11 @@
                 android:layout_width="250dp"
                 android:layout_height="250dp"
                 android:scaleType="centerCrop" />
+
+
+
         </androidx.cardview.widget.CardView>
 
     </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

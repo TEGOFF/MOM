@@ -31,6 +31,8 @@ class TaskDescriptionFragment : DialogFragment(), OnClickInterface {
     private lateinit var binding: FragmentTaskDescriptionBinding
     lateinit var adapter: SubTasksAdapter
     val list: MutableList<DairyTaskData> = mutableListOf()
+    var completedTasks:Boolean=false
+
 
     lateinit var subTaskEditText: EditText
     lateinit var submit: Button
@@ -39,9 +41,12 @@ class TaskDescriptionFragment : DialogFragment(), OnClickInterface {
     var position: Int = -1
     fun setListener(listener: HomeFragment) {
         this.listener = listener
+        completedTasks=false
     }
     fun setListener(listener: DoneTasksFragment){
         this.listener=listener
+        completedTasks=true
+
     }
     companion object {
         const val TAG = "DialogFragment"
@@ -77,6 +82,11 @@ class TaskDescriptionFragment : DialogFragment(), OnClickInterface {
 
         var time:String=""
         var date:String=""
+        if(completedTasks){
+            binding.BtnTaskSave.visibility=View.GONE
+            binding.TimeSetter.visibility=View.GONE
+            binding.ivAddST.visibility=View.GONE
+        }
 
         submit = binding.btSubmitST
         subTaskEditText = binding.etSubTask
@@ -114,7 +124,7 @@ class TaskDescriptionFragment : DialogFragment(), OnClickInterface {
         binding.TimeSetter.setOnClickListener(){
             time=openTimePicker()
         }
-        binding.ibAddST.setOnClickListener {
+        binding.ivAddST.setOnClickListener {
             activateSubTasks()
             status = "subcr"
         }
@@ -124,6 +134,7 @@ class TaskDescriptionFragment : DialogFragment(), OnClickInterface {
         }
     }
 
+    //submitting subtask
     private fun submitClicked(){
         Log.d("STATUS", "$status, $position")
         if(subTaskEditText.text.isNotEmpty()){
@@ -131,7 +142,9 @@ class TaskDescriptionFragment : DialogFragment(), OnClickInterface {
                 val subtask = DairyTaskData(dairyTaskName = subTaskEditText.text.toString(), dairyTaskId = FireHelper.Users.push().key.toString(), ifSub = true)
                 subTaskEditText.text.clear()
 
-                FireHelper.Users.child(FireHelper.firebaseAuth.currentUser!!.uid).child("DairyTasks").child(dairyTaskData!!.dairyTaskId).child("SubTasks").child(subtask.dairyTaskId).setValue(subtask).addOnCompleteListener {
+                FireHelper.Users.child(FireHelper.firebaseAuth.currentUser!!.uid).child("DairyTasks")
+                    .child(dairyTaskData!!.dairyTaskId).child("SubTasks")
+                    .child(subtask.dairyTaskId).setValue(subtask).addOnCompleteListener {
                     if(it.isSuccessful){
                         list.add(subtask)
 
@@ -141,8 +154,8 @@ class TaskDescriptionFragment : DialogFragment(), OnClickInterface {
             }
             else if(status == "subed"){
                 if(list[position].dairyTaskName != subTaskEditText.text.toString() && subTaskEditText.text.trim().toString() != ""){
-                    FireHelper.Users.child(FireHelper.firebaseAuth.currentUser!!.uid).child("DairyTasks").child("SubTasks")
-                        .child(list[position].dairyTaskId).child("dairyTaskName")
+                    FireHelper.Users.child(FireHelper.firebaseAuth.currentUser!!.uid).child("DairyTasks").child(dairyTaskData!!.dairyTaskId)
+                        .child("SubTasks").child(list[position].dairyTaskId).child(list[position].dairyTaskId)
                         .setValue(subTaskEditText.text.trim().toString()).addOnCompleteListener{
 
                         if(it.isSuccessful){
