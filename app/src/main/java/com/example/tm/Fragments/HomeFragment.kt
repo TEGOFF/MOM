@@ -47,8 +47,8 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
     private lateinit var adapter: DairyTaskAdapter
     private lateinit var mlist:MutableList<DairyTaskData>
     private  lateinit var actionBarToggle:ActionBarDrawerToggle
-    private var category: String = "All"
-    private var globalDate:String=""
+    private var category: String = ""
+    private var date:String=""
 
 
 
@@ -83,6 +83,8 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
             navView.setNavigationItemSelectedListener { menuItem ->
                 when (menuItem.itemId) {
                     R.id.nav_home -> {
+                        date = ""
+                        category = ""
                         drawerlayout.closeDrawer(GravityCompat.START)
                         onResume()
                         true
@@ -149,61 +151,164 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
     private fun sortByDate(d: String){
         mlist.clear()
 
+        Log.d("CAT", category)
+
         FireHelper.Users.child(FireHelper.firebaseAuth.currentUser!!.uid).child("DairyTasks").get().addOnCompleteListener {
             for(i in it.result.children){
                 val task = i.getValue(DairyTaskData::class.java)
 
                 if(task != null && task.date != "Not set"){
-                    when(d){
-                        "Today" ->{
-                            val dateFormat = SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.getDefault())
+                    Log.d("CAT", "CAT IS EMPTY? ${category.isEmpty()}")
+                    if(category.isEmpty()) {
+                        when (d) {
+                            "Today" -> {
+                                val dateFormat = SimpleDateFormat(
+                                    "EEE MMM dd HH:mm:ss zzz yyyy",
+                                    Locale.getDefault()
+                                )
 
-                            val date = Calendar.getInstance()
-                            date.set(Calendar.HOUR_OF_DAY, 0)
-                            date.set(Calendar.MINUTE, 0)
-                            date.set(Calendar.SECOND, 0)
+                                date = "Today"
 
-                            try{
-                                if(task.date.isNotEmpty()){
+                                val date = Calendar.getInstance()
+                                date.set(Calendar.HOUR_OF_DAY, 0)
+                                date.set(Calendar.MINUTE, 0)
+                                date.set(Calendar.SECOND, 0)
+
+                                try {
+                                    if (task.date.isNotEmpty()) {
+                                        val taskDate = dateFormat.parse(task.date)
+                                        Log.d("DATE", "$taskDate today: ${date.time}")
+                                        if (taskDate.toString() == date.time.toString()) {
+                                            mlist.add(task)
+                                        }
+                                    }
+                                } catch (e: Exception) {
+                                    Log.e("DATE", e.message.toString())
+                                }
+                            }
+
+                            "Tomorrow" -> {
+                                date = "Tomorrow"
+
+                                val dateFormat = SimpleDateFormat(
+                                    "EEE MMM dd HH:mm:ss zzz yyyy",
+                                    Locale.getDefault()
+                                )
+                                val date = Calendar.getInstance()
+                                date.add(Calendar.DAY_OF_YEAR, 1)
+                                date.set(Calendar.HOUR_OF_DAY, 0)
+                                date.set(Calendar.MINUTE, 0)
+                                date.set(Calendar.SECOND, 0)
+
+                                val tomorrowDate = date.time
+
+                                try {
                                     val taskDate = dateFormat.parse(task.date)
-                                    Log.d("DATE", "$taskDate today: ${date.time}")
-                                    if(taskDate.toString() == date.time.toString()){
+
+                                    if (taskDate.toString() == tomorrowDate.toString()) {
+                                        mlist.add(task)
+                                    }
+                                } catch (e: Exception) {
+                                }
+                            }
+
+                            "ThisWeek" -> {
+                                date = "ThisWeek"
+
+                                if (isEventThisWeek(task.date)) {
+                                    mlist.add(task)
+                                }
+                            }
+
+                            "All the tasks" -> {
+                                date = "All the tasks"
+
+                                mlist.add(task)
+                            }
+                        }
+                    }
+                    else{
+                        Log.d("CAT", "CAT: $category DATE: $date")
+                        when (date) {
+                            "Today" -> {
+                                date = "Today"
+
+                                val task = i.getValue(DairyTaskData::class.java)
+
+                                val dateFormat = SimpleDateFormat(
+                                    "EEE MMM dd HH:mm:ss zzz yyyy",
+                                    Locale.getDefault()
+                                )
+
+                                val date = Calendar.getInstance()
+                                date.set(Calendar.HOUR_OF_DAY, 0)
+                                date.set(Calendar.MINUTE, 0)
+                                date.set(Calendar.SECOND, 0)
+
+                                try {
+                                    if (task != null) {
+                                        if (task.date.isNotEmpty()) {
+                                            val taskDate = dateFormat.parse(task.date)
+                                            Log.d("DATE", "$taskDate today: ${date.time}")
+                                            if (taskDate.toString() == date.time.toString() && task.category == category) {
+                                                mlist.add(task)
+                                            }
+                                        }
+                                    }
+                                } catch (e: Exception) {
+                                    Log.e("DATE", e.message.toString())
+                                }
+                            }
+
+                            "Tomorrow" -> {
+                                date = "Tomorrow"
+
+                                val task = i.getValue(DairyTaskData::class.java)
+
+                                val dateFormat = SimpleDateFormat(
+                                    "EEE MMM dd HH:mm:ss zzz yyyy",
+                                    Locale.getDefault()
+                                )
+                                val date = Calendar.getInstance()
+                                date.add(Calendar.DAY_OF_YEAR, 1)
+                                date.set(Calendar.HOUR_OF_DAY, 0)
+                                date.set(Calendar.MINUTE, 0)
+                                date.set(Calendar.SECOND, 0)
+
+                                val tomorrowDate = date.time
+
+                                try {
+                                    val taskDate = dateFormat.parse(task!!.date)
+
+                                    if (taskDate.toString() == tomorrowDate.toString() && task.category == category) {
+                                        mlist.add(task)
+                                    }
+                                } catch (e: Exception) {
+                                }
+                            }
+
+                            "ThisWeek" -> {
+                                date = "ThisWeek"
+
+                                val task = i.getValue(DairyTaskData::class.java)
+
+                                if (task != null) {
+                                    if (isEventThisWeek(task.date) && task.category == category) {
+                                        Log.d("CAT", task.category)
                                         mlist.add(task)
                                     }
                                 }
                             }
-                            catch (e:Exception){
-                                Log.e("DATE", e.message.toString())
-                            }
-                        }
 
-                        "Tomorrow" -> {
-                            val dateFormat = SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.getDefault())
-                            val date = Calendar.getInstance()
-                            date.add(Calendar.DAY_OF_YEAR, 1)
-                            date.set(Calendar.HOUR_OF_DAY, 0)
-                            date.set(Calendar.MINUTE, 0)
-                            date.set(Calendar.SECOND, 0)
+                            "All the tasks" -> {
+                                date = "All the tasks"
 
-                            val tomorrowDate = date.time
+                                val task = i.getValue(DairyTaskData::class.java)
 
-                            try{
-                                val taskDate = dateFormat.parse(task.date)
-
-                                if(taskDate.toString() == tomorrowDate.toString()){
+                                if (task != null && task.category == category) {
                                     mlist.add(task)
                                 }
-                            }catch (e: Exception){}
-                        }
-
-                        "ThisWeek" -> {
-                            if(isEventThisWeek(task.date)){
-                                mlist.add(task)
                             }
-                        }
-
-                        "All the tasks" ->{
-                            mlist.add(task)
                         }
                     }
                 }
@@ -325,51 +430,116 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
         binding.rgCats.setOnCheckedChangeListener { group, checkedId ->
             val button = requireView().findViewById<RadioButton>(checkedId)
             binding.btCat.text = button.text.toString()
-            category = button.text.toString()
+            category = "# " + button.text.toString()
             binding.rgCats.visibility = View.GONE
 
-            sortTasks()
+            sortByCats()
         }
 
         binding.btCat.setOnClickListener {
-            binding.rgCats.visibility = View.VISIBLE
+            binding.rgCats.visibility = if(binding.rgCats.visibility == View.GONE) View.VISIBLE else View.GONE
         }
     }
 
-    private fun sortTasks(){
-        Log.e("Cat", "Sorting tasks")
-        if(category == "All"&&globalDate==""){
-            getDataFromFirebase()
-        }
-        else {
-            FireHelper.Users.child(FireHelper.firebaseAuth.currentUser!!.uid).child("DairyTasks").get().addOnCompleteListener {
-                if (it.isSuccessful) {
-                    for (i in it.result.children) {
-                        val task=i.getValue(DairyTaskData::class.java)
-                        if(task?.date==globalDate){
-                            mlist.add(task)
-                        }
-                    }
-                }
-            }
-        }
+    private fun sortByCats() {
+
+        Log.d("CAT", date)
+        Log.d("CAT", category)
 
         mlist.clear()
+        FireHelper.Users.child(FireHelper.firebaseAuth.currentUser!!.uid).child("DairyTasks").get()
+            .addOnCompleteListener {
+                if (it.isSuccessful) {
+                    if (date.isEmpty()) {
+                        for (i in it.result.children) {
+                            val task = i.getValue(DairyTaskData::class.java)
 
-        FireHelper.Users.child(FireHelper.firebaseAuth.currentUser!!.uid).child("DairyTasks").get().addOnCompleteListener {
-            if(it.isSuccessful){
-                for(i in it.result.children){
-                    val task = i.getValue(DairyTaskData::class.java)
-
-                    Log.i("CAT", "${task!!.category == "# "+category && task != null}")
-                    if(task.category == "# "+category&&globalDate==task.date){
-                        mlist.add(task)
+                            if (task != null && task.category == category) {
+                                mlist.add(task)
+                            }
+                        }
                     }
+                    else {
+                        for (i in it.result.children) {
+                            when (date) {
+                                "Today" -> {
+                                    val task = i.getValue(DairyTaskData::class.java)
+
+                                    val dateFormat = SimpleDateFormat(
+                                        "EEE MMM dd HH:mm:ss zzz yyyy",
+                                        Locale.getDefault()
+                                    )
+
+                                    val date = Calendar.getInstance()
+                                    date.set(Calendar.HOUR_OF_DAY, 0)
+                                    date.set(Calendar.MINUTE, 0)
+                                    date.set(Calendar.SECOND, 0)
+
+                                    try {
+                                        if (task != null) {
+                                            if (task.date.isNotEmpty()) {
+                                                val taskDate = dateFormat.parse(task.date)
+                                                Log.d("CAT", "$taskDate today: ${date.time} ${task.category}")
+                                                if (taskDate.toString() == date.time.toString() && task.category == category) {
+                                                    mlist.add(task)
+                                                    adapter.notifyItemInserted(mlist.size - 1)
+                                                }
+                                            }
+                                        }
+                                    } catch (e: Exception) {
+                                        Log.e("DATE", e.message.toString())
+                                    }
+                                }
+
+                                "Tomorrow" -> {
+                                    val task = i.getValue(DairyTaskData::class.java)
+
+                                    val dateFormat = SimpleDateFormat(
+                                        "EEE MMM dd HH:mm:ss zzz yyyy",
+                                        Locale.getDefault()
+                                    )
+                                    val date = Calendar.getInstance()
+                                    date.add(Calendar.DAY_OF_YEAR, 1)
+                                    date.set(Calendar.HOUR_OF_DAY, 0)
+                                    date.set(Calendar.MINUTE, 0)
+                                    date.set(Calendar.SECOND, 0)
+
+                                    val tomorrowDate = date.time
+
+                                    try {
+                                        val taskDate = dateFormat.parse(task!!.date)
+
+                                        if (taskDate.toString() == tomorrowDate.toString() && task.category == category) {
+                                            mlist.add(task)
+                                            adapter.notifyItemInserted(mlist.size - 1)
+                                        }
+                                    } catch (e: Exception) {
+                                    }
+                                }
+
+                                "ThisWeek" -> {
+                                    val task = i.getValue(DairyTaskData::class.java)
+
+                                    if (task != null) {
+                                        if (isEventThisWeek(task.date) && task.category == category) {
+                                            mlist.add(task)
+                                        }
+                                    }
+                                }
+
+                                "All the tasks" -> {
+                                    val task = i.getValue(DairyTaskData::class.java)
+
+                                    if (task != null && task.category == category) {
+                                        mlist.add(task)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    adapter.notifyDataSetChanged()
                 }
-                Log.i("CAT", mlist.size.toString())
-                adapter.notifyDataSetChanged()
             }
-        }
     }
 
     private fun getCats(){
@@ -404,14 +574,17 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                 adapter.notifyDataSetChanged()
 
                 for (taskSnapshot in snapshot.children) {
-                    val task = taskSnapshot.getValue(DairyTaskData::class.java)
-                    if ( task!= null&& !task.isDone) {
-                        if(taskSnapshot.hasChild("SubTasks")){
-                            task.containsSub = true
+                    try{
+                        val task = taskSnapshot.getValue(DairyTaskData::class.java)
+                        if ( task!= null&& !task.isDone) {
+                            if(taskSnapshot.hasChild("SubTasks")){
+                                task.containsSub = true
+                            }
+                            mlist.add(task)
+                            adapter.notifyItemInserted(mlist.size-1)
                         }
-                        mlist.add(task)
-                        adapter.notifyItemInserted(mlist.size-1)
-                    }
+                    }catch(_:Exception){}
+
                 }
 
                 }
@@ -421,8 +594,6 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
 
         })
     }
-
-
 
     override fun onTaskClicked(dairyTaskData: DairyTaskData) {
         if(taskPopUpFragment!=null)
@@ -437,8 +608,6 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
         )
         FirebaseMessaging.getInstance().getToken()
     }
-
-    //
 
     override fun onDeleteTaskClicked(dairyTaskData: DairyTaskData) {
         dbref.child(dairyTaskData.dairyTaskId).removeValue().addOnCompleteListener(){
@@ -478,7 +647,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
 
         }
 
-     override fun onUpdateDairyTask(taskName:String, taskDescription:String , taskId:String, time:String, date:String, taskEntryTextName: TextInputEditText, taskEntryTextDescription:TextInputEditText) {
+    override fun onUpdateDairyTask(taskName:String, taskDescription:String , taskId:String, time:String, date:String, taskEntryTextName: TextInputEditText, taskEntryTextDescription:TextInputEditText) {
         val map = mapOf<String, Any>(
             "dairyTaskDescription" to taskDescription,
             "dairyTaskId" to taskId,
