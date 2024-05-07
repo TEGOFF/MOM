@@ -48,7 +48,6 @@ class AddTaskPopUpFragment : DialogFragment() {
     }
 
 
-
     var time = ""
     var date:String=""
 
@@ -68,15 +67,24 @@ class AddTaskPopUpFragment : DialogFragment() {
                 binding.TaskEntryTextName.setText(dairyTaskData?.dairyTaskName)
         }
 
+        //On saving task
         binding.BtnTaskAdd.setOnClickListener{
-            val taskName=binding.TaskEntryTextName.text.toString()
-            val taskDescription=binding.TaskEntryTextDescription.text.toString()
+            val taskName = binding.TaskEntryTextName.text.toString()
+            val taskDescription = binding.TaskEntryTextDescription.text.toString()
             val taskCategory = "# " + binding.btChooseCat.text.toString()
+
             if(taskName.isNotEmpty()){
                 if(dairyTaskData==null){
+                    if(taskCategory == "# Category"){ //Checking if category is set
+                        listener?.onSaveDairyTask(
+                            taskName, taskDescription , time, date, binding.TaskEntryTextName, binding.TaskEntryTextDescription)
+                        return@setOnClickListener
+                    }
+
                     listener?.onSaveDairyTask(
                         taskName, taskDescription , time, date, binding.TaskEntryTextName, binding.TaskEntryTextDescription, taskCategory)
                 }
+
                 else{
                     listener?.onUpdateDairyTask(
                         taskName, taskDescription, dairyTaskData?.dairyTaskId.toString(), time, date, binding.TaskEntryTextName, binding.TaskEntryTextDescription)
@@ -114,7 +122,7 @@ class AddTaskPopUpFragment : DialogFragment() {
                 for(i in it.result.children){
                     val cat = i.getValue(Category::class.java)
 
-                    if(cat != null){
+                    if(cat != null && cat.name != "All"){
                         val radio = RadioButton(context)
                         Log.i("Cat", cat.name)
                         radio.setText(cat.name)

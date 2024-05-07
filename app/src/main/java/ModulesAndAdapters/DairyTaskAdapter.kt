@@ -47,10 +47,15 @@ class DairyTaskAdapter(private val list:MutableList<DairyTaskData>) : Adapter<Da
                 with(list[position]) {
                     //Initialization
                     binding.DairyTaskName.text = this.dairyTaskName
-                    binding.tvCategory.text = this.category
+
+                    if(this.category != "Not set"){
+                        binding.tvCategory.text = this.category
+                    }
+
                     binding.deleteTask.setOnClickListener(){
                         listener?.onDeleteTaskClicked(list[position])
                     }
+
                     //if SubTask
                     if(list[position].ifSub){
                         binding.tvDate.visibility=View.GONE
@@ -58,6 +63,7 @@ class DairyTaskAdapter(private val list:MutableList<DairyTaskData>) : Adapter<Da
                         binding.tvCategory.visibility=View.GONE
                         binding.editTask.visibility=View.GONE
                     }
+
                     //If have notification time
                     if (this.notificationTime.isNotEmpty()) {
                         binding.tvTime.setText(this.notificationTime)
