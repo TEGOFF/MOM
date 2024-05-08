@@ -18,6 +18,7 @@ import com.example.tm.databinding.FragmentHomeBinding
 import DataClasses.Category
 import ModulesAndAdapters.DairyTaskAdapter
 import DataClasses.DairyTaskData
+import DataClasses.User
 import ModulesAndAdapters.FireHelper
 import androidx.core.view.GravityCompat
 import com.google.android.material.textfield.TextInputEditText
@@ -72,6 +73,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
             requireActivity().finish()
         }
 
+
         binding.apply {
             actionBarToggle = ActionBarDrawerToggle(requireActivity(), drawerlayout, 0, 0)
             drawerlayout.addDrawerListener(actionBarToggle)
@@ -108,6 +110,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                     }
 
                     R.id.Today -> {
+                        date = "Today"
                         sortByDate("Today")
                         drawerlayout.closeDrawer(GravityCompat.START)
 
@@ -115,6 +118,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                     }
 
                     R.id.Tomorrow -> {
+                        date = "Tomorrow"
                         sortByDate("Tomorrow")
                         drawerlayout.closeDrawer(GravityCompat.START)
 
@@ -122,12 +126,14 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                     }
 
                     R.id.ThisWeek -> {
+                        date = "ThisWeek"
                         sortByDate("ThisWeek")
                         drawerlayout.closeDrawer(GravityCompat.START)
                         true
                     }
 
                     R.id.AllTheTasks -> {
+                        date = "All the tasks"
                         sortByDate("All the tasks")
                         drawerlayout.closeDrawer(GravityCompat.START)
                         onResume()
@@ -157,7 +163,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
 
                 if(task != null && task.date != "Not set"){
                     Log.d("CAT", "CAT IS EMPTY? ${category.isEmpty()}")
-                    if(category.isEmpty()) {
+                    if(category == "# All") {
                         when (d) {
                             "Today" -> {
                                 val dateFormat = SimpleDateFormat(
@@ -454,16 +460,26 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
         FireHelper.Users.child(FireHelper.firebaseAuth.currentUser!!.uid).child("DairyTasks").get()
             .addOnCompleteListener {
                 if (it.isSuccessful) {
-                    if (date.isEmpty()) {
+                    if (date == "") {
                         for (i in it.result.children) {
                             val task = i.getValue(DairyTaskData::class.java)
 
-                            if (task != null && task.category == category) {
-                                mlist.add(task)
+                            if (task != null) {
+                                if (category == "# All" || task.category == category) {
+                                    mlist.add(task)
+                                }
                             }
                         }
                     }
+
                     else {
+                        Log.d("CAT", "CATEGORY: $category DATE: $date")
+                        //If category = All, show all tasks in current date
+                        if(category == "# All"){
+                            sortByDate(date)
+                            return@addOnCompleteListener
+                        }
+
                         for (i in it.result.children) {
                             when (date) {
                                 "Today" -> {
@@ -553,10 +569,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
     //showing categories choose menu
     private fun getCats(){
         val radio = RadioButton(context)
-        radio.text = "All"
-        radio.id = View.generateViewId()
 
-        binding.rgCats.addView(radio)
         FireHelper.Users.child(FireHelper.firebaseAuth.currentUser!!.uid).child("Categories").get().addOnCompleteListener {
             if(it.isSuccessful){
                 for(i in it.result.children){

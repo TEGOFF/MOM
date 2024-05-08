@@ -51,7 +51,6 @@ class AddTaskPopUpFragment : DialogFragment() {
 
 
 
-
     @SuppressLint("SuspiciousIndentation")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -68,22 +67,26 @@ class AddTaskPopUpFragment : DialogFragment() {
                 binding.TaskEntryTextName.setText(dairyTaskData?.dairyTaskName)
         }
 
+        //On saving task
         binding.BtnTaskAdd.setOnClickListener{
-            val taskName=binding.TaskEntryTextName.text.toString()
-            val taskDescription=binding.TaskEntryTextDescription.text.toString()
-            var taskCategory:String
-            if(binding.btChooseCat.text.toString()!="Category"){
-                taskCategory = "# " + binding.btChooseCat.text.toString()
-            }
-            else{
-                taskCategory="# All"
-            }
+
+            val taskName = binding.TaskEntryTextName.text.toString()
+            val taskDescription = binding.TaskEntryTextDescription.text.toString()
+            val taskCategory = "# " + binding.btChooseCat.text.toString()
+
 
             if(taskName.isNotEmpty()){
                 if(dairyTaskData==null){
+                    if(taskCategory == "# Category"){ //Checking if category is set
+                        listener?.onSaveDairyTask(
+                            taskName, taskDescription , time, date, binding.TaskEntryTextName, binding.TaskEntryTextDescription)
+                        return@setOnClickListener
+                    }
+
                     listener?.onSaveDairyTask(
                         taskName, taskDescription , time, date, binding.TaskEntryTextName, binding.TaskEntryTextDescription, taskCategory)
                 }
+
                 else{
                     listener?.onUpdateDairyTask(
                         taskName, taskDescription, dairyTaskData?.dairyTaskId.toString(), time, date, binding.TaskEntryTextName, binding.TaskEntryTextDescription)
@@ -121,7 +124,7 @@ class AddTaskPopUpFragment : DialogFragment() {
                 for(i in it.result.children){
                     val cat = i.getValue(Category::class.java)
 
-                    if(cat != null){
+                    if(cat != null && cat.name != "All"){
                         val radio = RadioButton(context)
                         Log.i("Cat", cat.name)
                         radio.setText(cat.name)

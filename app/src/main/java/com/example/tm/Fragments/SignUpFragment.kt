@@ -101,6 +101,10 @@ class SignUpFragment() : Fragment() {
                 id = dbref.push().key.toString(),
                 name = "Study"
             ),
+            Category(
+                id = dbref.push().key.toString(),
+                name = "All"
+            )
         )
 
         dbref.child(auth.currentUser!!.uid).child("Categories").child(cats[0].id).setValue(cats[0])
