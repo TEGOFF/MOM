@@ -28,6 +28,8 @@ class AddTaskPopUpFragment : DialogFragment() {
     private lateinit var binding:FragmentAddTaskPopUpBinding
     private var listener:DialogBtnClickListeners?=null
     private var dairyTaskData: DairyTaskData? = null
+    var time = ""
+    var date:String=""
 
     fun setListener(listener: DialogBtnClickListeners) {
         this.listener = listener
@@ -46,10 +48,6 @@ class AddTaskPopUpFragment : DialogFragment() {
 
 
     }
-
-
-    var time = ""
-    var date:String=""
 
     @SuppressLint("SuspiciousIndentation")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
