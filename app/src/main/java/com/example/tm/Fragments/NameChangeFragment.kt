@@ -14,6 +14,7 @@ class NameChangeFragment : DialogFragment() {
     lateinit var binding :FragmentNameChangeBinding
 
 
+    //setting a listener to DialogNameChange
     fun setListener(listener: DialogNameChangeListener) {
         this.listener = listener
     }
@@ -45,7 +46,7 @@ class NameChangeFragment : DialogFragment() {
     }
 
 
-
+    //interface of changing users name (extended by settingsFragment)
     interface DialogNameChangeListener{
         fun nameChange(newName:String)
     }

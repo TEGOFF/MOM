@@ -30,7 +30,7 @@ class SettingsFragment : Fragment() , NameChangeFragment.DialogNameChangeListene
     private lateinit var firebaseStorageRef:FirebaseStorage
     private lateinit var nameChangeFragment:NameChangeFragment
     private lateinit var me: User
-    private lateinit var PopUpMenu:PopupMenu
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,6 +56,7 @@ class SettingsFragment : Fragment() , NameChangeFragment.DialogNameChangeListene
         setPage()
     }
 
+    //setting a page(downloading every needed element from firebase)
     private fun setPage() {
         val dbref= FireHelper.Users.child(FireHelper.firebaseAuth.currentUser?.uid.toString())
         dbref.get().addOnCompleteListener { //Getting the user
@@ -83,6 +84,7 @@ class SettingsFragment : Fragment() , NameChangeFragment.DialogNameChangeListene
         firebaseStorageRef=FirebaseStorage.getInstance()
     }
 
+    //registration of every event
      private fun registerEvents(){
         binding.homePageBtn.setOnClickListener(){
             navControl.navigate(R.id.action_settingsFragment_to_homeFragment)
@@ -121,7 +123,7 @@ class SettingsFragment : Fragment() , NameChangeFragment.DialogNameChangeListene
 
          }
     }
-    //permissions
+    //getting permissions from user
     private fun getPermissions(){
         val permissionsList= mutableListOf<String>()
         context?.let {
@@ -158,6 +160,7 @@ class SettingsFragment : Fragment() , NameChangeFragment.DialogNameChangeListene
 
     }
 
+    //saving profile image (if chosen from existed photo)
     private fun saveProfImage(){
         val intent = Intent(Intent.ACTION_GET_CONTENT)
         intent.type = "image/*"

@@ -170,6 +170,7 @@ class TaskDescriptionFragment : DialogFragment(), OnClickInterface {
         }
     }
 
+    //making a subtask EditText visible
     private fun activateSubTasks(){
         if(status == "subed"){
             subTaskEditText.visibility = View.VISIBLE
@@ -182,6 +183,7 @@ class TaskDescriptionFragment : DialogFragment(), OnClickInterface {
         subTaskEditText.requestFocus()
     }
 
+    //deleting subtask
     override fun onDeleteClicked(task: DairyTaskData, position: Int){
         FireHelper.Users.child(FireHelper.firebaseAuth.currentUser!!.uid).child("DairyTasks").child(dairyTaskData!!.dairyTaskId).child("SubTasks").child(task.dairyTaskId).removeValue().addOnCompleteListener {
             if(it.isSuccessful){
@@ -191,6 +193,7 @@ class TaskDescriptionFragment : DialogFragment(), OnClickInterface {
         }
     }
 
+    //editing subtask
     override fun onEditClicked(task: DairyTaskData, position: Int) {
         status = "subed"
         activateSubTasks()
@@ -198,6 +201,7 @@ class TaskDescriptionFragment : DialogFragment(), OnClickInterface {
         this@TaskDescriptionFragment.position = position
     }
 
+    //getting a subtasks from firebase and notifying adapter
     private fun getSubTasks(){
         Log.d("SUBTASK", "Getting")
         val path = FireHelper.Users.child(FireHelper.firebaseAuth.currentUser!!.uid).child("DairyTasks").child(dairyTaskData!!.dairyTaskId).child("SubTasks")
@@ -215,6 +219,7 @@ class TaskDescriptionFragment : DialogFragment(), OnClickInterface {
         }
     }
 
+    //opening a time picker
     private fun openTimePicker():String {
         var time=""
         val isSystem24hour= DateFormat.is24HourFormat(requireContext())

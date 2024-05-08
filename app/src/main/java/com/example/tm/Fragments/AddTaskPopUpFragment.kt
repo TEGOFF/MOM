@@ -28,7 +28,8 @@ class AddTaskPopUpFragment : DialogFragment() {
     private lateinit var binding:FragmentAddTaskPopUpBinding
     private var listener:DialogBtnClickListeners?=null
     private var dairyTaskData: DairyTaskData? = null
-
+    private var time = ""
+    private var date:String=""
     fun setListener(listener: DialogBtnClickListeners) {
         this.listener = listener
     }
@@ -49,8 +50,7 @@ class AddTaskPopUpFragment : DialogFragment() {
 
 
 
-    var time = ""
-    var date:String=""
+
 
     @SuppressLint("SuspiciousIndentation")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -71,7 +71,14 @@ class AddTaskPopUpFragment : DialogFragment() {
         binding.BtnTaskAdd.setOnClickListener{
             val taskName=binding.TaskEntryTextName.text.toString()
             val taskDescription=binding.TaskEntryTextDescription.text.toString()
-            val taskCategory = "# " + binding.btChooseCat.text.toString()
+            var taskCategory:String
+            if(binding.btChooseCat.text.toString()!="Category"){
+                taskCategory = "# " + binding.btChooseCat.text.toString()
+            }
+            else{
+                taskCategory="# All"
+            }
+
             if(taskName.isNotEmpty()){
                 if(dairyTaskData==null){
                     listener?.onSaveDairyTask(

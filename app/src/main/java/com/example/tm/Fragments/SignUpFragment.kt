@@ -82,6 +82,7 @@ class SignUpFragment() : Fragment() {
         }
     }
 
+    //adding standard categories
     private fun addStandartCats(){
         val cats = arrayListOf(
             Category(

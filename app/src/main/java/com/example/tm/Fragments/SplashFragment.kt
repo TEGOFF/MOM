@@ -13,8 +13,6 @@ import androidx.navigation.Navigation
 import com.example.tm.R
 import com.example.tm.databinding.FragmentSplashBinding
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.handleCoroutineException
 
 
 class SplashFragment : Fragment() {
@@ -33,10 +31,10 @@ class SplashFragment : Fragment() {
         override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
-        ): View? {
+        ): View {
             // Inflate the layout for this fragment
             binding= FragmentSplashBinding.inflate(inflater, container, false)
-            return return binding.root
+            return binding.root
 
         }
 
@@ -45,8 +43,8 @@ class SplashFragment : Fragment() {
             progressBar()
             navControl=Navigation.findNavController(view)
             auth=FirebaseAuth.getInstance()
-            Handler(Looper.myLooper()!!).postDelayed(Runnable {
-                binding.progressBar.setVisibility(View.INVISIBLE)
+            Handler(Looper.myLooper()!!).postDelayed( {
+                binding.progressBar.visibility = View.INVISIBLE
                 if(auth.currentUser!=null){
                 navControl.navigate(R.id.action_splashFragment_to_homeFragment)
                 }
@@ -58,9 +56,10 @@ class SplashFragment : Fragment() {
 
 
     }
-    fun progressBar(){
-        var progressBar:ProgressBar =binding.progressBar
-        progressBar.setVisibility(View.VISIBLE)
+    //progress bar initialization
+    private fun progressBar(){
+        val progressBar:ProgressBar =binding.progressBar
+        progressBar.visibility = View.VISIBLE
 
     }
 }

@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ModulesAndAdapters.CategoriesPopUpAdapter
 import DataClasses.Category
 import ModulesAndAdapters.FireHelper
-import DataClasses.User
+import android.util.Log
 import com.example.tm.R
 
 class CategoriesFragment : DialogFragment() {
@@ -27,11 +27,11 @@ class CategoriesFragment : DialogFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+        //inflating a layout of this fragment
         return inflater.inflate(R.layout.fragment_categories, container, false)
     }
 
-
+    //initializing every UI element of categories fragment
     lateinit var rvCats: RecyclerView
     lateinit var addButton: Button
     lateinit var etCatsName: EditText
@@ -39,7 +39,6 @@ class CategoriesFragment : DialogFragment() {
     var cats: MutableList<Category> = mutableListOf()
     lateinit var adapter: CategoriesPopUpAdapter
 
-    var me: User = User()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -73,19 +72,7 @@ class CategoriesFragment : DialogFragment() {
                 etCatsName.setText("")
             }
             else{
-                Toast.makeText(requireContext(), "Category's name can't be empty", Toast.LENGTH_SHORT).show()
-            }
-        }
-    }
-
-    fun getMe(){
-        FireHelper.Users.child(FireHelper.firebaseAuth.currentUser!!.uid).get().addOnCompleteListener {
-            if(it.isSuccessful){
-                val user = it.result.getValue(User::class.java)
-
-                if(user != null && user.userId == FireHelper.firebaseAuth.currentUser!!.uid){
-                    me = user
-                }
+                Toast.makeText(requireContext(), "Write a name for a category", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -98,7 +85,7 @@ class CategoriesFragment : DialogFragment() {
 
                     if(cat != null){
                         cats.add(cat)
-
+                        Log.d("catAdded", cat.toString())
                         adapter.notifyItemInserted(cats.size-1)
                     }
                 }

@@ -47,13 +47,14 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
     private lateinit var adapter: DairyTaskAdapter
     private lateinit var mlist:MutableList<DairyTaskData>
     private  lateinit var actionBarToggle:ActionBarDrawerToggle
-    private var category: String = ""
+    private var category: String = "# All"
     private var date:String=""
 
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
+
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
@@ -61,6 +62,8 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
 
         init(view)
         registerEvents()
@@ -140,12 +143,14 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
         }
     }
 
-    //Functions
+    //Functions buy date
+
+    //sorting
     private fun sortByDate(d: String){
         mlist.clear()
 
         Log.d("CAT", category)
-
+        Log.d("Sort parameter", d)
         FireHelper.Users.child(FireHelper.firebaseAuth.currentUser!!.uid).child("DairyTasks").get().addOnCompleteListener {
             for(i in it.result.children){
                 val task = i.getValue(DairyTaskData::class.java)
@@ -310,6 +315,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
         }
     }
 
+    //checking if the task is planned on thia week
     private fun isEventThisWeek(eventDate: String): Boolean {
         val dateFormat = SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.getDefault())
 
@@ -332,11 +338,13 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
         return false
     }
 
+
     override fun onResume() {
         super.onResume()
         getDataFromFirebase()
     }
 
+    //initializtion of every lateinit parameter and eventListener every task
     private fun init(view:View){
         navControl=Navigation.findNavController(view)
         auth= FireHelper.firebaseAuth
@@ -352,6 +360,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
         adapter.setListener(this)
         binding.mainRecyclerView.adapter=adapter
         dbref.addChildEventListener(object :ChildEventListener{
+            //adding a new task
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
                 if(snapshot.value.toString()!=""){
                     mlist.add(
@@ -363,13 +372,13 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                 }
 
             }
-
+            //changing task
             override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
                 if(snapshot.value.toString()!=""){
                     adapter.notifyDataSetChanged()
                 }
             }
-
+            //removing task
             override fun onChildRemoved(snapshot: DataSnapshot) {
                 if(snapshot.value.toString()!=""){
                     val index=mlist.indexOf(
@@ -386,12 +395,12 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
 
                 }
             }
-
+            //doesn`t need to be implemented
             override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
                 TODO("Not yet implemented")
             }
 
-
+            //writing an error to log
             override fun onCancelled(error: DatabaseError) {
                 Log.e("error", error.toString())
             }
@@ -399,6 +408,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
         })
     }
 
+    //registration of events happening on home screen
     private fun registerEvents(){
         if(addPopUpFragment!= null){
             childFragmentManager.beginTransaction().remove(addPopUpFragment!!).commit()
@@ -434,6 +444,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
         }
     }
 
+    //sorting by categories
     private fun sortByCats() {
 
         Log.d("CAT", date)
@@ -502,11 +513,15 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                                     try {
                                         val taskDate = dateFormat.parse(task!!.date)
 
-                                        if (taskDate.toString() == tomorrowDate.toString() && task.category == category) {
-                                            mlist.add(task)
-                                            adapter.notifyItemInserted(mlist.size - 1)
+                                        if (taskDate != null) {
+                                            if (taskDate.toString() == tomorrowDate.toString() && task.category == category) {
+                                                mlist.add(task)
+                                                adapter.notifyItemInserted(mlist.size - 1)
+                                            }
                                         }
-                                    } catch (e: Exception) {
+                                    }
+                                    catch (e: Exception) {
+                                        Log.e("ERROR", e.toString())
                                     }
                                 }
 
@@ -535,6 +550,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
             }
     }
 
+    //showing categories choose menu
     private fun getCats(){
         val radio = RadioButton(context)
         radio.text = "All"
@@ -559,13 +575,13 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
         }
     }
 
+    //getting data from firebase and notifying adapter
     private fun getDataFromFirebase(){
         dbref.addValueEventListener(object:ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
 
                 mlist.clear()
                 adapter.notifyDataSetChanged()
-
                 for (taskSnapshot in snapshot.children) {
                     try{
                         val task = taskSnapshot.getValue(DairyTaskData::class.java)
@@ -588,6 +604,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
         })
     }
 
+    //task is clicked
     override fun onTaskClicked(dairyTaskData: DairyTaskData) {
         if(taskPopUpFragment!=null)
             childFragmentManager.beginTransaction().remove(taskPopUpFragment!!).commit()
@@ -602,6 +619,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
         FirebaseMessaging.getInstance().getToken()
     }
 
+    //deleting dairy task
     override fun onDeleteTaskClicked(dairyTaskData: DairyTaskData) {
         dbref.child(dairyTaskData.dairyTaskId).removeValue().addOnCompleteListener(){
             if(it.isSuccessful.not()){
@@ -611,18 +629,18 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
     }
 
     override fun onCheckBoxClicked(taskData: DairyTaskData, position: Int) {
-        taskData.isDone=true
-        FireHelper.Users.child(FireHelper.firebaseAuth.currentUser?.uid.toString()).child("DairyTasks")
+        taskData.isDone = true
+        FireHelper.Users.child(FireHelper.firebaseAuth.currentUser?.uid.toString())
+            .child("DairyTasks")
             .child(taskData.dairyTaskId).child("done").setValue(true)
 
-        mlist.add(position, mlist.removeAt(position) )
+        mlist.add(position, mlist.removeAt(position))
 
-        view?.post(){
+        view?.post() {
             binding.mainRecyclerView.adapter?.notifyDataSetChanged()
         }
-
     }
-
+    //saving dairy task
     override fun onSaveDairyTask(taskName:String, taskDescription:String , time:String, date:String, taskDescriptionEntryText: TextInputEditText,   taskNameEntryText: TextInputEditText, taskCategory: String) {
         val k=dbref.push()
         k.setValue(DairyTaskData(taskName, taskDescription, k.key.toString(), time, date, category = taskCategory)).addOnCompleteListener{
@@ -640,6 +658,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
 
         }
 
+    //updating dairy task
     override fun onUpdateDairyTask(taskName:String, taskDescription:String , taskId:String, time:String, date:String, taskEntryTextName: TextInputEditText, taskEntryTextDescription:TextInputEditText) {
         val map = mapOf<String, Any>(
             "dairyTaskDescription" to taskDescription,
@@ -666,6 +685,9 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
 
         }
     }
+
+
+    //opening drawer layout(menu)
     override fun onClick( view: View?) {
         when (view?.id) {
             R.id.callmenubtn -> {
