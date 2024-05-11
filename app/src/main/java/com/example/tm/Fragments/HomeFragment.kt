@@ -18,7 +18,6 @@ import com.example.tm.databinding.FragmentHomeBinding
 import DataClasses.Category
 import ModulesAndAdapters.DairyTaskAdapter
 import DataClasses.DairyTaskData
-import DataClasses.User
 import ModulesAndAdapters.FireHelper
 import androidx.core.view.GravityCompat
 import com.google.android.material.textfield.TextInputEditText
@@ -31,7 +30,6 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.messaging.FirebaseMessaging
 import java.text.SimpleDateFormat
 import java.util.Calendar
-import java.util.Date
 import java.util.Locale
 import com.example.tm.Fragments.AddTaskPopUpFragment.Companion as AddTaskPopUpFragment1
 
@@ -85,7 +83,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                 when (menuItem.itemId) {
                     R.id.nav_home -> {
                         date = ""
-                        category = ""
+                        category = "# All"
                         drawerlayout.closeDrawer(GravityCompat.START)
                         onResume()
                         true
@@ -182,7 +180,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                                     if (task.date.isNotEmpty()) {
                                         val taskDate = dateFormat.parse(task.date)
                                         Log.d("DATE", "$taskDate today: ${date.time}")
-                                        if (taskDate.toString() == date.time.toString()) {
+                                        if (taskDate?.toString() == date.time.toString()) {
                                             mlist.add(task)
                                         }
                                     }
@@ -209,10 +207,11 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                                 try {
                                     val taskDate = dateFormat.parse(task.date)
 
-                                    if (taskDate.toString() == tomorrowDate.toString()) {
+                                    if (taskDate?.toString() == tomorrowDate.toString()) {
                                         mlist.add(task)
                                     }
                                 } catch (e: Exception) {
+                                    Log.e("error", e.toString())
                                 }
                             }
 
@@ -254,7 +253,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                                         if (task.date.isNotEmpty()) {
                                             val taskDate = dateFormat.parse(task.date)
                                             Log.d("DATE", "$taskDate today: ${date.time}")
-                                            if (taskDate.toString() == date.time.toString() && task.category == category) {
+                                            if (taskDate?.toString() == date.time.toString() && task.category == category) {
                                                 mlist.add(task)
                                             }
                                         }
@@ -284,10 +283,11 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                                 try {
                                     val taskDate = dateFormat.parse(task!!.date)
 
-                                    if (taskDate.toString() == tomorrowDate.toString() && task.category == category) {
+                                    if (taskDate?.toString() == tomorrowDate.toString() && task.category == category) {
                                         mlist.add(task)
                                     }
                                 } catch (e: Exception) {
+                                    Log.e("error", e.toString())
                                 }
                             }
 
@@ -426,7 +426,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                 childFragmentManager, AddTaskPopUpFragment1.TAG
             )
         }
-        binding.mainRecyclerView.setOnClickListener(){
+        binding.mainRecyclerView.setOnClickListener{
             taskPopUpFragment= TaskDescriptionFragment()
             taskPopUpFragment!!.setListener(this)
             taskPopUpFragment!!.show(
@@ -436,7 +436,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
 
         getCats()
 
-        binding.rgCats.setOnCheckedChangeListener { group, checkedId ->
+        binding.rgCats.setOnCheckedChangeListener { _, checkedId ->
             val button = requireView().findViewById<RadioButton>(checkedId)
             binding.btCat.text = button.text.toString()
             category = "# " + button.text.toString()
@@ -500,7 +500,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
                                             if (task.date.isNotEmpty()) {
                                                 val taskDate = dateFormat.parse(task.date)
                                                 Log.d("CAT", "$taskDate today: ${date.time} ${task.category}")
-                                                if (taskDate.toString() == date.time.toString() && task.category == category) {
+                                                if (taskDate?.toString() == date.time.toString() && task.category == category) {
                                                     mlist.add(task)
                                                     adapter.notifyItemInserted(mlist.size - 1)
                                                 }
@@ -568,7 +568,6 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
 
     //showing categories choose menu
     private fun getCats(){
-        val radio = RadioButton(context)
 
         FireHelper.Users.child(FireHelper.firebaseAuth.currentUser!!.uid).child("Categories").get().addOnCompleteListener {
             if(it.isSuccessful){
@@ -622,7 +621,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
         if(taskPopUpFragment!=null)
             childFragmentManager.beginTransaction().remove(taskPopUpFragment!!).commit()
 
-        taskPopUpFragment=TaskDescriptionFragment.newInstance(dairyTaskData.dairyTaskName, dairyTaskData.dairyTaskDescription, dairyTaskData.dairyTaskId)
+        taskPopUpFragment=TaskDescriptionFragment.newInstance(dairyTaskData.dairyTaskName, dairyTaskData.dairyTaskDescription, dairyTaskData.dairyTaskId, dairyTaskData.date, dairyTaskData.notificationTime, dairyTaskData.category)
         taskPopUpFragment!!.setListener(this)
         taskPopUpFragment!!.show(
             childFragmentManager,
@@ -634,7 +633,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
 
     //deleting dairy task
     override fun onDeleteTaskClicked(dairyTaskData: DairyTaskData) {
-        dbref.child(dairyTaskData.dairyTaskId).removeValue().addOnCompleteListener(){
+        dbref.child(dairyTaskData.dairyTaskId).removeValue().addOnCompleteListener{
             if(it.isSuccessful.not()){
                 Toast.makeText(context, it.exception?.message, Toast.LENGTH_SHORT    ).show()
             }
@@ -649,7 +648,7 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
 
         mlist.add(position, mlist.removeAt(position))
 
-        view?.post() {
+        view?.post {
             binding.mainRecyclerView.adapter?.notifyDataSetChanged()
         }
     }
@@ -677,9 +676,9 @@ class HomeFragment : Fragment(), AddTaskPopUpFragment.DialogBtnClickListeners,
             "dairyTaskDescription" to taskDescription,
             "dairyTaskId" to taskId,
             "dairyTaskName" to taskName,
-            "dairyTaskNotifyTime" to time,
-            "dairyTaskDate" to date)
-        dbref.child(taskId).updateChildren(map).addOnCompleteListener() {
+            "notificationTime" to time,
+            "date" to date)
+        dbref.child(taskId).updateChildren(map).addOnCompleteListener {
             if (it.isSuccessful)
                 Toast.makeText(context, "Updated successfully", Toast.LENGTH_SHORT).show()
             else {

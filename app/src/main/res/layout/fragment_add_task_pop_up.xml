@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="@color/white"
     tools:context=".Fragments.AddTaskPopUpFragment"
     android:layout_margin="5dp">
 
@@ -46,6 +47,7 @@
                     android:backgroundTint="@color/grey"
                     android:hint="Type your task"
                     android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
                     android:paddingTop="15dp"
                     android:textColorHint="@color/white" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -60,6 +62,7 @@
                     android:layout_height="match_parent"
                     android:hint="Type your task`s description"
                     android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
 
                     android:textColorHint="@color/white" />
 
@@ -77,6 +80,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Add"
+        android:backgroundTint="@color/btnPurple"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.984"
         app:layout_constraintStart_toStartOf="parent"
@@ -84,8 +88,8 @@
 
     <ImageView
         android:id="@+id/TimerSetter"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="49dp"
+        android:layout_height="49dp"
         android:layout_marginStart="28dp"
         android:layout_marginTop="8dp"
         android:src="@drawable/date_change_task_image"
@@ -107,6 +111,7 @@
         android:layout_height="wrap_content"
         android:text="Category"
         app:cornerRadius="5dp"
+        android:backgroundTint="@color/btnPurple"
         app:layout_constraintBottom_toBottomOf="@+id/BtnTaskAdd"
         app:layout_constraintEnd_toStartOf="@+id/BtnTaskAdd"
         app:layout_constraintHorizontal_bias="1.0"
@@ -114,13 +119,13 @@
         app:layout_constraintTop_toTopOf="@+id/BtnTaskAdd"
         app:layout_constraintVertical_bias="0.0" />
 
-    <ImageButton
+    <ImageView
         android:id="@+id/ibCalendar"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="4dp"
+        android:layout_width="49dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:backgroundTint="@android:color/transparent"
-        android:contentDescription="date picker button"
         android:src="@drawable/calendar_icon"
         app:layout_constraintBottom_toBottomOf="@+id/TimerSetter"
         app:layout_constraintHeight_min="48dp"

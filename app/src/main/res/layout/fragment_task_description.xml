@@ -5,8 +5,65 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="5dp"
+    android:backgroundTint="@color/white"
     tools:context=".Fragments.AddTaskPopUpFragment">
 
+    <TextView
+        android:id="@+id/CategoryDone"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="32dp"
+        android:gravity="center"
+        android:visibility="gone"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/cardView1"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/DateText"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textStyle="italic"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/cardView1"
+        app:layout_constraintEnd_toStartOf="@+id/DateDone" />
+
+    <TextView
+        android:text=""
+        android:id="@+id/TimeText"
+        android:layout_width="70dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:textStyle="italic"
+        android:textSize="20sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/cardView1"
+        app:layout_constraintEnd_toStartOf="@+id/TimeDone" />
+
+    <ImageView
+        android:id="@+id/TimeDone"
+        android:layout_width="52dp"
+        android:layout_height="30dp"
+        android:layout_gravity="right"
+        android:visibility="gone"
+        android:layout_marginEnd="28dp"
+        android:paddingStart="12dp"
+        android:src="@drawable/date_change_task_image"
+        app:layout_constraintBottom_toTopOf="@+id/cardView1"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/DateDone"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="68dp"
+        android:visibility="gone"
+        android:src="@drawable/calendar_icon"
+        app:layout_constraintBottom_toTopOf="@+id/cardView1"
+        app:layout_constraintEnd_toStartOf="@+id/TimeDone" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardView1"
@@ -74,20 +131,26 @@
 
                 <ImageView
                     android:id="@+id/TimeSetter"
-                    android:layout_width="50dp"
-                    android:layout_height="44dp"
+                    android:layout_width="55dp"
+                    android:layout_height="40dp"
                     android:layout_gravity="right"
-                    android:layout_marginStart="160dp"
+                    android:layout_marginStart="120dp"
                     android:paddingStart="12dp"
                     android:src="@drawable/date_change_task_image" />
 
                 <ImageView
                     android:id="@+id/ivAddST"
-                    android:layout_width="39dp"
-                    android:layout_height="45dp"
-                    android:backgroundTint="@android:color/transparent"
-                    android:contentDescription="image button"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:src="@drawable/sub_task_icon" />
+
+                <ImageView
+                    android:id="@+id/DateSetter"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/calendar_icon"
+
+                    />
 
                 <Button
                     android:id="@+id/BtnTaskSave"

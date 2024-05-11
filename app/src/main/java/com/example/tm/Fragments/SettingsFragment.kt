@@ -19,7 +19,6 @@ import DataClasses.User
 import android.app.AlertDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.storage.FirebaseStorage
-import android.widget.PopupMenu
 
 
 class SettingsFragment : Fragment() , NameChangeFragment.DialogNameChangeListener{
@@ -66,7 +65,7 @@ class SettingsFragment : Fragment() , NameChangeFragment.DialogNameChangeListene
                 if(user != null && user.userId == FireHelper.firebaseAuth.currentUser?.uid){ //Checking if this user is what we expect to load to the page
                     me = user //Setting current user as "me"
 
-                    binding.UserName.setText(me.userName) //Setting my name to the text view
+                    binding.UserName.text = me.userName //Setting current name to the text view
 
 
                         Glide.with(this).load(me.profileImage).into(binding.profilePhoto) //Setting profile image from db into profileImage view using Glide library
@@ -86,19 +85,19 @@ class SettingsFragment : Fragment() , NameChangeFragment.DialogNameChangeListene
 
     //registration of every event
      private fun registerEvents(){
-        binding.homePageBtn.setOnClickListener(){
+        binding.homePageBtn.setOnClickListener{
             navControl.navigate(R.id.action_settingsFragment_to_homeFragment)
         }
-        binding.logoutBtn.setOnClickListener() {
+        binding.logoutBtn.setOnClickListener {
             mFirebase.signOut()
             navControl.navigate(R.id.action_settingsFragment_to_signInFragment)
         }
-         binding.takePhotoBtn.setOnClickListener(){
+         binding.takePhotoBtn.setOnClickListener{
             getPermissions()
             navControl.navigate(R.id.action_settingsFragment_to_cameraFragment)
 
          }
-         binding.nameChangeBtn.setOnClickListener(){
+         binding.nameChangeBtn.setOnClickListener{
              nameChangeFragment = NameChangeFragment()
              nameChangeFragment.setListener(this    )
              nameChangeFragment.show(

@@ -14,11 +14,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tm.databinding.FragmentTaskDescriptionBinding
 
 import DataClasses.DairyTaskData
-
+import android.icu.util.Calendar
 
 
 import com.example.tm.utilities.OnClickInterface
 import com.example.tm.utilities.SubTasksAdapter
+import com.google.android.material.datepicker.MaterialDatePicker
 
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
@@ -29,16 +30,17 @@ class TaskDescriptionFragment : DialogFragment(), OnClickInterface {
     private var dairyTaskData: DairyTaskData?=null
     private var listener :AddTaskPopUpFragment.DialogBtnClickListeners?=null
     private lateinit var binding: FragmentTaskDescriptionBinding
-    lateinit var adapter: SubTasksAdapter
-    val list: MutableList<DairyTaskData> = mutableListOf()
-    var completedTasks:Boolean=false
+    private lateinit var adapter: SubTasksAdapter
+    private val list: MutableList<DairyTaskData> = mutableListOf()
+    private var completedTasks:Boolean=false
+    private var time=""
+    private var date=""
 
+    private lateinit var subTaskEditText: EditText
+    private lateinit var submit: Button
 
-    lateinit var subTaskEditText: EditText
-    lateinit var submit: Button
-
-    var status: String = ""
-    var position: Int = -1
+    private var status: String = ""
+    private var position: Int = -1
     fun setListener(listener: HomeFragment) {
         this.listener = listener
         completedTasks=false
@@ -51,12 +53,15 @@ class TaskDescriptionFragment : DialogFragment(), OnClickInterface {
     companion object {
         const val TAG = "DialogFragment"
         @JvmStatic
-        fun newInstance(task: String, taskDescription: String, taskId: String):TaskDescriptionFragment =
+        fun newInstance(task: String, taskDescription: String, taskId: String, taskDate:String, taskTime:String, taskCategory:String):TaskDescriptionFragment =
             TaskDescriptionFragment().apply {
                 arguments = Bundle().apply {
                     putString("dairyTaskName", task)
                     putString("dairyTaskDescription", taskDescription)
                     putString("dairyTaskId", taskId)
+                    putString("date", taskDate)
+                    putString("notificationTime", taskTime)
+                    putString("category", taskCategory)
                 }
             }
 
@@ -80,13 +85,8 @@ class TaskDescriptionFragment : DialogFragment(), OnClickInterface {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var time:String=""
-        var date:String=""
-        if(completedTasks){
-            binding.BtnTaskSave.visibility=View.GONE
-            binding.TimeSetter.visibility=View.GONE
-            binding.ivAddST.visibility=View.GONE
-        }
+
+
 
         submit = binding.btSubmitST
         subTaskEditText = binding.etSubTask
@@ -95,10 +95,33 @@ class TaskDescriptionFragment : DialogFragment(), OnClickInterface {
             dairyTaskData = DairyTaskData(
                 arguments?.getString("dairyTaskName").toString(),
                 arguments?.getString("dairyTaskDescription").toString(),
-                arguments?.getString("dairyTaskId").toString()
+                arguments?.getString("dairyTaskId").toString(),
+                arguments?.getString("notificationTime").toString(),
+                arguments?.getString("date").toString(),
+                arguments?.getBoolean("isDone")!!,
+                arguments?.getString("category").toString()
             )
+            if(completedTasks){
+                binding.BtnTaskSave.visibility=View.GONE
+                binding.TimeSetter.visibility=View.GONE
+                binding.ivAddST.visibility=View.GONE
+                binding.DateSetter.visibility=View.GONE
+                binding.CategoryDone.visibility=View.VISIBLE
+                binding.CategoryDone.text = dairyTaskData?.category
+                binding.DateDone.visibility=View.VISIBLE
+                binding.DateText.visibility=View.VISIBLE
+                binding.DateText.text = dairyTaskData?.date
+                binding.TimeDone.visibility=View.VISIBLE
+                binding.TimeText.visibility=View.VISIBLE
+                binding.TimeText.text = dairyTaskData?.notificationTime
+            }
+
             binding.TaskEntryTextName.setText(dairyTaskData?.dairyTaskName)
             binding.TaskEntryTextDescription.setText(dairyTaskData?.dairyTaskDescription)
+            date= dairyTaskData?.date.toString()
+            Log.d("date", date)
+            time= dairyTaskData?.notificationTime.toString()
+            Log.d("time", time)
         }
 
         getSubTasks()
@@ -112,17 +135,19 @@ class TaskDescriptionFragment : DialogFragment(), OnClickInterface {
         adapter.setListener(this)
 
         //Listeners
-        binding.BtnTaskSave.setOnClickListener(){
+        binding.BtnTaskSave.setOnClickListener{
             val taskName=binding.TaskEntryTextName.text.toString()
             val taskDescription=binding.TaskEntryTextDescription.text.toString()
 
-            if(taskName!=null){
-                listener?.onUpdateDairyTask(taskName, taskDescription, dairyTaskData?.dairyTaskId.toString(), time, date, binding.TaskEntryTextName, binding.TaskEntryTextDescription)
+            if(taskName!=""||taskName!=null){
+                listener?.onUpdateDairyTask(taskName, taskDescription, dairyTaskData?.dairyTaskId.toString(), time, date , binding.TaskEntryTextName, binding.TaskEntryTextDescription)
             }
         }
-
-        binding.TimeSetter.setOnClickListener(){
-            time=openTimePicker()
+        binding.DateSetter.setOnClickListener{
+            openDatePicker()
+        }
+        binding.TimeSetter.setOnClickListener{
+            openTimePicker()
         }
         binding.ivAddST.setOnClickListener {
             activateSubTasks()
@@ -220,8 +245,7 @@ class TaskDescriptionFragment : DialogFragment(), OnClickInterface {
     }
 
     //opening a time picker
-    private fun openTimePicker():String {
-        var time=""
+    private fun openTimePicker() {
         val isSystem24hour= DateFormat.is24HourFormat(requireContext())
         val clockFormat =if(isSystem24hour) TimeFormat.CLOCK_24H else TimeFormat.CLOCK_12H
 
@@ -229,25 +253,47 @@ class TaskDescriptionFragment : DialogFragment(), OnClickInterface {
             .setTimeFormat(clockFormat).setHour(12).setMinute(0).setTitleText("Set notification time").build()
 
         picker.show(childFragmentManager, "TAG")
-
-        picker.addOnCancelListener(){
-
+        picker.addOnCancelListener{
         }
-        picker.addOnDismissListener(){
-
+        picker.addOnDismissListener{
         }
-        picker.addOnNegativeButtonClickListener(){
-
+        picker.addOnNegativeButtonClickListener{
         }
-        picker.addOnPositiveButtonClickListener(){
+        picker.addOnPositiveButtonClickListener {
             val h=picker.hour
                 .toString()
+
             val m=picker.minute
                 .toString()
-            time= "$h:$m"
 
+            time= "$h:$m"
         }
-        return time
+
+    }
+    private fun openDatePicker(){
+        val datePicker: MaterialDatePicker<Long> = MaterialDatePicker.Builder.datePicker()
+            .setTitleText("Choose date")
+            .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
+            .build()
+
+        datePicker.addOnPositiveButtonClickListener {
+            // Getting instance of calendar
+            val d = Calendar.getInstance()
+
+            //Setting the calendar date that user chose
+            d.timeInMillis = it
+
+            //Setting hour, minutes and seconds to 0
+            d.set(Calendar.HOUR_OF_DAY, 0)
+            d.set(Calendar.MINUTE, 0)
+            d.set(Calendar.SECOND, 0)
+
+            //Setting the global date in this function
+            date = d.time.toString()
+            Log.d("SDF", date)
+        }
+
+        datePicker.show(childFragmentManager, "TAG")
     }
 
 

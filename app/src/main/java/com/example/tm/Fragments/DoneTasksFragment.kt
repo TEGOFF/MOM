@@ -48,7 +48,7 @@ class DoneTasksFragment : Fragment(), DairyTaskAdapter.DairyTaskAdapterClickInte
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         init(view)
-        registerEvents(view)
+        registerEvents()
     }
     private fun init(view:View){
         dbref= FireHelper.dbref.child("Users").child(FireHelper.firebaseAuth.currentUser?.uid.toString()).child("DairyTasks")
@@ -64,7 +64,7 @@ class DoneTasksFragment : Fragment(), DairyTaskAdapter.DairyTaskAdapterClickInte
         binding.recyclerView.adapter=adapter
         dbref.addChildEventListener(object:ChildEventListener{
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
-                if(snapshot.getValue().toString()!=""){
+                if(snapshot.value.toString()!=""){
                     mlist.add(
                         DairyTaskData(
                             snapshot.child("dairyTaskName").value.toString() ,snapshot.child("dairyTaskDescription").value.toString(), snapshot.key.toString())
@@ -99,12 +99,12 @@ class DoneTasksFragment : Fragment(), DairyTaskAdapter.DairyTaskAdapterClickInte
 
         })
     }
-    private fun registerEvents(view: View){
-        binding.BackBtn.setOnClickListener(){
+    private fun registerEvents(){
+        binding.BackBtn.setOnClickListener{
             navControl.navigate(R.id.action_doneTasksFragment_to_homeFragment)
         }
 
-        binding.recyclerView.setOnClickListener(){
+        binding.recyclerView.setOnClickListener{
             taskPopUpFragment= TaskDescriptionFragment()
             taskPopUpFragment!!.setListener(this)
             taskPopUpFragment!!.show(
@@ -152,7 +152,10 @@ class DoneTasksFragment : Fragment(), DairyTaskAdapter.DairyTaskAdapterClickInte
         taskPopUpFragment = TaskDescriptionFragment.newInstance(
             dairyTaskData.dairyTaskName,
             dairyTaskData.dairyTaskDescription,
-            dairyTaskData.dairyTaskId
+            dairyTaskData.dairyTaskId,
+            dairyTaskData.date,
+            dairyTaskData.notificationTime,
+            dairyTaskData.category
         )
         taskPopUpFragment!!.setListener(this)
         taskPopUpFragment!!.show(
@@ -164,7 +167,7 @@ class DoneTasksFragment : Fragment(), DairyTaskAdapter.DairyTaskAdapterClickInte
 
 
     override fun onDeleteTaskClicked(dairyTaskData: DairyTaskData) {
-        dbref.child(dairyTaskData.dairyTaskId).removeValue().addOnCompleteListener(){
+        dbref.child(dairyTaskData.dairyTaskId).removeValue().addOnCompleteListener{
             if(it.isSuccessful.not()){
                 Toast.makeText(context, it.exception?.message, Toast.LENGTH_SHORT    ).show()
             }
@@ -182,7 +185,7 @@ class DoneTasksFragment : Fragment(), DairyTaskAdapter.DairyTaskAdapterClickInte
 
                 mlist.add(position, mlist.removeAt(position) )
 
-                view?.post(){
+                view?.post{
                     binding.recyclerView.adapter?.notifyDataSetChanged()
                 }
             }

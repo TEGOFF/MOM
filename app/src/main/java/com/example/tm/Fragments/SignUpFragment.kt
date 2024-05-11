@@ -1,7 +1,6 @@
 package com.example.tm.Fragments
 
 import android.os.Bundle
-import android.os.Parcel
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -18,7 +17,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
 
-class SignUpFragment() : Fragment() {
+class SignUpFragment: Fragment() {
     private lateinit var auth:FirebaseAuth
     private lateinit var dbref:DatabaseReference
     private lateinit var navControl: NavController
@@ -57,7 +56,7 @@ class SignUpFragment() : Fragment() {
             val pass = binding.EntryPasswordSignUp.text.toString()
             val passconf = binding.EntryPassConfSignUp.text.toString()
             if (email.isNotEmpty() && pass.isNotEmpty()&& passconf.isNotEmpty()) {
-                auth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
+                auth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener { it ->
                     if(it.isSuccessful){
                         Toast.makeText(context, "User registered successfully", Toast.LENGTH_SHORT).show()
                         val user = User(name, email, pass, auth.uid.toString())
